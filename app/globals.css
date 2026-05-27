@@ -130,6 +130,17 @@
     color: var(--color-dark);
   }
 }
+.gallery-left-container {
+  max-width: 430px;
+  padding-left: 56px;
+}
+
+@media (max-width: 1024px) {
+  .gallery-left-container {
+    max-width: 100%;
+    padding: 40px 32px;
+  }
+}
 
 /* ================= GLOBAL UTILITIES ================= */
 @layer components {
