@@ -216,3 +216,450 @@
     padding-bottom: 10px;
   }
 }
+/* ================= TAILWIND ================= */
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Nunito:wght@400;500;600;700;800;900&display=swap");
+@import "tailwindcss";
+
+/* ================= GOOGLE FONTS ================= */
+
+
+/* ================= BRAND COLORS ================= */
+@layer theme {
+  :root {
+    --color-primary: #f5a623;
+    --color-primary-dark: #e08e0b;
+    --color-secondary: #6b3fa0;
+    --color-secondary-light: #8b5bbf;
+    --color-dark: #1a1a2e;
+    --color-body: #3d3d5c;
+    --color-muted: #7a7a9d;
+    --color-offwhite: #fdf9f3;
+    --color-white: #ffffff;
+    --color-border: #e8e8f0;
+    --color-bg-yellow: #fff8e6;
+    --color-bg-purple: #f3eeff;
+    --color-accent-green: #4caf50;
+    --color-accent-teal: #00bcd4;
+    --color-accent-orange: #ff7043;
+    --color-accent-red: #e53935;
+  }
+
+  @theme {
+    --color-primary: #f5a623;
+    --color-primary-dark: #e08e0b;
+    --color-secondary: #6b3fa0;
+    --color-secondary-light: #8b5bbf;
+    --color-dark: #1a1a2e;
+    --color-body: #3d3d5c;
+    --color-muted: #7a7a9d;
+    --color-offwhite: #fdf9f3;
+    --color-white: #ffffff;
+    --color-border: #e8e8f0;
+    --color-bg-yellow: #fff8e6;
+    --color-bg-purple: #f3eeff;
+    --color-accent-green: #4caf50;
+    --color-accent-teal: #00bcd4;
+    --color-accent-orange: #ff7043;
+    --color-accent-red: #e53935;
+  }
+}
+
+/* ================= BASE STYLES ================= */
+@layer base {
+  body {
+    font-family: "Nunito", sans-serif;
+    color: var(--color-body);
+    background-color: var(--color-offwhite);
+  }
+
+  /* ================= DESKTOP TYPOGRAPHY ================= */
+
+  h1 {
+    font-family: "Baloo 2", cursive;
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    color: var(--color-dark);
+  }
+
+  h2 {
+    font-family: "Baloo 2", cursive;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 1.2;
+    letter-spacing: -0.3px;
+    color: var(--color-secondary);
+  }
+
+  h3 {
+    font-family: "Baloo 2", cursive;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.3;
+    letter-spacing: 0px;
+    color: var(--color-dark);
+  }
+
+  h4 {
+    font-family: "Baloo 2", cursive;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.4;
+    letter-spacing: 0.2px;
+    color: var(--color-secondary);
+  }
+
+  p {
+    font-family: "Nunito", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.75;
+    letter-spacing: 0.2px;
+    color: var(--color-body);
+  }
+
+  .text-small {
+    font-family: "Nunito", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.6;
+    letter-spacing: 0.1px;
+    color: var(--color-muted);
+  }
+
+  .text-cta {
+    font-family: "Nunito", sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 1.4;
+    letter-spacing: 0.4px;
+    color: var(--color-white);
+  }
+
+  .text-nav {
+    font-family: "Nunito", sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.4;
+    letter-spacing: 0.2px;
+    color: var(--color-dark);
+  }
+}
+
+/* ================= GLOBAL UTILITIES ================= */
+@layer components {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-6 lg:px-8;
+  }
+
+  @media (max-width: 1335px) {
+    .container-custom {
+      max-width: 64rem;
+    }
+  }
+
+  .py-global {
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+
+  /* Section pre-title pill — e.g. "Our Programmes" label above headings */
+  .section-label {
+    font-family: "Nunito", sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1.5;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+    background-color: var(--color-bg-purple);
+    border-radius: 999px;
+    padding: 4px 14px;
+    display: inline-block;
+  }
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+
+  /* Typography Scale */
+  h1 {
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.3px;
+  }
+
+  h2 {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.2px;
+  }
+
+  h3 {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  h4 {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  p {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .text-small {
+    font-size: 13px;
+  }
+
+  .text-cta {
+    font-size: 14px;
+  }
+
+  .text-nav {
+    font-size: 14px;
+  }
+
+  .py-global {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+
+/* ================= NAVBAR ================= */
+.navbar-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: var(--color-white);
+  box-shadow: 0 4px 20px -2px rgba(107, 63, 160, 0.04);
+  border-bottom: 1px solid var(--color-border);
+  transition: all 0.3s ease;
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.navbar-logo-link {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo-container {
+  position: relative;
+  height: 64px;
+  width: 178px; /* 64 * 2.78 aspect ratio */
+  transition: transform 0.2s ease;
+}
+
+.navbar-logo-container:hover {
+  transform: scale(1.02);
+}
+
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.navbar-link {
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--color-dark);
+  text-decoration: none;
+  position: relative;
+  padding: 8px 0;
+  transition: color 0.2s ease;
+  cursor: pointer;
+}
+
+.navbar-link:hover,
+.navbar-link.active {
+  color: var(--color-primary);
+}
+
+/* Hover underline transition */
+.navbar-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--color-primary);
+  border-radius: 99px;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.navbar-link:hover::after,
+.navbar-link.active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Hamburger toggle for mobile/tablet */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 1001;
+}
+
+.hamburger-bar {
+  display: block;
+  width: 24px;
+  height: 3px;
+  margin: 5px auto;
+  background-color: var(--color-secondary);
+  transition: all 0.3s ease-in-out;
+  border-radius: 99px;
+}
+
+/* Mobile & Tablet overlay */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(26, 26, 46, 0.35);
+  backdrop-filter: blur(4px);
+  z-index: 998;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-overlay.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Mobile & Tablet Drawer */
+.mobile-menu-drawer {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 320px;
+  max-width: 85%;
+  height: 100%;
+  background-color: var(--color-white);
+  box-shadow: -10px 0 30px rgba(107, 63, 160, 0.1);
+  z-index: 999;
+  padding: 100px 30px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-menu-drawer.is-active {
+  right: 0;
+}
+
+.mobile-menu-links {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mobile-menu-link {
+  font-family: "Baloo 2", cursive;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-dark);
+  text-decoration: none;
+  transition: color 0.2s ease, padding-left 0.2s ease;
+  border-left: 0 solid var(--color-primary);
+}
+
+.mobile-menu-link:hover,
+.mobile-menu-link.active {
+  color: var(--color-primary);
+  padding-left: 8px;
+  border-left-width: 4px;
+}
+
+/* RESPONSIVE BREAKPOINTS */
+
+/* Tablet Landscape and smaller laptops */
+@media (max-width: 1150px) {
+  .navbar-container {
+    padding: 0 16px;
+  }
+  .navbar-menu {
+    gap: 18px;
+  }
+  .navbar-link {
+    font-size: 14px;
+  }
+}
+
+/* Tablet Portrait & Mobile (< 1024px) */
+@media (max-width: 1024px) {
+  .navbar-menu {
+    display: none;
+  }
+  
+  .menu-toggle {
+    display: block;
+  }
+  
+  /* Animate hamburger into X */
+  .menu-toggle.is-active .hamburger-bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+    background-color: var(--color-primary);
+  }
+  
+  .menu-toggle.is-active .hamburger-bar:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .menu-toggle.is-active .hamburger-bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+    background-color: var(--color-primary);
+  }
+}
+
+/* Small screen mobile header adjustments */
+@media (max-width: 640px) {
+  .navbar-container {
+    height: 70px;
+  }
+  
+  .navbar-logo-container {
+    height: 50px;
+    width: 139px; /* 50 * 2.78 */
+  }
+  
+  .navbar-cta-btn {
+    display: none !important; /* Hide button on mobile header to avoid overlap */
+  }
+}
