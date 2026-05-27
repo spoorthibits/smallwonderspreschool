@@ -24,6 +24,7 @@
     --color-accent-teal: #00bcd4;
     --color-accent-orange: #ff7043;
     --color-accent-red: #e53935;
+    --color-purple-deep: #4c1b85;
   }
 
   @theme {
@@ -43,6 +44,7 @@
     --color-accent-teal: #00bcd4;
     --color-accent-orange: #ff7043;
     --color-accent-red: #e53935;
+    --color-purple-deep: #4c1b85;
   }
 }
 
