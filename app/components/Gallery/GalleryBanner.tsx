@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function GalleryBanner() {
   return (
-    <section className="w-full bg-[#ffffff] py-12 relative overflow-visible">
+    <section className="w-full bg-[var(--offwhite-color)] py-12 relative overflow-visible">
       <style jsx global>{`
         @keyframes drawPath {
           from { stroke-dashoffset: 350; }
@@ -46,7 +46,7 @@ export default function GalleryBanner() {
       `}</style>
 
       <div className="container-custom relative">
-        <div className="bg-white rounded-[30px] overflow-visible">
+        <div className="bg-[var(--offwhite-color)] rounded-[30px] overflow-visible">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
             {/* LEFT CONTENT */}

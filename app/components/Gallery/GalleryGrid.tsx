@@ -1,14 +1,15 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import { 
-  BookOpen, 
-  Palette, 
-  Sparkles, 
-  Smile, 
+import {
+  BookOpen,
+  Palette,
+  Sparkles,
+  Smile,
   PartyPopper,
-  BookmarkCheck
+  BookmarkCheck,
+  LayoutGrid,
 } from "lucide-react";
 
 interface GalleryItem {
@@ -19,154 +20,196 @@ interface GalleryItem {
   image: string;
   themeColor: string;
   knobColor: string;
+  iconBg: string;
   icon: React.ReactNode;
+  filterIcon: React.ReactNode;
 }
 
+const galleryItems: GalleryItem[] = [
+  {
+    id: 1,
+    category: "Classroom",
+    title: "Creative Learning",
+    description: "Learning made fun and meaningful.",
+    image: "/galleryimg-1.jpeg",
+    themeColor: "#f5a623",
+    knobColor: "#f5a623",
+    iconBg: "rgba(255,255,255,0.25)",
+    icon: <BookOpen size={22} color="#fff" />,
+    filterIcon: <BookOpen size={18} color="#f5a623" />,
+  },
+  {
+    id: 2,
+    category: "Activities",
+    title: "Fun Activities",
+    description: "Exploring, playing and growing together.",
+    image: "/galleryimg-1.jpeg",
+    themeColor: "#7c3aed",
+    knobColor: "#7c3aed",
+    iconBg: "rgba(255,255,255,0.25)",
+    icon: <Smile size={22} color="#fff" />,
+    filterIcon: <Smile size={18} color="#7c3aed" />,
+  },
+  {
+    id: 3,
+    category: "Play Time",
+    title: "Play Time",
+    description: "Play, laugh and create beautiful bonds.",
+    image: "/galleryimg-1.jpeg",
+    themeColor: "#2563eb",
+    knobColor: "#2563eb",
+    iconBg: "rgba(255,255,255,0.25)",
+    icon: <Sparkles size={22} color="#fff" />,
+    filterIcon: <Sparkles size={18} color="#2563eb" />,
+  },
+  {
+    id: 4,
+    category: "Art & Craft",
+    title: "Art & Craft",
+    description: "Little hands creating big imagination.",
+    image: "/galleryimg-1.jpeg",
+    themeColor: "#ec4899",
+    knobColor: "#ec4899",
+    iconBg: "rgba(255,255,255,0.25)",
+    icon: <Palette size={22} color="#fff" />,
+    filterIcon: <Palette size={18} color="#ec4899" />,
+  },
+  {
+    id: 5,
+    category: "Classroom",
+    title: "Classroom Moments",
+    description: "Moments that shape young minds.",
+    image: "/galleryimg-1.jpeg",
+    themeColor: "#16a34a",
+    knobColor: "#16a34a",
+    iconBg: "rgba(255,255,255,0.25)",
+    icon: <BookmarkCheck size={22} color="#fff" />,
+    filterIcon: <BookmarkCheck size={18} color="#16a34a" />,
+  },
+  {
+    id: 6,
+    category: "Celebrations",
+    title: "Celebrations",
+    description: "Celebrating every little achievement.",
+    image: "/galleryimg-1.jpeg",
+    themeColor: "#f97316",
+    knobColor: "#f97316",
+    iconBg: "rgba(255,255,255,0.25)",
+    icon: <PartyPopper size={22} color="#fff" />,
+    filterIcon: <PartyPopper size={18} color="#f97316" />,
+  },
+];
+
+const filterTabs = [
+  { label: "All Photos",    value: "all",          icon: <LayoutGrid size={18} color="#fff" />,          activeBg: "#4c1b85" },
+  { label: "Classroom",     value: "Classroom",    icon: <BookOpen size={18} color="#f5a623" />,          activeBg: "#4c1b85" },
+  { label: "Activities",    value: "Activities",   icon: <Smile size={18} color="#7c3aed" />,             activeBg: "#4c1b85" },
+  { label: "Celebrations",  value: "Celebrations", icon: <PartyPopper size={18} color="#ec4899" />,       activeBg: "#4c1b85" },
+  { label: "Art & Craft",   value: "Art & Craft",  icon: <Palette size={18} color="#f5a623" />,           activeBg: "#4c1b85" },
+  { label: "Play Time",     value: "Play Time",    icon: <Sparkles size={18} color="#2563eb" />,          activeBg: "#4c1b85" },
+];
+
 export default function GalleryGrid() {
-  const galleryItems: GalleryItem[] = [
-    {
-      id: 1,
-      category: "Classroom",
-      title: "Creative Learning",
-      description: "Learning made fun and meaningful.",
-      image: "/images/classroom_1.png",
-      themeColor: "bg-[var(--color-primary)]",
-      knobColor: "#f5a623",
-      icon: <BookOpen size={20} className="text-[var(--color-primary)]" />,
-    },
-    {
-      id: 2,
-      category: "Activities",
-      title: "Fun Activities",
-      description: "Exploring, playing and growing together.",
-      image: "/images/activities_1.png",
-      themeColor: "bg-[var(--color-secondary)]",
-      knobColor: "#6b3fa0",
-      icon: <Smile size={20} className="text-[var(--color-secondary)]" />,
-    },
-    {
-      id: 3,
-      category: "Play Time",
-      title: "Play Time",
-      description: "Play, laugh and create beautiful bonds.",
-      image: "/images/play_time_1.png",
-      themeColor: "bg-[var(--color-accent-teal)]",
-      knobColor: "#00bcd4",
-      icon: <Sparkles size={20} className="text-[var(--color-accent-teal)]" />,
-    },
-    {
-      id: 4,
-      category: "Art & Craft",
-      title: "Art & Craft",
-      description: "Little hands creating big imagination.",
-      image: "/images/art_craft_1.png",
-      themeColor: "bg-pink-500",
-      knobColor: "#ec4899",
-      icon: <Palette size={20} className="text-pink-500" />,
-    },
-    {
-      id: 5,
-      category: "Classroom",
-      title: "Classroom Moments",
-      description: "Moments that shape young minds.",
-      image: "/images/classroom_2.png",
-      themeColor: "bg-[var(--color-accent-green)]",
-      knobColor: "#4caf50",
-      icon: <BookmarkCheck size={20} className="text-[var(--color-accent-green)]" />,
-    },
-    {
-      id: 6,
-      category: "Celebrations",
-      title: "Celebrations",
-      description: "Celebrating every little achievement.",
-      image: "/images/celebrations_1.png",
-      themeColor: "bg-[var(--color-accent-orange)]",
-      knobColor: "#ff7043",
-      icon: <PartyPopper size={20} className="text-[var(--color-accent-orange)]" />,
-    },
-  ];
+  const [activeFilter, setActiveFilter] = useState("all");
+
+  const filtered =
+    activeFilter === "all"
+      ? galleryItems
+      : galleryItems.filter((item) => item.category === activeFilter);
 
   return (
-    <div className="py-16 md:py-24 bg-white rounded-t-[3.5rem] shadow-inner relative z-20">
+    <section className="py-11 md:py-1 bg-white">
       <div className="container-custom">
+
+        {/* Title */}
         
-        {/* Title Section */}
-        <div className="text-center mb-16">
-          <span className="section-label mb-4">Our Moments</span>
-          <h2 className="text-[var(--color-secondary)] font-extrabold text-3xl md:text-4xl mt-2 font-['Baloo_2']">
-            Inside Small Wonders
-          </h2>
-          <p className="text-[var(--color-muted)] max-w-md mx-auto mt-3 font-['Nunito']">
-            Explore daily activities, lessons, and play sessions that keep our children happy and learning.
-          </p>
+
+        {/* Filter Tabs */}
+        <div className="flex flex-wrap justify-center gap-3 mb-14">
+          {filterTabs.map((tab) => {
+            const isActive = activeFilter === tab.value;
+            return (
+              <button
+                key={tab.value}
+                onClick={() => setActiveFilter(tab.value)}
+                className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold font-['Nunito'] border-2 transition-all duration-300"
+                style={{
+                  backgroundColor: isActive ? tab.activeBg : "#fff",
+                  borderColor: isActive ? tab.activeBg : "#e5e7eb",
+                  color: isActive ? "#fff" : "#374151",
+                }}
+              >
+                {/* Icon */}
+                <span
+                  style={{
+                    color: isActive ? "#fff" : undefined,
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  {isActive && tab.value === "all" ? (
+                    <LayoutGrid size={18} color="#fff" />
+                  ) : (
+                    React.cloneElement(tab.icon as React.ReactElement, {
+                      color: isActive ? "#fff" : undefined,
+                    })
+                  )}
+                </span>
+                {tab.label}
+              </button>
+            );
+          })}
         </div>
 
-        {/* 3-in-a-Row Jigsaw Card Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-16 gap-x-12">
-          {galleryItems.map((item) => (
-            <div 
+        {/* Jigsaw Card Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14 mb-19">
+          {filtered.map((item) => (
+            <div
               key={item.id}
-              className="relative group bg-white rounded-[2.5rem] border-4 border-white shadow-xl hover:shadow-2xl transition duration-500 flex flex-col p-3 pb-5 overflow-visible"
+              className="relative group flex flex-col rounded-[1.75rem] bg-white shadow-lg hover:shadow-2xl transition-shadow duration-500 overflow-visible"
             >
-              
-              {/* ================= INTERLOCKING JIGSAW KNOBS & SOCKETS ================= */}
-              
-              {/* Top Knob */}
-              <div className="absolute -top-[22px] left-1/2 -translate-x-1/2 w-11 h-11 rounded-full border-4 border-white bg-white z-20 group-hover:scale-105 transition duration-300"></div>
-              
-              {/* Left Socket */}
-              <div className="absolute -left-[22px] top-[40%] -translate-y-1/2 w-11 h-11 rounded-full border-4 border-white bg-[var(--color-offwhite)] z-20 shadow-[inset_-3px_0_4px_rgba(0,0,0,0.04)]"></div>
-              
-              {/* Right Knob */}
-              <div 
-                className="absolute -right-[22px] top-[60%] -translate-y-1/2 w-11 h-11 rounded-full border-4 border-white z-20 shadow-md group-hover:scale-105 transition duration-300"
-                style={{ backgroundColor: item.knobColor }}
-              ></div>
+              {/* Jigsaw Knob — top center */}
+             
 
-              {/* Bottom Socket */}
-              <div className="absolute -bottom-[22px] left-[70%] -translate-x-1/2 w-11 h-11 rounded-full border-4 border-white bg-[var(--color-offwhite)] z-20 shadow-[inset_0_-3px_4px_rgba(0,0,0,0.04)]"></div>
-
-              {/* ================= CARD BODY ================= */}
-              
-              {/* Image Container */}
-              <div className="relative overflow-hidden rounded-2xl aspect-[4/3] w-full border border-gray-100/50">
+              {/* Photo */}
+              <div className="relative w-full aspect-[4/3] overflow-hidden rounded-[1.75rem] rounded-b-none">
                 <Image
                   src={item.image}
                   alt={item.title}
                   fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-cover group-hover:scale-105 transition duration-500"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
-              
-              {/* Text Description Box */}
-              <div className={`relative mt-6 rounded-2xl ${item.themeColor} text-white p-5 pt-8 shadow-inner overflow-visible flex-grow flex flex-col justify-between`}>
-                
-                {/* Jigsaw connector badge linking photo border and description box */}
-                <div className="absolute left-6 -top-2 w-6 h-4 bg-white z-10"></div>
-                <div className="absolute left-3 -top-7 w-12 h-12 bg-white rounded-full border-4 border-white flex items-center justify-center shadow-md z-20">
-                  <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center">
-                    {item.icon}
-                  </div>
+
+              {/* Colored Footer Bar */}
+              <div
+                className="flex items-center gap-3 px-5 py-4 rounded-b-[1.75rem]"
+                style={{ backgroundColor: item.themeColor }}
+              >
+                {/* Icon circle */}
+                <div
+                  className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center"
+                  style={{ backgroundColor: "rgba(255,255,255,0.25)" }}
+                >
+                  {item.icon}
                 </div>
 
-                {/* Text Content */}
-                <div className="mt-2">
-                  <h4 className="font-bold text-white text-xl tracking-wide leading-tight font-['Baloo_2']">
+                {/* Text */}
+                <div>
+                  <h4 className="text-white font-bold text-base leading-tight font-['Baloo_2']">
                     {item.title}
                   </h4>
-                  <p className="text-white/90 text-sm mt-1.5 leading-relaxed font-['Nunito']">
+                  <p className="text-white/85 text-xs mt-0.5 font-['Nunito']">
                     {item.description}
                   </p>
                 </div>
-
               </div>
-
             </div>
           ))}
         </div>
 
       </div>
-    </div>
+    </section>
   );
 }
