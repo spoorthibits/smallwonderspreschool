@@ -63,7 +63,7 @@ export default function Navbar() {
         <Link href="/" className="navbar-logo-link" onClick={closeMenu}>
           <div className="navbar-logo-container">
             <Image
-              src="/logo.jpeg"
+              src="/logo.png"
               alt="Small Wonders Preschool Logo"
               fill
               sizes="(max-width: 768px) 133px, 178px"
