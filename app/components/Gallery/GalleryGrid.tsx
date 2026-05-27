@@ -152,9 +152,11 @@ export default function GalleryGrid() {
                   {isActive && tab.value === "all" ? (
                     <LayoutGrid size={18} color="#fff" />
                   ) : (
-                    React.cloneElement(tab.icon as React.ReactElement, {
-                      color: isActive ? "#fff" : undefined,
-                    })
+                    React.isValidElement<{ color?: string }>(tab.icon)
+  ? React.cloneElement(tab.icon, {
+      color: isActive ? "#fff" : undefined,
+    })
+  : tab.icon
                   )}
                 </span>
                 {tab.label}
