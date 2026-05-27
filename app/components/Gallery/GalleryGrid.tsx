@@ -118,14 +118,16 @@ export default function GalleryGrid() {
       : galleryItems.filter((item) => item.category === activeFilter);
 
   return (
-    <section className="py-11 md:py-1 bg-white">
+    <section className="py-11 md:py-1 bg-[var(--offwhite-bg)]">
       <div className="container-custom">
 
         {/* Title */}
         
 
         {/* Filter Tabs */}
-        <div className="flex flex-wrap justify-center gap-3 mb-14">
+        <div className="bg-white border border-[var(--color-border)] rounded-[28px] px-1 py-5 shadow-sm mb-13">
+
+  <div className="flex flex-wrap justify-center gap-3">
           {filterTabs.map((tab) => {
             const isActive = activeFilter === tab.value;
             return (
@@ -160,8 +162,10 @@ export default function GalleryGrid() {
             );
           })}
         </div>
-
+  
+</div>
         {/* Jigsaw Card Grid */}
+        
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14 mb-19">
           {filtered.map((item) => (
             <div

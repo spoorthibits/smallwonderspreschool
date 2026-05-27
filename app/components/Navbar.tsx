@@ -10,9 +10,7 @@ const navLinks = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "/about" },
   { name: "Programs", href: "/programs" },
-  { name: "Facilities", href: "/facilities" },
   { name: "Gallery", href: "/gallery" },
-  { name: "Admissions", href: "/admissions" },
   { name: "Contact Us", href: "/contact" },
 ];
 

@@ -152,7 +152,7 @@ export default function GalleryBanner() {
               <h2 className="text-[#2E2E2E] font-extrabold leading-none text-[48px] md:text-[58px] font-['Baloo_2']">
                 Our Happy
               </h2>
-              <h1 className="text-[#4B2CA0] font-extrabold leading-none text-[72px] md:text-[88px] mt-1 font-['Baloo_2']">
+              <h1 className="text-[#4B2CA0] font-extrabold leading-none text-[72px] md:text-[118px] mt-1 font-['Baloo_2']">
                 Gallery
               </h1>
 
@@ -162,7 +162,7 @@ export default function GalleryBanner() {
                 
               </div>
 
-              <p className="text-[#555] text-[18px] leading-[1.9] font-['Nunito']">
+              <p className="text-black text-[18px] leading-[1.9] font-['Nunito']">
                 A glimpse of joyful moments, exciting activities and beautiful
                 memories created every single day.
               </p>
