@@ -44,7 +44,7 @@ export default function Footer({ className }: FooterProps) {
             <Link href="/" className="footer-logo-card">
               <Image
                 src="/logo.png"
-                alt="Small Wonders International Play School Logo"
+                alt="Small Wonders Play School Logo"
                 width={240}
                 height={90}
                 priority
@@ -148,7 +148,7 @@ export default function Footer({ className }: FooterProps) {
 
         {/* ── 3. Minimal Bottom Copyright ── */}
         <div className="footer-bottom">
-          <p>© {new Date().getFullYear()} Small Wonders International Play School. All Rights Reserved.</p>
+          <p>© {new Date().getFullYear()} Small Wonders Play School. All Rights Reserved.</p>
         </div>
       </div>
     </footer>
