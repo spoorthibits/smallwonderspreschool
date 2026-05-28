@@ -36,7 +36,7 @@ export default function Button({
 
     // Purple filled — e.g. "Enquire Now"
     secondary:
-      "bg-[var(--color-secondary)] text-white hover:bg-[var(--color-secondary-light)] shadow-md hover:shadow-lg",
+      "bg-[var(--color-purple-deep)] text-white hover:bg-[var(--color-secondary-light)] shadow-md hover:shadow-lg",
 
     // Yellow border + yellow text — e.g. "Read More About Us"
     outline:

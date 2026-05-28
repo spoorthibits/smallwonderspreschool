@@ -8,7 +8,7 @@
 /* ================= BRAND COLORS ================= */
 @layer theme {
   :root {
-    --color-primary: #f5a623;
+    --color-primary: #E06820;
     --color-primary-dark: #e08e0b;
     --color-secondary: #6b3fa0;
     --color-secondary-light: #8b5bbf;
@@ -28,7 +28,7 @@
   }
 
   @theme {
-    --color-primary: #f5a623;
+    --color-primary: #E06820;
     --color-primary-dark: #e08e0b;
     --color-secondary: #6b3fa0;
     --color-secondary-light: #8b5bbf;
@@ -237,7 +237,7 @@
 /* ================= BRAND COLORS ================= */
 @layer theme {
   :root {
-    --color-primary: #f5a623;
+    --color-primary: #E06820;
     --color-primary-dark: #e08e0b;
     --color-secondary: #6b3fa0;
     --color-secondary-light: #8b5bbf;
@@ -256,7 +256,7 @@
   }
 
   @theme {
-    --color-primary: #f5a623;
+    --color-primary: #E06820;
     --color-primary-dark: #e08e0b;
     --color-secondary: #6b3fa0;
     --color-secondary-light: #8b5bbf;

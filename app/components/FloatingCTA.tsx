@@ -128,8 +128,8 @@ export default function FloatingCTAs() {
           type="button"
           style={{
             backgroundColor: isOverNavy
-              ? "#B89454"
-              : "#F4B400",
+              ? "#E06820 "
+              : "#E06820 ",
 
             color: "#ffffff",
 
