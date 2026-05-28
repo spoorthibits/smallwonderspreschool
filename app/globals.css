@@ -1,6 +1,8 @@
 /* ================= TAILWIND ================= */
 @import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Nunito:wght@400;500;600;700;800;900&display=swap");
+
 @import "tailwindcss";
+@import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 /* ================= GOOGLE FONTS ================= */
 
@@ -133,6 +135,13 @@
 .gallery-left-container {
   max-width: 430px;
   padding-left: 56px;
+}
+.fancybox__container {
+  --fancybox-content-margin-top: 40px;
+}
+
+.fancybox__slide {
+  padding-top: 40px !important;
 }
 
 @media (max-width: 1024px) {

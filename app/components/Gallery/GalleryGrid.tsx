@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import {
   BookOpen,
@@ -9,8 +9,11 @@ import {
   Smile,
   PartyPopper,
   BookmarkCheck,
-  LayoutGrid,
 } from "lucide-react";
+
+// Fancybox — imported with type assertion to avoid TS overload errors
+import type { Fancybox as FancyboxType } from "@fancyapps/ui";
+import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 interface GalleryItem {
   id: number;
@@ -111,11 +114,29 @@ const filterTabs = [
 
 export default function GalleryGrid() {
   const [activeFilter, setActiveFilter] = useState("all");
+  const galleryRef = useRef<HTMLDivElement>(null);
 
   const filtered =
     activeFilter === "all"
       ? galleryItems
       : galleryItems.filter((item) => item.category === activeFilter);
+
+  useEffect(() => {
+    // Dynamic import avoids SSR issues and TS overload conflicts
+    let FB: typeof FancyboxType;
+
+    import("@fancyapps/ui").then(({ Fancybox }) => {
+      FB = Fancybox;
+      FB.bind("[data-fancybox='gallery-grid']");
+    });
+
+    return () => {
+      if (FB) {
+        FB.unbind("[data-fancybox='gallery-grid']");
+        FB.close();
+      }
+    };
+  }, [activeFilter]); // rebind whenever filter changes
 
   return (
     <section className="py-11 md:py-10 bg-[var(--offwhite-bg)]">
@@ -137,7 +158,6 @@ export default function GalleryGrid() {
                     color: isActive ? "#fff" : "#374151",
                   }}
                 >
-                  {/* Colored dot */}
                   <span
                     className="inline-block w-2 h-2 rounded-full flex-shrink-0"
                     style={{
@@ -152,12 +172,19 @@ export default function GalleryGrid() {
         </div>
 
         {/* Photo Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[18px] mb-10">
+        <div
+          ref={galleryRef}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[18px] mb-10"
+        >
           {filtered.map((item) => (
-            <div
+            <a
               key={item.id}
-              className="relative group rounded-[14px] overflow-hidden aspect-[4/3] bg-gray-100 cursor-pointer"
+              href={item.image}
+              data-fancybox="gallery-grid"
+              data-caption={item.title}
+              className="relative group block rounded-[14px] overflow-hidden aspect-[4/3] bg-gray-100 cursor-pointer"
             >
+              {/* Image */}
               <Image
                 src={item.image}
                 alt={item.title}
@@ -165,7 +192,30 @@ export default function GalleryGrid() {
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
-            </div>
+
+              {/* Dark overlay */}
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 pointer-events-none" />
+
+              {/* Zoom icon */}
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                <div className="bg-white/20 backdrop-blur-sm p-4 rounded-full border border-white/40 shadow-lg">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-7 w-7 text-white"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </a>
           ))}
         </div>
 
