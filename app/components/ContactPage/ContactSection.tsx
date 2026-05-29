@@ -51,7 +51,7 @@ export default function ContactSection({
           {/* ── LEFT PANEL ── */}
           <div className="w-full lg:w-1/2 bg-gray-50 p-6 sm:p-8 md:p-10 border-b lg:border-b-0 lg:border-r border-gray-100 flex flex-col gap-6">
             <div>
-              
+              <h2 className="text-[#2E2E2E] font-[var(--text-primary)] leading-none text-[18px] font-['Baloo_2']"></h2>
             </div>
 
             {/* Contact cards grid */}
