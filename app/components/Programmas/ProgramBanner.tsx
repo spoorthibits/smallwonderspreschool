@@ -45,7 +45,7 @@ export default function GalleryBanner() {
 
         {/* LEFT CONTENT */}
         <div
-          className="relative overflow-visible py-8 md:py-10 lg:py-12 text-center lg:text-left"
+          className="relative overflow-visible py-8 md:py-12 lg:py-25 text-center lg:text-left"
           style={{
             paddingLeft: "max(1.5rem, calc((100vw - 1280px) / 2 + 1.5rem))",
             paddingRight: "2rem",

@@ -55,7 +55,7 @@ export default function ProgramsSection() {
   const next = () => setActiveIndex((i) => (i === programs.length - 1 ? 0 : i + 1));
 
   return (
-    <section className="w-full bg-white py-14 md:py-20">
+    <section className="w-full bg-[white] py-14 md:py-20">
       {/* Section Header */}
       <div className="container-custom text-center mb-10 md:mb-12">
         <p className="text-[#E06820] font-bold text-[13px] tracking-[0.15em] uppercase font-['Nunito'] mb-3">
