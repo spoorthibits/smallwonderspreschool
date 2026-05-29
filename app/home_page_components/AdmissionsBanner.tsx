@@ -4,9 +4,12 @@ import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Phone, ArrowRight } from "lucide-react";
+import { useModal } from "../context/ModalContext";
 
 export default function AdmissionsBanner() {
   const router = useRouter();
+  const { openModal } = useModal();
+
 
   return (
     <section className="relative w-full py-6 md:py-8 mt-12 md:mt-24 z-10">
@@ -45,8 +48,8 @@ export default function AdmissionsBanner() {
           {/* ── Column 3: Call to Action Buttons on the Right ── */}
           <div className="lg:col-span-4 flex flex-row gap-3 items-center justify-center lg:justify-end w-full">
             <button
-              onClick={() => router.push("/contact")}
-              className="group px-6 py-2.5 rounded-full bg-[var(--color-purple-deep)] hover:bg-[#381166] text-white font-baloo text-sm font-bold shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-1.5 whitespace-nowrap"
+              onClick={() => openModal("apply")}
+              className="group px-6 py-2.5 rounded-full bg-[var(--color-purple-deep)] hover:bg-[#381166] text-white font-baloo text-sm font-bold shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-1.5 whitespace-nowrap cursor-pointer"
             >
               Enroll Now
               <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" />
@@ -54,7 +57,7 @@ export default function AdmissionsBanner() {
             
             <button
               onClick={() => router.push("/contact")}
-              className="px-6 py-2.5 rounded-full bg-white hover:bg-gray-50 text-[var(--color-purple-deep)] border-2 border-white font-baloo text-sm font-bold shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-1.5 whitespace-nowrap"
+              className="px-6 py-2.5 rounded-full bg-white hover:bg-gray-50 text-[var(--color-purple-deep)] border-2 border-white font-baloo text-sm font-bold shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-1.5 whitespace-nowrap cursor-pointer"
             >
               <Phone className="w-4 h-4 fill-current" />
               Contact Us

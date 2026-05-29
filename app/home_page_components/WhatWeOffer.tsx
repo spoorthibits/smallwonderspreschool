@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Smile, Tent, BookOpen } from "lucide-react";
+import { useModal } from "../context/ModalContext";
 
 interface Offering {
   title: string;
@@ -14,6 +15,7 @@ interface Offering {
 
 export default function WhatWeOffer() {
   const router = useRouter();
+  const { openModal } = useModal();
 
   const offerings: Offering[] = [
     {
@@ -217,8 +219,8 @@ export default function WhatWeOffer() {
                   {/* Learn More Link */}
                   <div className="px-2 pb-2">
                     <button
-                      onClick={() => router.push("/contact")}
-                      className="font-baloo text-sm font-extrabold text-[var(--color-primary)] hover:text-[#c45312] transition-colors duration-200 flex items-center gap-1 group/btn"
+                      onClick={() => openModal("apply")}
+                      className="font-baloo text-sm font-extrabold text-[var(--color-primary)] hover:text-[#c45312] transition-colors duration-200 flex items-center gap-1 group/btn cursor-pointer"
                     >
                       LEARN MORE
                       <span className="transition-transform duration-200 group-hover/btn:translate-x-1">→</span>

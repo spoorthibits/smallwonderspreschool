@@ -4,6 +4,8 @@ import "./globals.css";
 import Footer from "./components/footer";
 import Navbar from "./components/Navbar";
 import FloatingCTAs from "./components/FloatingCTA";
+import AdmissionsModal from "./components/AdmissionsModal";
+import { ModalProvider } from "./context/ModalContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,11 +33,15 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <Navbar />
-        <FloatingCTAs/>
-        {children}
-        <Footer />
+        <ModalProvider>
+          <Navbar />
+          <FloatingCTAs />
+          <AdmissionsModal />
+          {children}
+          <Footer />
+        </ModalProvider>
       </body>
     </html>
   );
 }
+
