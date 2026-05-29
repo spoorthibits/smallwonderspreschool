@@ -1,9 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useModal } from "../context/ModalContext";
 
 export default function FloatingCTAs() {
   const [isOverNavy, setIsOverNavy] = useState(false);
+  const { openModal } = useModal();
 
   // ─── Body offset class ─────────────────────────────────────
   useEffect(() => {
@@ -98,6 +100,7 @@ export default function FloatingCTAs() {
         {/* VISIT US */}
         <button
           type="button"
+          onClick={() => openModal("visit")}
           className="
             flex-1
             md:flex-none
@@ -126,6 +129,7 @@ export default function FloatingCTAs() {
         {/* APPLY NOW */}
         <button
           type="button"
+          onClick={() => openModal("apply")}
           style={{
             backgroundColor: isOverNavy
               ? "#E06820 "
