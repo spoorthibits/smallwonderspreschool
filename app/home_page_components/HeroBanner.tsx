@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { ArrowRight, Calendar, Award, Heart, GraduationCap, ShieldCheck } from "lucide-react";
 import Button from "../components/Button";
+import { useModal } from "../context/ModalContext";
 
 const slides = [
   { src: "/galleryimg-1.jpeg", alt: "Preschool children engaging in fun hands-on painting and creative arts" },
@@ -44,6 +45,7 @@ const stats = [
 export default function HeroBanner() {
   const router = useRouter();
   const [activeSlide, setActiveSlide] = useState(0);
+  const { openModal } = useModal();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -118,7 +120,7 @@ export default function HeroBanner() {
                 icon={<ArrowRight className="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1" />}
                 iconPosition="right"
                 className="group w-full sm:w-auto hover:-translate-y-0.5 active:translate-y-0 transition-transform shadow-md"
-                onClick={() => router.push("/contact")}
+                onClick={() => openModal("apply")}
               />
               <Button
                 label="Book a Visit"
@@ -127,7 +129,7 @@ export default function HeroBanner() {
                 icon={<Calendar className="w-5 h-5 transition-transform duration-200 group-hover:scale-110" />}
                 iconPosition="left"
                 className="group w-full sm:w-auto bg-[#FDB813] text-[var(--color-purple-deep)] hover:bg-[#ffd95a] hover:-translate-y-0.5 active:translate-y-0 transition-all shadow-md font-bold"
-                onClick={() => router.push("/contact")}
+                onClick={() => openModal("visit")}
               />
             </div>
           </div>

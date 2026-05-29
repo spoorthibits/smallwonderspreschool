@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useModal } from "../context/ModalContext";
 
 interface Program {
   title: string;
@@ -16,6 +17,7 @@ interface Program {
 
 export default function OurPrograms() {
   const router = useRouter();
+  const { openModal } = useModal();
 
   const programs: Program[] = [
     {
@@ -222,8 +224,8 @@ export default function OurPrograms() {
 
                   {/* Join Button */}
                   <button
-                    onClick={() => router.push("/contact")}
-                    className={`w-full py-3 px-4 rounded-xl text-xs font-extrabold uppercase tracking-wider font-nunito transition-all duration-300 shadow-sm active:translate-y-0.5 ${prog.btnColor}`}
+                    onClick={() => openModal("apply")}
+                    className={`w-full py-3 px-4 rounded-xl text-xs font-extrabold uppercase tracking-wider font-nunito transition-all duration-300 shadow-sm active:translate-y-0.5 cursor-pointer ${prog.btnColor}`}
                   >
                     Join the Fun →
                   </button>
