@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function AboutStory() {
   return (
-    <section id="our-story" className="w-full bg-white py-20 relative overflow-hidden">
+    <section id="our-story" className="w-full bg-white py-10 md:py-14 relative overflow-hidden">
       {/* Floating Emojis in far margins */}
       <div className="absolute left-[3%] top-[30%] w-12 h-12 star-float-png z-10 opacity-80 pointer-events-none hidden md:block">
         <img src="/slider_shape02.png" alt="Star" className="w-full h-full object-contain" />
@@ -38,33 +38,27 @@ export default function AboutStory() {
           </div>
 
           {/* RIGHT: Leadership Cards Grid */}
-          <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-8 animate-fade-in-right">
+          <div className="lg:col-span-6 grid grid-cols-2 gap-4 sm:gap-8 animate-fade-in-right">
             
             {/* Card 1: Jagdev Singh Chauhan (Founder & Chairman) */}
             <div className="flex flex-col rounded-[24px] bg-[var(--color-offwhite)] shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden border border-[#e8e8f0]">
-              <div className="aspect-[4/5] relative w-full bg-gradient-to-br from-[#6b3fa0]/20 to-[#e0531c]/20 flex items-center justify-center">
+              <div className="aspect-[1.1] sm:aspect-[4/5] relative w-full bg-gradient-to-br from-[#6b3fa0]/20 to-[#e0531c]/20 flex items-center justify-center">
                 
                 {/* Visual Placeholder for Photo */}
-                <div className="flex flex-col items-center justify-center p-6 text-center">
-                  <div className="w-24 h-24 rounded-full bg-[#6b3fa0]/30 border-4 border-white flex items-center justify-center text-[#6b3fa0] font-black text-3xl font-['Baloo_2'] shadow-md mb-4 animate-bounce" style={{ animationDuration: '3s' }}>
+                <div className="flex flex-col items-center justify-center p-3 sm:p-6 text-center">
+                  <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-full bg-white/95 border-4 border-[#6b3fa0]/30 flex items-center justify-center text-[#6b3fa0] font-black text-2xl sm:text-4xl font-['Baloo_2'] shadow-md mb-2 sm:mb-4 animate-bounce" style={{ animationDuration: '3s' }}>
                     JSC
                   </div>
-                  <span className="text-[#6b3fa0] font-bold text-xs uppercase tracking-wider font-['Nunito']">
-                    Jagdev Singh Chauhan
-                  </span>
-                  <span className="text-[#7a7a9d] text-[11px] font-medium font-['Nunito'] mt-2">
-                    Founder & Chairman
-                  </span>
-                  <div className="mt-3 px-3 py-1 bg-white/60 backdrop-blur-sm rounded-full text-[10px] text-[#7a7a9d] font-semibold">
-                    Profile Photo Coming Soon
+                  <div className="mt-2 px-3 py-1 bg-[#6b3fa0]/10 rounded-full text-[9px] sm:text-xs text-[#6b3fa0] font-bold">
+                    Photo Coming Soon
                   </div>
                 </div>
               </div>
-              <div className="bg-[#6b3fa0] text-white p-4 text-center">
-                <h4 className="font-bold text-lg font-['Baloo_2'] leading-tight">
+              <div className="bg-[#6b3fa0] p-2.5 sm:p-4 text-center flex-grow flex flex-col justify-center">
+                <h4 className="font-bold text-xs sm:text-lg font-['Baloo_2'] leading-tight !text-white">
                   Jagdev Singh Chauhan
                 </h4>
-                <p className="text-white/80 text-xs font-semibold font-['Nunito'] mt-1">
+                <p className="!text-white/80 text-[10px] sm:text-xs font-semibold font-['Nunito'] mt-0.5 sm:mt-1">
                   Founder & Chairman
                 </p>
               </div>
@@ -72,7 +66,7 @@ export default function AboutStory() {
 
             {/* Card 2: Gayatri Singh (Director) */}
             <div className="flex flex-col rounded-[24px] bg-[var(--color-offwhite)] shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden border border-[#e8e8f0] group/card">
-              <div className="aspect-[4/5] relative w-full overflow-hidden bg-zinc-100">
+              <div className="aspect-[1.1] sm:aspect-[4/5] relative w-full overflow-hidden bg-zinc-100">
                 <Image
                   src="/Director.jpeg"
                   alt="Gayatri Singh - Director"
@@ -80,11 +74,11 @@ export default function AboutStory() {
                   className="object-cover object-center transition-transform duration-700 group-hover/card:scale-105"
                 />
               </div>
-              <div className="bg-[#4c1b85] text-white p-4 text-center">
-                <h4 className="font-bold text-lg font-['Baloo_2'] leading-tight">
+              <div className="bg-[#4c1b85] p-2.5 sm:p-4 text-center flex-grow flex flex-col justify-center">
+                <h4 className="font-bold text-xs sm:text-lg font-['Baloo_2'] leading-tight !text-white">
                   Gayatri Singh
                 </h4>
-                <p className="text-white/80 text-xs font-semibold font-['Nunito'] mt-1">
+                <p className="!text-white/80 text-[10px] sm:text-xs font-semibold font-['Nunito'] mt-0.5 sm:mt-1">
                   Director
                 </p>
               </div>

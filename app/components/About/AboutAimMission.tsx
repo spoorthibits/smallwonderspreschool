@@ -31,7 +31,7 @@ export default function AboutAimMission() {
   ];
 
   return (
-    <section className="w-full bg-white py-20 relative overflow-hidden">
+    <section className="w-full bg-white py-10 md:py-14 relative overflow-hidden">
       {/* Floating Emojis in far margins */}
       <div className="absolute left-[3%] top-[40%] w-16 h-16 sun-float z-10 opacity-80 pointer-events-none hidden md:block">
         <img src="/slider_shape01.png" alt="Sun" className="w-full h-full object-contain" />

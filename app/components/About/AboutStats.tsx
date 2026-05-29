@@ -18,7 +18,7 @@ export default function AboutStats() {
   };
 
   return (
-    <section className="w-full bg-white py-16 md:py-24 relative overflow-hidden">
+    <section className="w-full bg-white py-10 md:py-14 relative overflow-hidden">
 
       {/* Floating Emojis in far margins */}
       <div className="absolute left-[3%] top-[30%] w-16 h-16 sun-float z-10 opacity-80 pointer-events-none hidden md:block">
@@ -32,7 +32,7 @@ export default function AboutStats() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
 
           {/* LEFT: Organic Blob Image — styled like reference Image 1 */}
-          <div className="lg:col-span-6 flex justify-center lg:justify-start items-center py-10 animate-fade-in-left lg:-translate-x-16">
+          <div className="lg:col-span-6 order-2 lg:order-1 flex justify-center lg:justify-start items-center py-10 animate-fade-in-left lg:-translate-x-16">
             <div className="relative w-full max-w-[530px] aspect-square flex justify-center items-center animate-float-main-image">
 
               {/* BACKGROUND BLOB 1: Top-Right — brand orange with floating effect */}
@@ -123,7 +123,7 @@ export default function AboutStats() {
           </div>
 
           {/* RIGHT: Styled Text Content & Stats */}
-          <div className="lg:col-span-6 flex flex-col justify-center text-left animate-fade-in-right">
+          <div className="lg:col-span-6 order-1 lg:order-2 flex flex-col justify-center text-left animate-fade-in-right">
             <span className="text-[#4b2ca0] font-bold text-xs tracking-widest uppercase font-['Nunito'] mb-3 block">
               — ABOUT SMALL WONDERS
             </span>

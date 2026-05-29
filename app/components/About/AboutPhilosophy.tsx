@@ -80,7 +80,7 @@ export default function AboutPhilosophy() {
   ];
 
   return (
-    <section className="w-full bg-white pb-20 relative overflow-hidden">
+    <section className="w-full bg-white pb-10 md:pb-14 relative overflow-hidden">
       {/* Floating Emojis in far margins */}
       <div className="absolute left-[3%] top-[30%] w-16 h-28 balloon-float z-10 opacity-80 pointer-events-none hidden md:block">
         <img src="/slider_shape03.png" alt="Heart Balloon" className="w-full h-full object-contain" />
@@ -90,7 +90,7 @@ export default function AboutPhilosophy() {
       </div>
 
       <div className="container-custom">
-        <div className="bg-gradient-to-br from-[#4b2ca0] to-[#30166b] rounded-[35px] p-8 md:p-16 text-white shadow-xl relative overflow-hidden">
+        <div className="bg-gradient-to-br from-[#4b2ca0] to-[#30166b] rounded-[35px] p-6 sm:p-10 md:p-16 text-white shadow-xl relative overflow-hidden">
           
           {/* Faint Decorative Hand-Drawn Background Doodles */}
           <svg className="absolute left-[38%] top-[-10%] w-48 h-48 opacity-[0.06] pointer-events-none z-0 text-white" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -116,7 +116,7 @@ export default function AboutPhilosophy() {
             <path d="M25 45 L22 48 L26 46 Z" fill="currentColor" />
           </svg>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
             
             {/* LEFT: Philosophy Statement */}
             <div className="lg:col-span-5 flex flex-col justify-center text-left pr-4 animate-fade-in-left relative">
@@ -139,16 +139,16 @@ export default function AboutPhilosophy() {
             </div>
 
             {/* RIGHT: Horizontal Row of 4 Pillars */}
-            <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-4 gap-4 items-center animate-fade-in-right">
+            <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-4 gap-4 items-stretch animate-fade-in-right">
               {items.map((item, idx) => (
                 <div 
                   key={idx} 
-                  className="flex flex-col items-center text-center px-2 border-r border-white/20 last:border-r-0 sm:h-36 justify-between group hover:-translate-y-1.5 transition-all duration-300 cursor-default"
+                  className="flex flex-col items-center text-center p-3 sm:p-4 rounded-[20px] bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 hover:-translate-y-1.5 transition-all duration-300 cursor-default justify-between group min-h-[140px] sm:h-auto"
                 >
-                  <div className="text-[#FDB813] transition-transform duration-300 transform group-hover:scale-110 group-hover:rotate-[6deg] mb-4">
+                  <div className="text-[#FDB813] transition-transform duration-300 transform group-hover:scale-110 group-hover:rotate-[6deg] mb-3 flex items-center justify-center flex-grow">
                     {item.icon}
                   </div>
-                  <h4 className="text-white font-bold text-sm md:text-base leading-snug font-['Baloo_2'] group-hover:text-[#FDB813] transition-colors duration-300 whitespace-pre-line">
+                  <h4 className="!text-white font-bold text-xs sm:text-sm md:text-base leading-snug font-['Baloo_2'] group-hover:text-[#FDB813] transition-colors duration-300 whitespace-pre-line">
                     {item.title}
                   </h4>
                 </div>
