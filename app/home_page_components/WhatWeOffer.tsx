@@ -194,7 +194,7 @@ export default function WhatWeOffer() {
   const activeProg = programmes[activeIndex];
 
   return (
-    <section className="relative py-8 md:py-12 bg-[#FCFAEF] overflow-hidden flex flex-col items-center justify-center min-h-0">
+    <section className="relative py-6 md:py-10 bg-[#FCFAEF] overflow-hidden flex flex-col items-center justify-center min-h-0">
       
       {/* Background Decor */}
       <div className="absolute inset-0 pointer-events-none opacity-40 z-0">
@@ -211,7 +211,7 @@ export default function WhatWeOffer() {
       <div className="container-custom relative z-10 w-full">
         
         {/* Compact Header */}
-        <div className="text-center max-w-2xl mx-auto mb-8 md:mb-10">
+        <div className="text-center max-w-2xl mx-auto mb-6 md:mb-8">
           <span className="section-label mb-3 inline-flex items-center gap-1.5 bg-white text-orange-500 shadow-sm border border-orange-100 py-1 px-3">
             <Sparkles className="w-3.5 h-3.5" /> OUR PROGRAMMES
           </span>
@@ -305,7 +305,7 @@ export default function WhatWeOffer() {
           </div>
 
           {/* Right Column: Dense Dynamic Content Panel */}
-          <div className="lg:col-span-8 xl:col-span-9 relative h-full min-h-[450px] lg:min-h-[500px]">
+          <div className="lg:col-span-8 xl:col-span-9 relative h-full min-h-[350px] lg:min-h-[450px]">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeIndex}
@@ -314,7 +314,7 @@ export default function WhatWeOffer() {
                 exit={{ opacity: 0, x: -10 }}
                 transition={{ duration: 0.35, ease: "easeOut" }}
                 style={activeProg.boxShape}
-                className={`bg-white p-6 sm:p-8 md:p-10 w-full shadow-[0_8px_30px_rgb(0,0,0,0.06)] border-4 ${activeProg.borderColor} flex flex-col xl:flex-row gap-6 md:gap-8 h-full overflow-hidden`}
+                className={`bg-white p-4 sm:p-6 md:p-8 w-full shadow-[0_8px_30px_rgb(0,0,0,0.06)] border-4 ${activeProg.borderColor} flex flex-col xl:flex-row gap-6 md:gap-8 h-full overflow-hidden`}
               >
                 
                 {/* Content Side (Primary Focus) */}

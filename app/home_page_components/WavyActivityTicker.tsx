@@ -34,13 +34,13 @@ const activities = [
 
 export default function WavyActivityTicker() {
   const blockWidth = 2400;
-  const height     = 120;
+  const height     = 82;
   const cycles     = 8;
   const cycleWidth = blockWidth / cycles;
 
   const topBase  = 18;
   const amp      = 22;
-  const chipY    = 72;
+  const chipY    = 45;
 
   // Wavy top edge, straight bottom
   const wavePath = useMemo(() => {

@@ -11,7 +11,7 @@ export default function AdmissionsBanner() {
   const { openModal } = useModal();
 
   return (
-    <section className="relative w-full z-10">
+    <section className="relative w-full z-10 pt-[70px]">
       {/* Yellow band — fixed height, kid overflows upward from here */}
       <div className="relative bg-[#FDB813] rounded-t-[35px] md:rounded-t-[60px] overflow-hidden h-[140px] md:h-[145px]">
         {/* decorative bubble */}

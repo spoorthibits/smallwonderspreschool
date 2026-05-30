@@ -17,9 +17,6 @@ export default function Home() {
       <HomeBanner />
       {/* <HeroBanner /> */}
 
-      {/* Home Page Section 3: Continuous Horizontal Scrolling Ticker of Activities */}
-      <WavyActivityTicker />
-
       {/* Home Page Section 4: Welcome to Preschool Section */}
       <WelcomePreschool />
 

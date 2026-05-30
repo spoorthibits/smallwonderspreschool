@@ -60,7 +60,7 @@ export default function FAQ() {
   ];
 
   return (
-    <section className="relative py-16 md:py-24 bg-[var(--color-offwhite)] overflow-hidden">
+    <section className="relative py-6 md:py-10 bg-[var(--color-offwhite)] overflow-hidden">
       
       {/* Background doodles */}
       <div className="absolute top-[8%] left-[5%] w-12 h-12 text-[var(--color-primary)] opacity-10 pointer-events-none hidden xl:block">
@@ -70,11 +70,11 @@ export default function FAQ() {
       <div className="container-custom relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <div className="text-center max-w-2xl mx-auto mb-8 md:mb-10">
           <span className="section-label mb-4 inline-flex items-center gap-1.5 bg-orange-50 text-[var(--color-primary)]">
             Got Questions?
           </span>
-          <h2 className="font-baloo text-[var(--color-primary)] text-3xl sm:text-4xl lg:text-[44px] leading-tight font-extrabold px-3">
+          <h2 className="font-baloo text-[var(--color-primary)] text-[22px] sm:text-3xl md:text-4xl lg:text-[40px] leading-tight font-extrabold px-3 whitespace-nowrap">
             Frequently Asked Question's (FAQ's)
           </h2>
         </div>
@@ -82,7 +82,7 @@ export default function FAQ() {
         {/* Hover Accordion Cards List */}
         <div 
           onMouseLeave={() => setHoveredIndex(0)}
-          className="max-w-4xl mx-auto space-y-4"
+          className="max-w-4xl mx-auto space-y-3 md:space-y-4"
         >
           {faqs.map((faq, index) => {
             const isHovered = hoveredIndex === index;
@@ -91,7 +91,7 @@ export default function FAQ() {
               <div
                 key={index}
                 onMouseEnter={() => setHoveredIndex(index)}
-                className={`bg-white rounded-2xl border transition-all duration-300 p-5 sm:p-6 shadow-[0_4px_20px_-4px_rgba(107,63,160,0.04)] cursor-pointer select-none ${
+                className={`bg-white rounded-2xl border transition-all duration-300 p-4 sm:p-5 shadow-[0_4px_20px_-4px_rgba(107,63,160,0.04)] cursor-pointer select-none ${
                   isHovered
                     ? "border-[var(--color-primary)] shadow-[0_10px_30px_-6px_rgba(224,104,32,0.10)]"
                     : "border-[var(--color-border)] hover:border-[var(--color-secondary-light)]"

@@ -2,6 +2,9 @@
 
 import React from "react";
 import Image from "next/image";
+import Button from "../components/Button";
+import { useModal } from "../context/ModalContext";
+import { ArrowRight } from "lucide-react";
 
 interface Step {
   number: string;
@@ -10,6 +13,7 @@ interface Step {
 }
 
 export default function StepsToJoin() {
+  const { openModal } = useModal();
   const steps: Step[] = [
     {
       number: "01",
@@ -29,7 +33,7 @@ export default function StepsToJoin() {
   ];
 
   return (
-    <section className="relative py-16 md:py-24 bg-white overflow-hidden">
+    <section className="relative py-6 md:py-10 bg-white overflow-hidden">
       
       {/* Decorative background doodles */}
       <div className="absolute top-[20%] left-[45%] w-16 h-16 text-yellow-300 opacity-20 pointer-events-none hidden lg:block">
@@ -46,11 +50,11 @@ export default function StepsToJoin() {
             <span className="text-xs font-bold text-[var(--color-primary)] tracking-wider uppercase mb-2 font-nunito">
               — How to Join
             </span>
-            <h2 className="font-baloo text-[var(--color-primary)] text-3xl sm:text-4xl lg:text-[44px] leading-tight font-extrabold mb-10">
+            <h2 className="font-baloo text-[var(--color-primary)] text-3xl sm:text-4xl lg:text-[44px] leading-tight font-extrabold mb-6 md:mb-8">
               Three Simple Steps
             </h2>
 
-            <div className="space-y-8 w-full">
+            <div className="space-y-4 md:space-y-6 w-full">
               {steps.map((step, index) => (
                 <div key={index} className="flex gap-5 items-start group">
                   
@@ -71,6 +75,19 @@ export default function StepsToJoin() {
 
                 </div>
               ))}
+            </div>
+
+            {/* Action Button */}
+            <div className="mt-8 md:mt-10">
+              <Button
+                label="Visit Us"
+                variant="secondary"
+                size="sm"
+                icon={<ArrowRight className="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1" />}
+                iconPosition="right"
+                onClick={() => openModal("visit")}
+                className="group shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
+              />
             </div>
           </div>
 

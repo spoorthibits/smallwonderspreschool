@@ -20,6 +20,7 @@ export default function WhyChooseUs() {
       holeRight: true,
       holeBottom: true,
       initialPosition: { x: -80, y: -80 },
+      corners: "rounded-t-[32px] md:rounded-none md:rounded-tl-[40px]",
     },
     {
       id: 2,
@@ -34,6 +35,7 @@ export default function WhyChooseUs() {
       holeLeft: false,
       holeBottom: true,
       initialPosition: { x: 80, y: -80 },
+      corners: "rounded-none md:rounded-tr-[40px]",
     },
     {
       id: 3,
@@ -48,6 +50,7 @@ export default function WhyChooseUs() {
       holeTop: false,
       holeRight: true,
       initialPosition: { x: -80, y: 80 },
+      corners: "rounded-none md:rounded-bl-[40px]",
     },
     {
       id: 4,
@@ -62,6 +65,7 @@ export default function WhyChooseUs() {
       holeTop: false,
       holeLeft: false,
       initialPosition: { x: 80, y: 80 },
+      corners: "rounded-b-[32px] md:rounded-none md:rounded-br-[40px]",
     },
   ];
 
@@ -69,7 +73,7 @@ export default function WhyChooseUs() {
   const holeClasses = "absolute w-[80px] h-[80px] md:w-[96px] md:h-[96px] bg-white rounded-full z-10 pointer-events-none";
 
   return (
-    <section className="relative py-16 md:py-24 bg-white overflow-hidden">
+    <section className="relative py-4 md:py-6 bg-white overflow-hidden">
       
       {/* Decorative preschool elements */}
       <div className="absolute inset-0 pointer-events-none select-none z-0">
@@ -87,26 +91,33 @@ export default function WhyChooseUs() {
         <div className="absolute bottom-[10%] right-[5%] text-yellow-200 animate-pulse">
           <Sparkles className="w-12 h-12" />
         </div>
+        
+        {/* New Fun Elements */}
+        <div className="absolute top-[30%] left-[10%] text-blue-300 opacity-60 animate-[bounce_5s_infinite]">
+          <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M2 20a10 10 0 0 1 20 0M6 20a6 6 0 0 1 12 0M10 20a2 2 0 0 1 4 0"/></svg>
+        </div>
+        <div className="absolute bottom-[40%] right-[10%] text-rose-300 opacity-70 animate-[bounce_4s_infinite]">
+          <div className="relative">
+            <Heart className="w-12 h-12 fill-current" />
+            <svg className="absolute top-[42px] left-1/2 -translate-x-1/2 w-4 h-12 text-rose-200" viewBox="0 0 10 30" fill="none" stroke="currentColor"><path d="M5 0 Q 0 10 5 20 T 5 30" strokeWidth="1.5"/></svg>
+          </div>
+        </div>
+        <div className="absolute top-[50%] left-[4%] text-green-300 opacity-50 pointer-events-none rotate-12 animate-pulse">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="6"/><circle cx="7" cy="7" r="3"/><circle cx="17" cy="7" r="3"/><circle cx="12" cy="13" r="2"/></svg>
+        </div>
       </div>
 
       <div className="container-custom relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <motion.span 
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="section-label mb-4 inline-flex items-center gap-1.5 bg-orange-50 text-[var(--color-primary)]"
-          >
-            Parent-Trusted Experience
-          </motion.span>
+        <div className="text-center max-w-4xl mx-auto mb-2 md:mb-4 px-4">
+
           <motion.h2 
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="font-baloo text-[var(--color-primary)] text-3xl sm:text-4xl lg:text-[44px] leading-tight font-extrabold mb-3"
+            className="font-baloo text-[var(--color-primary)] text-[22px] sm:text-3xl md:text-4xl lg:text-[40px] leading-tight font-extrabold mb-2 whitespace-nowrap"
           >
             Why Parents Love Small Wonders
           </motion.h2>
@@ -122,7 +133,7 @@ export default function WhyChooseUs() {
         </div>
 
         {/* Puzzle Layout */}
-        <div className="relative max-w-5xl mx-auto px-2 sm:px-4 mt-8">
+        <div className="relative max-w-4xl mx-auto px-2 sm:px-4 mt-0">
           <div className="relative grid grid-cols-1 md:grid-cols-2 gap-0">
             
             {cards.map((card) => (
@@ -131,37 +142,37 @@ export default function WhyChooseUs() {
                 initial={{ opacity: 0, x: card.initialPosition.x, y: card.initialPosition.y }}
                 whileInView={{ opacity: 1, x: 0, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
-                transition={{ type: "spring", stiffness: 60, damping: 14, delay: 0.1 * card.id }}
-                className="z-10"
+                transition={{ duration: 1.5, ease: "easeOut", delay: 0.1 * card.id }}
+                className="z-10 w-full h-full"
               >
-                <div className={`relative m-4 md:m-1 transition-all duration-300 hover:-translate-y-1.5 hover:z-30 rounded-[32px] group h-full`}>
+                <div className={`relative m-0 transition-all duration-300 hover:-translate-y-1.5 hover:z-30 ${card.corners} group h-full`}>
                    {/* 1. Inner Content Box */}
-                   <div className={`relative w-full h-full z-0 ${card.color} rounded-[32px] p-6 sm:p-8 flex flex-col justify-between shadow-sm transition-shadow duration-500 ${card.glowColor}`}>
-                      <div className="mb-6">
-                        <div className="flex items-center gap-4 mb-4">
-                          <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white flex items-center justify-center shadow-sm flex-shrink-0">
+                   <div className={`relative w-full h-full z-0 ${card.color} ${card.corners} p-3 md:p-5 flex flex-col justify-between shadow-sm transition-shadow duration-500 ${card.glowColor}`}>
+                      <div className="mb-3">
+                        <div className="flex items-center gap-2 md:gap-3 mb-2">
+                          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white flex items-center justify-center shadow-sm flex-shrink-0">
                             {card.icon}
                           </div>
-                          <h3 className="font-baloo text-xl sm:text-2xl font-extrabold text-[var(--color-dark)] leading-tight">{card.title}</h3>
+                          <h3 className="font-baloo text-lg sm:text-xl font-extrabold text-[var(--color-dark)] leading-tight">{card.title}</h3>
                         </div>
-                        <p className="font-nunito text-[14px] sm:text-[15px] text-[var(--color-body)] font-medium leading-relaxed">{card.description}</p>
+                        <p className="font-nunito text-[13px] sm:text-[14px] text-[var(--color-body)] font-medium leading-relaxed">{card.description}</p>
                       </div>
 
                       {/* Image */}
-                      <div className="relative w-full aspect-[1.5] rounded-2xl overflow-hidden bg-white/50 shadow-inner">
+                      <div className="relative w-full h-[120px] sm:h-[140px] md:h-[160px] rounded-2xl overflow-hidden bg-white/40 shadow-inner">
                         <Image src={card.image} fill className="object-cover transition-transform duration-[800ms] ease-out group-hover:scale-[1.04]" alt={card.title} />
                       </div>
                    </div>
 
                    {/* 2. Puzzle Holes (Cutouts simulated with white background circles) */}
-                   {card.holeRight && <div className={`${holeClasses} top-1/2 right-0 md:-right-1 translate-x-1/2 -translate-y-1/2 z-10`} />}
-                   {card.holeBottom && <div className={`${holeClasses} bottom-0 md:-bottom-1 left-1/2 -translate-x-1/2 translate-y-1/2 z-10`} />}
-                   {card.holeLeft && <div className={`${holeClasses} top-1/2 left-0 md:-left-1 -translate-x-1/2 -translate-y-1/2 z-10`} />}
+                   {card.holeRight && <div className={`${holeClasses} top-1/2 right-0 translate-x-1/2 -translate-y-1/2 z-10`} />}
+                   {card.holeBottom && <div className={`${holeClasses} bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-10`} />}
+                   {card.holeLeft && <div className={`${holeClasses} top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 z-10`} />}
 
                    {/* 3. Puzzle Tabs (Colored protruding circles) */}
-                   {card.tabLeft && <div className={`${tabClasses} top-1/2 left-0 md:-left-1 -translate-x-1/2 -translate-y-1/2 z-20 ${card.color}`} />}
-                   {card.tabTop && <div className={`${tabClasses} top-0 md:-top-1 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 ${card.color}`} />}
-                   {card.tabRight && <div className={`${tabClasses} top-1/2 right-0 md:-right-1 translate-x-1/2 -translate-y-1/2 z-20 ${card.color}`} />}
+                   {card.tabLeft && <div className={`${tabClasses} top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 z-20 ${card.color}`} />}
+                   {card.tabTop && <div className={`${tabClasses} top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 ${card.color}`} />}
+                   {card.tabRight && <div className={`${tabClasses} top-1/2 right-0 translate-x-1/2 -translate-y-1/2 z-20 ${card.color}`} />}
                 </div>
               </motion.div>
             ))}
@@ -185,7 +196,7 @@ export default function WhyChooseUs() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.8 }}
-            className="mt-12 flex justify-center"
+            className="mt-4 flex justify-center"
           >
              <div className="inline-flex items-center gap-2 bg-[#FFF8F0] px-6 py-3 rounded-full border border-orange-100 shadow-sm">
                <Heart className="w-5 h-5 text-orange-500 fill-orange-500" />

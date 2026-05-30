@@ -286,6 +286,7 @@
     font-family: "Nunito", sans-serif;
     color: var(--color-body);
     background-color: var(--color-offwhite);
+    padding-top: 80px;
   }
 
   /* ================= DESKTOP TYPOGRAPHY ================= */
@@ -451,7 +452,7 @@
 
 /* ================= NAVBAR ================= */
 .navbar-header {
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -666,6 +667,10 @@
 
 /* Small screen mobile header adjustments */
 @media (max-width: 640px) {
+  body {
+    padding-top: 70px;
+  }
+
   .navbar-container {
     height: 70px;
   }

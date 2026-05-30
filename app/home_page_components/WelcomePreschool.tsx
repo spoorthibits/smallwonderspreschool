@@ -81,7 +81,7 @@ export default function WelcomePreschool() {
   return (
     <section 
       onMouseMove={handleMouseMove}
-      className="relative py-16 md:py-24 bg-white overflow-hidden"
+      className="relative py-6 md:py-10 bg-white overflow-hidden"
     >
       
       {/* ── Playful Decorative Doodles (Parallax) ── */}
@@ -125,7 +125,7 @@ export default function WelcomePreschool() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           {/* ── Left Column: Slide-up Splash Animation ── */}
-          <div className="lg:col-span-6 relative flex justify-center items-center py-12 md:py-20 min-h-[400px]">
+          <div className="lg:col-span-6 relative flex justify-center items-center py-6 md:py-10 min-h-[300px]">
             
             {/* SVG Defs for Splat ClipPath */}
             <svg width="0" height="0" className="absolute">
@@ -185,7 +185,7 @@ export default function WelcomePreschool() {
           <div className="lg:col-span-6 flex flex-col items-start lg:pl-8">
             
             {/* Heading Section */}
-            <div className="mb-6">
+            <div className="mb-4">
               <span className="text-[var(--color-secondary)] font-baloo text-xl font-bold block mb-2">
                 Welcome to
               </span>
@@ -195,7 +195,7 @@ export default function WelcomePreschool() {
             </div>
 
             {/* Paragraph Content */}
-            <div className="font-nunito text-[16px] md:text-[17px] text-[var(--color-body)] leading-relaxed space-y-4 mb-8 max-w-lg">
+            <div className="font-nunito text-[16px] md:text-[17px] text-[var(--color-body)] leading-relaxed space-y-4 mb-6 max-w-lg">
               <p>
                 A happy place where tiny hands <span className="font-bold text-[var(--color-secondary)]">create</span>, curious minds <span className="font-bold text-[var(--color-primary)]">explore</span>, and little hearts bloom. 💖
               </p>
@@ -208,7 +208,7 @@ export default function WelcomePreschool() {
             </div>
 
             {/* Pastel Abstract Badges */}
-            <div className="w-full mb-10">
+            <div className="w-full mb-8">
               <div className="grid grid-cols-4 gap-3 sm:gap-6 w-full max-w-lg">
                 {imageBadges.map((badge, index) => (
                   <div key={index} className="flex flex-col items-center gap-3 group text-center cursor-pointer">
