@@ -5,6 +5,7 @@ import AboutPhilosophy from "../components/About/AboutPhilosophy";
 import AboutAimMission from "../components/About/AboutAimMission";
 import AboutPrograms from "../components/About/AboutPrograms";
 import AboutSpecial from "../components/About/AboutSpecial";
+import ProgramsSection from "../components/Programmas/ProgramsSection";
 
 export const metadata = {
   title: "About Us | Small Wonders International Play School",
@@ -19,7 +20,8 @@ export default function AboutPage() {
       <AboutStory />
       <AboutPhilosophy />
       <AboutAimMission />
-      <AboutPrograms />
+      <ProgramsSection/>
+      {/* <AboutPrograms /> */}
       <AboutSpecial />
     </main>
   );

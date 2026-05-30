@@ -1,71 +1,71 @@
 "use client";
 
-import { School, Sparkles, Heart, Gamepad2, Bus, Users } from "lucide-react";
+import { School, Sparkles, Heart, Gamepad2, Bus, Users, Utensils } from "lucide-react";
 
 interface SpecialItem {
   id: number;
   title: string;
   icon: React.ReactNode;
-  iconColor: string;
-  hoverBg: string;
-  shadowColor: string;
+  bg: string;
 }
 
 export default function AboutSpecial() {
-  const items: SpecialItem[] = [
-    {
-      id: 1,
-      title: "Colorful & Safe Classrooms",
-      icon: <School size={38} />,
-      iconColor: "#4CAF50",
-      hoverBg: "hover:bg-[#f1f8f3]",
-      shadowColor: "hover:shadow-[#4CAF50]/15",
-    },
-    {
-      id: 2,
-      title: "Activity & Learning Zones",
-      icon: <Sparkles size={38} />,
-      iconColor: "#ff7043",
-      hoverBg: "hover:bg-[#fff7f5]",
-      shadowColor: "hover:shadow-[#ff7043]/15",
-    },
-    {
-      id: 3,
-      title: "Experienced & Caring Teachers",
-      icon: <Heart size={38} />,
-      iconColor: "#8b5bbf",
-      hoverBg: "hover:bg-[#fbf8ff]",
-      shadowColor: "hover:shadow-[#8b5bbf]/15",
-    },
-    {
-      id: 4,
-      title: "Play-Based Curriculum",
-      icon: <Gamepad2 size={38} />,
-      iconColor: "#00bcd4",
-      hoverBg: "hover:bg-[#ecfdff]",
-      shadowColor: "hover:shadow-[#00bcd4]/15",
-    },
-    {
-      id: 5,
-      title: "Transport Facility Available",
-      icon: <Bus size={38} />,
-      iconColor: "#4CAF50",
-      hoverBg: "hover:bg-[#f1f8f3]",
-      shadowColor: "hover:shadow-[#4CAF50]/15",
-    },
-    {
-      id: 6,
-      title: "Strong Parent Partnership",
-      icon: <Users size={38} />,
-      iconColor: "#ec4899",
-      hoverBg: "hover:bg-[#fff0f5]",
-      shadowColor: "hover:shadow-[#ec4899]/15",
-    },
-  ];
-
+ const items: SpecialItem[] = [
+  {
+    id: 1,
+    title: "Colorful & Safe Classrooms",
+    icon: <School size={42} strokeWidth={1.5} />,
+    bg: "#5cb85c",  // medium green — visible, not washed out
+  },
+  {
+    id: 2,
+    title: "Strong Parent Partnership",
+    icon: <Users size={42} strokeWidth={1.5} />,
+    bg: "#e05c5c",  // medium coral red
+  },
+  {
+    id: 3,
+    title: "Play-Based Curriculum",
+    icon: <Gamepad2 size={42} strokeWidth={1.5} />,
+    bg: "#7e57c2",  // medium purple
+  },
+  {
+    id: 4,
+    title: "Experienced & Caring Teachers",
+    icon: <Heart size={42} strokeWidth={1.5} />,
+    bg: "#f5a623",  // medium warm orange
+  },
+  {
+    id: 5,
+    title: "Activity & Learning Zones",
+    icon: <Sparkles size={42} strokeWidth={1.5} />,
+    bg: "#00acc1",  // medium teal
+  },
+  {
+    id: 6,
+    title: "Transport Facility Available",
+    icon: <Bus size={42} strokeWidth={1.5} />,
+    bg: "#7b5ea7",  // medium deep purple
+  },
+  {
+    id: 7,
+    title: "Nutritious Meals & Snacks",
+    icon: <Utensils size={42} strokeWidth={1.5} />,
+    bg: "#e8735a",  // medium warm terracotta
+  },
+];
   return (
-    <section className="w-full bg-white py-16 md:py-24 relative overflow-hidden">
-      {/* Floating Emojis in far margins */}
+    <section
+      className="w-full md:pt-10 md:pb-25 relative overflow-hidden"
+      style={{
+        backgroundImage: "url('/bgimg.webp')",
+        backgroundSize: "auto",
+        backgroundPosition: "center",
+        backgroundRepeat: "repeat",
+      }}
+    >
+      <div className="absolute inset-0 bg-white/45 z-0 pointer-events-none" />
+      {/* Floating Emojis */}
       <div className="absolute left-[3%] top-[30%] w-16 h-28 balloon-float z-10 opacity-80 pointer-events-none hidden md:block">
         <img src="/slider_shape03.png" alt="Heart Balloon" className="w-full h-full object-contain" />
       </div>
@@ -73,33 +73,50 @@ export default function AboutSpecial() {
         <img src="/slider_shape02.png" alt="Star" className="w-full h-full object-contain" />
       </div>
 
-      <div className="container-custom">
-        
+      {/* Paper airplane top-right — like reference */}
+      {/* <div className="absolute top-4 right-[6%] w-28 h-28 z-10 pointer-events-none hidden md:block">
+        <img src="/arrowimg.png" alt="" aria-hidden="true" className="w-full h-full object-contain" />
+      </div> */}
+
+      <div className="container-custom relative z-10">
+
         {/* Header */}
-        <div className="flex flex-col items-center text-center mb-16 animate-fade-in-up">
-          <h2 className="text-[#ff7043] font-black text-3xl md:text-[38px] font-['Baloo_2'] relative inline-block">
-            What Makes Us Special
-            <div className="w-12 h-1 bg-[#4CAF50] mx-auto mt-2 rounded-full" />
-          </h2>
+        <div className="flex flex-col items-center text-center mb-12 animate-fade-in-up">
+          <h2
+  className="font-black text-3xl md:text-5xl font-['Baloo_2'] mb-3"
+  style={{ color: "var(--color-primary)" }}
+>
+  Why Choose Us
+</h2>
+          <p
+            className="text-sm md:text-base font-['Nunito'] mb-4"
+            style={{ color: "var(--color-body)" }}
+          >
+            Where Curiosity Meets Creativity for a Brighter Future!
+          </p>
+          <div className="w-16 h-1 rounded-full" style={{ backgroundColor: "var(--color-primary)" }} />
         </div>
 
-        {/* Highlight Items Grid - Borderless card layout with interactive float animations */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 md:gap-8 animate-fade-in-up delay-200">
+        {/* Icons Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-8 animate-fade-in-up">
           {items.map((item) => (
             <div
               key={item.id}
-              className={`flex flex-col items-center text-center p-6 rounded-[24px] bg-white border border-transparent transition-all duration-500 hover:-translate-y-2.5 hover:shadow-2xl ${item.hoverBg} ${item.shadowColor} group cursor-pointer`}
+              className="flex flex-col items-center text-center gap-4 group cursor-pointer"
             >
-              {/* Icon Container with Micro-animation on hover */}
+              {/* Filled circle with white icon — exactly like reference */}
               <div
-                className="transition-transform duration-500 ease-out group-hover:scale-125 group-hover:rotate-[12deg] mb-6"
-                style={{ color: item.iconColor }}
+                className="w-28 h-28 rounded-full flex items-center justify-center text-white shadow-lg transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-2xl group-hover:scale-105"
+                style={{ backgroundColor: item.bg }}
               >
                 {item.icon}
               </div>
 
-              {/* Title, animates color on hover */}
-              <h3 className="text-[#3d3d5c] font-extrabold text-sm md:text-[15px] leading-snug font-['Baloo_2'] max-w-[140px] group-hover:text-[#ff7043] transition-colors duration-300">
+              {/* Title below circle */}
+              <h3
+                className="font-extrabold text-sm md:text-[15px] leading-snug font-['Baloo_2'] max-w-[130px] transition-colors duration-300 group-hover:text-[var(--color-primary)]"
+                style={{ color: "var(--color-dark)" }}
+              >
                 {item.title}
               </h3>
             </div>

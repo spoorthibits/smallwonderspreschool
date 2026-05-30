@@ -80,7 +80,7 @@ export default function AboutPhilosophy() {
   ];
 
   return (
-    <section className="w-full bg-white pb-20 relative overflow-hidden">
+    <section className="w-full bg-white pb-15 relative overflow-hidden pt-12 md:pt-15">
       {/* Floating Emojis in far margins */}
       <div className="absolute left-[3%] top-[30%] w-16 h-28 balloon-float z-10 opacity-80 pointer-events-none hidden md:block">
         <img src="/slider_shape03.png" alt="Heart Balloon" className="w-full h-full object-contain" />
