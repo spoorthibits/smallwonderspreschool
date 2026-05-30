@@ -29,7 +29,7 @@ export default function StepsToJoin() {
   ];
 
   return (
-    <section className="relative py-16 md:py-24 bg-white overflow-hidden border-b border-[var(--color-border)]">
+    <section className="relative py-16 md:py-24 bg-white overflow-hidden">
       
       {/* Decorative background doodles */}
       <div className="absolute top-[20%] left-[45%] w-16 h-16 text-yellow-300 opacity-20 pointer-events-none hidden lg:block">

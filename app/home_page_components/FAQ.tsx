@@ -60,7 +60,7 @@ export default function FAQ() {
   ];
 
   return (
-    <section className="relative py-16 md:py-24 bg-[var(--color-offwhite)] overflow-hidden border-b border-[var(--color-border)]">
+    <section className="relative py-16 md:py-24 bg-[var(--color-offwhite)] overflow-hidden">
       
       {/* Background doodles */}
       <div className="absolute top-[8%] left-[5%] w-12 h-12 text-[var(--color-primary)] opacity-10 pointer-events-none hidden xl:block">

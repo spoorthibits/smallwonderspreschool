@@ -3,131 +3,195 @@
 import React from "react";
 import Image from "next/image";
 import { ShieldCheck, GraduationCap, Heart, Sparkles } from "lucide-react";
-
-interface FeatureCard {
-  number: string;
-  title: string;
-  description: string;
-  image: string;
-  icon: React.ReactNode;
-  iconBg: string;
-  iconColor: string;
-  barColor: string;
-}
+import { motion } from "framer-motion";
 
 export default function WhyChooseUs() {
-  const cards: FeatureCard[] = [
+  const cards = [
     {
-      number: "01",
+      id: 1,
       title: "Safe Infrastructure",
       description: "Secure premises and clean, bright environments for complete peace of mind.",
       image: "/galleryimg-6.jpeg",
-      icon: <ShieldCheck className="w-4 h-4" />,
-      iconBg: "bg-orange-50 border-orange-100",
-      iconColor: "text-orange-500",
-      barColor: "bg-orange-500",
+      icon: <ShieldCheck className="w-6 h-6 text-orange-600" />,
+      color: "bg-[#FFE8D6]", // Brighter, vibrant pastel orange
+      glowColor: "hover:shadow-[0_12px_40px_rgba(251,146,60,0.35)]",
+      tabRight: false,
+      tabBottom: false,
+      holeRight: true,
+      holeBottom: true,
+      initialPosition: { x: -80, y: -80 },
     },
     {
-      number: "02",
+      id: 2,
       title: "Trained Teachers",
       description: "Experienced, certified and loving educators nurturing your child's growth.",
       image: "/galleryimg-4.jpeg",
-      icon: <GraduationCap className="w-4 h-4" />,
-      iconBg: "bg-blue-50 border-blue-100",
-      iconColor: "text-blue-500",
-      barColor: "bg-blue-500",
+      icon: <GraduationCap className="w-6 h-6 text-purple-600" />,
+      color: "bg-[#EBE0FF]", // Brighter, vibrant pastel purple
+      glowColor: "hover:shadow-[0_12px_40px_rgba(192,132,252,0.35)]",
+      tabLeft: true,
+      tabBottom: false,
+      holeLeft: false,
+      holeBottom: true,
+      initialPosition: { x: 80, y: -80 },
     },
     {
-      number: "03",
+      id: 3,
       title: "Caring Environment",
       description: "A warm, nurturing second home where every child feels loved and safe.",
       image: "/galleryimg-20.jpeg",
-      icon: <Heart className="w-4 h-4" />,
-      iconBg: "bg-rose-50 border-rose-100",
-      iconColor: "text-rose-500",
-      barColor: "bg-rose-500",
+      icon: <Heart className="w-6 h-6 text-pink-600" />,
+      color: "bg-[#FFDDF0]", // Brighter, vibrant pastel pink
+      glowColor: "hover:shadow-[0_12px_40px_rgba(244,114,182,0.35)]",
+      tabTop: true,
+      tabRight: false,
+      holeTop: false,
+      holeRight: true,
+      initialPosition: { x: -80, y: 80 },
     },
     {
-      number: "04",
+      id: 4,
       title: "Fun Learning",
       description: "Joyful play-based techniques, hands-on activities, and creative discovery.",
       image: "/galleryimg-5.jpeg",
-      icon: <Sparkles className="w-4 h-4" />,
-      iconBg: "bg-emerald-50 border-emerald-100",
-      iconColor: "text-emerald-500",
-      barColor: "bg-emerald-500",
+      icon: <Sparkles className="w-6 h-6 text-yellow-600" />,
+      color: "bg-[#FFF2BA]", // Brighter, vibrant pastel yellow
+      glowColor: "hover:shadow-[0_12px_40px_rgba(250,204,21,0.35)]",
+      tabTop: true,
+      tabLeft: true,
+      holeTop: false,
+      holeLeft: false,
+      initialPosition: { x: 80, y: 80 },
     },
   ];
 
+  const tabClasses = "absolute w-[64px] h-[64px] md:w-[80px] md:h-[80px] rounded-full z-20 pointer-events-none transition-transform duration-500";
+  const holeClasses = "absolute w-[80px] h-[80px] md:w-[96px] md:h-[96px] bg-white rounded-full z-10 pointer-events-none";
+
   return (
-    <section className="relative py-16 md:py-24 bg-[var(--color-offwhite)] overflow-hidden border-b border-[var(--color-border)]">
+    <section className="relative py-16 md:py-24 bg-white overflow-hidden">
       
-      {/* Decorative stars and doodles */}
+      {/* Decorative preschool elements */}
       <div className="absolute inset-0 pointer-events-none select-none z-0">
-        <span className="absolute top-[10%] left-[5%] text-2xl text-orange-400 animate-pulse">★</span>
-        <span className="absolute bottom-[15%] right-[5%] text-3xl text-yellow-400 animate-bounce">★</span>
+        <div className="absolute top-[10%] left-[5%] text-orange-200 animate-pulse">
+          <Sparkles className="w-10 h-10" />
+        </div>
+        <div className="absolute bottom-[15%] left-[8%] text-purple-200 animate-[bounce_3s_infinite]">
+          <Heart className="w-8 h-8" />
+        </div>
+        <div className="absolute top-[15%] right-[8%] text-pink-200 animate-[bounce_4s_infinite]">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M12 2L15 9L22 10L17 15L18 22L12 18L6 22L7 15L2 10L9 9L12 2Z" />
+          </svg>
+        </div>
+        <div className="absolute bottom-[10%] right-[5%] text-yellow-200 animate-pulse">
+          <Sparkles className="w-12 h-12" />
+        </div>
       </div>
 
       <div className="container-custom relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="section-label mb-4 inline-flex items-center gap-1.5 bg-orange-50 text-[var(--color-primary)]">
+          <motion.span 
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="section-label mb-4 inline-flex items-center gap-1.5 bg-orange-50 text-[var(--color-primary)]"
+          >
             Parent-Trusted Experience
-          </span>
-          <h2 className="font-baloo text-[var(--color-primary)] text-3xl sm:text-4xl lg:text-[44px] leading-tight font-extrabold mb-3">
+          </motion.span>
+          <motion.h2 
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="font-baloo text-[var(--color-primary)] text-3xl sm:text-4xl lg:text-[44px] leading-tight font-extrabold mb-3"
+          >
             Why Parents Love Small Wonders
-          </h2>
-          <p className="font-nunito text-sm sm:text-base text-[var(--color-muted)] font-medium max-w-xl mx-auto leading-relaxed">
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="font-nunito text-sm sm:text-base text-[var(--color-muted)] font-medium max-w-xl mx-auto leading-relaxed"
+          >
             A warm, safe, and forward-thinking preschool environment where children build confidence through care, creativity, and modern early learning.
-          </p>
+          </motion.p>
         </div>
 
-        {/* 4 Feature Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-          {cards.map((card, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-3xl border border-gray-100 p-5 shadow-[0_8px_30px_rgba(107,63,160,0.03)] hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group"
+        {/* Puzzle Layout */}
+        <div className="relative max-w-5xl mx-auto px-2 sm:px-4 mt-8">
+          <div className="relative grid grid-cols-1 md:grid-cols-2 gap-0">
+            
+            {cards.map((card) => (
+              <motion.div 
+                key={card.id}
+                initial={{ opacity: 0, x: card.initialPosition.x, y: card.initialPosition.y }}
+                whileInView={{ opacity: 1, x: 0, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ type: "spring", stiffness: 60, damping: 14, delay: 0.1 * card.id }}
+                className="z-10"
+              >
+                <div className={`relative m-4 md:m-1 transition-all duration-300 hover:-translate-y-1.5 hover:z-30 rounded-[32px] group h-full`}>
+                   {/* 1. Inner Content Box */}
+                   <div className={`relative w-full h-full z-0 ${card.color} rounded-[32px] p-6 sm:p-8 flex flex-col justify-between shadow-sm transition-shadow duration-500 ${card.glowColor}`}>
+                      <div className="mb-6">
+                        <div className="flex items-center gap-4 mb-4">
+                          <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white flex items-center justify-center shadow-sm flex-shrink-0">
+                            {card.icon}
+                          </div>
+                          <h3 className="font-baloo text-xl sm:text-2xl font-extrabold text-[var(--color-dark)] leading-tight">{card.title}</h3>
+                        </div>
+                        <p className="font-nunito text-[14px] sm:text-[15px] text-[var(--color-body)] font-medium leading-relaxed">{card.description}</p>
+                      </div>
+
+                      {/* Image */}
+                      <div className="relative w-full aspect-[1.5] rounded-2xl overflow-hidden bg-white/50 shadow-inner">
+                        <Image src={card.image} fill className="object-cover transition-transform duration-[800ms] ease-out group-hover:scale-[1.04]" alt={card.title} />
+                      </div>
+                   </div>
+
+                   {/* 2. Puzzle Holes (Cutouts simulated with white background circles) */}
+                   {card.holeRight && <div className={`${holeClasses} top-1/2 right-0 md:-right-1 translate-x-1/2 -translate-y-1/2 z-10`} />}
+                   {card.holeBottom && <div className={`${holeClasses} bottom-0 md:-bottom-1 left-1/2 -translate-x-1/2 translate-y-1/2 z-10`} />}
+                   {card.holeLeft && <div className={`${holeClasses} top-1/2 left-0 md:-left-1 -translate-x-1/2 -translate-y-1/2 z-10`} />}
+
+                   {/* 3. Puzzle Tabs (Colored protruding circles) */}
+                   {card.tabLeft && <div className={`${tabClasses} top-1/2 left-0 md:-left-1 -translate-x-1/2 -translate-y-1/2 z-20 ${card.color}`} />}
+                   {card.tabTop && <div className={`${tabClasses} top-0 md:-top-1 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 ${card.color}`} />}
+                   {card.tabRight && <div className={`${tabClasses} top-1/2 right-0 md:-right-1 translate-x-1/2 -translate-y-1/2 z-20 ${card.color}`} />}
+                </div>
+              </motion.div>
+            ))}
+
+            {/* Central Heart Badge - Connects the 4 pieces on desktop */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0, rotate: -45 }}
+              whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+              viewport={{ once: true }}
+              transition={{ type: "spring", stiffness: 100, damping: 15, delay: 0.6 }}
+              className="hidden md:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-white rounded-full z-40 shadow-lg items-center justify-center"
             >
-              <div>
-                {/* Top Badge Row */}
-                <div className="flex items-center justify-between w-full mb-3">
-                  <div className={`w-8 h-8 rounded-full border flex items-center justify-center ${card.iconBg} ${card.iconColor}`}>
-                    {card.icon}
-                  </div>
-                  <span className="font-baloo text-xs font-bold text-gray-300">
-                    {card.number}
-                  </span>
-                </div>
+               <Heart className="w-8 h-8 text-rose-400 fill-rose-400 animate-pulse" />
+            </motion.div>
 
-                {/* Rectangular Rounded Image */}
-                <div className="relative w-full aspect-[1.45] rounded-2xl overflow-hidden mb-4 bg-zinc-100 shadow-inner">
-                  <Image
-                    src={card.image}
-                    alt={card.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 240px"
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-
-                {/* Card Title */}
-                <h3 className="font-baloo text-base sm:text-lg font-extrabold text-[var(--color-dark)] leading-tight text-left">
-                  {card.title}
-                </h3>
-
-                {/* Underline Bar */}
-                <div className={`w-10 h-1.5 ${card.barColor} rounded-full mt-1.5 mb-3`}></div>
-
-                {/* Card Description */}
-                <p className="font-nunito text-xs text-[var(--color-muted)] font-semibold leading-relaxed text-left">
-                  {card.description}
-                </p>
-              </div>
-
-            </div>
-          ))}
+          </div>
+          
+          {/* Bottom decorative text */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            className="mt-12 flex justify-center"
+          >
+             <div className="inline-flex items-center gap-2 bg-[#FFF8F0] px-6 py-3 rounded-full border border-orange-100 shadow-sm">
+               <Heart className="w-5 h-5 text-orange-500 fill-orange-500" />
+               <span className="font-nunito text-[15px] font-bold text-[var(--color-dark)]">Every piece matters in your child's <span className="text-orange-600">growth journey.</span></span>
+             </div>
+          </motion.div>
         </div>
 
       </div>

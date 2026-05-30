@@ -1135,3 +1135,18 @@
 .animate-marquee-track:hover {
   animation-play-state: paused;
 }
+
+/* Wavy Ticker Animations */
+@keyframes wavy-float {
+  0%, 100% {
+    transform: translateY(-4px) rotate(-0.5deg);
+  }
+  50% {
+    transform: translateY(4px) rotate(0.5deg);
+  }
+}
+
+.animate-wavy-float {
+  animation: wavy-float 2.5s ease-in-out infinite;
+}
+
