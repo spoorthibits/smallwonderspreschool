@@ -18,24 +18,33 @@ export default function AboutStats() {
   };
 
   return (
-    <section className="w-full bg-white py-16 md:py-14 relative overflow-hidden">
+    <section
+      className="w-full py-16 md:py-2 relative overflow-hidden"
+      style={{
+        backgroundImage: "url('/bgimg.webp')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      {/* Optional overlay to ensure text readability over the bg image */}
+      <div className="absolute inset-0 bg-white/60 z-0 pointer-events-none" />
 
       {/* Floating Emojis in far margins */}
-      <div className="absolute left-[3%] top-[30%] w-16 h-16 sun-float z-10 opacity-80 pointer-events-none hidden md:block">
+      {/* <div className="absolute left-[3%] top-[30%] w-16 h-16 sun-float z-10 opacity-80 pointer-events-none hidden md:block">
         <img src="/slider_shape01.png" alt="Sun" className="w-full h-full object-contain" />
       </div>
       <div className="absolute right-[3%] top-[40%] w-16 h-28 balloon-float z-10 opacity-80 pointer-events-none hidden md:block">
         <img src="/slider_shape03.png" alt="Heart Balloon" className="w-full h-full object-contain" />
-      </div>
+      </div> */}
 
-      <div className="container-custom">
+      <div className="container-custom relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
 
-          {/* LEFT: Organic Blob Image — styled like reference Image 1 */}
+          {/* LEFT: Organic Blob Image */}
           <div className="lg:col-span-6 flex justify-center lg:justify-start items-center py-10 animate-fade-in-left lg:-translate-x-16">
             <div className="relative w-full max-w-[530px] aspect-square flex justify-center items-center animate-float-main-image">
 
-              {/* BACKGROUND BLOB 1: Top-Right — brand orange with floating effect */}
               <div
                 className="absolute pointer-events-none z-0 animate-float-blob-1"
                 style={{
@@ -48,7 +57,6 @@ export default function AboutStats() {
                 }}
               />
 
-              {/* BACKGROUND BLOB 2: Bottom-Left — brand teal with floating effect */}
               <div
                 className="absolute pointer-events-none z-0 animate-float-blob-2"
                 style={{
@@ -61,48 +69,19 @@ export default function AboutStats() {
                 }}
               />
 
-              {/* Scattered dot decorators */}
-              {/* Large purple dot — top center-left */}
               <div
                 className="absolute z-10 pointer-events-none"
-                style={{
-                  top: "10%",
-                  left: "18%",
-                  width: "18px",
-                  height: "18px",
-                  borderRadius: "50%",
-                  backgroundColor: "#4b2ca0",
-                  opacity: 0.9,
-                }}
+                style={{ top: "10%", left: "18%", width: "18px", height: "18px", borderRadius: "50%", backgroundColor: "#4b2ca0", opacity: 0.9 }}
               />
-              {/* Small orange dot */}
               <div
                 className="absolute z-10 pointer-events-none"
-                style={{
-                  top: "22%",
-                  left: "25%",
-                  width: "10px",
-                  height: "10px",
-                  borderRadius: "50%",
-                  backgroundColor: "#ff7043",
-                  opacity: 0.85,
-                }}
+                style={{ top: "22%", left: "25%", width: "10px", height: "10px", borderRadius: "50%", backgroundColor: "#ff7043", opacity: 0.85 }}
               />
-              {/* Medium yellow dot — left side */}
               <div
                 className="absolute z-10 pointer-events-none"
-                style={{
-                  top: "36%",
-                  left: "10%",
-                  width: "14px",
-                  height: "14px",
-                  borderRadius: "50%",
-                  backgroundColor: "#f5b842",
-                  opacity: 0.9,
-                }}
+                style={{ top: "36%", left: "10%", width: "14px", height: "14px", borderRadius: "50%", backgroundColor: "#f5b842", opacity: 0.9 }}
               />
 
-              {/* Main image container — organic blob shape */}
               <div
                 className="relative z-10 overflow-hidden shadow-2xl hover:scale-[1.02] transition-all duration-500 w-[88%] h-[88%]"
                 style={{
@@ -122,12 +101,12 @@ export default function AboutStats() {
             </div>
           </div>
 
-          {/* RIGHT: Styled Text Content & Stats */}
+          {/* RIGHT: Text Content & Stats */}
           <div className="lg:col-span-6 flex flex-col justify-center text-left animate-fade-in-right">
-            <span className="text-[#4b2ca0] font-bold text-xs tracking-widest uppercase font-['Nunito'] mb-3 block">
+            <span className="text-[var(--color-primary)] font-bold text-xs tracking-widest uppercase font-['Nunito'] mb-3 block">
               — ABOUT SMALL WONDERS
             </span>
-            <h2 className="text-[#e0531c] font-black text-3xl md:text-5xl leading-tight font-['Baloo_2'] mb-6">
+            <h2 className="text-[var(--color-secondary)] font-black text-3xl md:text-5xl leading-tight font-['Baloo_2'] mb-6">
               A Joyful Start Since 2009
             </h2>
 
@@ -146,7 +125,7 @@ export default function AboutStats() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8 pt-1">
               {stats.map((stat, idx) => (
                 <div key={idx} className="flex flex-col transform hover:scale-105 transition-transform duration-300 cursor-default group">
-                  <span className="text-[#4b2ca0] font-extrabold text-2xl md:text-4xl font-['Baloo_2'] group-hover:text-[#e0531c] transition-colors duration-300">
+                  <span className="text-[var(--color-primary)] font-extrabold text-2xl md:text-4xl font-['Baloo_2'] group-hover:text-[#e0531c] transition-colors duration-300">
                     {stat.value}
                   </span>
                   <span className="text-[#7a7a9d] text-xs font-semibold font-['Nunito'] mt-1 leading-snug">
@@ -155,9 +134,6 @@ export default function AboutStats() {
                 </div>
               ))}
             </div>
-
-            {/* CTA Button */}
-            
           </div>
 
         </div>
