@@ -1,152 +1,193 @@
 "use client";
 
-import React from "react";
-import Image from "next/image";
-
-interface Testimonial {
-  name: string;
-  relation: string;
-  text: string;
-  avatar: string;
-  imageOnLeft: boolean;
-}
+import React, { useRef, useState, useEffect } from "react";
+import { Star, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
+import { reviewsData } from "../data/reviews";
 
 export default function Testimonials() {
-  const testimonials: Testimonial[] = [
-    {
-      name: "Priya Sharma",
-      relation: "Mother of Aarav (LKG)",
-      text: "Small Wonders has helped my child become more confident, independent and happy. The teachers are caring and supportive. We are grateful for the wonderful environment!",
-      avatar: "/avatar_priya.png",
-      imageOnLeft: true,
-    },
-    {
-      name: "Rahul Verma",
-      relation: "Father of Anaya (Nursery)",
-      text: "The activities, teaching methods and personal attention given to each child is excellent. I highly recommend Small Wonders for every parent looking for quality preschool education.",
-      avatar: "/avatar_rahul.png",
-      imageOnLeft: false,
-    },
-  ];
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [totalPages, setTotalPages] = useState(0);
+
+  const quoteColors = ["text-purple-300", "text-pink-300", "text-teal-300", "text-orange-300"];
+
+  const checkScroll = () => {
+    if (scrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      setCanScrollLeft(scrollLeft > 10);
+      setCanScrollRight(Math.ceil(scrollLeft + clientWidth) < scrollWidth - 10);
+      
+      // Calculate active dot based on scroll position
+      const currentScrollPage = Math.round(scrollLeft / clientWidth);
+      setActiveIndex(currentScrollPage);
+      
+      // Total dots needed
+      const pages = Math.ceil(scrollWidth / clientWidth);
+      setTotalPages(pages > 0 ? pages : 1);
+    }
+  };
+
+  useEffect(() => {
+    checkScroll();
+    window.addEventListener("resize", checkScroll);
+    return () => window.removeEventListener("resize", checkScroll);
+  }, []);
+
+  const scrollByAmount = (direction: 'left' | 'right') => {
+    if (scrollRef.current) {
+      const { clientWidth } = scrollRef.current;
+      // Scroll by one full visible page width
+      const scrollAmount = clientWidth * 0.9; 
+      scrollRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      });
+      setTimeout(checkScroll, 400); // Check again after animation
+    }
+  };
 
   return (
-    <section className="relative py-16 md:py-24 bg-[var(--color-offwhite)] overflow-hidden border-b border-[var(--color-border)]">
+    <section className="relative py-6 md:py-10 bg-[#FCFAEF] overflow-hidden flex flex-col justify-center min-h-0">
       
-      {/* Decorative stars scattered on sides */}
-      <div className="absolute inset-0 pointer-events-none select-none z-0">
-        {/* Left side stars */}
-        <span className="absolute top-[25%] left-[8%] text-3xl text-amber-400 animate-pulse">★</span>
-        <span className="absolute bottom-[30%] left-[6%] text-xl text-purple-400 animate-bounce">✦</span>
-        {/* Right side stars */}
-        <span className="absolute top-[35%] right-[7%] text-2xl text-purple-400 animate-pulse">✦</span>
-        <span className="absolute bottom-[20%] right-[9%] text-3xl text-amber-400 animate-bounce">★</span>
+      {/* Decorative Background Elements */}
+      <div className="absolute inset-0 pointer-events-none select-none overflow-hidden z-0">
+        <div className="absolute top-[10%] left-[5%] text-orange-400 rotate-12 opacity-60">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+        </div>
+        <div className="absolute top-[20%] right-[10%] text-pink-400 -rotate-12 opacity-60">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        </div>
+        <div className="absolute bottom-[15%] left-[8%] text-purple-300 opacity-40">
+          <svg width="60" height="60" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="4 4"><path d="M10,50 Q30,10 50,50 T90,50" /></svg>
+        </div>
       </div>
 
-      <div className="container-custom relative z-10">
+      <div className="container-custom relative z-10 w-full max-w-[1400px] mx-auto px-4 md:px-8">
         
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="flex justify-center items-center gap-2 mb-3">
-            {/* Dots on left */}
-            <span className="w-2.5 h-2.5 rounded-full bg-[var(--color-primary)]"></span>
-            <span className="w-2.5 h-2.5 rounded-full bg-[#FDB813]"></span>
-            <span className="w-2.5 h-2.5 rounded-full bg-[var(--color-secondary)]"></span>
-            
-            <h2 className="font-baloo text-[var(--color-primary)] text-3xl sm:text-4xl lg:text-[44px] leading-tight font-extrabold px-3">
+        <div className="text-center mb-6 md:mb-8">
+          <div className="inline-block relative">
+            <h2 className="font-baloo text-orange-500 text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight tracking-wide mb-2">
               What Parents Say
             </h2>
-
-            {/* Dots on right */}
-            <span className="w-2.5 h-2.5 rounded-full bg-[var(--color-secondary)]"></span>
-            <span className="w-2.5 h-2.5 rounded-full bg-[#FDB813]"></span>
-            <span className="w-2.5 h-2.5 rounded-full bg-[var(--color-primary)]"></span>
+            {/* Title Sparkles */}
+            <svg className="absolute -top-3 -left-6 text-orange-400 w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15 9L22 10L17 15L18 22L12 18L6 22L7 15L2 10L9 9L12 2Z" /></svg>
+            <svg className="absolute -top-1 -right-8 text-orange-400 w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15 9L22 10L17 15L18 22L12 18L6 22L7 15L2 10L9 9L12 2Z" /></svg>
           </div>
+          <p className="font-nunito text-[14px] md:text-[16px] text-slate-500 font-bold max-w-xl mx-auto">
+            Real experiences from our wonderful parent community
+          </p>
         </div>
 
-        {/* Testimonials Alternating Row */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto items-stretch">
-          {testimonials.map((test, index) => {
-            const cardBorderColor = index % 2 === 0 ? "border-[#FDB813]" : "border-[#6b3fa0]";
-            
-            return (
-              <div
-                key={index}
-                className={`relative bg-white rounded-3xl border-4 ${cardBorderColor} p-6 sm:p-8 flex flex-col md:flex-row gap-6 shadow-[0_12px_40px_rgba(107,63,160,0.06)] hover:shadow-xl transition-all duration-300 items-center justify-between`}
+        {/* Carousel Container */}
+        <div className="relative group">
+          
+          {/* Scrollable Cards Area */}
+          <div 
+            ref={scrollRef}
+            onScroll={checkScroll}
+            className="flex overflow-x-auto gap-4 md:gap-6 pb-4 snap-x snap-mandatory hide-scrollbar pt-2 px-2 items-stretch"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {reviewsData.map((review, idx) => (
+              <div 
+                key={idx}
+                className="bg-white rounded-[24px] p-5 md:p-6 flex-shrink-0 w-[280px] sm:w-[320px] md:w-[360px] h-[45vh] min-h-[240px] max-h-[340px] shadow-[0_4px_20px_rgb(0,0,0,0.04)] border border-gray-50 flex flex-col snap-center hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-shadow duration-300"
               >
-                {/* Quote Icon Badge */}
-                <span className="absolute top-4 left-4 text-4xl font-serif text-[#FDB813]/25 select-none pointer-events-none">
-                  “
-                </span>
+                {/* Card Header: Stars & Quote Icon */}
+                <div className="flex justify-between items-start mb-3 md:mb-4">
+                  <div className="flex gap-1 text-[#FDB813]">
+                    {[...Array(review.rating)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-current" />
+                    ))}
+                  </div>
+                  <span className={`font-baloo text-4xl leading-none opacity-80 ${quoteColors[idx % quoteColors.length]}`}>
+                    “
+                  </span>
+                </div>
 
-                {/* Alternating Layout */}
-                {test.imageOnLeft ? (
-                  <>
-                    {/* Avatar Left */}
-                    <div className="relative w-28 h-28 rounded-full overflow-hidden border-4 border-gray-100 flex-shrink-0 shadow-md">
-                      <Image
-                        src={test.avatar}
-                        alt={`Portrait of parent ${test.name}`}
-                        fill
-                        sizes="112px"
-                        className="object-cover"
-                      />
-                    </div>
-                    {/* Text Right */}
-                    <div className="flex-1 flex flex-col justify-between text-center md:text-left min-w-0">
-                      <p className="font-nunito text-sm sm:text-base text-[var(--color-body)] leading-relaxed italic mb-4">
-                        "{test.text}"
-                      </p>
-                      <div>
-                        <h4 className="font-baloo text-base font-extrabold text-[var(--color-dark)] leading-none">
-                          - {test.name}
-                        </h4>
-                        <span className="font-nunito text-xs text-[var(--color-muted)] font-semibold mt-1 block">
-                          {test.relation}
-                        </span>
-                      </div>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    {/* Text Left */}
-                    <div className="flex-1 flex flex-col justify-between text-center md:text-left order-2 md:order-1 min-w-0">
-                      <p className="font-nunito text-sm sm:text-base text-[var(--color-body)] leading-relaxed italic mb-4">
-                        "{test.text}"
-                      </p>
-                      <div>
-                        <h4 className="font-baloo text-base font-extrabold text-[var(--color-dark)] leading-none">
-                          - {test.name}
-                        </h4>
-                        <span className="font-nunito text-xs text-[var(--color-muted)] font-semibold mt-1 block">
-                          {test.relation}
-                        </span>
-                      </div>
-                    </div>
-                    {/* Avatar Right */}
-                    <div className="relative w-28 h-28 rounded-full overflow-hidden border-4 border-gray-100 flex-shrink-0 shadow-md order-1 md:order-2">
-                      <Image
-                        src={test.avatar}
-                        alt={`Portrait of parent ${test.name}`}
-                        fill
-                        sizes="112px"
-                        className="object-cover"
-                      />
-                    </div>
-                  </>
-                )}
+                {/* Review Text (Scrollable if too long) */}
+                <div className="flex-grow overflow-y-auto hide-scrollbar mb-4 pr-1">
+                  <p className="font-nunito text-[13px] md:text-[14px] text-slate-600 leading-relaxed italic">
+                    {review.text}
+                  </p>
+                </div>
+
+                {/* Divider */}
+                <hr className="border-t border-gray-100 mb-3" />
+
+                {/* Reviewer Name */}
+                <p className="font-baloo font-bold text-gray-800 text-[15px] md:text-[16px] truncate">
+                  – {review.name === 'no-name' ? 'Anonymous Parent' : review.name}
+                </p>
               </div>
-            );
-          })}
+            ))}
+          </div>
+
+          {/* Navigation Arrows */}
+          <button 
+            onClick={() => scrollByAmount('left')}
+            disabled={!canScrollLeft}
+            className={`absolute left-0 top-1/2 -translate-y-1/2 -ml-2 md:-ml-5 lg:-ml-8 w-10 h-10 bg-white rounded-full shadow-md border border-gray-100 flex items-center justify-center text-purple-600 transition-all duration-300 z-10 ${canScrollLeft ? 'opacity-100 hover:bg-purple-50 hover:scale-105' : 'opacity-0 pointer-events-none'}`}
+            aria-label="Previous Reviews"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          
+          <button 
+            onClick={() => scrollByAmount('right')}
+            disabled={!canScrollRight}
+            className={`absolute right-0 top-1/2 -translate-y-1/2 -mr-2 md:-mr-5 lg:-mr-8 w-10 h-10 bg-white rounded-full shadow-md border border-gray-100 flex items-center justify-center text-purple-600 transition-all duration-300 z-10 ${canScrollRight ? 'opacity-100 hover:bg-purple-50 hover:scale-105' : 'opacity-0 pointer-events-none'}`}
+            aria-label="Next Reviews"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
         </div>
 
-        {/* Testimonial slider indicator dots */}
-        <div className="flex justify-center items-center gap-1.5 mt-10">
-          <span className="w-2.5 h-2.5 rounded-full bg-[var(--color-primary)] cursor-pointer"></span>
-          <span className="w-2.5 h-2.5 rounded-full bg-[#FDB813] cursor-pointer opacity-50 hover:opacity-100"></span>
-          <span className="w-2.5 h-2.5 rounded-full bg-[var(--color-secondary)] cursor-pointer opacity-50 hover:opacity-100"></span>
+        {/* Pagination Dots */}
+        {totalPages > 1 && (
+          <div className="flex justify-center items-center gap-2 mt-4 md:mt-5">
+            {[...Array(totalPages)].map((_, idx) => (
+              <button 
+                key={idx}
+                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${activeIndex === idx ? 'bg-purple-600 scale-110' : 'bg-gray-200 hover:bg-purple-300'}`}
+                aria-label={`Go to slide page ${idx + 1}`}
+                onClick={() => {
+                  if (scrollRef.current) {
+                    scrollRef.current.scrollTo({
+                      left: idx * scrollRef.current.clientWidth,
+                      behavior: 'smooth'
+                    });
+                    setTimeout(checkScroll, 400);
+                  }
+                }}
+              />
+            ))}
+          </div>
+        )}
+
+        {/* View All Reviews Button */}
+        <div className="flex justify-center mt-6 md:mt-8">
+          <a 
+            href="#" 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 border-2 border-purple-600 text-purple-600 px-6 py-2 md:py-2.5 rounded-full font-baloo font-bold text-[14px] md:text-[15px] hover:bg-purple-600 hover:text-white transition-all duration-300 shadow-sm"
+          >
+            View All Reviews on Google
+            <ExternalLink className="w-3.5 h-3.5" />
+          </a>
         </div>
 
       </div>
+
+      <style jsx global>{`
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
     </section>
   );
 }

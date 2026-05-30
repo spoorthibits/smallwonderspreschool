@@ -1,5 +1,5 @@
 import HeroBanner from "./home_page_components/HeroBanner";
-import ActivityTicker from "./home_page_components/ActivityTicker";
+import WavyActivityTicker from "./home_page_components/WavyActivityTicker";
 import WelcomePreschool from "./home_page_components/WelcomePreschool";
 import OurPrograms from "./home_page_components/OurPrograms";
 import WhatWeOffer from "./home_page_components/WhatWeOffer";
@@ -18,7 +18,7 @@ export default function Home() {
       {/* <HeroBanner /> */}
 
       {/* Home Page Section 3: Continuous Horizontal Scrolling Ticker of Activities */}
-      <ActivityTicker />
+      <WavyActivityTicker />
 
       {/* Home Page Section 4: Welcome to Preschool Section */}
       <WelcomePreschool />

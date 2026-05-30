@@ -1,132 +1,225 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { motion, useScroll, useMotionValue, useSpring, useTransform } from "framer-motion";
 import {
   ArrowRight,
   BookOpen,
   Palette,
   Heart,
   Gamepad2,
-  Calendar
+  Pencil,
+  Bird
 } from "lucide-react";
 import Button from "../components/Button";
 
 export default function WelcomePreschool() {
   const router = useRouter();
+  
+  // Parallax Mouse values
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
 
-  // The 4 interactive circular badges from the image reference
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const { clientX, clientY } = e;
+    const targetX = (clientX / window.innerWidth - 0.5) * 40;
+    const targetY = (clientY / window.innerHeight - 0.5) * 40;
+    mouseX.set(targetX);
+    mouseY.set(targetY);
+  };
+
+  const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
+  const springY = useSpring(mouseY, { stiffness: 50, damping: 20 });
+
+  const parallaxSlowX = useTransform(springX, v => v * 0.3);
+  const parallaxSlowY = useTransform(springY, v => v * 0.3);
+  const parallaxFastX = useTransform(springX, v => v * -0.6);
+  const parallaxFastY = useTransform(springY, v => v * -0.6);
+  const parallaxTilt = useTransform(springX, v => v * 0.15); // Slight tilt for splash
+
+  // A more chaotic organic splat shape for the splash
+  const splatClipPath = "M0.475,0.055 C0.605,0.102 0.825,0.005 0.885,0.125 C0.945,0.245 0.815,0.355 0.875,0.485 C0.935,0.615 0.985,0.825 0.855,0.915 C0.725,1.005 0.565,0.885 0.435,0.915 C0.305,0.945 0.125,1.025 0.045,0.895 C-0.035,0.765 0.145,0.605 0.105,0.475 C0.065,0.345 -0.055,0.165 0.045,0.055 C0.145,-0.055 0.345,0.008 0.475,0.055 Z";
+
+  // Badges matching the new image design (pastel blobs)
   const imageBadges = [
     {
       title: "Play",
       subtitle: "Explore",
-      colorClass: "bg-purple-600 text-white shadow-purple-200",
-      icon: <Gamepad2 className="w-5 h-5" />,
+      iconColor: "text-purple-600",
+      bgColor: "bg-purple-100",
+      icon: <Gamepad2 className="w-5 h-5 md:w-6 md:h-6" />,
+      shapeClass: "rounded-[40%_60%_70%_30%/40%_50%_60%_50%]"
     },
     {
       title: "Learn",
       subtitle: "Grow",
-      colorClass: "bg-amber-500 text-white shadow-amber-200",
-      icon: <BookOpen className="w-5 h-5" />,
+      iconColor: "text-amber-600",
+      bgColor: "bg-amber-100",
+      icon: <BookOpen className="w-5 h-5 md:w-6 md:h-6" />,
+      shapeClass: "rounded-[60%_40%_30%_70%/60%_30%_70%_40%]"
     },
     {
       title: "Create",
       subtitle: "Innovate",
-      colorClass: "bg-emerald-600 text-white shadow-emerald-200",
-      icon: <Palette className="w-5 h-5" />,
+      iconColor: "text-emerald-600",
+      bgColor: "bg-emerald-100",
+      icon: <Palette className="w-5 h-5 md:w-6 md:h-6" />,
+      shapeClass: "rounded-[50%_50%_20%_80%/25%_80%_20%_75%]"
     },
     {
       title: "Care",
       subtitle: "Share",
-      colorClass: "bg-rose-500 text-white shadow-rose-200",
-      icon: <Heart className="w-5 h-5" />,
+      iconColor: "text-rose-500",
+      bgColor: "bg-rose-100",
+      icon: <Heart className="w-5 h-5 md:w-6 md:h-6" />,
+      shapeClass: "rounded-[30%_70%_70%_30%/30%_30%_70%_70%]"
     },
   ];
 
   return (
-    <section className="relative py-16 md:py-24 bg-white overflow-hidden border-b border-[var(--color-border)]">
-      {/* Decorative background doodles */}
-      <div className="absolute top-10 left-10 w-24 h-24 text-yellow-300 opacity-20 pointer-events-none">
-        <svg viewBox="0 0 100 100" fill="currentColor">
-          <circle cx="50" cy="50" r="40" stroke="currentColor" strokeWidth="2" strokeDasharray="5,5" fill="none" />
-        </svg>
-      </div>
+    <section 
+      onMouseMove={handleMouseMove}
+      className="relative py-16 md:py-24 bg-white overflow-hidden"
+    >
+      
+      {/* ── Playful Decorative Doodles (Parallax) ── */}
+      
+      {/* Kite */}
+      <motion.div style={{ x: parallaxFastX, y: parallaxFastY }} className="absolute top-[10%] left-[8%] text-pink-400 opacity-60 pointer-events-none rotate-12">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2l-5 8 5 8 5-8z"/><path d="M12 18v6"/><path d="M10 22h4"/></svg>
+      </motion.div>
+      
+      {/* Rainbow */}
+      <motion.div style={{ x: parallaxSlowX, y: parallaxSlowY }} className="absolute top-[20%] right-[10%] text-orange-400 opacity-60 pointer-events-none -rotate-12">
+        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M2 20a10 10 0 0 1 20 0M6 20a6 6 0 0 1 12 0M10 20a2 2 0 0 1 4 0"/></svg>
+      </motion.div>
+
+      {/* Crayon/Pencil */}
+      <motion.div style={{ x: parallaxFastX, y: parallaxFastY }} className="absolute bottom-[20%] left-[5%] text-purple-400 opacity-50 pointer-events-none -rotate-45">
+        <Pencil className="w-12 h-12" />
+      </motion.div>
+
+      {/* Bird */}
+      <motion.div style={{ x: parallaxFastX, y: parallaxFastY }} className="absolute top-[40%] left-[45%] text-blue-400 opacity-40 pointer-events-none">
+        <Bird className="w-10 h-10" />
+      </motion.div>
+
+      {/* Teddy Bear */}
+      <motion.div style={{ x: parallaxSlowX, y: parallaxSlowY }} className="absolute bottom-[10%] right-[30%] text-amber-600 opacity-40 pointer-events-none rotate-12">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="6"/><circle cx="7" cy="7" r="3"/><circle cx="17" cy="7" r="3"/><circle cx="12" cy="13" r="2"/></svg>
+      </motion.div>
+
+      {/* Tree */}
+      <motion.div style={{ x: parallaxFastX, y: parallaxFastY }} className="absolute bottom-[25%] right-[5%] text-emerald-400 opacity-50 pointer-events-none">
+        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22V13"/><path d="M7 13c-2.8 0-5-2.2-5-5s2.2-5 5-5c1 0 1.9.3 2.7.8A5 5 0 0 1 19 8c0 2.8-2.2 5-5 5H7z"/></svg>
+      </motion.div>
+
+      {/* Toy Giraffe (Abstract) */}
+      <motion.div style={{ x: parallaxSlowX, y: parallaxSlowY }} className="absolute top-[15%] left-[40%] text-yellow-500 opacity-40 pointer-events-none -rotate-12">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 2h4v4l-4 8v8h-4v-8c0-3 3-8 3-8H8L6 14v8H2v-8C2 9 6 6 10 6h1L15 2z"/></svg>
+      </motion.div>
 
       <div className="container-custom relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
-          {/* ── Left Column: Image with organic frames ── */}
-          <div className="lg:col-span-5 relative flex justify-center">
-            {/* Background decorative yellow frame */}
-            <div className="absolute -inset-4 bg-yellow-100 rounded-3xl -rotate-3 scale-95 pointer-events-none"></div>
+          {/* ── Left Column: Slide-up Splash Animation ── */}
+          <div className="lg:col-span-6 relative flex justify-center items-center py-12 md:py-20 min-h-[400px]">
             
-            {/* Decorative dot grid (top-left) */}
-            <div className="absolute -top-6 -left-6 w-16 h-16 text-amber-400 opacity-70 hidden md:block">
-              <svg viewBox="0 0 100 100" fill="currentColor">
-                <circle cx="10" cy="10" r="4" /><circle cx="30" cy="10" r="4" /><circle cx="50" cy="10" r="4" /><circle cx="70" cy="10" r="4" />
-                <circle cx="10" cy="30" r="4" /><circle cx="30" cy="30" r="4" /><circle cx="50" cy="30" r="4" /><circle cx="70" cy="30" r="4" />
-                <circle cx="10" cy="50" r="4" /><circle cx="30" cy="50" r="4" /><circle cx="50" cy="50" r="4" /><circle cx="70" cy="50" r="4" />
-                <circle cx="10" cy="70" r="4" /><circle cx="30" cy="70" r="4" /><circle cx="50" cy="70" r="4" /><circle cx="70" cy="70" r="4" />
-              </svg>
-            </div>
+            {/* SVG Defs for Splat ClipPath */}
+            <svg width="0" height="0" className="absolute">
+              <defs>
+                <clipPath id="welcome-splat-clip" clipPathUnits="objectBoundingBox">
+                  <path d={splatClipPath} />
+                </clipPath>
+              </defs>
+            </svg>
 
-            {/* Main Image */}
-            <div className="relative w-full max-w-[440px] aspect-[4/3] rounded-3xl overflow-hidden shadow-xl border-8 border-white z-10">
-              <Image
-                src="/galleryimg-10.jpeg"
-                alt="Children engaging in learning and play activities at Small Wonders Preschool"
-                fill
-                sizes="(max-width: 768px) 100vw, 440px"
-                className="object-cover"
+            {/* The Main Splash & Image Container */}
+            <motion.div
+              style={{ x: parallaxSlowX, y: parallaxSlowY, rotate: parallaxTilt }}
+              initial={{ scale: 0.8, y: 100, opacity: 0 }}
+              whileInView={{ scale: 1, y: 0, opacity: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ type: "spring", bounce: 0.5, duration: 1.2 }}
+              className="relative w-full max-w-[480px] aspect-square z-20 pointer-events-auto"
+            >
+              {/* Background Pastel Splashes (Offset for 3D layered paint effect) */}
+              <div 
+                className="absolute w-[105%] h-[105%] -top-[2%] -left-[2%] bg-gradient-to-tr from-purple-200 to-pink-200 opacity-80 -rotate-6"
+                style={{ clipPath: "url(#welcome-splat-clip)" }}
               />
-            </div>
+              <div 
+                className="absolute w-[95%] h-[95%] top-[5%] left-[5%] bg-gradient-to-br from-orange-100 to-yellow-100 opacity-90 rotate-12"
+                style={{ clipPath: "url(#welcome-splat-clip)" }}
+              />
 
-            {/* Bottom-left star doodle */}
-            <span className="absolute -bottom-6 -left-4 text-4xl text-emerald-400 animate-pulse hidden md:block">★</span>
+              {/* Foreground Splat containing the Image */}
+              <div 
+                className="w-full h-full relative overflow-hidden shadow-2xl bg-purple-50"
+                style={{ clipPath: "url(#welcome-splat-clip)" }}
+              >
+                <motion.div
+                  initial={{ opacity: 0, scale: 1.2 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ delay: 0.2, duration: 0.8 }}
+                  className="w-full h-full relative"
+                >
+                  <Image
+                    src="/galleryimg-10.jpeg"
+                    alt="Children engaging in learning and play activities at Small Wonders Preschool"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 480px"
+                    className="object-cover"
+                  />
+                  {/* Subtle inner shadow overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+                </motion.div>
+              </div>
+            </motion.div>
+
           </div>
-
           {/* ── Right Column: Content ── */}
-          <div className="lg:col-span-7 flex flex-col items-start">
+          <div className="lg:col-span-6 flex flex-col items-start lg:pl-8">
             
             {/* Heading Section */}
             <div className="mb-6">
-              <span className="text-[var(--color-secondary)] font-baloo text-lg font-bold block mb-1">
+              <span className="text-[var(--color-secondary)] font-baloo text-xl font-bold block mb-2">
                 Welcome to
               </span>
-              <h2 className="font-baloo text-[var(--color-primary)] text-3xl sm:text-4xl lg:text-[42px] leading-tight font-extrabold">
-                Small Wonders Play School
+              <h2 className="font-baloo text-[var(--color-primary)] text-4xl sm:text-5xl lg:text-[54px] leading-[1.1] font-extrabold tracking-tight">
+                Small Wonders<br/>Play School
               </h2>
-              <div className="flex flex-wrap gap-2 items-center mt-3 text-sm font-bold text-[var(--color-secondary)]">
-                <span>A Joyful Start</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-                <span>Since 2009</span>
-              </div>
             </div>
 
             {/* Paragraph Content */}
-            <div className="font-nunito text-base text-[var(--color-body)] leading-relaxed space-y-4 mb-6">
+            <div className="font-nunito text-[16px] md:text-[17px] text-[var(--color-body)] leading-relaxed space-y-4 mb-8 max-w-lg">
               <p>
-                Small Wonders opened its doors in 2009 with one simple belief — that every child deserves a childhood full of curiosity, kindness and play. What began as a tiny neighbourhood playgroup is today a much-loved preschool and daycare for families in our community.
+                A happy place where tiny hands <span className="font-bold text-[var(--color-secondary)]">create</span>, curious minds <span className="font-bold text-[var(--color-primary)]">explore</span>, and little hearts bloom. 💖
               </p>
               <p>
-                Our bright classrooms, age-appropriate activities and warm caregivers create the perfect space for children aged 1.5 to 6 years to learn, grow and feel at home — all day, every day.
+                From exciting adventures to joyful learning moments, every day is designed to spark <span className="font-bold text-[var(--color-secondary)]">imagination</span> and build <span className="font-bold text-[var(--color-primary)]">confidence</span>.
+              </p>
+              <p>
+                We're delighted to be a part of your child's wonderful journey of growth and discovery. 🌱
               </p>
             </div>
 
-            {/* Play/Explore, Learn/Grow circular badges - as in the image */}
-            <div className="w-full mb-8">
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full">
+            {/* Pastel Abstract Badges */}
+            <div className="w-full mb-10">
+              <div className="grid grid-cols-4 gap-3 sm:gap-6 w-full max-w-lg">
                 {imageBadges.map((badge, index) => (
-                  <div key={index} className="flex items-center gap-3 group">
-                    <div className={`w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:scale-110 ${badge.colorClass}`}>
+                  <div key={index} className="flex flex-col items-center gap-3 group text-center cursor-pointer">
+                    <div className={`w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:-translate-y-1 ${badge.bgColor} ${badge.iconColor} ${badge.shapeClass}`}>
                       {badge.icon}
                     </div>
-                    <div className="flex flex-col min-w-0">
-                      <span className="font-baloo text-sm font-extrabold text-[var(--color-dark)] leading-tight">
+                    <div className="flex flex-col">
+                      <span className="font-baloo text-[15px] sm:text-[17px] font-extrabold text-slate-800 leading-none mb-1">
                         {badge.title}
                       </span>
-                      <span className="font-nunito text-[11px] font-semibold text-[var(--color-muted)] leading-tight">
+                      <span className={`font-nunito text-[12px] sm:text-[13px] font-bold ${badge.iconColor} opacity-80 leading-none`}>
                         {badge.subtitle}
                       </span>
                     </div>
@@ -138,11 +231,11 @@ export default function WelcomePreschool() {
             {/* Button */}
             <Button
               label="Our Story"
-              variant="secondary"
+              variant="primary"
               size="lg"
               icon={<ArrowRight className="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1" />}
               iconPosition="right"
-              className="group hover:-translate-y-0.5 active:translate-y-0 transition-transform shadow-md"
+              className="group hover:-translate-y-1 transition-all shadow-md bg-purple-600 hover:bg-purple-700 rounded-full px-8"
               onClick={() => router.push("/about")}
             />
           </div>
