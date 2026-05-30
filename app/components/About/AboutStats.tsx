@@ -18,7 +18,7 @@ export default function AboutStats() {
   };
 
   return (
-    <section className="w-full bg-white py-16 md:py-24 relative overflow-hidden">
+    <section className="w-full bg-white py-16 md:py-14 relative overflow-hidden">
 
       {/* Floating Emojis in far margins */}
       <div className="absolute left-[3%] top-[30%] w-16 h-16 sun-float z-10 opacity-80 pointer-events-none hidden md:block">
@@ -143,7 +143,7 @@ export default function AboutStats() {
             </p>
 
             {/* Stats Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8 border-t border-[#e8e8f0]/80 pt-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8 pt-1">
               {stats.map((stat, idx) => (
                 <div key={idx} className="flex flex-col transform hover:scale-105 transition-transform duration-300 cursor-default group">
                   <span className="text-[#4b2ca0] font-extrabold text-2xl md:text-4xl font-['Baloo_2'] group-hover:text-[#e0531c] transition-colors duration-300">
@@ -157,14 +157,7 @@ export default function AboutStats() {
             </div>
 
             {/* CTA Button */}
-            <div className="flex">
-              <button
-                onClick={handleScrollToStory}
-                className="bg-[#4b2ca0] hover:bg-[#381a80] text-white font-extrabold text-sm uppercase px-8 py-3.5 rounded-[12px] shadow-[0_4px_0_0_#2b1266] hover:shadow-[0_2px_0_0_#2b1266] transition-all hover:translate-y-[2px] active:translate-y-[4px] active:shadow-none font-['Nunito'] cursor-pointer"
-              >
-                OUR STORY
-              </button>
-            </div>
+            
           </div>
 
         </div>

@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function AboutStory() {
   return (
-    <section id="our-story" className="w-full bg-white py-20 relative overflow-hidden">
+    <section id="our-story" className="w-full bg-white py-5  relative overflow-hidden">
       {/* Floating Emojis in far margins */}
       <div className="absolute left-[3%] top-[30%] w-12 h-12 star-float-png z-10 opacity-80 pointer-events-none hidden md:block">
         <img src="/slider_shape02.png" alt="Star" className="w-full h-full object-contain" />
