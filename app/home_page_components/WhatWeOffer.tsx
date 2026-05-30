@@ -18,8 +18,8 @@ interface Programme {
   features: { icon: React.ReactNode; title: string; desc: string }[];
   color: string;
   bgColor: string;
-  badge: string;
   borderColor: string;
+  badge: string;
   boxShape: { borderRadius: string };
   imageShape: { borderRadius: string };
 }
