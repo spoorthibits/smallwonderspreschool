@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import FloatingCTAs from "./components/FloatingCTA";
 import AdmissionsModal from "./components/AdmissionsModal";
 import { ModalProvider } from "./context/ModalContext";
+import AdmissionsBanner from "./home_page_components/AdmissionsBanner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,6 +39,8 @@ export default function RootLayout({
           <FloatingCTAs />
           <AdmissionsModal />
           {children}
+          
+          <AdmissionsBanner/>
           <Footer />
         </ModalProvider>
       </body>

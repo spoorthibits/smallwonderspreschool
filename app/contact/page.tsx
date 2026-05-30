@@ -1,12 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
-import { MapPin, Phone, Mail, Globe, Clock, Send, CheckCircle2, Loader2, ArrowRight } from "lucide-react";
-import Button from "../components/Button";
 import ContactBanner from "../components/ContactPage/contacbanner";
 import ContactSection from "../components/ContactPage/ContactSection";
-import ContactMap from "../components/ContactPage/FindUs";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -48,12 +44,7 @@ export default function ContactPage() {
       newErrors.email = "Please enter a valid email address";
     }
     if (!formData.childAge.trim()) {
-      newErrors.childAge = "Child's age is required";
-    } else {
-      const age = parseFloat(formData.childAge);
-      if (isNaN(age) || age <= 0 || age > 12) {
-        newErrors.childAge = "Age must be between 1 and 12";
-      }
+      newErrors.childAge = "Child's name is required";
     }
     if (!formData.message.trim()) newErrors.message = "Message is required";
 
@@ -66,46 +57,29 @@ export default function ContactPage() {
     if (!validate()) return;
 
     setIsSubmitting(true);
-    // Simulate API request delay
     await new Promise((resolve) => setTimeout(resolve, 1500));
     setIsSubmitting(false);
     setIsSuccess(true);
-    
-    // Reset form after 5 seconds
+
     setTimeout(() => {
-        setIsSuccess(false);
-        setFormData({
-            parentName: "",
-            phone: "",
-            email: "",
-            childAge: "",
-            message: "",
-        });
+      setIsSuccess(false);
+      setFormData({ parentName: "", phone: "", email: "", childAge: "", message: "" });
     }, 5000);
   };
 
-  const handleGetDirections = () => {
-    window.open("https://maps.google.com/?q=Small+Wonders+Play+School,+40,+Classic+Enclave,+Madhavapuri+Colony,+Sainikpuri,+Secunderabad", "_blank");
-  };
-
   return (
-    <>
-      
-      {/* ── Hero Section ── */}
-    <ContactBanner />
-<div className="mt-10">
-  <ContactSection
-    isSuccess={isSuccess}
-    isSubmitting={isSubmitting}
-    formData={formData}
-    errors={errors}
-    handleChange={handleChange}
-    handleSubmit={handleSubmit}
-  />
-</div>
-
-    
-
-    </>
+    <div className="pb-25 ">
+      <ContactBanner />
+      <div className="mt-10">
+        <ContactSection
+          isSuccess={isSuccess}
+          isSubmitting={isSubmitting}
+          formData={formData}
+          errors={errors}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+        />
+      </div>
+    </div>
   );
 }

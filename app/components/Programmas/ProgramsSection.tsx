@@ -2,160 +2,239 @@
 
 import Image from "next/image";
 import Button from "../Button";
-import { useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 
 const programs = [
   {
     id: 1,
     title: "Play Group",
-    age: "Age: 2 – 3 Years",
+    age: "2 to 3 Years",
     color: "#22A45D",
     borderColor: "#22A45D",
     image: "/galleryimg-1.jpeg",
+    description:
+      "A Playgroup program designed for toddlers aged 2–3 years. Children explore and learn through play, sensory activities, and social interaction, building motor skills and early communication.",
   },
   {
     id: 2,
     title: "Nursery",
-    age: "Age: 3 – 4 Years",
+    age: "3 to 4 Years",
     color: "#6B3FA0",
     borderColor: "#6B3FA0",
     image: "/galleryimg-12.jpeg",
+    description:
+      "The Nursery program serves as children's first formal step into structured learning. It emphasizes early literacy and numeracy, fostering creativity and a love for books and storytelling.",
   },
   {
     id: 3,
     title: "PP1",
-    age: "Age: 4 – 5 Years",
+    age: "4 to 5 Years",
     color: "#E06820",
     borderColor: "#E06820",
     image: "/galleryimg-13.jpeg",
+    description:
+      "PP1 builds on nursery foundations, introducing structured reading, writing, and arithmetic in an engaging, supportive classroom environment that sparks curiosity and confidence.",
   },
   {
     id: 4,
     title: "PP2",
-    age: "Age: 5 – 6 Years",
+    age: "5 to 6 Years",
     color: "#1A8FD1",
     borderColor: "#1A8FD1",
     image: "/galleryimg-4.jpeg",
+    description:
+      "PP2 prepares children for primary school with advanced literacy, numeracy, and critical thinking — a solid bridge between early childhood education and formal schooling.",
   },
   {
     id: 5,
+    title: "Upper KG",
+    age: "5 to 6 Years",
+    color: "#E06820",
+    borderColor: "#E06820",
+    image: "/galleryimg-5.jpeg",
+    description:
+      "Upper KG marks the final step in early childhood education, strengthening reading, writing, and math skills while encouraging critical thinking before the transition to primary school.",
+  },
+  {
+    id: 6,
+    title: "Summer Camp",
+    age: "5 to 6 Years",
+    color: "#22A45D",
+    borderColor: "#22A45D",
+    image: "/galleryimg-1.jpeg",
+    description:
+      "Engaging summer and winter camps that go beyond preschool to enhance analytical, cognitive, social, and language skills through storytelling, creative writing, and puzzle-solving.",
+  },
+  {
+    id: 7,
     title: "Day Care",
     age: "8:30 AM – 7:00 PM",
     color: "#E06820",
     borderColor: "#E06820",
     badge: "Proeve",
     image: "/galleryimg-5.jpeg",
+    description:
+      "Our Day Care provides a safe, nurturing environment throughout the day with structured activities, supervised play, and rest time — giving parents peace of mind.",
   },
 ];
 
-export default function ProgramsSection() {
-  const [activeIndex, setActiveIndex] = useState(0);
+const VISIBLE_CARDS = 3;
+const GAP = 24; // px gap between cards
 
-  const prev = () => setActiveIndex((i) => (i === 0 ? programs.length - 1 : i - 1));
-  const next = () => setActiveIndex((i) => (i === programs.length - 1 ? 0 : i + 1));
+export default function ProgramsSection() {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [cardWidth, setCardWidth] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  // Duplicate items for seamless infinite loop
+  const items = [...programs, ...programs];
+
+  const getCardWidth = useCallback(() => {
+    if (!containerRef.current) return 0;
+    const containerWidth = containerRef.current.offsetWidth;
+    return (containerWidth - GAP * (VISIBLE_CARDS - 1)) / VISIBLE_CARDS;
+  }, []);
+
+  useEffect(() => {
+    const updateWidth = () => setCardWidth(getCardWidth());
+    updateWidth();
+    window.addEventListener("resize", updateWidth);
+    return () => window.removeEventListener("resize", updateWidth);
+  }, [getCardWidth]);
+
+  const goToNext = useCallback(() => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setCurrentIndex((prev) => prev + 1);
+  }, [isTransitioning]);
+
+  // When we reach the cloned section, silently reset
+  useEffect(() => {
+    if (currentIndex >= programs.length) {
+      const timeout = setTimeout(() => {
+        setIsTransitioning(false);
+        setCurrentIndex(0);
+      }, 500);
+      return () => clearTimeout(timeout);
+    } else {
+      const timeout = setTimeout(() => setIsTransitioning(false), 500);
+      return () => clearTimeout(timeout);
+    }
+  }, [currentIndex]);
+
+  // Auto-scroll every 2.5s
+  useEffect(() => {
+    if (isPaused) return;
+    intervalRef.current = setInterval(goToNext, 2500);
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [goToNext, isPaused]);
+
+  const translateX = -(currentIndex * (cardWidth + GAP));
 
   return (
-    <section className="w-full bg-[white] py-14 md:py-20">
+    <section className="w-full bg-white py-14 md:py-20">
       {/* Section Header */}
       <div className="container-custom text-center mb-10 md:mb-12">
         <p className="text-[#E06820] font-bold text-[13px] tracking-[0.15em] uppercase font-['Nunito'] mb-3">
           Every Child Is Different
         </p>
-        <h2 className="text-[#2E2E2E] font-extrabold text-[36px] md:text-[48px] font-['Baloo_2'] leading-tight">
-          Find the Right <span className="text-[#E06820]">Learning Path</span>
+        <h2 className="text-[#1a1a2e] font-extrabold text-[36px] md:text-[48px] font-['Baloo_2'] leading-tight">
+          Find the Right{" "}
+          <span className="text-[#E06820]">Learning Path</span>
         </h2>
         <div className="flex justify-center mt-4 mb-5">
           <div className="w-20 h-1.5 rounded-full bg-[#E06820]" />
         </div>
-        <p className="text-gray-500 text-[15px] md:text-[17px] font-['Nunito'] max-w-[580px] mx-auto leading-relaxed">
-          From playful toddler exploration to school-ready confidence — each programme is carefully crafted for your child's stage of growth.
+        <p className="text-[#3d3d5c] text-[16px] md:text-[18px] font-['Nunito'] max-w-[800px] mx-auto leading-relaxed">
+          Smallwonders preschool programs are designed for your child&apos;s
+          holistic development. From Playgroup to Upper KG, we nurture essential
+          skills in a fun, engaging environment.
         </p>
       </div>
 
-      {/* Desktop Grid */}
-      <div className="container-custom hidden sm:block">
-        <div className="grid grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5">
-          {programs.map((program) => (
-            <ProgramCard key={program.id} program={program} />
+      {/* Carousel */}
+      <div
+        ref={containerRef}
+        className="container-custom overflow-hidden"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
+        <div
+          ref={trackRef}
+          className="flex"
+          style={{
+            gap: `${GAP}px`,
+            transform: `translateX(${translateX}px)`,
+            transition: isTransitioning
+              ? "transform 0.5s cubic-bezier(0.4,0,0.2,1)"
+              : "none",
+          }}
+        >
+          {items.map((program, idx) => (
+            <div
+              key={`${program.id}-${idx}`}
+              style={{ flex: `0 0 ${cardWidth}px`, minWidth: `${cardWidth}px` }}
+            >
+              <ProgramCard program={program} />
+            </div>
           ))}
         </div>
       </div>
 
-      {/* Mobile Carousel — one card at a time */}
-      <div className="sm:hidden px-4">
-
-        {/* Single card display */}
-        <div className="overflow-hidden">
-          <div
-            className="flex transition-transform duration-500 ease-in-out"
-            style={{ transform: `translateX(-${activeIndex * 100}%)` }}
-          >
-            {programs.map((program) => (
-              <div key={program.id} className="flex-shrink-0 w-full px-1">
-                <ProgramCard program={program} />
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Prev / Next Buttons only */}
-        <div className="flex items-center justify-center gap-3 mt-5">
-
-          {/* Prev Button */}
+      {/* Dot indicators */}
+      <div className="flex justify-center items-center gap-2.5 mt-10">
+        {programs.map((_, i) => (
           <button
-            onClick={prev}
-            className="w-12 h-12 rounded-lg bg-[#6B3FA0] hover:bg-[#5a2f8e] flex items-center justify-center shadow-md transition-colors duration-200"
-            aria-label="Previous"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M15 18l-6-6 6-6" />
-            </svg>
-          </button>
-
-          {/* Next Button */}
-          <button
-            onClick={next}
-            className="w-12 h-12 rounded-lg bg-[#6B3FA0] hover:bg-[#5a2f8e] flex items-center justify-center shadow-md transition-colors duration-200"
-            aria-label="Next"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M9 18l6-6-6-6" />
-            </svg>
-          </button>
-
-        </div>
+            key={i}
+            onClick={() => {
+              if (!isTransitioning) {
+                setCurrentIndex(i);
+                setIsTransitioning(true);
+              }
+            }}
+            className="transition-all duration-300"
+            style={{
+              width: currentIndex % programs.length === i ? "32px" : "10px",
+              height: "10px",
+              borderRadius: "5px",
+              background:
+                currentIndex % programs.length === i
+                  ? "#E06820"
+                  : "#6b3fa040",
+              border:
+                currentIndex % programs.length === i
+                  ? "none"
+                  : "1.5px solid #6B3FA0",
+              cursor: "pointer",
+              padding: 0,
+            }}
+            aria-label={`Go to slide ${i + 1}`}
+          />
+        ))}
       </div>
 
-      {/* Note Box */}
-      <div className="container-custom mt-10">
-        <div className="bg-[#f3eeff] rounded-2xl border-2 border-[#f3eeff] px-8 py-8 md:px-12 md:py-10">
-          <p className="text-black font-['Nunito'] text-[15px] md:text-[17px] leading-[1.9]">
-            Our programmes are thoughtfully designed to nurture every child's unique potential.
-            From Play Group through PP2, each stage builds on the last — fostering curiosity,
-            confidence, and a lifelong love of learning. Our Day Care programme (Proeve) ensures
-            your child is safe, engaged, and cared for from <strong>8:30 AM to 7:00 PM</strong>,
-            with trained staff maintaining a warm and stimulating environment throughout the day.
-            We follow a child-centred approach with a student–teacher ratio designed for personal
-            attention and meaningful growth.
-          </p>
-        </div>
-
-        {/* Button */}
-        <div className="flex justify-center mt-8">
-          <Button label="Admissions Enquiry" variant="primary" size="lg" />
-        </div>
+      {/* CTA */}
+      <div className="flex justify-center mt-10">
+        <Button label="Admissions Enquiry" variant="primary" size="lg" />
       </div>
     </section>
   );
 }
 
-function ProgramCard({ program }: { program: typeof programs[0] }) {
+function ProgramCard({ program }: { program: (typeof programs)[0] }) {
   return (
     <div
-      className="flex flex-col rounded-2xl overflow-hidden bg-[#f7f5f0] transition-transform duration-300 hover:-translate-y-1 hover:shadow-md cursor-pointer"
-      style={{ borderBottom: `4px solid ${program.borderColor}` }}
+      className="flex flex-col rounded-2xl overflow-hidden bg-white shadow-md hover:shadow-xl transition-shadow duration-300"
+      style={{ border: "1px solid #e8e8f0", minHeight: "480px" }}
     >
-      <div className="relative w-full h-[160px] sm:h-[180px]">
+      {/* Image — taller */}
+      <div className="relative w-full flex-shrink-0" style={{ height: "220px" }}>
         <Image
           src={program.image}
           alt={program.title}
@@ -163,22 +242,37 @@ function ProgramCard({ program }: { program: typeof programs[0] }) {
           className="object-cover"
         />
       </div>
-      <div className="px-4 py-4">
-        <p
-          className="font-extrabold text-[13px] uppercase tracking-wide font-['Nunito'] mb-1"
-          style={{ color: program.color }}
-        >
-          {program.title}
-          {program.badge && (
-            <span
-              className="ml-2 text-[9px] font-bold px-1.5 py-0.5 rounded-full border normal-case tracking-normal align-middle"
-              style={{ color: program.color, borderColor: program.color }}
-            >
-              {program.badge}
-            </span>
-          )}
+
+      {/* Body */}
+      <div
+        className="px-6 py-5 flex flex-col flex-1"
+        style={{ borderBottom: `4px solid ${program.borderColor}` }}
+      >
+        {/* Title row */}
+        <div className="flex items-baseline justify-between gap-2 mb-3">
+          <p
+            className="font-extrabold text-[20px] uppercase tracking-wide font-['Nunito'] leading-none"
+            style={{ color: program.color }}
+          >
+            {program.title}
+            {program.badge && (
+              <span
+                className="ml-2 text-[12px] font-bold px-2 py-0.5 rounded-full border normal-case tracking-normal align-middle"
+                style={{ color: program.color, borderColor: program.color }}
+              >
+                {program.badge}
+              </span>
+            )}
+          </p>
+          <span className="text-[#7a7a9d] text-[13px] font-['Nunito'] font-semibold whitespace-nowrap flex-shrink-0">
+            {program.age}
+          </span>
+        </div>
+
+        {/* Description — bigger font */}
+        <p className="text-[#3d3d5c] text-[15px] font-['Nunito'] leading-relaxed flex-1">
+          {program.description}
         </p>
-        <p className="text-gray-500 text-[13px] font-['Nunito']">{program.age}</p>
       </div>
     </div>
   );

@@ -42,7 +42,7 @@ export default function Home() {
       <FAQ />
 
       {/* Home Page Section 10: Admissions Open Banner Section (Above Footer) */}
-      <AdmissionsBanner />
+      
     </main>
   );
 }

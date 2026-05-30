@@ -23,17 +23,17 @@ export default function Footer({ className }: FooterProps) {
     <footer className={`footer-wrapper ${className ?? ""}`.trim()}>
       
       {/* ── 1. Repeating Wave Divider (Absolute positioned to overlap the section above, removing any vertical gap) ── */}
-      <div className="footer-wave-container">
+      {/* <div className="footer-wave-container">
         <svg
           className="footer-wave-svg"
           viewBox="0 0 1440 60"
           preserveAspectRatio="none"
           xmlns="http://www.w3.org/2000/svg"
-        >
+        > */}
           {/* Repeating Sine Wave path with 12 cycles, filled with deep purple */}
-          <path d="M 0 30 C 60 5, 60 55, 120 30 C 180 5, 180 55, 240 30 C 300 5, 300 55, 360 30 C 420 5, 420 55, 480 30 C 540 5, 540 55, 600 30 C 660 5, 660 55, 720 30 C 780 5, 780 55, 840 30 C 900 5, 900 55, 960 30 C 1020 5, 1020 55, 1080 30 C 1140 5, 1140 55, 1200 30 C 1260 5, 1260 55, 1320 30 C 1380 5, 1380 55, 1440 30 L 1440 60 L 0 60 Z" />
+          {/* <path d="M 0 30 C 60 5, 60 55, 120 30 C 180 5, 180 55, 240 30 C 300 5, 300 55, 360 30 C 420 5, 420 55, 480 30 C 540 5, 540 55, 600 30 C 660 5, 660 55, 720 30 C 780 5, 780 55, 840 30 C 900 5, 900 55, 960 30 C 1020 5, 1020 55, 1080 30 C 1140 5, 1140 55, 1200 30 C 1260 5, 1260 55, 1320 30 C 1380 5, 1380 55, 1440 30 L 1440 60 L 0 60 Z" />
         </svg>
-      </div>
+      </div> */}
 
       <div className="container-custom">
         {/* Main Columns Container - Uses Flex for exact alignment and dotted separators */}
