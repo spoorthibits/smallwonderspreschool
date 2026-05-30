@@ -19,6 +19,9 @@ interface Programme {
   color: string;
   bgColor: string;
   badge: string;
+  borderColor: string;
+  boxShape: { borderRadius: string };
+  imageShape: { borderRadius: string };
 }
 
 const ClownfishSVG = () => (
@@ -346,7 +349,7 @@ export default function WhatWeOffer() {
                     ))}
                   </div>
 
-                  <button onClick={openModal} className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2.5 rounded-full font-bold text-[15px] transition-transform hover:scale-105 hover:shadow-md w-fit flex items-center gap-2 mt-auto">
+                  <button onClick={() => openModal("apply")} className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2.5 rounded-full font-bold text-[15px] transition-transform hover:scale-105 hover:shadow-md w-fit flex items-center gap-2 mt-auto">
                     Learn More
                     <ChevronRight className="w-4 h-4" />
                   </button>
