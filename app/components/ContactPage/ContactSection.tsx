@@ -43,22 +43,23 @@ export default function ContactSection({
     <section className="relative z-20 bg-white py-10">
       <div className="container-custom">
         <div className="relative rounded-3xl">
-          {/* Top-right decorative corner accent — outside overflow-hidden so it's not clipped */}
+          {/* Top-right decorative corner accent */}
           <span aria-hidden="true" className="pointer-events-none absolute top-0 right-0 w-[3px] rounded-tr-3xl bg-[var(--color-primary)] z-10" style={{ height: "50%" }} />
           <span aria-hidden="true" className="pointer-events-none absolute top-0 right-0 h-[3px] rounded-tr-3xl bg-[var(--color-primary)] z-10" style={{ width: "12%" }} />
-        <div className="rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.08)] border border-gray-100 overflow-hidden flex flex-col lg:flex-row">
+
+        <div className="rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.08)] border border-gray-100 overflow-hidden flex flex-col md:flex-row">
 
           {/* ── LEFT PANEL ── */}
-          <div className="w-full lg:w-1/2 bg-gray-50 p-6 sm:p-8 md:p-10 border-b lg:border-b-0 lg:border-r border-gray-100 flex flex-col gap-6">
+          <div className="w-full md:w-1/2 bg-gray-50 p-4 sm:p-6 md:p-6 lg:p-10 border-b md:border-b-0 md:border-r border-gray-100 flex flex-col gap-4 md:gap-5 lg:gap-6">
             <div>
               <h2 className="text-[#2E2E2E] font-[var(--text-primary)] leading-none text-[18px] font-['Baloo_2']"></h2>
             </div>
 
             {/* Contact cards grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-3">
               {/* Phone */}
               <ContactCard
-                icon={<Phone size={18} />}
+                icon={<Phone size={16} />}
                 iconBg="bg-blue-100"
                 iconColor="text-blue-700"
                 label="Phone"
@@ -71,7 +72,7 @@ export default function ContactSection({
               />
               {/* WhatsApp */}
               <ContactCard
-                icon={<MessageCircle size={18} />}
+                icon={<MessageCircle size={16} />}
                 iconBg="bg-green-100"
                 iconColor="text-green-700"
                 label="WhatsApp"
@@ -79,7 +80,7 @@ export default function ContactSection({
               />
               {/* Email */}
               <ContactCard
-                icon={<Mail size={18} />}
+                icon={<Mail size={16} />}
                 iconBg="bg-orange-100"
                 iconColor="text-orange-700"
                 label="Email"
@@ -94,7 +95,7 @@ export default function ContactSection({
               />
               {/* Location */}
               <ContactCard
-                icon={<MapPin size={18} />}
+                icon={<MapPin size={16} />}
                 iconBg="bg-purple-100"
                 iconColor="text-purple-700"
                 label="Our School"
@@ -108,7 +109,7 @@ export default function ContactSection({
             </div>
 
             {/* Google Maps embed */}
-            <div className="rounded-xl overflow-hidden border border-gray-200 h-[280px]">
+            <div className="rounded-xl overflow-hidden border border-gray-200 h-[200px] md:h-[220px] lg:h-[280px]">
               <iframe
                 title="Small Wonders Preschool and Daycare"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d831.0!2d78.5416865!3d17.4953982!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9b6c46184f53%3A0x27e0d05c65746d25!2sSmall%20Wonders%20preschool%20and%20Daycare!5e0!3m2!1sen!2sin!4v1"
@@ -122,15 +123,15 @@ export default function ContactSection({
             </div>
 
             {/* Timings */}
-            <div className="flex items-center gap-3 bg-white border border-gray-100 rounded-xl px-4 py-3">
-              <div className="w-9 h-9 rounded-lg bg-green-100 flex items-center justify-center text-green-700 flex-shrink-0">
-                <Clock size={16} />
+            <div className="flex items-center gap-3 bg-white border border-gray-100 rounded-xl px-3 py-2 md:px-4 md:py-3">
+              <div className="w-8 h-8 md:w-9 md:h-9 rounded-lg bg-green-100 flex items-center justify-center text-green-700 flex-shrink-0">
+                <Clock size={14} />
               </div>
               <div>
                 <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-wide font-nunito">
                   Timings
                 </p>
-                <p className="text-sm font-semibold text-gray-800 font-nunito">
+                <p className="text-xs md:text-sm font-semibold text-gray-800 font-nunito">
                   Mon–Sat &nbsp;·&nbsp; 9:00 AM – 5:00 PM
                 </p>
               </div>
@@ -138,11 +139,11 @@ export default function ContactSection({
           </div>
 
           {/* ── RIGHT PANEL ── */}
-          <div className="w-full lg:w-1/2 p-6 sm:p-8 md:p-10 bg-white">
-            <h2 className="font-baloo text-2xl font-extrabold text-[var(--color-primary)] mb-1">
+          <div className="w-full md:w-1/2 p-4 sm:p-6 md:p-6 lg:p-10 bg-white">
+            <h2 className="font-baloo text-xl md:text-2xl font-extrabold text-[var(--color-primary)] mb-1">
               Send Us a Message
             </h2>
-            <p className="font-nunito text-sm text-[var(--color-body)] mb-6 leading-relaxed">
+            <p className="font-nunito text-xs md:text-sm text-[var(--color-body)] mb-4 md:mb-6 leading-relaxed">
               We'd love to hear from you. Fill in the form and we'll be in touch shortly.
             </p>
 
@@ -160,10 +161,10 @@ export default function ContactSection({
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+              <form onSubmit={handleSubmit} className="flex flex-col gap-3 md:gap-4">
 
                 {/* Row 1: Parent name + Child name */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-3 md:gap-4">
                   <FormField
                     id="parentName"
                     label="Parent's Name"
@@ -200,7 +201,7 @@ export default function ContactSection({
                 </div>
 
                 {/* Row 2: Email + Phone */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-3 md:gap-4">
                   <FormField
                     id="email"
                     label="Email Address"
@@ -261,7 +262,7 @@ export default function ContactSection({
                     onChange={handleChange}
                     placeholder="Type your message here…"
                     rows={4}
-                    className={`w-full p-4 bg-gray-50 border rounded-xl text-sm font-medium transition-all outline-none focus:bg-white focus:border-[var(--color-secondary)] focus:ring-2 focus:ring-[var(--color-secondary)]/20 resize-none ${
+                    className={`w-full p-3 md:p-4 bg-gray-50 border rounded-xl text-sm font-medium transition-all outline-none focus:bg-white focus:border-[var(--color-secondary)] focus:ring-2 focus:ring-[var(--color-secondary)]/20 resize-none ${
                       errors.message ? "border-red-500" : "border-gray-200"
                     }`}
                   />
@@ -269,15 +270,13 @@ export default function ContactSection({
 
                 {/* Footer row */}
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mt-1">
-                  <p className="text-xs text-gray-400 font-nunito">
-                    {/* We typically reply within 24 hours. */}
-                  </p>
+                  <p className="text-xs text-gray-400 font-nunito"></p>
                   <Button
                     type="submit"
                     variant="secondary"
                     size="lg"
                     disabled={isSubmitting}
-                    className="w-full sm:w-auto h-12 px-10 shadow-md font-bold tracking-wide"
+                    className="w-full sm:w-auto h-11 md:h-12 px-8 md:px-10 shadow-md font-bold tracking-wide"
                   >
                     {isSubmitting ? (
                       <>
@@ -305,7 +304,7 @@ export default function ContactSection({
 /* ── Helpers ── */
 
 function inputClass(hasError: boolean) {
-  return `w-full h-12 px-4 bg-gray-50 border rounded-xl text-sm font-medium transition-all outline-none focus:bg-white focus:border-[var(--color-secondary)] focus:ring-2 focus:ring-[var(--color-secondary)]/20 ${
+  return `w-full h-10 md:h-12 px-3 md:px-4 bg-gray-50 border rounded-xl text-sm font-medium transition-all outline-none focus:bg-white focus:border-[var(--color-secondary)] focus:ring-2 focus:ring-[var(--color-secondary)]/20 ${
     hasError ? "border-red-500" : "border-gray-200"
   }`;
 }
@@ -325,7 +324,7 @@ function FormField({
 }) {
   return (
     <div className="flex flex-col gap-1.5">
-      <label htmlFor={id} className="text-sm font-bold text-[var(--color-dark)]">
+      <label htmlFor={id} className="text-xs md:text-sm font-bold text-[var(--color-dark)]">
         {label}
         {required && <span className="text-red-500 ml-0.5">*</span>}
       </label>
@@ -351,17 +350,17 @@ function ContactCard({
   content: React.ReactNode;
 }) {
   return (
-    <div className="flex items-start gap-3 bg-white border border-gray-100 rounded-xl p-3 hover:shadow-sm transition-shadow">
+    <div className="flex items-center gap-3 bg-white border border-gray-100 rounded-xl p-2.5 md:p-3 hover:shadow-sm transition-shadow">
       <div
-        className={`w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 ${iconBg} ${iconColor}`}
+        className={`w-8 h-8 md:w-8 md:h-8 rounded-lg flex items-center justify-center flex-shrink-0 ${iconBg} ${iconColor}`}
       >
         {icon}
       </div>
       <div className="min-w-0">
-        <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-wide font-nunito">
+        <p className="text-[9px] font-semibold text-gray-400 uppercase tracking-wide font-nunito">
           {label}
         </p>
-        <p className="text-xs font-semibold text-gray-800 font-nunito leading-snug mt-0.5">
+        <p className="text-[11px] md:text-[11px] lg:text-xs font-semibold text-gray-800 font-nunito leading-snug mt-0.5">
           {content}
         </p>
       </div>

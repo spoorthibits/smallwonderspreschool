@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function ContactBanner() {
   return (
-    <section className="w-full bg-[var(--offwhite-color)] py-8 md:py-12 relative overflow-hidden">
+    <section className="w-full bg-[var(--offwhite-color)] md:py-8 relative overflow-hidden">
       <style jsx global>{`
         @keyframes drawPath {
           from { stroke-dashoffset: 350; }
@@ -40,16 +40,29 @@ export default function ContactBanner() {
         .star-float { animation: floatStar 4s ease-in-out infinite; }
       `}</style>
 
-      <div className="container-custom relative">
+      {/* ── MOBILE ONLY ── */}
+      <div className="block md:hidden w-full m-0 p-0">
+        <Image
+          src="/contactmobilebanner.png"
+          alt="Contact Banner Mobile"
+          width={800}
+          height={600}
+          priority
+          className="w-full h-auto object-cover block"
+        />
+      </div>
+
+      {/* ── TABLET + DESKTOP: full layout with text ── */}
+      <div className="hidden md:block container-custom relative">
         <div className="bg-[var(--offwhite-color)] rounded-[30px] overflow-hidden">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-10 lg:gap-12 items-center">
+          <div className="grid grid-cols-2 gap-6 md:gap-10 lg:gap-12 items-center">
 
             {/* LEFT CONTENT */}
-            <div className="relative overflow-visible pr-2 md:pr-4 text-center lg:text-left">
+            <div className="relative overflow-visible pr-2 md:pr-4 text-left">
 
               {/* 1. Pink Outline Star */}
               <div
-                className="hidden sm:block absolute top-[-30px] right-[40px] w-10 h-10 md:w-14 md:h-14 text-[#FF7096] star-float z-10 pointer-events-none"
+                className="absolute top-[-30px] md:top-[-10px] right-[40px] w-10 h-10 md:w-14 md:h-14 text-[#FF7096] star-float z-10 pointer-events-none"
                 style={{ animationDelay: "0.5s" }}
               >
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
@@ -58,7 +71,7 @@ export default function ContactBanner() {
               </div>
 
               {/* 2. Flight Path + Paper Airplane */}
-              <div className="absolute top-[-7px] right-[-50px] lg:right-[-90px] w-[160px] md:w-[190px] h-[140px] md:h-[180px] z-20 pointer-events-none overflow-visible hidden md:block">
+              <div className="absolute top-[50px] md:top-[-30px] top-[-7px] right-[-50px] lg:right-[-90px] w-[160px] lg:w-[180px] md:w-[140px] h-[140px] lg:h-[200px] md:h-[180px] z-20 pointer-events-none overflow-visible">
                 <svg viewBox="0 0 180 140" className="w-full h-full overflow-visible">
                   <defs>
                     <mask id="airplane-path-mask">
@@ -101,7 +114,7 @@ export default function ContactBanner() {
 
               {/* 3. Yellow Solid Star */}
               <div
-                className="hidden sm:block absolute bottom-[90px] right-[80px] w-4 h-4 md:w-5 md:h-5 text-[#FDB813] fill-[#FDB813] star-float z-10 pointer-events-none"
+                className="absolute bottom-[90px] right-[80px] w-4 h-4 md:w-5 md:h-5 text-[#FDB813] fill-[#FDB813] star-float z-10 pointer-events-none"
                 style={{ animationDelay: "1s" }}
               >
                 <svg viewBox="0 0 24 24" className="w-full h-full">
@@ -111,7 +124,7 @@ export default function ContactBanner() {
 
               {/* 4. Green Solid Star */}
               <div
-                className="hidden sm:block absolute bottom-[-20px] right-[130px] w-5 h-5 md:w-7 md:h-7 text-[#4CAF50] fill-[#4CAF50] star-float z-10 pointer-events-none"
+                className="absolute bottom-[-20px] right-[130px] w-5 h-5 md:w-7 md:h-7 text-[#4CAF50] fill-[#4CAF50] star-float z-10 pointer-events-none"
                 style={{ animationDelay: "1.5s" }}
               >
                 <svg viewBox="0 0 24 24" className="w-full h-full">
@@ -121,7 +134,7 @@ export default function ContactBanner() {
 
               {/* 5. Purple Solid Star */}
               <div
-                className="hidden sm:block absolute bottom-[-35px] left-[150px] w-4 h-4 md:w-5 md:h-5 text-[#6B3FA0] fill-[#6B3FA0] star-pulse z-10 pointer-events-none"
+                className="absolute bottom-[-35px] left-[150px] w-4 h-4 md:w-5 md:h-5 text-[#6B3FA0] fill-[#6B3FA0] star-pulse z-10 pointer-events-none"
                 style={{ animationDelay: "2s" }}
               >
                 <svg viewBox="0 0 24 24" className="w-full h-full">
@@ -129,44 +142,40 @@ export default function ContactBanner() {
                 </svg>
               </div>
 
-              {/* TEXT CONTENT */}
-              <h1 className="block md:hidden font-extrabold leading-none whitespace-nowrap font-['Baloo_2'] text-[9vw]">
-                <span className="text-[#2E2E2E]">Our Happy </span>
-                <span className="text-[#E06820]">Gallery</span>
+              {/* TEXT CONTENT — visible on both tablet and desktop */}
+              <h2 className="text-[#2E2E2E] font-extrabold leading-none text-[28px] md:text-[32px] lg:text-[58px] font-['Baloo_2']">
+                We'd Love to
+              </h2>
+              <h1 className="text-[#E06820] font-extrabold leading-none text-[36px] md:text-[42px] lg:text-[70px] mt-1 font-['Baloo_2']">
+                Hear From You
               </h1>
 
-              <h1 className="hidden md:block lg:hidden font-extrabold leading-none whitespace-nowrap font-['Baloo_2'] text-[7vw]">
-                <span className="text-[#2E2E2E]">Our Happy </span>
-                <span className="text-[#E06820]">Gallery</span>
-              </h1>
-
-              <div className="hidden lg:block">
-                <h2 className="text-[#2E2E2E] font-extrabold leading-none text-[58px] font-['Baloo_2']">
-                  We'd Love to
-                </h2>
-                <h1 className="text-[#E06820] font-extrabold leading-none text-[100px] lg:text-[70px] mt-1 font-['Baloo_2']">
-                  Hear From You
-                </h1>
+              <div className="flex items-center gap-2 mt-3 mb-4 justify-start">
+                <div className="w-24 md:w-28 lg:w-32 h-1.5 rounded-full bg-[#E06820]" />
               </div>
 
-              <div className="flex items-center gap-2 mt-4 mb-5 justify-center lg:justify-start">
-                <div className="w-32 md:w-39 h-1.5 rounded-full bg-[#E06820]" />
-              </div>
-
-              <p className="text-black text-[15px] md:text-[18px] leading-[1.9] font-['Nunito'] max-w-[560px] mx-auto lg:mx-0">
+              <p className="text-black text-[13px] md:text-[14px] lg:text-[18px] leading-[1.8] font-['Nunito'] max-w-[560px]">
                 A glimpse of joyful moments, exciting activities and beautiful memories created every single day — where little ones learn, laugh, and grow together. Because every little moment is a memory worth keeping forever.
               </p>
             </div>
 
-            {/* RIGHT IMAGE */}
-            <div className="flex justify-center lg:justify-end mt-4 lg:mt-0">
+            {/* RIGHT IMAGE — contactbannertab.png on tablet, contact.png on desktop */}
+            <div className="flex justify-end mt-4 md:mt-0">
               <Image
                 src="/contact.png"
                 alt="Gallery Banner"
                 width={1200}
                 height={800}
                 priority
-                className="w-full max-w-[650px] sm:max-w-[750px] md:max-w-[900px] lg:max-w-[1000px] h-auto object-contain"
+                className="hidden lg:block w-full max-w-[1000px] h-auto object-contain"
+              />
+              <Image  
+                src="/contact.png"
+                alt="Gallery Banner Tablet"
+                width={1200}
+                height={800}
+                priority
+                className="block lg:hidden w-full h-auto object-contain"
               />
             </div>
 
