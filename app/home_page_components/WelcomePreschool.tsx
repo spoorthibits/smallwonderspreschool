@@ -81,7 +81,13 @@ export default function WelcomePreschool() {
   return (
     <section 
       onMouseMove={handleMouseMove}
-      className="relative py-6 md:py-10 bg-white overflow-hidden"
+      className="relative py-6 md:py-4 bg-white overflow-hidden"
+      style={{
+        backgroundImage: "url('/bgimg.webp')",
+        backgroundSize: "auto",
+        backgroundPosition: "center",
+        backgroundRepeat: "repeat",
+      }}
     >
       
       {/* ── Playful Decorative Doodles (Parallax) ── */}
@@ -92,9 +98,9 @@ export default function WelcomePreschool() {
       </motion.div>
       
       {/* Rainbow */}
-      <motion.div style={{ x: parallaxSlowX, y: parallaxSlowY }} className="absolute top-[20%] right-[10%] text-orange-400 opacity-60 pointer-events-none -rotate-12">
+      {/* <motion.div style={{ x: parallaxSlowX, y: parallaxSlowY }} className="absolute top-[20%] right-[10%] text-orange-400 opacity-60 pointer-events-none -rotate-12">
         <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M2 20a10 10 0 0 1 20 0M6 20a6 6 0 0 1 12 0M10 20a2 2 0 0 1 4 0"/></svg>
-      </motion.div>
+      </motion.div> */}
 
       {/* Crayon/Pencil */}
       <motion.div style={{ x: parallaxFastX, y: parallaxFastY }} className="absolute bottom-[20%] left-[5%] text-purple-400 opacity-50 pointer-events-none -rotate-45">
@@ -102,9 +108,9 @@ export default function WelcomePreschool() {
       </motion.div>
 
       {/* Bird */}
-      <motion.div style={{ x: parallaxFastX, y: parallaxFastY }} className="absolute top-[40%] left-[45%] text-blue-400 opacity-40 pointer-events-none">
+      {/* <motion.div style={{ x: parallaxFastX, y: parallaxFastY }} className="absolute top-[40%] left-[45%] text-blue-400 opacity-40 pointer-events-none">
         <Bird className="w-10 h-10" />
-      </motion.div>
+      </motion.div> */}
 
       {/* Teddy Bear */}
       <motion.div style={{ x: parallaxSlowX, y: parallaxSlowY }} className="absolute bottom-[10%] right-[30%] text-amber-600 opacity-40 pointer-events-none rotate-12">
@@ -112,9 +118,9 @@ export default function WelcomePreschool() {
       </motion.div>
 
       {/* Tree */}
-      <motion.div style={{ x: parallaxFastX, y: parallaxFastY }} className="absolute bottom-[25%] right-[5%] text-emerald-400 opacity-50 pointer-events-none">
+      {/* <motion.div style={{ x: parallaxFastX, y: parallaxFastY }} className="absolute bottom-[25%] right-[5%] text-emerald-400 opacity-50 pointer-events-none">
         <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22V13"/><path d="M7 13c-2.8 0-5-2.2-5-5s2.2-5 5-5c1 0 1.9.3 2.7.8A5 5 0 0 1 19 8c0 2.8-2.2 5-5 5H7z"/></svg>
-      </motion.div>
+      </motion.div> */}
 
       {/* Toy Giraffe (Abstract) */}
       <motion.div style={{ x: parallaxSlowX, y: parallaxSlowY }} className="absolute top-[15%] left-[40%] text-yellow-500 opacity-40 pointer-events-none -rotate-12">
@@ -168,7 +174,7 @@ export default function WelcomePreschool() {
                   className="w-full h-full relative"
                 >
                   <Image
-                    src="/galleryimg-10.jpeg"
+                    src="/galleryimg-5.jpeg"
                     alt="Children engaging in learning and play activities at Small Wonders Preschool"
                     fill
                     sizes="(max-width: 768px) 100vw, 480px"
@@ -189,26 +195,20 @@ export default function WelcomePreschool() {
               <span className="text-[var(--color-secondary)] font-baloo text-xl font-bold block mb-2">
                 Welcome to
               </span>
-              <h2 className="font-baloo text-[var(--color-primary)] text-4xl sm:text-5xl lg:text-[54px] leading-[1.1] font-extrabold tracking-tight">
-                Small Wonders<br/>Play School
+              <h2 className="font-baloo text-[var(--color-primary)] text-4xl sm:text-5xl lg:text-[40px] leading-[1.1] font-extrabold tracking-tight">
+                Small Wonders Play School
               </h2>
             </div>
 
             {/* Paragraph Content */}
-            <div className="font-nunito text-[16px] md:text-[17px] text-[var(--color-body)] leading-relaxed space-y-4 mb-6 max-w-lg">
-              <p>
-                A happy place where tiny hands <span className="font-bold text-[var(--color-secondary)]">create</span>, curious minds <span className="font-bold text-[var(--color-primary)]">explore</span>, and little hearts bloom. 💖
-              </p>
-              <p>
-                From exciting adventures to joyful learning moments, every day is designed to spark <span className="font-bold text-[var(--color-secondary)]">imagination</span> and build <span className="font-bold text-[var(--color-primary)]">confidence</span>.
-              </p>
-              <p>
-                We're delighted to be a part of your child's wonderful journey of growth and discovery. 🌱
-              </p>
-            </div>
+        <div className="font-nunito text-[16px] md:text-[17px] text-[var(--color-body)] leading-relaxed mb-6 max-w-lg">
+          <p>
+            A happy place where tiny hands <span className="font-bold text-[var(--color-secondary)]">create</span>, curious minds <span className="font-bold text-[var(--color-primary)]">explore</span>, and little hearts bloom. From exciting adventures to joyful learning moments, every day is designed to spark <span className="font-bold text-[var(--color-secondary)]">imagination</span> and build <span className="font-bold text-[var(--color-primary)]">confidence</span>. Our nurturing educators craft each experience with <span className="font-bold text-[var(--color-secondary)]">love</span> and <span className="font-bold text-[var(--color-primary)]">purpose</span>, ensuring every child feels seen, valued, and inspired. Through <span className="font-bold text-[var(--color-secondary)]">play-based learning</span>, art, music, and storytelling, we lay the foundation for a lifelong love of <span className="font-bold text-[var(--color-primary)]">learning</span>. We're truly delighted to be a part of your child's wonderful journey of growth, discovery, and joy.
+          </p>
+        </div>
 
             {/* Pastel Abstract Badges */}
-            <div className="w-full mb-8">
+            {/* <div className="w-full mb-8">
               <div className="grid grid-cols-4 gap-3 sm:gap-6 w-full max-w-lg">
                 {imageBadges.map((badge, index) => (
                   <div key={index} className="flex flex-col items-center gap-3 group text-center cursor-pointer">
@@ -226,7 +226,7 @@ export default function WelcomePreschool() {
                   </div>
                 ))}
               </div>
-            </div>
+            </div> */}
 
             {/* Button */}
             <Button
