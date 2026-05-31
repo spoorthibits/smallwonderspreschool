@@ -186,26 +186,31 @@ export default function WhatWeOffer() {
   ];
 
   useEffect(() => {
-    if (typeof window === "undefined" || !waterPathRef.current || !fishRef.current) return;
+    if (typeof window === "undefined") return;
+    
+    const pathElem = waterPathRef.current;
+    const fishElem = fishRef.current;
+    
+    if (!pathElem || !fishElem) return;
     
     gsap.registerPlugin(MotionPathPlugin);
 
     const ctx = gsap.context(() => {
       // Continuous fish animation along the path
-      gsap.to(fishRef.current, {
+      gsap.to(fishElem, {
         duration: 15,
         repeat: -1,
         ease: "none",
         motionPath: {
-          path: waterPathRef.current,
-          align: waterPathRef.current,
+          path: pathElem,
+          align: pathElem,
           alignOrigin: [0.5, 0.5],
           autoRotate: true,
         }
       });
       
       // Animate the line flowing continuously
-      gsap.to(waterPathRef.current, {
+      gsap.to(pathElem, {
         strokeDashoffset: -40,
         duration: 1.5,
         repeat: -1,
