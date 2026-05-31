@@ -63,18 +63,21 @@ export default function FAQ() {
     <section className="relative py-6 md:py-10 bg-[var(--color-offwhite)] overflow-hidden">
       
       {/* Background doodles */}
-      <div className="absolute top-[8%] left-[5%] w-12 h-12 text-[var(--color-primary)] opacity-10 pointer-events-none hidden xl:block">
+      <div className="absolute top-[8%] left-[5%] w-12 h-12 text-[var(--color-primary)] opacity-10 pointer-events-none hidden md:block">
         <HelpCircle className="w-full h-full" />
+      </div>
+      <div className="absolute bottom-[20%] right-[10%] w-14 h-14 text-[var(--color-secondary)] opacity-10 pointer-events-none hidden md:block animate-[bounce_5s_infinite]">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.87-3.13-7-7-7zM9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1z"/></svg>
       </div>
 
       <div className="container-custom relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-8 md:mb-10">
-          <span className="section-label mb-4 inline-flex items-center gap-1.5 bg-orange-50 text-[var(--color-primary)]">
+          <span className="section-label mb-4 inline-flex items-center gap-1.5 bg-[var(--color-bg-yellow)] text-[var(--color-primary)]">
             Got Questions?
           </span>
-          <h2 className="font-baloo text-[var(--color-primary)] text-[22px] sm:text-3xl md:text-4xl lg:text-[40px] leading-tight font-extrabold px-3 whitespace-nowrap">
+          <h2 className="font-baloo text-[var(--color-primary)] text-[22px] sm:text-3xl md:text-4xl lg:text-[40px] leading-tight font-extrabold px-3">
             Frequently Asked Question's (FAQ's)
           </h2>
         </div>
@@ -110,7 +113,7 @@ export default function FAQ() {
                   {/* Circular expand icon wrapper */}
                   <div
                     className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex-shrink-0 flex items-center justify-center transition-all duration-300 ${
-                      isHovered ? "bg-[var(--color-primary)] text-white rotate-180" : "bg-purple-50 text-[var(--color-secondary)]"
+                      isHovered ? "bg-[var(--color-primary)] text-white rotate-180" : "bg-[var(--color-bg-purple)] text-[var(--color-secondary)]"
                     }`}
                   >
                     <ChevronDown className="w-4 h-4 sm:w-5 h-5" />

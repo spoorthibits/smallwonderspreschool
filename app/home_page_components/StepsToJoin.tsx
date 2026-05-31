@@ -4,7 +4,8 @@ import React from "react";
 import Image from "next/image";
 import Button from "../components/Button";
 import { useModal } from "../context/ModalContext";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Heart, Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface Step {
   number: string;
@@ -35,15 +36,31 @@ export default function StepsToJoin() {
   return (
     <section className="relative py-6 md:py-10 bg-white overflow-hidden">
       
-      {/* Decorative background doodles */}
-      <div className="absolute top-[20%] left-[45%] w-16 h-16 text-yellow-300 opacity-20 pointer-events-none hidden lg:block">
-        <svg viewBox="0 0 100 100" fill="currentColor">
-          <circle cx="50" cy="50" r="40" stroke="currentColor" strokeWidth="2" strokeDasharray="6,6" fill="none" />
-        </svg>
+      {/* Decorative preschool elements */}
+      <div className="absolute inset-0 pointer-events-none select-none z-0 overflow-hidden">
+        <div className="absolute top-[10%] left-[5%] text-[var(--color-primary)] opacity-30 animate-pulse hidden md:block">
+          <Sparkles className="w-10 h-10" />
+        </div>
+        <div className="absolute bottom-[15%] left-[8%] text-[var(--color-secondary)] opacity-20 animate-[bounce_3s_infinite] hidden md:block">
+          <Heart className="w-8 h-8 fill-current" />
+        </div>
+        <div className="absolute top-[15%] right-[8%] text-pink-300 opacity-40 animate-[bounce_4s_infinite] hidden md:block">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M12 2L15 9L22 10L17 15L18 22L12 18L6 22L7 15L2 10L9 9L12 2Z" />
+          </svg>
+        </div>
+        <div className="absolute bottom-[10%] right-[5%] text-yellow-300 opacity-50 animate-pulse hidden md:block">
+          <Sparkles className="w-12 h-12" />
+        </div>
+        <div className="absolute top-[40%] left-[45%] w-16 h-16 text-yellow-300 opacity-40 pointer-events-none hidden lg:block animate-[spin_10s_linear_infinite]">
+          <svg viewBox="0 0 100 100" fill="currentColor">
+            <circle cx="50" cy="50" r="40" stroke="currentColor" strokeWidth="2" strokeDasharray="6,6" fill="none" />
+          </svg>
+        </div>
       </div>
 
       <div className="container-custom relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-4 lg:gap-16 items-center">
           
           {/* ── Left Column: Steps List ── */}
           <div className="lg:col-span-6 flex flex-col items-start text-left">
@@ -54,9 +71,12 @@ export default function StepsToJoin() {
               Three Simple Steps
             </h2>
 
-            <div className="space-y-4 md:space-y-6 w-full">
+            <div className="space-y-4 md:space-y-6 w-full relative">
+              {/* Connecting dashed line behind the numbers */}
+              <div className="absolute left-6 top-8 bottom-8 w-px border-l-2 border-dashed border-[var(--color-primary)] opacity-30 z-0 hidden sm:block"></div>
+              
               {steps.map((step, index) => (
-                <div key={index} className="flex gap-5 items-start group">
+                <div key={index} className="flex gap-5 items-start group relative z-10">
                   
                   {/* Step Number Circle */}
                   <div className="w-12 h-12 rounded-full flex-shrink-0 flex items-center justify-center bg-[var(--color-primary)] text-white font-baloo text-lg font-bold shadow-md shadow-orange-100 group-hover:scale-110 transition-transform duration-300">
@@ -92,24 +112,44 @@ export default function StepsToJoin() {
           </div>
 
           {/* ── Right Column: Image Asset ── */}
-          <div className="lg:col-span-6 relative flex justify-center">
+          <div className="lg:col-span-6 relative flex justify-center py-6">
             
-            {/* Background frame decoration */}
-            <div className="absolute -inset-4 bg-purple-50 rounded-3xl rotate-2 scale-95 pointer-events-none"></div>
-            
-            {/* Main Picture of Kids Playing */}
-            <div className="relative w-full max-w-[500px] aspect-[4/3] rounded-3xl overflow-hidden shadow-lg border-8 border-white z-10">
-              <Image
-                src="/galleryimg-16.jpeg"
-                alt="Children happily playing and learning in the classroom at Small Wonders"
-                fill
-                sizes="(max-width: 768px) 100vw, 500px"
-                className="object-cover"
-              />
-            </div>
+            {/* Blob Image Container with 2 colored shadow layers */}
+            <motion.div 
+              animate={{ 
+                y: [-6, 6, -6], 
+                x: [-4, 4, -4], 
+                rotate: [-1.5, 1.5, -1.5] 
+              }} 
+              transition={{ 
+                duration: 8, 
+                repeat: Infinity, 
+                ease: "easeInOut" 
+              }}
+              className="relative w-full max-w-[420px] aspect-square group origin-center"
+            >
+              
+              {/* Layer 1 (Bottom Light Colored Shadow) */}
+              <div className="absolute -inset-4 md:-inset-6 bg-orange-200/80 [border-radius:64%_36%_40%_60%/48%_55%_45%_52%] transition-transform duration-500 group-hover:scale-105 z-0"></div>
+              
+              {/* Layer 2 (Middle Light Colored Shadow) */}
+              <div className="absolute -inset-2 md:-inset-3 bg-[var(--color-bg-purple)] [border-radius:50%_50%_60%_40%/40%_60%_50%_50%] transition-transform duration-500 group-hover:scale-105 group-hover:-rotate-3 z-10"></div>
+              
+              {/* Main Image Layer */}
+              <div className="absolute inset-0 overflow-hidden bg-white border-[6px] border-white [border-radius:56%_44%_47%_53%/53%_48%_52%_47%] shadow-md z-20 transition-transform duration-500">
+                <Image
+                  src="/galleryimg-16.jpeg"
+                  alt="Children happily playing and learning in the classroom at Small Wonders"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 500px"
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+              </div>
+              
+            </motion.div>
             
             {/* Soft shadow vector */}
-            <div className="absolute -bottom-6 -right-4 w-12 h-12 text-yellow-400 opacity-70 hidden md:block">★</div>
+            <div className="absolute -bottom-2 right-4 md:right-10 w-12 h-12 text-yellow-400 opacity-70 hidden md:block">★</div>
           </div>
 
         </div>

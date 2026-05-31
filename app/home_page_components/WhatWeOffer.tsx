@@ -1,376 +1,392 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { Smile, Tent, BookOpen, Heart, Sparkles, GraduationCap, ChevronRight } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
+import { motion } from "framer-motion";
 import { useModal } from "../context/ModalContext";
 
 interface Programme {
   id: number;
   title: string;
-  tagline: string;
   description: string;
   image: string;
-  icon: React.ReactNode;
-  features: { icon: React.ReactNode; title: string; desc: string }[];
-  color: string;
-  bgColor: string;
-  borderColor: string;
   badge: string;
-  boxShape: { borderRadius: string };
-  imageShape: { borderRadius: string };
+  buttonColor: string;
+  badgeColor: string;
 }
 
-const ClownfishSVG = () => (
-  <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full drop-shadow-[0_4px_8px_rgba(0,0,0,0.15)]">
-    <g>
-      {/* Top Fin */}
-      <path d="M 45 40 Q 55 15 65 40" fill="#FF5722" stroke="white" strokeWidth="2" strokeLinejoin="round" />
-      {/* Bottom Fin */}
-      <path d="M 45 60 Q 55 85 65 60" fill="#FF5722" stroke="white" strokeWidth="2" strokeLinejoin="round" />
-      {/* Tail Fin */}
-      <path d="M 25 50 L 5 25 Q 15 50 5 75 Z" fill="#FF5722" stroke="white" strokeWidth="2" strokeLinejoin="round" />
-      <path d="M 15 50 L 8 35 Q 20 50 8 65 Z" fill="white" />
+// 10 Fun Floating Elements (Each used exactly once)
+const FunElements = () => (
+  <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+    {/* 1. Shape 3 (Top Left) */}
+    <motion.div animate={{ rotate: 360, scale: [1, 1.1, 1] }} transition={{ duration: 25, repeat: Infinity, ease: "linear" }} className="absolute top-8 left-8 opacity-90 w-16 h-16 hidden md:block">
+      <Image src="/slider_shape03.png" alt="shape" fill className="object-contain" />
+    </motion.div>
 
-      {/* Main Body */}
-      <path d="M 20 50 C 20 25, 95 25, 95 50 C 95 75, 20 75, 20 50 Z" fill="#FF5722" />
-      
-      {/* Stripes (White with slight curve) */}
-      <path d="M 75 30 Q 82 50 75 70 Q 68 50 75 30" fill="white" />
-      <path d="M 52 26 Q 59 50 52 74 Q 45 50 52 26" fill="white" />
-      <path d="M 32 31 Q 38 50 32 69 Q 26 50 32 31" fill="white" />
-      
-      {/* Eye */}
-      <circle cx="82" cy="42" r="6" fill="white" />
-      <circle cx="83" cy="42" r="3" fill="black" />
-      
-      {/* Smile */}
-      <path d="M 85 58 Q 80 62 75 58" stroke="#D84315" strokeWidth="2" strokeLinecap="round" fill="none" />
-      
-      {/* Side Fin */}
-      <path d="M 48 50 Q 38 65 58 60 Z" fill="#FF5722" stroke="white" strokeWidth="1.5" strokeLinejoin="round" />
+    {/* 2. Shape 1 (Top Right) */}
+    <motion.div animate={{ y: [-10, 10, -10], rotate: [0, 15, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute top-12 right-10 opacity-80 w-14 h-14 hidden md:block">
+      <Image src="/slider_shape01.png" alt="shape" fill className="object-contain" />
+    </motion.div>
+
+    {/* 3. Shape 2 (Bottom Left Edge) */}
+    <motion.div animate={{ x: [-15, 15, -15], rotate: [0, -15, 0] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-12 left-10 opacity-80 w-20 h-20 hidden md:block">
+      <Image src="/slider_shape02.png" alt="shape" fill className="object-contain" />
+    </motion.div>
+
+    {/* 4. Rainbow (Top Center-ish safe zone) */}
+    <motion.div animate={{ scale: [1, 1.05, 1], rotate: [-2, 2, -2] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute top-6 left-1/3 opacity-90 hidden md:block">
+      <svg width="70" height="35" viewBox="0 0 100 50">
+        <path d="M 10 50 A 40 40 0 0 1 90 50" stroke="#FF5252" strokeWidth="6" fill="none" strokeLinecap="round" />
+        <path d="M 20 50 A 30 30 0 0 1 80 50" stroke="#FF9800" strokeWidth="6" fill="none" strokeLinecap="round" />
+        <path d="M 30 50 A 20 20 0 0 1 70 50" stroke="#4CAF50" strokeWidth="6" fill="none" strokeLinecap="round" />
+        <path d="M 40 50 A 10 10 0 0 1 60 50" stroke="#03A9F4" strokeWidth="6" fill="none" strokeLinecap="round" />
+      </svg>
+    </motion.div>
+
+    {/* 5. Toy Block (Mid Left Edge) */}
+    <motion.div animate={{ rotate: [-10, 10, -10], y: [-5, 5, -5] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute top-[45%] left-6 opacity-90 hidden lg:block">
+      <svg width="50" height="50" viewBox="0 0 100 100">
+        <rect x="20" y="20" width="60" height="60" fill="#FFCA28" stroke="#FF6F00" strokeWidth="5" rx="6" strokeLinejoin="round" />
+        <rect x="28" y="28" width="44" height="44" fill="none" stroke="#FF6F00" strokeWidth="3" rx="3" strokeLinejoin="round" />
+        <text x="50" y="65" fontSize="42" fontFamily="'Comic Sans MS', cursive, sans-serif" fill="#FF6F00" textAnchor="middle" fontWeight="bold">A</text>
+      </svg>
+    </motion.div>
+
+    {/* 6. Crayon (Mid Right Edge) */}
+    <motion.div animate={{ rotate: [40, 50, 40], scale: [0.9, 1.1, 0.9] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute top-[50%] right-6 opacity-90 hidden md:block">
+      <svg width="60" height="60" viewBox="0 0 100 100" style={{ transform: 'rotate(45deg)' }}>
+        <path d="M 30 20 L 70 20 L 70 80 L 30 80 Z" fill="#F44336" stroke="#B71C1C" strokeWidth="5" strokeLinejoin="round" />
+        <path d="M 30 20 L 50 5 L 70 20 Z" fill="#F44336" stroke="#B71C1C" strokeWidth="5" strokeLinejoin="round" />
+        <path d="M 30 35 L 70 35 M 30 65 L 70 65" stroke="#B71C1C" strokeWidth="5" strokeLinecap="round" />
+      </svg>
+    </motion.div>
+
+    {/* 7. Kite (Bottom Right Edge) */}
+    <motion.div animate={{ y: [-15, 15, -15], rotate: [-5, 5, -5] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-16 right-10 opacity-90 hidden md:block">
+      <svg width="60" height="90" viewBox="0 0 100 150">
+        <path d="M 50 10 L 90 40 L 50 90 L 10 40 Z" fill="#4CAF50" stroke="#2E7D32" strokeWidth="5" strokeLinejoin="round" />
+        <path d="M 10 40 L 90 40 M 50 10 L 50 90" stroke="#2E7D32" strokeWidth="4" strokeLinecap="round" />
+        <path d="M 50 90 Q 60 110 45 125 T 60 150" fill="none" stroke="#607D8B" strokeWidth="4" strokeLinecap="round" />
+        <path d="M 45 110 L 60 115 L 45 120 Z" fill="#FF5252" stroke="#D32F2F" strokeWidth="2" strokeLinejoin="round" />
+      </svg>
+    </motion.div>
+
+    {/* 8. Star 1 (Top area, right of center) */}
+    <motion.div animate={{ scale: [1, 1.2, 1], rotate: [-5, 5, -5] }} transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }} className="absolute top-20 right-1/4 opacity-80 hidden md:block">
+      <svg width="35" height="35" viewBox="0 0 100 100">
+        <path d="M 50 10 L 61 39 L 92 39 L 66 57 L 76 87 L 50 69 L 24 87 L 34 57 L 8 39 L 39 39 Z" fill="#FFEB3B" stroke="#FBC02D" strokeWidth="5" strokeLinejoin="round" />
+      </svg>
+    </motion.div>
+
+    {/* 9. Sun (Bottom area, right of center) */}
+    <motion.div animate={{ rotate: 360 }} transition={{ duration: 40, repeat: Infinity, ease: "linear" }} className="absolute bottom-10 right-1/3 opacity-80 hidden md:block">
+      <svg width="45" height="45" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="22" fill="#FFD54F" />
+        <path d="M50 5 L50 20 M50 80 L50 95 M5 50 L20 50 M80 50 L95 50 M18 18 L28 28 M72 72 L82 82 M18 82 L28 72 M72 18 L82 28" stroke="#FFD54F" strokeWidth="6" strokeLinecap="round" />
+      </svg>
+    </motion.div>
+
+    {/* 10. Balloon (Bottom Center-Left safe zone) */}
+    <motion.div animate={{ y: [-10, 5, -10], x: [5, -5, 5] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-8 left-1/3 opacity-80 hidden md:block">
+      <svg width="40" height="80" viewBox="0 0 100 200">
+        <ellipse cx="50" cy="50" rx="35" ry="45" fill="#2196F3" stroke="#1976D2" strokeWidth="4" />
+        <path d="M 45 95 L 55 95 L 50 105 Z" fill="#2196F3" stroke="#1976D2" strokeWidth="4" strokeLinejoin="round" />
+        <path d="M 50 105 Q 60 130 40 160 T 50 190" fill="none" stroke="#9E9E9E" strokeWidth="3" strokeLinecap="round" />
+      </svg>
+    </motion.div>
+  </div>
+);
+
+const PinkScallopFishGroup = () => (
+  <g>
+    {/* Tail Fin */}
+    <path d="M 20 50 L -10 20 C -5 40, -5 60, -10 80 Z" fill="#F498A7" />
+    <path d="M 12 40 L -2 28 M 10 45 L -4 40 M 8 50 L -5 50 M 10 55 L -4 60 M 12 60 L -2 72" stroke="white" strokeWidth="2" strokeLinecap="round" />
+
+    {/* Top Fin */}
+    <path d="M 30 30 C 40 0, 70 0, 85 30 Z" fill="#F498A7" />
+    <path d="M 40 22 L 55 5 M 52 22 L 67 7 M 64 25 L 77 12 M 76 28 L 84 20" stroke="white" strokeWidth="2" strokeLinecap="round" />
+    
+    {/* Bottom Fin */}
+    <path d="M 35 70 C 45 95, 65 95, 75 70 Z" fill="#F498A7" />
+    <path d="M 42 75 L 50 90 M 52 75 L 60 90 M 62 75 L 68 85" stroke="white" strokeWidth="2" strokeLinecap="round" />
+
+    {/* Body Base & Wavy Scallop Bands */}
+    <path id="fishBody" d="M 15 50 C 15 15, 105 15, 105 50 C 105 85, 15 85, 15 50 Z" fill="#FFF29C" />
+    
+    <clipPath id="bodyClip">
+      <use href="#fishBody" />
+    </clipPath>
+    
+    <g clipPath="url(#bodyClip)">
+      {/* Cyan Layer */}
+      <path d="M 120 0 L 55 0 Q 40 12 55 25 Q 40 37 55 50 Q 40 62 55 75 Q 40 87 55 100 L 120 100 Z" fill="#99D5D6" />
+      {/* Yellow Layer */}
+      <path d="M 120 0 L 70 0 Q 55 12 70 25 Q 55 37 70 50 Q 55 62 70 75 Q 55 87 70 100 L 120 100 Z" fill="#FFF29C" />
+      {/* Pink Head Layer */}
+      <path d="M 120 0 L 85 0 Q 70 12 85 25 Q 70 37 85 50 Q 70 62 85 75 Q 70 87 85 100 L 120 100 Z" fill="#F498A7" />
     </g>
-  </svg>
+
+    {/* Rosy Cheek */}
+    <circle cx="75" cy="64" r="8" fill="#FFF29C" />
+
+    {/* Big Eye */}
+    <circle cx="82" cy="42" r="9" fill="white" />
+    <circle cx="85" cy="42" r="5" fill="#5D4037" />
+    <circle cx="86" cy="40.5" r="2" fill="white" />
+
+    {/* Cute Eyebrow */}
+    <path d="M 78 30 Q 82 26 87 30" stroke="#5D4037" strokeWidth="2" fill="none" strokeLinecap="round" />
+
+    {/* Happy Open Mouth Smile */}
+    <path d="M 85 54 Q 93 68 98 56 Z" fill="#D84315" />
+
+    {/* Side Fin */}
+    <path d="M 62 55 C 52 50, 52 65, 62 70 C 67 65, 67 55, 62 55 Z" fill="#F498A7" />
+    <path d="M 58 58 L 54 55 M 58 62 L 53 62 M 59 66 L 55 68" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
+  </g>
 );
 
 export default function WhatWeOffer() {
   const { openModal } = useModal();
-  const [activeIndex, setActiveIndex] = useState(0);
-  
-  const riverPathRef = useRef<SVGPathElement>(null);
-  const fishRef = useRef<HTMLDivElement>(null);
-  const milestoneRefs = useRef<(HTMLButtonElement | null)[]>([]);
-  const progressProxy = useRef({ val: 0.15 }); 
-  const tlRef = useRef<gsap.core.Timeline | null>(null);
+  const fishRef = useRef<SVGGElement>(null);
+  const waterPathRef = useRef<SVGPathElement>(null);
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
 
   const programmes: Programme[] = [
     {
       id: 0,
       title: "Preschool",
-      tagline: "Where curiosity takes the first step",
       description: "Our preschool programme builds a strong foundation through play, exploration, and joyful learning experiences designed just for little learners.",
       image: "/galleryimg-10.jpeg",
-      icon: <Smile className="w-6 h-6 md:w-8 md:h-8 text-pink-600" />,
-      features: [
-        { icon: <Smile className="w-4 h-4 md:w-5 md:h-5"/>, title: "Play-based learning", desc: "Hands-on activities that make learning joyful." },
-        { icon: <Heart className="w-4 h-4 md:w-5 md:h-5"/>, title: "Social & emotional", desc: "Encouraging confidence, sharing, and kindness." },
-        { icon: <BookOpen className="w-4 h-4 md:w-5 md:h-5"/>, title: "Skills development", desc: "Building creativity, motor & cognitive skills." },
-      ],
-      color: "text-pink-600",
-      bgColor: "bg-pink-100",
-      borderColor: "border-pink-200",
-      badge: "Ages 2.5 - 4 Years",
-      boxShape: { borderRadius: "60px 140px 60px 140px" },
-      imageShape: { borderRadius: "40px 100px 40px 100px" },
+      badge: "Age group : 2.5 - 4 years",
+      buttonColor: "bg-[var(--color-primary)]",
+      badgeColor: "bg-[var(--color-primary)]",
     },
     {
       id: 1,
-      title: "Full-Day Daycare",
-      tagline: "A safe, loving home away from home",
+      title: "Daycare",
       description: "Safe, loving daycare with nutritious meals, nap time and supervised play — perfect for working parents who want peace of mind.",
       image: "/galleryimg-18.jpeg",
-      icon: <Tent className="w-6 h-6 md:w-8 md:h-8 text-orange-600" />,
-      features: [
-        { icon: <Heart className="w-4 h-4 md:w-5 md:h-5"/>, title: "Nutritious Meals", desc: "Healthy, fresh food prepared daily." },
-        { icon: <Tent className="w-4 h-4 md:w-5 md:h-5"/>, title: "Safe & Supervised", desc: "Constant care and secure environment." },
-        { icon: <Smile className="w-4 h-4 md:w-5 md:h-5"/>, title: "Rest & Play", desc: "Balanced schedule for active and quiet time." },
-      ],
-      color: "text-orange-600",
-      bgColor: "bg-orange-100",
-      borderColor: "border-orange-200",
-      badge: "Ages 2 - 8 Years",
-      boxShape: { borderRadius: "140px 60px 140px 60px" },
-      imageShape: { borderRadius: "100px 40px 100px 40px" },
+      badge: "Age group : 2 - 8 years",
+      buttonColor: "bg-[var(--color-accent-teal)]",
+      badgeColor: "bg-[var(--color-accent-teal)]",
     },
     {
       id: 2,
       title: "NEP Curriculum",
-      tagline: "Future-ready learning for growing minds",
       description: "A modern, forward-thinking curriculum aligned with National Education Policy 2020 guidelines for holistic early development.",
-      image: "/galleryimg-16.jpeg",
-      icon: <BookOpen className="w-6 h-6 md:w-8 md:h-8 text-blue-600" />,
-      features: [
-        { icon: <BookOpen className="w-4 h-4 md:w-5 md:h-5"/>, title: "Holistic Growth", desc: "Focus on cognitive, emotional, and physical." },
-        { icon: <Sparkles className="w-4 h-4 md:w-5 md:h-5"/>, title: "Experiential", desc: "Learning through real-world experiences." },
-        { icon: <GraduationCap className="w-4 h-4 md:w-5 md:h-5"/>, title: "Future-Ready", desc: "Building critical thinking and problem-solving." },
-      ],
-      color: "text-blue-600",
-      bgColor: "bg-blue-100",
-      borderColor: "border-blue-200",
-      badge: "Ages 4 - 6 Years",
-      boxShape: { borderRadius: "60px 60px 160px 60px" },
-      imageShape: { borderRadius: "40px 40px 120px 40px" },
+      image: "/galleryimg-7.jpeg",
+      badge: "Age group : 4 - 6 years",
+      buttonColor: "bg-[var(--color-accent-green)]",
+      badgeColor: "bg-[var(--color-accent-green)]",
     }
   ];
 
-  // Path goes Bottom-to-Top, so 0.15 is near Bottom, 0.5 is Middle, 0.85 is near Top
-  const pathTargets = [0.15, 0.5, 0.85];
-
-  // Initialize and handle GSAP continuous timeline
   useEffect(() => {
-    if (typeof window === "undefined" || !riverPathRef.current || !fishRef.current) return;
+    if (typeof window === "undefined" || !waterPathRef.current || !fishRef.current) return;
+    
     gsap.registerPlugin(MotionPathPlugin);
 
-    const positionMilestones = () => {
-      pathTargets.forEach((target, i) => {
-        if (milestoneRefs.current[i]) {
-          gsap.set(milestoneRefs.current[i], {
-            motionPath: {
-              path: riverPathRef.current!,
-              align: riverPathRef.current!,
-              alignOrigin: [0.5, 0.5],
-              start: target,
-              end: target
-            }
-          });
-        }
-      });
-    };
-
-    positionMilestones();
-    window.addEventListener('resize', positionMilestones);
-
-    const updateFishPosition = () => {
-      gsap.set(fishRef.current, {
+    const ctx = gsap.context(() => {
+      // Continuous fish animation along the path
+      gsap.to(fishRef.current, {
+        duration: 15,
+        repeat: -1,
+        ease: "none",
         motionPath: {
-          path: riverPathRef.current!,
-          align: riverPathRef.current!,
+          path: waterPathRef.current,
+          align: waterPathRef.current,
           alignOrigin: [0.5, 0.5],
           autoRotate: true,
-          start: progressProxy.current.val,
-          end: progressProxy.current.val
         }
       });
-    };
+      
+      // Animate the line flowing continuously
+      gsap.to(waterPathRef.current, {
+        strokeDashoffset: -40,
+        duration: 1.5,
+        repeat: -1,
+        ease: "none"
+      });
+    });
 
-    // Master Timeline for continuous bottom-to-top swimming
-    tlRef.current = gsap.timeline({ repeat: -1 });
-
-    tlRef.current
-      .set(progressProxy.current, { val: pathTargets[0] })
-      .call(() => setActiveIndex(0))
-      // Swim to Daycare over 2 seconds
-      .to(progressProxy.current, { val: pathTargets[1], duration: 2.5, ease: "none", onUpdate: updateFishPosition })
-      .call(() => setActiveIndex(1))
-      // Swim to NEP over 2 seconds
-      .to(progressProxy.current, { val: pathTargets[2], duration: 2.5, ease: "none", onUpdate: updateFishPosition })
-      .call(() => setActiveIndex(2))
-      // Swim off-screen top
-      .to(progressProxy.current, { val: 1.0, duration: 1, ease: "none", onUpdate: updateFishPosition })
-      // Invisible reset to bottom
-      .set(progressProxy.current, { val: 0.0 })
-      // Swim back to Preschool
-      .to(progressProxy.current, { val: pathTargets[0], duration: 1, ease: "none", onUpdate: updateFishPosition });
-
-    return () => {
-      window.removeEventListener('resize', positionMilestones);
-      tlRef.current?.kill();
-    };
-  }, []); 
-
-  const activeProg = programmes[activeIndex];
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <section className="relative py-6 md:py-10 bg-[#FCFAEF] overflow-hidden flex flex-col items-center justify-center min-h-0">
+    <section className="relative py-8 md:py-10 bg-[#FCFAEF] overflow-hidden flex flex-col items-center justify-center">
       
-      {/* Background Decor */}
-      <div className="absolute inset-0 pointer-events-none opacity-40 z-0">
-        <div className="absolute top-[5%] right-[15%] text-orange-200 animate-pulse">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M12 2L15 9L22 10L17 15L18 22L12 18L6 22L7 15L2 10L9 9L12 2Z" />
+      <FunElements />
+
+      {/* Header */}
+      <div className="container-custom relative z-10 w-full mb-4 md:mb-8 text-center px-4">
+        <h2 className="font-baloo text-[#E06820] text-4xl sm:text-5xl lg:text-[54px] leading-tight font-extrabold mb-4">
+          Our Programs
+        </h2>
+        <p className="font-nunito text-[16px] sm:text-[18px] text-gray-700 italic max-w-xl mx-auto">
+          Where learning feels like an adventure...
+        </p>
+      </div>
+
+      {/* Desktop Layout (Hidden on Tablet/Mobile) */}
+      <div className="hidden lg:flex relative justify-between items-start max-w-6xl mx-auto w-full px-10 pb-8">
+        
+        {/* Wavy Water Line Container */}
+        <div className="absolute top-[40px] left-0 w-full h-[150px] z-0 pointer-events-none">
+          <svg width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 1000 150" className="overflow-visible">
+            <defs>
+              {/* Linear gradient mapped to the screen width (0 to 1000) so it smoothly fades out before touching the edges */}
+              <linearGradient id="waterGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1000" y2="0">
+                <stop offset="0%" stopColor="#A855F7" stopOpacity="0" />
+                <stop offset="2%" stopColor="#A855F7" stopOpacity="1" />
+                <stop offset="98%" stopColor="#A855F7" stopOpacity="1" />
+                <stop offset="100%" stopColor="#A855F7" stopOpacity="0" />
+              </linearGradient>
+            </defs>
+            {/* The visual flowing dashed line */}
+            <path 
+              ref={waterPathRef}
+              d="M -100 75 Q 75 0 250 75 T 600 75 T 950 75 T 1300 75" 
+              fill="none" 
+              stroke="url(#waterGrad)" 
+              strokeWidth="5" 
+              strokeDasharray="20 20"
+              strokeLinecap="round"
+            />
+            {/* Cute Pink Fish Mascot */}
+            <g ref={fishRef}>
+              <g transform="scale(0.95)">
+                <PinkScallopFishGroup />
+              </g>
+            </g>
           </svg>
         </div>
-        <div className="absolute bottom-[10%] right-[20%] text-blue-200 animate-bounce">
-          <Sparkles className="w-8 h-8" />
-        </div>
-      </div>
 
-      <div className="container-custom relative z-10 w-full">
-        
-        {/* Compact Header */}
-        <div className="text-center max-w-2xl mx-auto mb-6 md:mb-8">
-          <span className="section-label mb-3 inline-flex items-center gap-1.5 bg-white text-orange-500 shadow-sm border border-orange-100 py-1 px-3">
-            <Sparkles className="w-3.5 h-3.5" /> OUR PROGRAMMES
-          </span>
-          <h2 className="font-baloo text-[var(--color-primary)] text-2xl sm:text-3xl lg:text-[38px] leading-tight font-extrabold mb-3">
-            Programmes for Every Little One
-          </h2>
-          <p className="font-nunito text-sm sm:text-[15px] text-[var(--color-muted)] font-medium max-w-xl mx-auto leading-relaxed">
-            Thoughtfully designed learning experiences that nurture growth, confidence, and joyful discovery at every stage.
-          </p>
-        </div>
-
-        {/* Dense & Balanced Two Column Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 max-w-6xl mx-auto">
-          
-          {/* Left Column: Realistic Continuous River */}
-          <div className="lg:col-span-4 xl:col-span-3 relative h-[300px] sm:h-[400px] lg:h-[500px] w-full rounded-[32px] overflow-visible pointer-events-none lg:pointer-events-auto">
-            
-            <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none" viewBox="0 0 200 600">
-              <defs>
-                <linearGradient id="riverGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#AEE1FF" />
-                  <stop offset="50%" stopColor="#BAE0FF" />
-                  <stop offset="100%" stopColor="#D9EFFF" />
-                </linearGradient>
-              </defs>
-              
-              {/* Continuous River Flowing Bottom to Top */}
-              <path d="M 100 650 C 60 620, 140 550, 100 450 C 20 300, 180 150, 100 -50" fill="none" stroke="url(#riverGrad)" strokeWidth="80" strokeLinecap="round" />
-              
-              {/* River Highlights */}
-              <path d="M 100 650 C 60 620, 140 550, 100 450 C 20 300, 180 150, 100 -50" fill="none" stroke="#FFFFFF" strokeOpacity="0.4" strokeWidth="30" strokeLinecap="round" />
-              
-              {/* The invisible exact motion path for GSAP */}
-              <path ref={riverPathRef} d="M 100 650 C 60 620, 140 550, 100 450 C 20 300, 180 150, 100 -50" fill="none" stroke="transparent" strokeWidth="2" />
-              
-              {/* Playful River Ripples */}
-              <path d="M 80 80 Q 100 100 120 80" stroke="white" strokeWidth="2.5" strokeLinecap="round" fill="none" opacity="0.6" />
-              <path d="M 120 280 Q 130 300 150 280" stroke="white" strokeWidth="2.5" strokeLinecap="round" fill="none" opacity="0.6" />
-              <path d="M 60 480 Q 80 490 90 470" stroke="white" strokeWidth="2.5" strokeLinecap="round" fill="none" opacity="0.6" />
-            </svg>
-
-            {/* Milestones with Pill Labels below them */}
-            {programmes.map((prog, idx) => {
-              const isActive = activeIndex === idx;
-              return (
-                <button
-                  key={idx}
-                  ref={(el) => { milestoneRefs.current[idx] = el; }}
-                  onClick={() => {
-                    // Manual seeking via timeline calculation
-                    if (idx === 0) tlRef.current?.seek(0);
-                    if (idx === 1) tlRef.current?.seek(2.5);
-                    if (idx === 2) tlRef.current?.seek(5.0);
-                  }}
-                  className={`absolute flex flex-col items-center justify-center transition-all duration-500 z-10 pointer-events-auto cursor-pointer ${isActive ? 'scale-110 shadow-lg' : 'scale-100 hover:scale-105'}`}
-                  style={{ transform: "translate(-50%, -50%)" }}
-                >
-                  <div className={`relative w-14 h-14 md:w-16 md:h-16 rounded-full bg-white flex items-center justify-center transition-all duration-500 border-[3px] ${isActive ? prog.borderColor : 'border-transparent'} shadow-md`}>
-                    <div className={`p-2.5 md:p-3 rounded-full ${prog.bgColor} ${prog.color}`}>
-                      {prog.icon}
-                    </div>
-                    {isActive && (
-                      <motion.div 
-                        initial={{ scale: 0.8, opacity: 0.8 }}
-                        animate={{ scale: 1.6, opacity: 0 }}
-                        transition={{ duration: 1.5, repeat: Infinity, ease: "easeOut" }}
-                        className={`absolute inset-0 rounded-full border-2 ${prog.borderColor}`}
-                      />
-                    )}
-                  </div>
-                  
-                  {/* Pill Label matching the Image */}
-                  <div className="mt-2 bg-white px-3 py-1 rounded-full text-[13px] md:text-[14px] font-baloo font-bold shadow-sm border border-gray-100 whitespace-nowrap text-[var(--color-primary)]">
-                    {prog.title}
-                  </div>
-                </button>
-              );
-            })}
-
-            {/* Clownfish Mascot */}
-            <div
-              ref={fishRef}
-              className="absolute w-12 h-12 md:w-16 md:h-16 z-20 pointer-events-none drop-shadow-md"
-              style={{ transform: "translate(-50%, -50%)" }}
-            >
-              <ClownfishSVG />
-              {/* Fish Swimming Bob */}
-              <motion.div animate={{ y: [-2, 2, -2] }} transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }} className="absolute inset-0" />
+        {/* 3 Horizontal Classifications */}
+        {programmes.map((prog) => (
+          <div key={prog.id} className="relative z-10 flex flex-col items-center w-1/3 px-4">
+            <div className="relative w-64 h-64 rounded-full border-[6px] border-white shadow-xl mb-8 bg-white flex items-center justify-center transition-transform duration-300 hover:scale-105">
+              <Image src={prog.image} fill className="object-cover rounded-full p-1.5" alt={prog.title} />
+              {/* Age Group Badge without white border */}
+              <div className={`absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap text-white text-[14px] font-extrabold py-2 px-6 rounded-full shadow-lg ${prog.badgeColor}`}>
+                {prog.badge}
+              </div>
             </div>
-
-          </div>
-
-          {/* Right Column: Dense Dynamic Content Panel */}
-          <div className="lg:col-span-8 xl:col-span-9 relative h-full min-h-[350px] lg:min-h-[450px]">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeIndex}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -10 }}
-                transition={{ duration: 0.35, ease: "easeOut" }}
-                style={activeProg.boxShape}
-                className={`bg-white p-4 sm:p-6 md:p-8 w-full shadow-[0_8px_30px_rgb(0,0,0,0.06)] border-4 ${activeProg.borderColor} flex flex-col xl:flex-row gap-6 md:gap-8 h-full overflow-hidden`}
+            
+            {prog.title === "NEP Curriculum" ? (
+              <div 
+                className="mt-2 mb-2 flex flex-col items-center cursor-pointer group/nep"
+                onClick={() => setIsVideoOpen(true)}
               >
-                
-                {/* Content Side (Primary Focus) */}
-                <div className="w-full xl:w-[55%] flex flex-col justify-center order-2 xl:order-1 relative z-10">
-                  
-                  <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full ${activeProg.bgColor} ${activeProg.color} w-fit mb-3 shadow-sm`}>
-                    <Smile className="w-3.5 h-3.5" />
-                    <span className="text-xs md:text-sm font-bold">{activeProg.badge}</span>
-                  </div>
-                  
-                  <h3 className={`font-baloo text-2xl md:text-[32px] font-extrabold ${activeProg.color} mb-1.5 leading-tight`}>
-                    {activeProg.title}
-                  </h3>
-                  <p className="font-nunito text-sm md:text-base font-bold text-orange-600 mb-3">
-                    {activeProg.tagline}
-                  </p>
-                  <p className="font-nunito text-[14px] md:text-[15px] text-[var(--color-body)] leading-relaxed mb-5">
-                    {activeProg.description}
-                  </p>
-
-                  <div className="space-y-4 mb-6">
-                    {activeProg.features.map((feat, idx) => (
-                       <div key={idx} className="flex items-start gap-3">
-                         <div className={`mt-0.5 p-2 rounded-xl ${activeProg.bgColor} ${activeProg.color}`}>
-                           {feat.icon}
-                         </div>
-                         <div>
-                           <h4 className="font-baloo text-[15px] md:text-base font-bold text-[var(--color-dark)] leading-tight mb-0.5">{feat.title}</h4>
-                           <p className="font-nunito text-[13px] md:text-sm text-[var(--color-muted)] leading-relaxed">{feat.desc}</p>
-                         </div>
-                       </div>
-                    ))}
-                  </div>
-
-                  <button onClick={() => openModal("apply")} className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2.5 rounded-full font-bold text-[15px] transition-transform hover:scale-105 hover:shadow-md w-fit flex items-center gap-2 mt-auto">
-                    Learn More
-                    <ChevronRight className="w-4 h-4" />
-                  </button>
-                </div>
-
-                {/* Image Side (Abstract Shaped Image) */}
-                <div className="relative w-full xl:w-[45%] h-[220px] xl:h-auto overflow-hidden shadow-inner order-1 xl:order-2 border-[3px] border-white ring-1 ring-gray-100" style={activeProg.imageShape}>
-                   <Image src={activeProg.image} fill className="object-cover" alt={activeProg.title} />
-                   
-                   <div className="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm p-2 rounded-2xl shadow-sm -rotate-3">
-                     {activeProg.icon}
-                   </div>
-                </div>
-
-              </motion.div>
-            </AnimatePresence>
+                <h3 className="text-[28px] font-extrabold text-[var(--color-secondary)] font-baloo text-center leading-tight group-hover/nep:text-[var(--color-primary)] group-hover/nep:underline decoration-2 underline-offset-4 transition-all">
+                  {prog.title}
+                </h3>
+                <span className="text-xs text-[var(--color-primary)] font-bold font-nunito opacity-0 group-hover/nep:opacity-100 transition-opacity mt-0.5">
+                  Click to know more
+                </span>
+              </div>
+            ) : (
+              <h3 className="text-[28px] font-extrabold text-[var(--color-secondary)] font-baloo mt-2 mb-2 text-center leading-tight">
+                {prog.title}
+              </h3>
+            )}
+            
+            <p className="text-[15px] text-gray-700 font-nunito text-center mb-6 leading-relaxed max-w-[260px] font-medium">
+              {prog.description}
+            </p>
+            
+            <button 
+              onClick={() => openModal("apply")} 
+              className={`text-white text-[15px] font-extrabold py-3 px-8 rounded-full flex items-center gap-2 hover:opacity-90 transition-transform hover:-translate-y-1 shadow-lg ${prog.buttonColor}`}
+            >
+              JOIN THE FUN &rarr;
+            </button>
           </div>
-
-        </div>
-
+        ))}
       </div>
+
+      {/* Tablet & Mobile Layout */}
+      <div className="lg:hidden flex flex-col gap-12 w-full max-w-4xl mx-auto px-6 relative z-10">
+        {programmes.map((prog, idx) => {
+          // Tab view alternating: show pic right and content left, alternate
+          const isEven = idx % 2 === 0;
+          const flexDirection = isEven ? 'md:flex-row-reverse' : 'md:flex-row';
+          
+          return (
+            <div key={prog.id} className={`flex flex-col md:flex-row items-center gap-6 md:gap-4 lg:gap-10 ${flexDirection}`}>
+              
+              {/* Image Side */}
+              <div className="w-full md:w-1/2 flex justify-center">
+                <div className="relative w-72 h-72 md:w-80 md:h-80 rounded-full border-[8px] border-white shadow-xl bg-white transition-transform duration-300 hover:scale-105">
+                  <Image src={prog.image} fill className="object-cover rounded-full p-1.5" alt={prog.title} />
+                  {/* Age Group Badge without white border */}
+                  <div className={`absolute -bottom-4 md:-bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap text-white text-[13px] md:text-[17px] font-extrabold py-1.5 px-5 md:py-2 md:px-8 rounded-full shadow-lg ${prog.badgeColor}`}>
+                    {prog.badge}
+                  </div>
+                </div>
+              </div>
+              
+              {/* Content Side */}
+              <div className="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left pt-4 md:pt-0">
+                {prog.title === "NEP Curriculum" ? (
+                  <div 
+                    className="mb-3 flex flex-col items-center md:items-start cursor-pointer group/nep"
+                    onClick={() => setIsVideoOpen(true)}
+                  >
+                    <h3 className="text-3xl md:text-[40px] font-extrabold text-[var(--color-secondary)] font-baloo leading-tight group-hover/nep:text-[var(--color-primary)] group-hover/nep:underline decoration-2 underline-offset-4 transition-all">
+                      {prog.title}
+                    </h3>
+                    <span className="text-sm text-[var(--color-primary)] font-bold font-nunito opacity-0 group-hover/nep:opacity-100 transition-opacity mt-1">
+                      Click to know more
+                    </span>
+                  </div>
+                ) : (
+                  <h3 className="text-3xl md:text-[40px] font-extrabold text-[var(--color-secondary)] font-baloo mb-3 leading-tight">
+                    {prog.title}
+                  </h3>
+                )}
+                <p className="text-[16px] md:text-[17px] text-gray-700 font-nunito mb-8 leading-relaxed max-w-sm font-medium">
+                  {prog.description}
+                </p>
+                <button 
+                  onClick={() => openModal("apply")} 
+                  className={`text-white text-[14px] md:text-[17px] font-extrabold py-2.5 px-6 md:py-3.5 md:px-10 rounded-full flex items-center gap-2 hover:opacity-90 transition-transform hover:-translate-y-1 shadow-lg ${prog.buttonColor}`}
+                >
+                  JOIN THE FUN &rarr;
+                </button>
+              </div>
+
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Video Dialog for NEP */}
+      {isVideoOpen && (
+        <div className="fixed inset-0 z-[999] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+          <div className="relative w-full max-w-4xl aspect-video bg-black rounded-xl overflow-hidden shadow-2xl animate-in fade-in zoom-in duration-300">
+            <button 
+              onClick={() => setIsVideoOpen(false)}
+              className="absolute top-4 right-4 z-10 bg-white/20 text-white hover:bg-white hover:text-black w-10 h-10 rounded-full flex items-center justify-center font-bold text-xl transition-colors backdrop-blur-md"
+            >
+              &times;
+            </button>
+            <iframe 
+              width="100%" 
+              height="100%" 
+              src="https://www.youtube.com/embed/uJYiO-7AXqU?autoplay=1" 
+              title="NEP Curriculum" 
+              frameBorder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowFullScreen
+            ></iframe>
+          </div>
+        </div>
+      )}
+
     </section>
   );
 }

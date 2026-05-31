@@ -20,7 +20,7 @@ export default function WhyChooseUs() {
       holeRight: true,
       holeBottom: true,
       initialPosition: { x: -80, y: -80 },
-      corners: "rounded-t-[32px] md:rounded-none md:rounded-tl-[40px]",
+      corners: "rounded-[24px] md:rounded-none md:rounded-tl-[40px]",
     },
     {
       id: 2,
@@ -35,7 +35,7 @@ export default function WhyChooseUs() {
       holeLeft: false,
       holeBottom: true,
       initialPosition: { x: 80, y: -80 },
-      corners: "rounded-none md:rounded-tr-[40px]",
+      corners: "rounded-[24px] md:rounded-none md:rounded-tr-[40px]",
     },
     {
       id: 3,
@@ -50,13 +50,13 @@ export default function WhyChooseUs() {
       holeTop: false,
       holeRight: true,
       initialPosition: { x: -80, y: 80 },
-      corners: "rounded-none md:rounded-bl-[40px]",
+      corners: "rounded-[24px] md:rounded-none md:rounded-bl-[40px]",
     },
     {
       id: 4,
       title: "Fun Learning",
       description: "Joyful play-based techniques, hands-on activities, and creative discovery.",
-      image: "/galleryimg-5.jpeg",
+      image: "/galleryimg-1.jpeg",
       icon: <Sparkles className="w-6 h-6 text-yellow-600" />,
       color: "bg-[#FFF2BA]", // Brighter, vibrant pastel yellow
       glowColor: "hover:shadow-[0_12px_40px_rgba(250,204,21,0.35)]",
@@ -65,44 +65,44 @@ export default function WhyChooseUs() {
       holeTop: false,
       holeLeft: false,
       initialPosition: { x: 80, y: 80 },
-      corners: "rounded-b-[32px] md:rounded-none md:rounded-br-[40px]",
+      corners: "rounded-[24px] md:rounded-none md:rounded-br-[40px]",
     },
   ];
 
-  const tabClasses = "absolute w-[64px] h-[64px] md:w-[80px] md:h-[80px] rounded-full z-20 pointer-events-none transition-transform duration-500";
-  const holeClasses = "absolute w-[80px] h-[80px] md:w-[96px] md:h-[96px] bg-white rounded-full z-10 pointer-events-none";
+  const tabClasses = "hidden md:block absolute w-[64px] h-[64px] md:w-[80px] md:h-[80px] rounded-full z-20 pointer-events-none transition-transform duration-500";
+  const holeClasses = "hidden md:block absolute w-[80px] h-[80px] md:w-[96px] md:h-[96px] bg-white rounded-full z-10 pointer-events-none";
 
   return (
     <section className="relative py-4 md:py-6 bg-white overflow-hidden">
       
       {/* Decorative preschool elements */}
       <div className="absolute inset-0 pointer-events-none select-none z-0">
-        <div className="absolute top-[10%] left-[5%] text-orange-200 animate-pulse">
+        <div className="absolute top-[10%] left-[5%] text-orange-200 animate-pulse hidden md:block">
           <Sparkles className="w-10 h-10" />
         </div>
-        <div className="absolute bottom-[15%] left-[8%] text-purple-200 animate-[bounce_3s_infinite]">
+        <div className="absolute bottom-[15%] left-[8%] text-purple-200 animate-[bounce_3s_infinite] hidden md:block">
           <Heart className="w-8 h-8" />
         </div>
-        <div className="absolute top-[15%] right-[8%] text-pink-200 animate-[bounce_4s_infinite]">
+        <div className="absolute top-[15%] right-[8%] text-pink-200 animate-[bounce_4s_infinite] hidden md:block">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M12 2L15 9L22 10L17 15L18 22L12 18L6 22L7 15L2 10L9 9L12 2Z" />
           </svg>
         </div>
-        <div className="absolute bottom-[10%] right-[5%] text-yellow-200 animate-pulse">
+        <div className="absolute bottom-[10%] right-[5%] text-yellow-200 animate-pulse hidden md:block">
           <Sparkles className="w-12 h-12" />
         </div>
         
         {/* New Fun Elements */}
-        <div className="absolute top-[30%] left-[10%] text-blue-300 opacity-60 animate-[bounce_5s_infinite]">
+        <div className="absolute top-[30%] left-[10%] text-blue-300 opacity-60 animate-[bounce_5s_infinite] hidden md:block">
           <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M2 20a10 10 0 0 1 20 0M6 20a6 6 0 0 1 12 0M10 20a2 2 0 0 1 4 0"/></svg>
         </div>
-        <div className="absolute bottom-[40%] right-[10%] text-rose-300 opacity-70 animate-[bounce_4s_infinite]">
+        <div className="absolute bottom-[40%] right-[10%] text-rose-300 opacity-70 animate-[bounce_4s_infinite] hidden md:block">
           <div className="relative">
             <Heart className="w-12 h-12 fill-current" />
             <svg className="absolute top-[42px] left-1/2 -translate-x-1/2 w-4 h-12 text-rose-200" viewBox="0 0 10 30" fill="none" stroke="currentColor"><path d="M5 0 Q 0 10 5 20 T 5 30" strokeWidth="1.5"/></svg>
           </div>
         </div>
-        <div className="absolute top-[50%] left-[4%] text-green-300 opacity-50 pointer-events-none rotate-12 animate-pulse">
+        <div className="absolute top-[50%] left-[4%] text-green-300 opacity-50 pointer-events-none rotate-12 animate-pulse hidden md:block">
           <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="6"/><circle cx="7" cy="7" r="3"/><circle cx="17" cy="7" r="3"/><circle cx="12" cy="13" r="2"/></svg>
         </div>
       </div>
@@ -117,7 +117,7 @@ export default function WhyChooseUs() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="font-baloo text-[var(--color-primary)] text-[22px] sm:text-3xl md:text-4xl lg:text-[40px] leading-tight font-extrabold mb-2 whitespace-nowrap"
+            className="font-baloo text-[var(--color-primary)] text-[22px] sm:text-3xl md:text-4xl lg:text-[40px] leading-tight font-extrabold mb-2"
           >
             Why Parents Love Small Wonders
           </motion.h2>
@@ -134,7 +134,7 @@ export default function WhyChooseUs() {
 
         {/* Puzzle Layout */}
         <div className="relative max-w-4xl mx-auto px-2 sm:px-4 mt-0">
-          <div className="relative grid grid-cols-1 md:grid-cols-2 gap-0">
+          <div className="relative grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-0">
             
             {cards.map((card) => (
               <motion.div 
