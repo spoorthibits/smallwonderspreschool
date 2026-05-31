@@ -1,6 +1,12 @@
 "use client";
 
+import { useState, useRef } from "react";
+
 export default function AboutAimMission() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
+
   const missionPillars = [
     {
       title: "Holistic Development",
@@ -40,6 +46,23 @@ export default function AboutAimMission() {
     },
   ];
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.changedTouches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    touchEndX.current = e.changedTouches[0].clientX;
+    if (touchStartX.current === null || touchEndX.current === null) return;
+    const diff = touchStartX.current - touchEndX.current;
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) {
+        setActiveIndex((prev) => Math.min(prev + 1, missionPillars.length - 1));
+      } else {
+        setActiveIndex((prev) => Math.max(prev - 1, 0));
+      }
+    }
+  };
+
   return (
     <section
       className="w-full py-16 relative overflow-hidden"
@@ -63,13 +86,13 @@ export default function AboutAimMission() {
         {/* Heading */}
         <div className="text-center mb-4">
           <h2
-            className="font-black text-3xl md:text-5xl font-['Baloo_2'] mb-4"
+            className="font-black text-4xl md:text-5xl font-['Baloo_2'] mb-4"
             style={{ color: "var(--color-primary)" }}
           >
             Our Mission
           </h2>
           <p
-            className="text-sm md:text-[17px] font-['Nunito'] max-w-2xl mx-auto leading-relaxed"
+            className="text-base md:text-[17px] font-['Nunito'] max-w-2xl mx-auto leading-relaxed"
             style={{ color: "var(--color-body)" }}
           >
             Empowering Young Minds for a Bright Future
@@ -87,15 +110,94 @@ export default function AboutAimMission() {
         {/* Pillars subheading */}
         <div className="text-center mb-10">
           <h2
-            className="font-black text-3xl md:text-5xl font-['Baloo_2']"
+            className="font-black text-4xl md:text-5xl font-['Baloo_2']"
             style={{ color: "var(--color-secondary)" }}
           >
             Our Pillars of Excellence
           </h2>
         </div>
 
-        {/* 4 Equal Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+        {/* ── MOBILE: Carousel ── */}
+        <div className="block sm:hidden">
+          <div
+            className="relative overflow-hidden"
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+          >
+            {/* Sliding track */}
+            <div
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+            >
+              {missionPillars.map((item, idx) => (
+                <div key={idx} className="min-w-full px-4">
+                  <div
+                    className="flex flex-col p-7 shadow-md border-t-4 mx-auto"
+                    style={{
+                      backgroundColor: item.bg,
+                      borderRadius: "32px",
+                      minHeight: "320px",
+                      borderTopColor: item.border,
+                    }}
+                  >
+                    <h4
+                      className="font-black text-2xl font-['Baloo_2'] leading-snug mb-4 text-center"
+                      style={{ color: item.titleColor }}
+                    >
+                      {item.title}
+                    </h4>
+                    <p
+                      className="text-lg font-['Nunito'] leading-relaxed text-center"
+                      style={{ color: item.textColor }}
+                    >
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Prev / Next arrows */}
+            <button
+              onClick={() => setActiveIndex((prev) => Math.max(prev - 1, 0))}
+              disabled={activeIndex === 0}
+              aria-label="Previous"
+              className="absolute left-0 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 shadow flex items-center justify-center disabled:opacity-30 transition"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1a237e" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+            </button>
+            <button
+              onClick={() => setActiveIndex((prev) => Math.min(prev + 1, missionPillars.length - 1))}
+              disabled={activeIndex === missionPillars.length - 1}
+              aria-label="Next"
+              className="absolute right-0 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 shadow flex items-center justify-center disabled:opacity-30 transition"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1a237e" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Dot indicators */}
+          <div className="flex justify-center gap-2 mt-4">
+            {missionPillars.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setActiveIndex(i)}
+                aria-label={`Go to slide ${i + 1}`}
+                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                  activeIndex === i ? "scale-125" : "opacity-30"
+                }`}
+                style={{ backgroundColor: missionPillars[i].border }}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* ── TABLET & DESKTOP: Grid ── */}
+        <div className="hidden sm:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
           {missionPillars.map((item, idx) => (
             <div
               key={idx}

@@ -31,7 +31,7 @@ export default function GalleryBanner() {
         }
 
         .airplane-anim {
-          offset-path: path('M 160 100 Q 90 30 10 80');
+          offset-path: path('M 140 80 Q 80 20 10 60');
           offset-rotate: auto;
           animation: flyAirplane 2.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
         }
@@ -40,12 +40,24 @@ export default function GalleryBanner() {
         .star-float { animation: floatStar 4s ease-in-out infinite; }
       `}</style>
 
-      {/* Full-width grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 items-stretch">
+      {/* ── MOBILE ONLY: full-width banner image ── */}
+      <div className="block lg:hidden w-full">
+        <Image
+          src="/programsmobile.png"
+          alt="Programmes banner"
+          width={800}
+          height={500}
+          priority
+          className="w-full h-auto object-cover"
+        />
+      </div>
+
+      {/* ── DESKTOP GRID (lg+) ── */}
+      <div className="hidden lg:grid grid-cols-2 items-stretch">
 
         {/* LEFT CONTENT */}
         <div
-          className="relative overflow-visible py-8 md:py-12 lg:py-25 text-center lg:text-left"
+          className="relative overflow-visible py-25 text-left"
           style={{
             paddingLeft: "max(1.5rem, calc((100vw - 1280px) / 2 + 1.5rem))",
             paddingRight: "2rem",
@@ -54,7 +66,7 @@ export default function GalleryBanner() {
 
           {/* 1. Pink Outline Star — top left area, subtle */}
           <div
-            className="hidden lg:block absolute top-[20px] left-[60%] w-8 h-8 text-[#FF7096] star-float z-10 pointer-events-none"
+            className="absolute top-[20px] left-[60%] w-8 h-8 text-[#FF7096] star-float z-10 pointer-events-none"
             style={{ animationDelay: "0.5s" }}
           >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full">
@@ -62,8 +74,8 @@ export default function GalleryBanner() {
             </svg>
           </div>
 
-          {/* 2. Flight Path + Paper Airplane — stays within left column */}
-          <div className="absolute top-[10px] right-[10px] w-[130px] h-[100px] z-20 pointer-events-none overflow-visible hidden lg:block">
+          {/* 2. Flight Path + Paper Airplane */}
+          <div className="absolute top-[10px] right-[10px] w-[130px] h-[100px] z-20 pointer-events-none overflow-visible">
             <svg viewBox="0 0 160 110" className="w-full h-full overflow-visible">
               <defs>
                 <mask id="airplane-path-mask">
@@ -106,9 +118,9 @@ export default function GalleryBanner() {
             </svg>
           </div>
 
-          {/* 3. Yellow Solid Star — near bottom, subtle size */}
+          {/* 3. Yellow Solid Star */}
           <div
-            className="hidden lg:block absolute bottom-[60px] right-[100px] w-4 h-4 text-[#FDB813] fill-[#FDB813] star-float z-10 pointer-events-none"
+            className="absolute bottom-[60px] right-[100px] w-4 h-4 text-[#FDB813] fill-[#FDB813] star-float z-10 pointer-events-none"
             style={{ animationDelay: "1s" }}
           >
             <svg viewBox="0 0 24 24" className="w-full h-full" fill="#FDB813">
@@ -116,9 +128,9 @@ export default function GalleryBanner() {
             </svg>
           </div>
 
-          {/* 4. Green Solid Star — bottom center-ish */}
+          {/* 4. Green Solid Star */}
           <div
-            className="hidden lg:block absolute bottom-[140px] left-[55%] w-5 h-5 star-float z-10 pointer-events-none"
+            className="absolute bottom-[140px] left-[55%] w-5 h-5 star-float z-10 pointer-events-none"
             style={{ animationDelay: "1.5s" }}
           >
             <svg viewBox="0 0 24 24" className="w-full h-full" fill="#4CAF50">
@@ -126,63 +138,43 @@ export default function GalleryBanner() {
             </svg>
           </div>
 
-          {/* 5. Purple Solid Star — bottom left */}
-         
-
-          {/* TEXT CONTENT */}
-
-          {/* Mobile only */}
-          <h1 className="block md:hidden font-extrabold leading-none whitespace-nowrap font-['Baloo_2'] text-[9vw]">
-            <span className="text-[#2E2E2E]">Our Happy </span>
-            <span className="text-[#E06820]">Gallery</span>
+          {/* TEXT CONTENT — desktop only */}
+          <h2 className="text-[#2E2E2E] font-extrabold leading-none text-[52px] font-['Baloo_2']">
+            Our
+          </h2>
+          <h1 className="text-[#E06820] font-extrabold leading-none text-[90px] lg:text-[105px] mt-1 font-['Baloo_2']">
+            Programmes
           </h1>
-
-          {/* Tablet (md) only */}
-          <h1 className="hidden md:block lg:hidden font-extrabold leading-none whitespace-nowrap font-['Baloo_2'] text-[7vw]">
-            <span className="text-[#2E2E2E]">Our Happy </span>
-            <span className="text-[#E06820]">Gallery</span>
-          </h1>
-
-          {/* Desktop only */}
-          <div className="hidden lg:block">
-            <h2 className="text-[#2E2E2E] font-extrabold leading-none text-[52px] font-['Baloo_2']">
-              Our 
-            </h2>
-            <h1 className="text-[#E06820] font-extrabold leading-none text-[90px] lg:text-[105px] mt-1 font-['Baloo_2']">
-              Programmes
-            </h1>
-          </div>
 
           {/* Decorative line */}
-          <div className="flex items-center gap-2 mt-3 mb-4 justify-center lg:justify-start">
+          <div className="flex items-center gap-2 mt-3 mb-4 justify-start">
             <div className="w-32 h-1.5 rounded-full bg-[#E06820]" />
           </div>
 
-          <p className="text-black text-[15px] md:text-[17px] leading-[1.85] font-['Nunito'] max-w-[520px] mx-auto lg:mx-0">
-           Age-appropriate programmes designed to nurture curiosity, creativity and confidence.
-Every activity encourages joyful learning through play and exploration.
-Helping little minds grow, discover and shine every single day.
+          <p className="text-black text-[17px] leading-[1.85] font-['Nunito'] max-w-[520px]">
+            Age-appropriate programmes designed to nurture curiosity, creativity and confidence.
+            Every activity encourages joyful learning through play and exploration.
+            Helping little minds grow, discover and shine every single day.
           </p>
         </div>
 
-        {/* RIGHT IMAGE — bleeds to viewport edge */}
-        <div className="relative min-h-[380px] lg:min-h-[500px]">
-
+        {/* RIGHT IMAGE */}
+        <div className="relative min-h-[500px]">
           {/* Wave blend on left edge */}
-          <div className="hidden lg:block absolute left-0 top-0 h-full w-[1px] z-10 pointer-events-none">
+          <div className="absolute left-0 top-0 h-full w-[1px] z-10 pointer-events-none">
             <svg viewBox="0 0 70 300" preserveAspectRatio="none" className="w-full h-full">
               <path d="M0 0 Q55 150 0 300 L0 0Z" fill="var(--color-offwhite)" />
             </svg>
           </div>
 
-        <Image
-  src="/bannerprogram-2.png"
-  alt="Children learning together"
-  fill
-  priority
-  className="object-cover"
-  style={{ objectPosition: "50% center" }}
-/>
+          <Image
+            src="/bannerprogram-2.png"
+            alt="Children learning together"
+            fill
+            priority
+            className="object-cover"
+            style={{ objectPosition: "50% center" }}
+          />
         </div>
 
       </div>

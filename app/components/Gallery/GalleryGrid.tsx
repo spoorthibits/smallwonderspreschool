@@ -11,7 +11,6 @@ import {
   BookmarkCheck,
 } from "lucide-react";
 
-// Fancybox — imported with type assertion to avoid TS overload errors
 import type { Fancybox as FancyboxType } from "@fancyapps/ui";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
@@ -112,8 +111,11 @@ const filterTabs = [
   { label: "Play Time",    value: "Play Time",    color: "#2563eb" },
 ];
 
+const VISIBLE_MOBILE = 3;
+
 export default function GalleryGrid() {
   const [activeFilter, setActiveFilter] = useState("all");
+  const [expanded, setExpanded] = useState(false);
   const galleryRef = useRef<HTMLDivElement>(null);
 
   const filtered =
@@ -122,28 +124,74 @@ export default function GalleryGrid() {
       : galleryItems.filter((item) => item.category === activeFilter);
 
   useEffect(() => {
-    // Dynamic import avoids SSR issues and TS overload conflicts
     let FB: typeof FancyboxType;
-
     import("@fancyapps/ui").then(({ Fancybox }) => {
       FB = Fancybox;
       FB.bind("[data-fancybox='gallery-grid']");
     });
-
     return () => {
       if (FB) {
         FB.unbind("[data-fancybox='gallery-grid']");
         FB.close();
       }
     };
-  }, [activeFilter]); // rebind whenever filter changes
+  }, [activeFilter]);
+
+  const hiddenCount = filterTabs.length - VISIBLE_MOBILE;
+  const mobileTabs = expanded ? filterTabs : filterTabs.slice(0, VISIBLE_MOBILE);
 
   return (
     <section className="py-11 md:py-10 bg-[var(--offwhite-bg)]">
       <div className="container-custom">
 
-        {/* Filter Tabs */}
-        <div className="bg-white border border-[var(--color-border)] rounded-[28px] px-4 py-5 shadow-sm mb-10">
+        {/* ── MOBILE Filter: single scrollable row with +N ── */}
+        <div className="md:hidden flex items-center gap-2 overflow-x-auto no-scrollbar px-1 py-1 mb-5">
+          {mobileTabs.map((tab) => {
+            const isActive = activeFilter === tab.value;
+            return (
+              <button
+                key={tab.value}
+                onClick={() => setActiveFilter(tab.value)}
+                className="flex-shrink-0 flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold font-['Nunito'] border-2 transition-all duration-200 whitespace-nowrap"
+                style={{
+                  backgroundColor: isActive ? "#2d1a5e" : "#fff",
+                  borderColor: isActive ? "#2d1a5e" : "#e5e7eb",
+                  color: isActive ? "#fff" : "#374151",
+                }}
+              >
+                <span
+                  className="inline-block w-1.5 h-1.5 rounded-full flex-shrink-0"
+                  style={{ backgroundColor: isActive ? "#fff" : tab.color }}
+                />
+                {tab.label}
+              </button>
+            );
+          })}
+
+          {/* +N / Less toggle */}
+          {!expanded ? (
+            <button
+              onClick={() => setExpanded(true)}
+              className="flex-shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold font-['Nunito']
+                         bg-gray-100 text-gray-600 border-2 border-gray-200 whitespace-nowrap
+                         hover:bg-gray-200 transition-all"
+            >
+              +{hiddenCount} more
+            </button>
+          ) : (
+            <button
+              onClick={() => setExpanded(false)}
+              className="flex-shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold font-['Nunito']
+                         bg-gray-100 text-gray-600 border-2 border-gray-200 whitespace-nowrap
+                         hover:bg-gray-200 transition-all"
+            >
+              Less
+            </button>
+          )}
+        </div>
+
+        {/* ── DESKTOP Filter: original layout unchanged ── */}
+        <div className="hidden md:block bg-white border border-[var(--color-border)] rounded-[28px] px-4 py-5 shadow-sm mb-10">
           <div className="flex flex-wrap justify-center gap-3">
             {filterTabs.map((tab) => {
               const isActive = activeFilter === tab.value;
@@ -160,9 +208,7 @@ export default function GalleryGrid() {
                 >
                   <span
                     className="inline-block w-2 h-2 rounded-full flex-shrink-0"
-                    style={{
-                      backgroundColor: isActive ? "#fff" : tab.color,
-                    }}
+                    style={{ backgroundColor: isActive ? "#fff" : tab.color }}
                   />
                   {tab.label}
                 </button>
@@ -170,6 +216,8 @@ export default function GalleryGrid() {
             })}
           </div>
         </div>
+
+        <style>{`a[data-fancybox]{text-decoration:none!important;}`}</style>
 
         {/* Photo Grid */}
         <div
@@ -182,9 +230,8 @@ export default function GalleryGrid() {
               href={item.image}
               data-fancybox="gallery-grid"
               data-caption={item.title}
-              className="relative group block rounded-[14px] overflow-hidden aspect-[4/3] bg-gray-100 cursor-pointer"
+              className="relative group block rounded-[14px] overflow-hidden aspect-[4/3] bg-gray-100 cursor-pointer no-underline decoration-transparent"
             >
-              {/* Image */}
               <Image
                 src={item.image}
                 alt={item.title}
@@ -192,11 +239,7 @@ export default function GalleryGrid() {
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
-
-              {/* Dark overlay */}
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 pointer-events-none" />
-
-              {/* Zoom icon */}
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                 <div className="bg-white/20 backdrop-blur-sm p-4 rounded-full border border-white/40 shadow-lg">
                   <svg

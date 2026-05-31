@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function GalleryBanner() {
   return (
-    <section className="w-full bg-[var(--offwhite-color)] py-8 md:py-12 relative overflow-visible">
+    <section className="w-full bg-[var(--offwhite-color)] py-0 md:py-12 relative overflow-visible">
       <style jsx global>{`
         @keyframes drawPath {
           from { stroke-dashoffset: 350; }
@@ -40,12 +40,25 @@ export default function GalleryBanner() {
         .star-float { animation: floatStar 4s ease-in-out infinite; }
       `}</style>
 
-      <div className="container-custom relative">
+      {/* ── MOBILE ONLY: image replaces all content ── */}
+      <div className="block md:hidden w-full m-0 p-0 max-h-[300px] overflow-hidden">
+        <Image
+          src="/gallerymobile-1.png"
+          alt="Gallery Banner Mobile"
+          width={800}
+          height={600}
+          priority
+          className="w-full h-[300px] object-cover object-top block"
+        />
+      </div>
+
+      {/* ── TABLET + DESKTOP: full layout unchanged ── */}
+      <div className="hidden md:block container-custom relative">
         <div className="bg-[var(--offwhite-color)] rounded-[30px] overflow-visible">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-10 lg:gap-12 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center">
 
             {/* LEFT CONTENT */}
-            <div className="relative overflow-visible pr-2 md:pr-4 text-center lg:text-left">
+            <div className="relative overflow-visible pr-2 md:pr-4 text-center md:text-left">
 
               {/* 1. Pink Outline Star */}
               <div
@@ -58,7 +71,7 @@ export default function GalleryBanner() {
               </div>
 
               {/* 2. Flight Path + Paper Airplane */}
-              <div className="absolute top-[-7px] right-[-50px] lg:right-[-90px] w-[160px] md:w-[220px] h-[140px] md:h-[180px] z-20 pointer-events-none overflow-visible hidden md:block">
+              <div className="absolute top-[-7px] right-[-20px] lg:right-[-90px] md:right-[-50px] w-[120px] md:w-[100px] lg:w-[220px] h-[100px] md:h-[100px] lg:h-[150px] z-20 pointer-events-none overflow-visible hidden md:block">
                 <svg viewBox="0 0 180 140" className="w-full h-full overflow-visible">
                   <defs>
                     <mask id="airplane-path-mask">
@@ -129,49 +142,43 @@ export default function GalleryBanner() {
                 </svg>
               </div>
 
-              {/* TEXT CONTENT */}
-
-              {/* Mobile only: single line scaled to fit */}
-              <h1 className="block md:hidden font-extrabold leading-none whitespace-nowrap font-['Baloo_2'] text-[9vw]">
-                <span className="text-[#2E2E2E]">Our Happy </span>
-                <span className="text-[#E06820]">Gallery</span>
-              </h1>
-
-              {/* Tablet (md) only: single line, large */}
-              <h1 className="hidden md:block lg:hidden font-extrabold leading-none whitespace-nowrap font-['Baloo_2'] text-[7vw]">
-                <span className="text-[#2E2E2E]">Our Happy </span>
-                <span className="text-[#E06820]">Gallery</span>
-              </h1>
-
-              {/* Desktop only: original two-line layout unchanged */}
-              <div className="hidden lg:block">
-                <h2 className="text-[#2E2E2E] font-extrabold leading-none text-[58px] font-['Baloo_2']">
+              {/* Tablet + Desktop: two-line layout, scaled fonts */}
+              <div className="hidden md:block">
+                <style>{`
+                  .gallery-h2 { font-size: 5vw; }
+                  .gallery-h1 { font-size: 9vw; }
+                  @media (min-width: 1024px) {
+                    .gallery-h2 { font-size: 58px; }
+                    .gallery-h1 { font-size: 118px; }
+                  }
+                `}</style>
+                <h2 className="gallery-h2 text-[#2E2E2E] font-extrabold leading-none font-['Baloo_2']">
                   Our Happy
                 </h2>
-                <h1 className="text-[#E06820] font-extrabold leading-none text-[100px] lg:text-[118px] mt-1 font-['Baloo_2']">
+                <h1 className="gallery-h1 text-[#E06820] font-extrabold leading-none font-['Baloo_2'] mt-1">
                   Gallery
                 </h1>
               </div>
 
               {/* Decorative line */}
-              <div className="flex items-center gap-2 mt-4 mb-5 justify-center lg:justify-start">
-                <div className="w-32 md:w-39 h-1.5 rounded-full bg-[#E06820]" />
+              <div className="flex items-center gap-2 mt-3 md:mt-4 mb-4 md:mb-5 justify-center md:justify-start">
+                <div className="w-24 md:w-32 lg:w-39 h-1.5 rounded-full bg-[#E06820]" />
               </div>
 
-              <p className="text-black text-[15px] md:text-[18px] leading-[1.9] font-['Nunito'] max-w-[560px] mx-auto lg:mx-0">
+              <p className="text-black text-[13px] md:text-[14px] lg:text-[18px] leading-[1.9] font-['Nunito'] max-w-[420px] lg:max-w-[560px] mx-auto md:mx-0">
                 A glimpse of joyful moments, exciting activities and beautiful memories created every single day — where little ones learn, laugh, and grow together. Because every little moment is a memory worth keeping forever.
               </p>
             </div>
 
             {/* RIGHT IMAGE */}
-            <div className="flex justify-center lg:justify-end lg:pr-6 mt-4 lg:mt-0">
+            <div className="flex justify-center lg:justify-end lg:pr-6 mt-2 md:mt-0">
               <Image
                 src="/gallerybannerimg.png"
                 alt="Gallery Banner"
                 width={760}
                 height={420}
                 priority
-                className="w-full max-w-[480px] sm:max-w-[580px] md:max-w-[680px] lg:max-w-[760px] h-auto object-contain"
+                className="w-full max-w-[480px] md:max-w-[560px] lg:max-w-[760px] h-auto object-contain"
               />
             </div>
 

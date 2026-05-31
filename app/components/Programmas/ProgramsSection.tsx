@@ -78,13 +78,26 @@ const programs = [
   },
 ];
 
-const VISIBLE_CARDS = 3;
 const GAP = 24; // px gap between cards
+
+/** Returns how many cards to show based on container width */
+function getVisibleCards(containerWidth: number): number {
+  if (containerWidth < 640) return 1;   // mobile
+  if (containerWidth < 1024) return 2;  // tablet
+  return 3;                             // desktop
+}
+
+/** Extra horizontal inset so the single card on mobile isn't edge-to-edge */
+function getSideInset(containerWidth: number): number {
+  if (containerWidth < 640) return 32; // 16px breathing room each side
+  return 0;
+}
 
 export default function ProgramsSection() {
   const trackRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [cardWidth, setCardWidth] = useState(0);
+  const [visibleCards, setVisibleCards] = useState(3);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
@@ -93,18 +106,21 @@ export default function ProgramsSection() {
   // Duplicate items for seamless infinite loop
   const items = [...programs, ...programs];
 
-  const getCardWidth = useCallback(() => {
-    if (!containerRef.current) return 0;
+  const updateLayout = useCallback(() => {
+    if (!containerRef.current) return;
     const containerWidth = containerRef.current.offsetWidth;
-    return (containerWidth - GAP * (VISIBLE_CARDS - 1)) / VISIBLE_CARDS;
+    const visible = getVisibleCards(containerWidth);
+    const inset = getSideInset(containerWidth);
+    const cw = (containerWidth - inset - GAP * (visible - 1)) / visible;
+    setVisibleCards(visible);
+    setCardWidth(cw);
   }, []);
 
   useEffect(() => {
-    const updateWidth = () => setCardWidth(getCardWidth());
-    updateWidth();
-    window.addEventListener("resize", updateWidth);
-    return () => window.removeEventListener("resize", updateWidth);
-  }, [getCardWidth]);
+    updateLayout();
+    window.addEventListener("resize", updateLayout);
+    return () => window.removeEventListener("resize", updateLayout);
+  }, [updateLayout]);
 
   const goToNext = useCallback(() => {
     if (isTransitioning) return;
@@ -112,7 +128,7 @@ export default function ProgramsSection() {
     setCurrentIndex((prev) => prev + 1);
   }, [isTransitioning]);
 
-  // When we reach the cloned section, silently reset
+  // Seamless loop reset
   useEffect(() => {
     if (currentIndex >= programs.length) {
       const timeout = setTimeout(() => {
@@ -135,7 +151,9 @@ export default function ProgramsSection() {
     };
   }, [goToNext, isPaused]);
 
-  const translateX = -(currentIndex * (cardWidth + GAP));
+  // On mobile we subtract half the inset so the card is visually centred
+  const sideInset = visibleCards === 1 ? 16 : 0;
+  const translateX = -(currentIndex * (cardWidth + GAP)) + sideInset;
 
   return (
     <section className="w-full bg-white py-14 md:py-20">
@@ -160,11 +178,18 @@ export default function ProgramsSection() {
 
       {/* Carousel */}
       <div
-        ref={containerRef}
-        className="container-custom overflow-hidden"
+        className="w-full overflow-hidden"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
+        onTouchStart={() => setIsPaused(true)}
+        onTouchEnd={() => setIsPaused(false)}
       >
+        {/* Inner container: centred, with consistent side padding */}
+        <div
+          ref={containerRef}
+          className="mx-auto px-4 sm:px-6 lg:px-8"
+          style={{ maxWidth: "1280px" }}
+        >
         <div
           ref={trackRef}
           className="flex"
@@ -184,6 +209,7 @@ export default function ProgramsSection() {
               <ProgramCard program={program} />
             </div>
           ))}
+        </div>
         </div>
       </div>
 
@@ -233,7 +259,7 @@ function ProgramCard({ program }: { program: (typeof programs)[0] }) {
       className="flex flex-col rounded-2xl overflow-hidden bg-white shadow-md hover:shadow-xl transition-shadow duration-300"
       style={{ border: "1px solid #e8e8f0", minHeight: "480px" }}
     >
-      {/* Image — taller */}
+      {/* Image */}
       <div className="relative w-full flex-shrink-0" style={{ height: "220px" }}>
         <Image
           src={program.image}
@@ -269,7 +295,7 @@ function ProgramCard({ program }: { program: (typeof programs)[0] }) {
           </span>
         </div>
 
-        {/* Description — bigger font */}
+        {/* Description */}
         <p className="text-[#3d3d5c] text-[15px] font-['Nunito'] leading-relaxed flex-1">
           {program.description}
         </p>
