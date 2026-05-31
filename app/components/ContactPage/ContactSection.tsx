@@ -4,7 +4,6 @@ import {
   MapPin,
   Phone,
   Mail,
-  Globe,
   Clock,
   CheckCircle2,
   Loader2,
@@ -47,254 +46,214 @@ export default function ContactSection({
           <span aria-hidden="true" className="pointer-events-none absolute top-0 right-0 w-[3px] rounded-tr-3xl bg-[var(--color-primary)] z-10" style={{ height: "50%" }} />
           <span aria-hidden="true" className="pointer-events-none absolute top-0 right-0 h-[3px] rounded-tr-3xl bg-[var(--color-primary)] z-10" style={{ width: "12%" }} />
 
-        <div className="rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.08)] border border-gray-100 overflow-hidden flex flex-col md:flex-row">
+          <div className="rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.08)] border border-gray-100 overflow-hidden flex flex-col md:flex-row">
 
-          {/* ── LEFT PANEL ── */}
-          <div className="w-full md:w-1/2 bg-gray-50 p-4 sm:p-6 md:p-6 lg:p-10 border-b md:border-b-0 md:border-r border-gray-100 flex flex-col gap-4 md:gap-5 lg:gap-6">
-            <div>
-              <h2 className="text-[#2E2E2E] font-[var(--text-primary)] leading-none text-[18px] font-['Baloo_2']"></h2>
-            </div>
+            {/* ── LEFT PANEL (info + map) ──
+                On mobile: order-2 (shown after form)
+                On md+:    order-1 (left side, unchanged) -->
+            */}
+            <div className="order-2 md:order-1 w-full md:w-1/2 bg-gray-50 p-4 sm:p-6 md:p-6 lg:p-10 border-t md:border-t-0 md:border-r border-gray-100 flex flex-col gap-4 md:gap-5 lg:gap-6">
 
-            {/* Contact cards grid */}
-            <div className="grid grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-3">
-              {/* Phone */}
-              <ContactCard
-                icon={<Phone size={16} />}
-                iconBg="bg-blue-100"
-                iconColor="text-blue-700"
-                label="Phone"
-                content={
-                  <>
-                    96428 05126<br />
-                    80994 22344
-                  </>
-                }
-              />
-              {/* WhatsApp */}
-              <ContactCard
-                icon={<MessageCircle size={16} />}
-                iconBg="bg-green-100"
-                iconColor="text-green-700"
-                label="WhatsApp"
-                content="96428 05126"
-              />
-              {/* Email */}
-              <ContactCard
-                icon={<Mail size={16} />}
-                iconBg="bg-orange-100"
-                iconColor="text-orange-700"
-                label="Email"
-                content={
-                  <a
-                    href="mailto:info@smallwondersplayschool.com"
-                    className="hover:underline break-all"
-                  >
-                    info@smallwonders<wbr />playschool.com
-                  </a>
-                }
-              />
-              {/* Location */}
-              <ContactCard
-                icon={<MapPin size={16} />}
-                iconBg="bg-purple-100"
-                iconColor="text-purple-700"
-                label="Our School"
-                content={
-                  <>
-                    Classic Enclave,<br />
-                    Sainikpuri, Secunderabad
-                  </>
-                }
-              />
-            </div>
-
-            {/* Google Maps embed */}
-            <div className="rounded-xl overflow-hidden border border-gray-200 h-[200px] md:h-[220px] lg:h-[280px]">
-              <iframe
-                title="Small Wonders Preschool and Daycare"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d831.0!2d78.5416865!3d17.4953982!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9b6c46184f53%3A0x27e0d05c65746d25!2sSmall%20Wonders%20preschool%20and%20Daycare!5e0!3m2!1sen!2sin!4v1"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </div>
-
-            {/* Timings */}
-            <div className="flex items-center gap-3 bg-white border border-gray-100 rounded-xl px-3 py-2 md:px-4 md:py-3">
-              <div className="w-8 h-8 md:w-9 md:h-9 rounded-lg bg-green-100 flex items-center justify-center text-green-700 flex-shrink-0">
-                <Clock size={14} />
+              {/* Contact cards — single column on mobile, 2-col on lg */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-3">
+                <ContactCard
+                  icon={<Phone size={15} />}
+                  iconBg="bg-blue-100"
+                  iconColor="text-blue-700"
+                  label="Phone"
+                  content={<>96428 05126 &nbsp;/&nbsp; 80994 22344</>}
+                />
+                <ContactCard
+                  icon={<MessageCircle size={15} />}
+                  iconBg="bg-green-100"
+                  iconColor="text-green-700"
+                  label="WhatsApp"
+                  content="96428 05126"
+                />
+                <ContactCard
+                  icon={<Mail size={15} />}
+                  iconBg="bg-orange-100"
+                  iconColor="text-orange-700"
+                  label="Email"
+                  content={
+                    <a href="mailto:info@smallwondersplayschool.com" className="hover:underline">
+                      info@smallwondersplayschool.com
+                    </a>
+                  }
+                />
+                <ContactCard
+                  icon={<MapPin size={15} />}
+                  iconBg="bg-purple-100"
+                  iconColor="text-purple-700"
+                  label="Our School"
+                  content="Classic Enclave, Sainikpuri, Secunderabad"
+                />
               </div>
-              <div>
-                <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-wide font-nunito">
-                  Timings
-                </p>
-                <p className="text-xs md:text-sm font-semibold text-gray-800 font-nunito">
-                  Mon–Sat &nbsp;·&nbsp; 9:00 AM – 5:00 PM
-                </p>
+
+              {/* Google Maps embed */}
+              <div className="rounded-xl overflow-hidden border border-gray-200 h-[180px] sm:h-[200px] md:h-[220px] lg:h-[280px]">
+                <iframe
+                  title="Small Wonders Preschool and Daycare"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d831.0!2d78.5416865!3d17.4953982!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9b6c46184f53%3A0x27e0d05c65746d25!2sSmall%20Wonders%20preschool%20and%20Daycare!5e0!3m2!1sen!2sin!4v1"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
               </div>
-            </div>
-          </div>
 
-          {/* ── RIGHT PANEL ── */}
-          <div className="w-full md:w-1/2 p-4 sm:p-6 md:p-6 lg:p-10 bg-white">
-            <h2 className="font-baloo text-xl md:text-2xl font-extrabold text-[var(--color-primary)] mb-1">
-              Send Us a Message
-            </h2>
-            <p className="font-nunito text-xs md:text-sm text-[var(--color-body)] mb-4 md:mb-6 leading-relaxed">
-              We'd love to hear from you. Fill in the form and we'll be in touch shortly.
-            </p>
-
-            {isSuccess ? (
-              <div className="flex flex-col items-center justify-center py-16 text-center bg-[var(--color-bg-purple)] rounded-2xl border border-[var(--color-secondary)]/20">
-                <div className="w-20 h-20 rounded-full flex items-center justify-center mb-6 animate-bounce bg-white shadow-md text-[var(--color-secondary)]">
-                  <CheckCircle2 className="w-12 h-12" />
+              {/* Timings */}
+              <div className="flex items-center gap-3 bg-white border border-gray-100 rounded-xl px-4 py-3">
+                <div className="w-9 h-9 rounded-lg bg-green-100 flex items-center justify-center text-green-700 flex-shrink-0">
+                  <Clock size={14} />
                 </div>
-                <h3 className="text-2xl font-baloo font-extrabold text-[var(--color-dark)] mb-3">
-                  Message Sent Successfully!
-                </h3>
-                <p className="text-base text-[var(--color-body)] max-w-md leading-relaxed font-nunito">
-                  Thank you, <strong>{formData.parentName}</strong>. Your message has been received.
-                  Our team will get back to you at <strong>{formData.email}</strong> shortly.
-                </p>
+                <div>
+                  <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-wide font-nunito">
+                    Timings
+                  </p>
+                  <p className="text-xs md:text-sm font-semibold text-gray-800 font-nunito">
+                    Mon–Sat &nbsp;·&nbsp; 9:00 AM – 5:00 PM
+                  </p>
+                </div>
               </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="flex flex-col gap-3 md:gap-4">
+            </div>
 
-                {/* Row 1: Parent name + Child name */}
-                <div className="grid grid-cols-2 gap-3 md:gap-4">
-                  <FormField
-                    id="parentName"
-                    label="Parent's Name"
-                    required
-                    error={errors.parentName}
-                  >
+            {/* ── RIGHT PANEL (form) ──
+                On mobile: order-1 (shown first)
+                On md+:    order-2 (right side, unchanged) -->
+            */}
+            <div className="order-1 md:order-2 w-full md:w-1/2 p-4 sm:p-6 md:p-6 lg:p-10 bg-white">
+              <h2 className="font-baloo text-xl md:text-2xl font-extrabold text-[var(--color-primary)] mb-1">
+                Send Us a Message
+              </h2>
+              <p className="font-nunito text-xs md:text-sm text-[var(--color-body)] mb-4 md:mb-6 leading-relaxed">
+                We'd love to hear from you. Fill in the form and we'll be in touch shortly.
+              </p>
+
+              {isSuccess ? (
+                <div className="flex flex-col items-center justify-center py-12 text-center bg-[var(--color-bg-purple)] rounded-2xl border border-[var(--color-secondary)]/20">
+                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center mb-4 md:mb-6 animate-bounce bg-white shadow-md text-[var(--color-secondary)]">
+                    <CheckCircle2 className="w-10 h-10 md:w-12 md:h-12" />
+                  </div>
+                  <h3 className="text-xl md:text-2xl font-baloo font-extrabold text-[var(--color-dark)] mb-2 md:mb-3">
+                    Message Sent Successfully!
+                  </h3>
+                  <p className="text-sm md:text-base text-[var(--color-body)] max-w-md leading-relaxed font-nunito px-4">
+                    Thank you, <strong>{formData.parentName}</strong>. Your message has been received.
+                    Our team will get back to you at <strong>{formData.email}</strong> shortly.
+                  </p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="flex flex-col gap-3 md:gap-4">
+
+                  {/* Row 1: Parent name + Child name */}
+                  <div className="grid grid-cols-2 gap-3 md:gap-4">
+                    <FormField id="parentName" label="Parent's Name" required error={errors.parentName}>
+                      <input
+                        type="text"
+                        id="parentName"
+                        name="parentName"
+                        value={formData.parentName}
+                        onChange={handleChange}
+                        placeholder="Your full name"
+                        className={inputClass(!!errors.parentName)}
+                      />
+                    </FormField>
+                    <FormField id="childAge" label="Child's Name" required error={errors.childName}>
+                      <input
+                        type="text"
+                        id="childAge"
+                        name="childAge"
+                        value={formData.childAge}
+                        onChange={handleChange}
+                        placeholder="Child's name"
+                        className={inputClass(!!errors.childName)}
+                      />
+                    </FormField>
+                  </div>
+
+                  {/* Row 2: Email + Phone */}
+                  <div className="grid grid-cols-2 gap-3 md:gap-4">
+                    <FormField id="email" label="Email Address" required error={errors.email}>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        placeholder="you@example.com"
+                        className={inputClass(!!errors.email)}
+                      />
+                    </FormField>
+                    <FormField id="phone" label="Phone Number" required error={errors.phone}>
+                      <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        placeholder="+91 00000 00000"
+                        className={inputClass(!!errors.phone)}
+                      />
+                    </FormField>
+                  </div>
+
+                  {/* Subject */}
+                  <FormField id="subject" label="Subject">
                     <input
                       type="text"
-                      id="parentName"
-                      name="parentName"
-                      value={formData.parentName}
-                      onChange={handleChange}
-                      placeholder="Your full name"
-                      className={inputClass(!!errors.parentName)}
+                      id="subject"
+                      name="subject"
+                      placeholder="e.g. Admissions enquiry"
+                      className={inputClass(false)}
                     />
                   </FormField>
 
-                  <FormField
-                    id="childAge"
-                    label="Child's Name"
-                    required
-                    error={errors.childName}
-                  >
-                    <input
-                      type="text"
-                      id="childAge"
-                      name="childAge"
-                      value={formData.childAge}
+                  {/* Message */}
+                  <FormField id="message" label="Message" required error={errors.message}>
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
                       onChange={handleChange}
-                      placeholder="Child's name"
-                      className={inputClass(!!errors.childName)}
-                    />
-                  </FormField>
-                </div>
-
-                {/* Row 2: Email + Phone */}
-                <div className="grid grid-cols-2 gap-3 md:gap-4">
-                  <FormField
-                    id="email"
-                    label="Email Address"
-                    required
-                    error={errors.email}
-                  >
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="you@example.com"
-                      className={inputClass(!!errors.email)}
+                      placeholder="Type your message here…"
+                      rows={4}
+                      className={`w-full p-3 md:p-4 bg-gray-50 border rounded-xl text-sm font-medium transition-all outline-none focus:bg-white focus:border-[var(--color-secondary)] focus:ring-2 focus:ring-[var(--color-secondary)]/20 resize-none ${
+                        errors.message ? "border-red-500" : "border-gray-200"
+                      }`}
                     />
                   </FormField>
 
-                  <FormField
-                    id="phone"
-                    label="Phone Number"
-                    required
-                    error={errors.phone}
-                  >
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      placeholder="+91 00000 00000"
-                      className={inputClass(!!errors.phone)}
-                    />
-                  </FormField>
-                </div>
+                  {/* Submit */}
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mt-1">
+                    <p className="text-xs text-gray-400 font-nunito"></p>
+                    <Button
+                      type="submit"
+                      variant="secondary"
+                      size="lg"
+                      disabled={isSubmitting}
+                      className="w-full sm:w-auto h-11 md:h-12 px-8 md:px-10 shadow-md font-bold tracking-wide"
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="w-5 h-5 animate-spin mr-2" />
+                          Sending…
+                        </>
+                      ) : (
+                        <>
+                          Send Now
+                          <Send className="w-4 h-4 ml-2" />
+                        </>
+                      )}
+                    </Button>
+                  </div>
+                </form>
+              )}
+            </div>
 
-                {/* Subject (full width) */}
-                <FormField id="subject" label="Subject">
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    placeholder="e.g. Admissions enquiry"
-                    className={inputClass(false)}
-                  />
-                </FormField>
-
-                {/* Message */}
-                <FormField
-                  id="message"
-                  label="Message"
-                  required
-                  error={errors.message}
-                >
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Type your message here…"
-                    rows={4}
-                    className={`w-full p-3 md:p-4 bg-gray-50 border rounded-xl text-sm font-medium transition-all outline-none focus:bg-white focus:border-[var(--color-secondary)] focus:ring-2 focus:ring-[var(--color-secondary)]/20 resize-none ${
-                      errors.message ? "border-red-500" : "border-gray-200"
-                    }`}
-                  />
-                </FormField>
-
-                {/* Footer row */}
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mt-1">
-                  <p className="text-xs text-gray-400 font-nunito"></p>
-                  <Button
-                    type="submit"
-                    variant="secondary"
-                    size="lg"
-                    disabled={isSubmitting}
-                    className="w-full sm:w-auto h-11 md:h-12 px-8 md:px-10 shadow-md font-bold tracking-wide"
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <Loader2 className="w-5 h-5 animate-spin mr-2" />
-                        Sending…
-                      </>
-                    ) : (
-                      <>
-                        Send Now
-                        <Send className="w-4 h-4 ml-2" />
-                      </>
-                    )}
-                  </Button>
-                </div>
-              </form>
-            )}
           </div>
-        </div>
         </div>
       </div>
     </section>
@@ -329,9 +288,7 @@ function FormField({
         {required && <span className="text-red-500 ml-0.5">*</span>}
       </label>
       {children}
-      {error && (
-        <span className="text-xs text-red-500 font-semibold">{error}</span>
-      )}
+      {error && <span className="text-xs text-red-500 font-semibold">{error}</span>}
     </div>
   );
 }
@@ -350,17 +307,15 @@ function ContactCard({
   content: React.ReactNode;
 }) {
   return (
-    <div className="flex items-center gap-3 bg-white border border-gray-100 rounded-xl p-2.5 md:p-3 hover:shadow-sm transition-shadow">
-      <div
-        className={`w-8 h-8 md:w-8 md:h-8 rounded-lg flex items-center justify-center flex-shrink-0 ${iconBg} ${iconColor}`}
-      >
+    <div className="flex items-center gap-3 bg-white border border-gray-100 rounded-xl p-3 hover:shadow-sm transition-shadow">
+      <div className={`w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 ${iconBg} ${iconColor}`}>
         {icon}
       </div>
       <div className="min-w-0">
-        <p className="text-[9px] font-semibold text-gray-400 uppercase tracking-wide font-nunito">
+        <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-wide font-nunito">
           {label}
         </p>
-        <p className="text-[11px] md:text-[11px] lg:text-xs font-semibold text-gray-800 font-nunito leading-snug mt-0.5">
+        <p className="text-xs font-semibold text-gray-800 font-nunito leading-snug mt-0.5 break-words">
           {content}
         </p>
       </div>
