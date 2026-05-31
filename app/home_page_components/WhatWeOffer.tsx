@@ -17,83 +17,21 @@ interface Programme {
   badgeColor: string;
 }
 
-// 10 Fun Floating Elements (Each used exactly once)
+// 2 Fun Floating Elements (Top-Left & Bottom-Right)
 const FunElements = () => (
   <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
     {/* 1. Shape 3 (Top Left) */}
-    <motion.div animate={{ rotate: 360, scale: [1, 1.1, 1] }} transition={{ duration: 25, repeat: Infinity, ease: "linear" }} className="absolute top-8 left-8 opacity-90 w-16 h-16 hidden md:block">
+    <motion.div animate={{ rotate: 360, scale: [1, 1.1, 1] }} transition={{ duration: 25, repeat: Infinity, ease: "linear" }} className="absolute top-12 left-10 lg:top-16 lg:left-16 opacity-90 w-16 h-16 hidden md:block">
       <Image src="/slider_shape03.png" alt="shape" fill className="object-contain" />
     </motion.div>
 
-    {/* 2. Shape 1 (Top Right) */}
-    <motion.div animate={{ y: [-10, 10, -10], rotate: [0, 15, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute top-12 right-10 opacity-80 w-14 h-14 hidden md:block">
-      <Image src="/slider_shape01.png" alt="shape" fill className="object-contain" />
-    </motion.div>
-
-    {/* 3. Shape 2 (Bottom Left Edge) */}
-    <motion.div animate={{ x: [-15, 15, -15], rotate: [0, -15, 0] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-12 left-10 opacity-80 w-20 h-20 hidden md:block">
-      <Image src="/slider_shape02.png" alt="shape" fill className="object-contain" />
-    </motion.div>
-
-    {/* 4. Rainbow (Top Center-ish safe zone) */}
-    <motion.div animate={{ scale: [1, 1.05, 1], rotate: [-2, 2, -2] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute top-6 left-1/3 opacity-90 hidden md:block">
+    {/* 2. Rainbow (Bottom Right Edge) */}
+    <motion.div animate={{ scale: [1, 1.05, 1], rotate: [-2, 2, -2] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-16 right-10 lg:bottom-24 lg:right-16 opacity-90 hidden md:block">
       <svg width="70" height="35" viewBox="0 0 100 50">
         <path d="M 10 50 A 40 40 0 0 1 90 50" stroke="#FF5252" strokeWidth="6" fill="none" strokeLinecap="round" />
         <path d="M 20 50 A 30 30 0 0 1 80 50" stroke="#FF9800" strokeWidth="6" fill="none" strokeLinecap="round" />
         <path d="M 30 50 A 20 20 0 0 1 70 50" stroke="#4CAF50" strokeWidth="6" fill="none" strokeLinecap="round" />
         <path d="M 40 50 A 10 10 0 0 1 60 50" stroke="#03A9F4" strokeWidth="6" fill="none" strokeLinecap="round" />
-      </svg>
-    </motion.div>
-
-    {/* 5. Toy Block (Mid Left Edge) */}
-    <motion.div animate={{ rotate: [-10, 10, -10], y: [-5, 5, -5] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute top-[45%] left-6 opacity-90 hidden lg:block">
-      <svg width="50" height="50" viewBox="0 0 100 100">
-        <rect x="20" y="20" width="60" height="60" fill="#FFCA28" stroke="#FF6F00" strokeWidth="5" rx="6" strokeLinejoin="round" />
-        <rect x="28" y="28" width="44" height="44" fill="none" stroke="#FF6F00" strokeWidth="3" rx="3" strokeLinejoin="round" />
-        <text x="50" y="65" fontSize="42" fontFamily="'Comic Sans MS', cursive, sans-serif" fill="#FF6F00" textAnchor="middle" fontWeight="bold">A</text>
-      </svg>
-    </motion.div>
-
-    {/* 6. Crayon (Mid Right Edge) */}
-    <motion.div animate={{ rotate: [40, 50, 40], scale: [0.9, 1.1, 0.9] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="absolute top-[50%] right-6 opacity-90 hidden md:block">
-      <svg width="60" height="60" viewBox="0 0 100 100" style={{ transform: 'rotate(45deg)' }}>
-        <path d="M 30 20 L 70 20 L 70 80 L 30 80 Z" fill="#F44336" stroke="#B71C1C" strokeWidth="5" strokeLinejoin="round" />
-        <path d="M 30 20 L 50 5 L 70 20 Z" fill="#F44336" stroke="#B71C1C" strokeWidth="5" strokeLinejoin="round" />
-        <path d="M 30 35 L 70 35 M 30 65 L 70 65" stroke="#B71C1C" strokeWidth="5" strokeLinecap="round" />
-      </svg>
-    </motion.div>
-
-    {/* 7. Kite (Bottom Right Edge) */}
-    <motion.div animate={{ y: [-15, 15, -15], rotate: [-5, 5, -5] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-16 right-10 opacity-90 hidden md:block">
-      <svg width="60" height="90" viewBox="0 0 100 150">
-        <path d="M 50 10 L 90 40 L 50 90 L 10 40 Z" fill="#4CAF50" stroke="#2E7D32" strokeWidth="5" strokeLinejoin="round" />
-        <path d="M 10 40 L 90 40 M 50 10 L 50 90" stroke="#2E7D32" strokeWidth="4" strokeLinecap="round" />
-        <path d="M 50 90 Q 60 110 45 125 T 60 150" fill="none" stroke="#607D8B" strokeWidth="4" strokeLinecap="round" />
-        <path d="M 45 110 L 60 115 L 45 120 Z" fill="#FF5252" stroke="#D32F2F" strokeWidth="2" strokeLinejoin="round" />
-      </svg>
-    </motion.div>
-
-    {/* 8. Star 1 (Top area, right of center) */}
-    <motion.div animate={{ scale: [1, 1.2, 1], rotate: [-5, 5, -5] }} transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }} className="absolute top-20 right-1/4 opacity-80 hidden md:block">
-      <svg width="35" height="35" viewBox="0 0 100 100">
-        <path d="M 50 10 L 61 39 L 92 39 L 66 57 L 76 87 L 50 69 L 24 87 L 34 57 L 8 39 L 39 39 Z" fill="#FFEB3B" stroke="#FBC02D" strokeWidth="5" strokeLinejoin="round" />
-      </svg>
-    </motion.div>
-
-    {/* 9. Sun (Bottom area, right of center) */}
-    <motion.div animate={{ rotate: 360 }} transition={{ duration: 40, repeat: Infinity, ease: "linear" }} className="absolute bottom-10 right-1/3 opacity-80 hidden md:block">
-      <svg width="45" height="45" viewBox="0 0 100 100">
-        <circle cx="50" cy="50" r="22" fill="#FFD54F" />
-        <path d="M50 5 L50 20 M50 80 L50 95 M5 50 L20 50 M80 50 L95 50 M18 18 L28 28 M72 72 L82 82 M18 82 L28 72 M72 18 L82 28" stroke="#FFD54F" strokeWidth="6" strokeLinecap="round" />
-      </svg>
-    </motion.div>
-
-    {/* 10. Balloon (Bottom Center-Left safe zone) */}
-    <motion.div animate={{ y: [-10, 5, -10], x: [5, -5, 5] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-8 left-1/3 opacity-80 hidden md:block">
-      <svg width="40" height="80" viewBox="0 0 100 200">
-        <ellipse cx="50" cy="50" rx="35" ry="45" fill="#2196F3" stroke="#1976D2" strokeWidth="4" />
-        <path d="M 45 95 L 55 95 L 50 105 Z" fill="#2196F3" stroke="#1976D2" strokeWidth="4" strokeLinejoin="round" />
-        <path d="M 50 105 Q 60 130 40 160 T 50 190" fill="none" stroke="#9E9E9E" strokeWidth="3" strokeLinecap="round" />
       </svg>
     </motion.div>
   </div>
@@ -237,7 +175,7 @@ export default function WhatWeOffer() {
       </div>
 
       {/* Desktop Layout (Hidden on Tablet/Mobile) */}
-      <div className="hidden lg:flex relative justify-between items-start max-w-6xl mx-auto w-full px-10 pb-8">
+      <div className="hidden lg:flex relative justify-between items-start container-custom w-full pb-8">
         
         {/* Wavy Water Line Container */}
         <div className="absolute top-[40px] left-0 w-full h-[150px] z-0 pointer-events-none">

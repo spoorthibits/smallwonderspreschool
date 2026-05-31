@@ -110,7 +110,7 @@ export default function WhyChooseUs() {
       <div className="container-custom relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-4xl mx-auto mb-2 md:mb-4 px-4">
+        <div className="text-center max-w-3xl mx-auto mb-2 md:mb-4 px-4">
 
           <motion.h2 
             initial={{ opacity: 0, y: 15 }}
@@ -133,8 +133,8 @@ export default function WhyChooseUs() {
         </div>
 
         {/* Puzzle Layout */}
-        <div className="relative max-w-4xl mx-auto px-2 sm:px-4 mt-0">
-          <div className="relative grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-0">
+        <div className="relative w-full max-w-6xl mx-auto mt-0">
+          <div className="relative grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-0">
             
             {cards.map((card) => (
               <motion.div 
