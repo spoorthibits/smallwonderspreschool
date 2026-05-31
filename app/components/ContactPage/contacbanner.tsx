@@ -41,14 +41,14 @@ export default function ContactBanner() {
       `}</style>
 
       {/* ── MOBILE ONLY ── */}
-      <div className="block md:hidden w-full m-0 p-0">
+      <div className="block md:hidden w-full m-0 p-0 max-h-[300px] overflow-hidden">
         <Image
-          src="/contactmobilebanner.png"
+          src="/contactmobile-1.png"
           alt="Contact Banner Mobile"
           width={800}
           height={600}
           priority
-          className="w-full h-auto object-cover block"
+          className="w-full h-[300px] object-cover object-top block"
         />
       </div>
 
