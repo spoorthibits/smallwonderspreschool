@@ -49,17 +49,17 @@ export default function Testimonials() {
   };
 
   return (
-    <section className="relative py-6 md:py-10 bg-[#FCFAEF] overflow-hidden flex flex-col justify-center min-h-0">
+    <section className="relative py-6 md:py-10 bg-[var(--color-bg-yellow)] overflow-hidden flex flex-col justify-center min-h-0">
       
       {/* Decorative Background Elements */}
       <div className="absolute inset-0 pointer-events-none select-none overflow-hidden z-0">
-        <div className="absolute top-[10%] left-[5%] text-orange-400 rotate-12 opacity-60">
+        <div className="absolute top-[10%] left-[5%] text-[var(--color-primary)] rotate-12 opacity-60 hidden md:block">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
         </div>
-        <div className="absolute top-[20%] right-[10%] text-pink-400 -rotate-12 opacity-60">
+        <div className="absolute top-[20%] right-[10%] text-pink-400 -rotate-12 opacity-60 hidden md:block">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
         </div>
-        <div className="absolute bottom-[15%] left-[8%] text-purple-300 opacity-40">
+        <div className="absolute bottom-[15%] left-[8%] text-[var(--color-secondary)] opacity-40 hidden md:block">
           <svg width="60" height="60" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="4 4"><path d="M10,50 Q30,10 50,50 T90,50" /></svg>
         </div>
       </div>
@@ -69,12 +69,12 @@ export default function Testimonials() {
         {/* Section Header */}
         <div className="text-center mb-6 md:mb-8">
           <div className="inline-block relative">
-            <h2 className="font-baloo text-orange-500 text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight tracking-wide mb-2">
+            <h2 className="font-baloo text-[var(--color-primary)] text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight tracking-wide mb-2">
               What Parents Say
             </h2>
             {/* Title Sparkles */}
-            <svg className="absolute -top-3 -left-6 text-orange-400 w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15 9L22 10L17 15L18 22L12 18L6 22L7 15L2 10L9 9L12 2Z" /></svg>
-            <svg className="absolute -top-1 -right-8 text-orange-400 w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15 9L22 10L17 15L18 22L12 18L6 22L7 15L2 10L9 9L12 2Z" /></svg>
+            <svg className="absolute -top-3 -left-6 text-[var(--color-primary)] w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15 9L22 10L17 15L18 22L12 18L6 22L7 15L2 10L9 9L12 2Z" /></svg>
+            <svg className="absolute -top-1 -right-8 text-[var(--color-primary)] w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15 9L22 10L17 15L18 22L12 18L6 22L7 15L2 10L9 9L12 2Z" /></svg>
           </div>
           <p className="font-nunito text-[14px] md:text-[16px] text-slate-500 font-bold max-w-xl mx-auto">
             Real experiences from our wonderful parent community
@@ -130,7 +130,7 @@ export default function Testimonials() {
           <button 
             onClick={() => scrollByAmount('left')}
             disabled={!canScrollLeft}
-            className={`absolute left-0 top-1/2 -translate-y-1/2 -ml-2 md:-ml-5 lg:-ml-8 w-10 h-10 bg-white rounded-full shadow-md border border-gray-100 flex items-center justify-center text-purple-600 transition-all duration-300 z-10 ${canScrollLeft ? 'opacity-100 hover:bg-purple-50 hover:scale-105' : 'opacity-0 pointer-events-none'}`}
+            className={`absolute left-0 top-1/2 -translate-y-1/2 -ml-2 md:-ml-5 lg:-ml-8 w-10 h-10 bg-white rounded-full shadow-md border border-gray-100 hidden md:flex items-center justify-center text-[var(--color-secondary)] transition-all duration-300 z-10 ${canScrollLeft ? 'opacity-100 hover:bg-purple-50 hover:scale-105' : 'opacity-0 pointer-events-none'}`}
             aria-label="Previous Reviews"
           >
             <ChevronLeft className="w-5 h-5" />
@@ -139,7 +139,7 @@ export default function Testimonials() {
           <button 
             onClick={() => scrollByAmount('right')}
             disabled={!canScrollRight}
-            className={`absolute right-0 top-1/2 -translate-y-1/2 -mr-2 md:-mr-5 lg:-mr-8 w-10 h-10 bg-white rounded-full shadow-md border border-gray-100 flex items-center justify-center text-purple-600 transition-all duration-300 z-10 ${canScrollRight ? 'opacity-100 hover:bg-purple-50 hover:scale-105' : 'opacity-0 pointer-events-none'}`}
+            className={`absolute right-0 top-1/2 -translate-y-1/2 -mr-2 md:-mr-5 lg:-mr-8 w-10 h-10 bg-white rounded-full shadow-md border border-gray-100 hidden md:flex items-center justify-center text-[var(--color-secondary)] transition-all duration-300 z-10 ${canScrollRight ? 'opacity-100 hover:bg-purple-50 hover:scale-105' : 'opacity-0 pointer-events-none'}`}
             aria-label="Next Reviews"
           >
             <ChevronRight className="w-5 h-5" />
@@ -171,12 +171,12 @@ export default function Testimonials() {
         {/* View All Reviews Button */}
         <div className="flex justify-center mt-6 md:mt-8">
           <a 
-            href="#" 
+            href="https://www.justdial.com/Hyderabad/Small-Wonders-International-Play-School-Beside-SAI-Baba-Temple-HiTension-Wire-Road-Sainikpuri/040PXX40-XX40-120424145234-N5N2_BZDET/reviews" 
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 border-2 border-purple-600 text-purple-600 px-6 py-2 md:py-2.5 rounded-full font-baloo font-bold text-[14px] md:text-[15px] hover:bg-purple-600 hover:text-white transition-all duration-300 shadow-sm"
+            className="inline-flex items-center gap-2 border-2 border-[var(--color-secondary)] text-[var(--color-secondary)] px-6 py-2 md:py-2.5 rounded-full font-baloo font-bold text-[14px] md:text-[15px] hover:bg-[var(--color-secondary)] hover:text-white transition-all duration-300 shadow-sm"
           >
-            View All Reviews on Google
+            View All Reviews
             <ExternalLink className="w-3.5 h-3.5" />
           </a>
         </div>

@@ -81,7 +81,7 @@ export default function WelcomePreschool() {
   return (
     <section 
       onMouseMove={handleMouseMove}
-      className="relative py-6 md:py-4 bg-white overflow-hidden"
+      className="relative py-8 md:py-8 lg:py-12 bg-white overflow-hidden"
       style={{
         backgroundImage: "url('/bgimg.webp')",
         backgroundSize: "auto",
@@ -128,7 +128,7 @@ export default function WelcomePreschool() {
       </motion.div>
 
       <div className="container-custom relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 lg:gap-16 items-center">
           
           {/* ── Left Column: Slide-up Splash Animation ── */}
           <div className="lg:col-span-6 relative flex justify-center items-center py-6 md:py-10 min-h-[300px]">
@@ -235,7 +235,7 @@ export default function WelcomePreschool() {
               size="lg"
               icon={<ArrowRight className="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1" />}
               iconPosition="right"
-              className="group hover:-translate-y-1 transition-all shadow-md bg-purple-600 hover:bg-purple-700 rounded-full px-8"
+              className="group hover:-translate-y-1 transition-all shadow-md bg-[var(--color-secondary)] hover:opacity-90 rounded-full px-8"
               onClick={() => router.push("/about")}
             />
           </div>

@@ -169,34 +169,13 @@ export default function AdmissionsForm({ type, onClose, onSubmitSuccess }: Admis
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-5 pt-2">
-      {/* Form Header Info Banner */}
-      <div className={`p-4 rounded-xl border border-dashed flex items-start gap-3 ${isVisit ? "bg-[var(--color-bg-purple)] border-[var(--color-secondary)]/30" : "bg-[var(--color-bg-yellow)] border-[var(--color-primary)]/30"}`}>
-        <div className="mt-0.5">
-          {isVisit ? (
-            <Calendar className="w-5 h-5 text-[var(--color-secondary)]" />
-          ) : (
-            <GraduationCap className="w-5 h-5 text-[var(--color-primary)]" />
-          )}
-        </div>
-        <div className="flex-1 text-left">
-          <p className="text-xs font-bold font-baloo text-[var(--color-dark)]">
-            {isVisit ? "SCHOOL TOUR BOOKING" : "PRE-ADMISSION ENROLLMENT"}
-          </p>
-          <p className="text-[11px] text-[var(--color-muted)] leading-normal mt-0.5">
-            {isVisit 
-              ? "Fill out this form to schedule a personal campus tour with our academic counselor." 
-              : "Submit your details to start the simple step-by-step admissions process for your little one."}
-          </p>
-        </div>
-      </div>
-
+    <form onSubmit={handleSubmit} className="flex flex-col gap-3 pt-1">
       {/* Grid container for fields */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="flex flex-col gap-2.5">
         {/* Parent Name */}
         <div className="flex flex-col text-left">
-          <label htmlFor="parentName" className="text-xs font-bold text-[var(--color-dark)] mb-1.5 flex items-center gap-1.5">
-            <User className="w-3.5 h-3.5" style={{ color: themeColor }} /> Parent Name <span className="text-[var(--color-accent-red)]">*</span>
+          <label htmlFor="parentName" className="text-[11px] font-bold text-[var(--color-dark)] mb-1 flex items-center gap-1">
+            <User className="w-3 h-3" style={{ color: themeColor }} /> Parent Name <span className="text-[var(--color-accent-red)]">*</span>
           </label>
           <div className="relative">
             <input
@@ -206,11 +185,11 @@ export default function AdmissionsForm({ type, onClose, onSubmitSuccess }: Admis
               value={formData.parentName}
               onChange={handleChange}
               placeholder="e.g. John Doe"
-              className={`w-full h-11 pl-4 pr-4 bg-white border border-[var(--color-border)] rounded-xl text-sm font-medium transition-all outline-none ${focusBorderColorClass} ${errors.parentName ? "border-[var(--color-accent-red)]" : "hover:border-zinc-300"}`}
+              className={`w-full h-9 pl-3 pr-3 bg-white border border-[var(--color-border)] rounded-lg text-xs font-medium transition-all outline-none ${focusBorderColorClass} ${errors.parentName ? "border-[var(--color-accent-red)]" : "hover:border-zinc-300"}`}
             />
           </div>
           {errors.parentName && (
-            <span className="text-[11px] text-[var(--color-accent-red)] font-semibold mt-1">
+            <span className="text-[10px] text-[var(--color-accent-red)] font-semibold mt-0.5">
               {errors.parentName}
             </span>
           )}
@@ -218,8 +197,8 @@ export default function AdmissionsForm({ type, onClose, onSubmitSuccess }: Admis
 
         {/* Phone Number */}
         <div className="flex flex-col text-left">
-          <label htmlFor="phone" className="text-xs font-bold text-[var(--color-dark)] mb-1.5 flex items-center gap-1.5">
-            <Phone className="w-3.5 h-3.5" style={{ color: themeColor }} /> Phone No. <span className="text-[var(--color-accent-red)]">*</span>
+          <label htmlFor="phone" className="text-[11px] font-bold text-[var(--color-dark)] mb-1 flex items-center gap-1">
+            <Phone className="w-3 h-3" style={{ color: themeColor }} /> Phone No. <span className="text-[var(--color-accent-red)]">*</span>
           </label>
           <div className="relative">
             <input
@@ -229,20 +208,20 @@ export default function AdmissionsForm({ type, onClose, onSubmitSuccess }: Admis
               value={formData.phone}
               onChange={handleChange}
               placeholder="e.g. +91 98765 43210"
-              className={`w-full h-11 pl-4 pr-4 bg-white border border-[var(--color-border)] rounded-xl text-sm font-medium transition-all outline-none ${focusBorderColorClass} ${errors.phone ? "border-[var(--color-accent-red)]" : "hover:border-zinc-300"}`}
+              className={`w-full h-9 pl-3 pr-3 bg-white border border-[var(--color-border)] rounded-lg text-xs font-medium transition-all outline-none ${focusBorderColorClass} ${errors.phone ? "border-[var(--color-accent-red)]" : "hover:border-zinc-300"}`}
             />
           </div>
           {errors.phone && (
-            <span className="text-[11px] text-[var(--color-accent-red)] font-semibold mt-1">
+            <span className="text-[10px] text-[var(--color-accent-red)] font-semibold mt-0.5">
               {errors.phone}
             </span>
           )}
         </div>
 
         {/* Email Address */}
-        <div className="flex flex-col text-left md:col-span-2">
-          <label htmlFor="email" className="text-xs font-bold text-[var(--color-dark)] mb-1.5 flex items-center gap-1.5">
-            <Mail className="w-3.5 h-3.5" style={{ color: themeColor }} /> Email <span className="text-[var(--color-accent-red)]">*</span>
+        <div className="flex flex-col text-left">
+          <label htmlFor="email" className="text-[11px] font-bold text-[var(--color-dark)] mb-1 flex items-center gap-1">
+            <Mail className="w-3 h-3" style={{ color: themeColor }} /> Email <span className="text-[var(--color-accent-red)]">*</span>
           </label>
           <div className="relative">
             <input
@@ -252,11 +231,11 @@ export default function AdmissionsForm({ type, onClose, onSubmitSuccess }: Admis
               value={formData.email}
               onChange={handleChange}
               placeholder="e.g. parent@example.com"
-              className={`w-full h-11 pl-4 pr-4 bg-white border border-[var(--color-border)] rounded-xl text-sm font-medium transition-all outline-none ${focusBorderColorClass} ${errors.email ? "border-[var(--color-accent-red)]" : "hover:border-zinc-300"}`}
+              className={`w-full h-9 pl-3 pr-3 bg-white border border-[var(--color-border)] rounded-lg text-xs font-medium transition-all outline-none ${focusBorderColorClass} ${errors.email ? "border-[var(--color-accent-red)]" : "hover:border-zinc-300"}`}
             />
           </div>
           {errors.email && (
-            <span className="text-[11px] text-[var(--color-accent-red)] font-semibold mt-1">
+            <span className="text-[10px] text-[var(--color-accent-red)] font-semibold mt-0.5">
               {errors.email}
             </span>
           )}
@@ -265,8 +244,8 @@ export default function AdmissionsForm({ type, onClose, onSubmitSuccess }: Admis
         {/* Apply Now specific fields */}
         {!isVisit && (
           <div className="flex flex-col text-left">
-            <label htmlFor="childName" className="text-xs font-bold text-[var(--color-dark)] mb-1.5 flex items-center gap-1.5">
-              <Baby className="w-3.5 h-3.5" style={{ color: themeColor }} /> Child Name <span className="text-[var(--color-accent-red)]">*</span>
+            <label htmlFor="childName" className="text-[11px] font-bold text-[var(--color-dark)] mb-1 flex items-center gap-1">
+              <Baby className="w-3 h-3" style={{ color: themeColor }} /> Child Name <span className="text-[var(--color-accent-red)]">*</span>
             </label>
             <div className="relative">
               <input
@@ -276,11 +255,11 @@ export default function AdmissionsForm({ type, onClose, onSubmitSuccess }: Admis
                 value={formData.childName}
                 onChange={handleChange}
                 placeholder="e.g. Lily Doe"
-                className={`w-full h-11 pl-4 pr-4 bg-white border border-[var(--color-border)] rounded-xl text-sm font-medium transition-all outline-none ${focusBorderColorClass} ${errors.childName ? "border-[var(--color-accent-red)]" : "hover:border-zinc-300"}`}
+                className={`w-full h-9 pl-3 pr-3 bg-white border border-[var(--color-border)] rounded-lg text-xs font-medium transition-all outline-none ${focusBorderColorClass} ${errors.childName ? "border-[var(--color-accent-red)]" : "hover:border-zinc-300"}`}
               />
             </div>
             {errors.childName && (
-              <span className="text-[11px] text-[var(--color-accent-red)] font-semibold mt-1">
+              <span className="text-[10px] text-[var(--color-accent-red)] font-semibold mt-0.5">
                 {errors.childName}
               </span>
             )}
@@ -289,8 +268,8 @@ export default function AdmissionsForm({ type, onClose, onSubmitSuccess }: Admis
 
         {/* Child Age */}
         <div className="flex flex-col text-left">
-          <label htmlFor="childAge" className="text-xs font-bold text-[var(--color-dark)] mb-1.5 flex items-center gap-1.5">
-            <Baby className="w-3.5 h-3.5" style={{ color: themeColor }} /> Child Age <span className="text-[var(--color-accent-red)]">*</span>
+          <label htmlFor="childAge" className="text-[11px] font-bold text-[var(--color-dark)] mb-1 flex items-center gap-1">
+            <Baby className="w-3 h-3" style={{ color: themeColor }} /> Child Age <span className="text-[var(--color-accent-red)]">*</span>
           </label>
           <div className="relative">
             <input
@@ -303,11 +282,11 @@ export default function AdmissionsForm({ type, onClose, onSubmitSuccess }: Admis
               value={formData.childAge}
               onChange={handleChange}
               placeholder="e.g. 3.5"
-              className={`w-full h-11 pl-4 pr-4 bg-white border border-[var(--color-border)] rounded-xl text-sm font-medium transition-all outline-none ${focusBorderColorClass} ${errors.childAge ? "border-[var(--color-accent-red)]" : "hover:border-zinc-300"}`}
+              className={`w-full h-9 pl-3 pr-3 bg-white border border-[var(--color-border)] rounded-lg text-xs font-medium transition-all outline-none ${focusBorderColorClass} ${errors.childAge ? "border-[var(--color-accent-red)]" : "hover:border-zinc-300"}`}
             />
           </div>
           {errors.childAge && (
-            <span className="text-[11px] text-[var(--color-accent-red)] font-semibold mt-1">
+            <span className="text-[10px] text-[var(--color-accent-red)] font-semibold mt-0.5">
               {errors.childAge}
             </span>
           )}
@@ -318,8 +297,8 @@ export default function AdmissionsForm({ type, onClose, onSubmitSuccess }: Admis
           <>
             {/* Preferred Date */}
             <div className="flex flex-col text-left">
-              <label htmlFor="date" className="text-xs font-bold text-[var(--color-dark)] mb-1.5 flex items-center gap-1.5">
-                <Calendar className="w-3.5 h-3.5" style={{ color: themeColor }} /> Preferred Date <span className="text-[var(--color-accent-red)]">*</span>
+              <label htmlFor="date" className="text-[11px] font-bold text-[var(--color-dark)] mb-1 flex items-center gap-1">
+                <Calendar className="w-3 h-3" style={{ color: themeColor }} /> Preferred Date <span className="text-[var(--color-accent-red)]">*</span>
               </label>
               <div className="relative">
                 <input
@@ -329,11 +308,11 @@ export default function AdmissionsForm({ type, onClose, onSubmitSuccess }: Admis
                   value={formData.date}
                   onChange={handleChange}
                   min={new Date().toISOString().split("T")[0]}
-                  className={`w-full h-11 pl-4 pr-4 bg-white border border-[var(--color-border)] rounded-xl text-sm font-medium transition-all outline-none ${focusBorderColorClass} ${errors.date ? "border-[var(--color-accent-red)]" : "hover:border-zinc-300"}`}
+                  className={`w-full h-9 pl-3 pr-3 bg-white border border-[var(--color-border)] rounded-lg text-xs font-medium transition-all outline-none ${focusBorderColorClass} ${errors.date ? "border-[var(--color-accent-red)]" : "hover:border-zinc-300"}`}
                 />
               </div>
               {errors.date && (
-                <span className="text-[11px] text-[var(--color-accent-red)] font-semibold mt-1">
+                <span className="text-[10px] text-[var(--color-accent-red)] font-semibold mt-0.5">
                   {errors.date}
                 </span>
               )}
@@ -341,8 +320,8 @@ export default function AdmissionsForm({ type, onClose, onSubmitSuccess }: Admis
 
             {/* Preferred Time */}
             <div className="flex flex-col text-left">
-              <label htmlFor="time" className="text-xs font-bold text-[var(--color-dark)] mb-1.5 flex items-center gap-1.5">
-                <Clock className="w-3.5 h-3.5" style={{ color: themeColor }} /> Preferred Time <span className="text-[var(--color-accent-red)]">*</span>
+              <label htmlFor="time" className="text-[11px] font-bold text-[var(--color-dark)] mb-1 flex items-center gap-1">
+                <Clock className="w-3 h-3" style={{ color: themeColor }} /> Preferred Time <span className="text-[var(--color-accent-red)]">*</span>
               </label>
               <div className="relative">
                 <input
@@ -351,11 +330,11 @@ export default function AdmissionsForm({ type, onClose, onSubmitSuccess }: Admis
                   name="time"
                   value={formData.time}
                   onChange={handleChange}
-                  className={`w-full h-11 pl-4 pr-4 bg-white border border-[var(--color-border)] rounded-xl text-sm font-medium transition-all outline-none ${focusBorderColorClass} ${errors.time ? "border-[var(--color-accent-red)]" : "hover:border-zinc-300"}`}
+                  className={`w-full h-9 pl-3 pr-3 bg-white border border-[var(--color-border)] rounded-lg text-xs font-medium transition-all outline-none ${focusBorderColorClass} ${errors.time ? "border-[var(--color-accent-red)]" : "hover:border-zinc-300"}`}
                 />
               </div>
               {errors.time && (
-                <span className="text-[11px] text-[var(--color-accent-red)] font-semibold mt-1">
+                <span className="text-[10px] text-[var(--color-accent-red)] font-semibold mt-0.5">
                   {errors.time}
                 </span>
               )}
@@ -365,9 +344,9 @@ export default function AdmissionsForm({ type, onClose, onSubmitSuccess }: Admis
 
         {/* Apply Now Grade Dropdown */}
         {!isVisit && (
-          <div className="flex flex-col text-left md:col-span-2">
-            <label htmlFor="grade" className="text-xs font-bold text-[var(--color-dark)] mb-1.5 flex items-center gap-1.5">
-              <GraduationCap className="w-3.5 h-3.5" style={{ color: themeColor }} /> Grade / Program <span className="text-[var(--color-accent-red)]">*</span>
+          <div className="flex flex-col text-left">
+            <label htmlFor="grade" className="text-[11px] font-bold text-[var(--color-dark)] mb-1 flex items-center gap-1">
+              <GraduationCap className="w-3 h-3" style={{ color: themeColor }} /> Grade / Program <span className="text-[var(--color-accent-red)]">*</span>
             </label>
             <div className="relative">
               <select
@@ -375,7 +354,7 @@ export default function AdmissionsForm({ type, onClose, onSubmitSuccess }: Admis
                 name="grade"
                 value={formData.grade}
                 onChange={handleChange}
-                className={`w-full h-11 pl-4 pr-10 bg-white border border-[var(--color-border)] rounded-xl text-sm font-medium transition-all outline-none appearance-none cursor-pointer ${focusBorderColorClass} ${errors.grade ? "border-[var(--color-accent-red)]" : "hover:border-zinc-300"}`}
+                className={`w-full h-9 pl-3 pr-8 bg-white border border-[var(--color-border)] rounded-lg text-xs font-medium transition-all outline-none appearance-none cursor-pointer ${focusBorderColorClass} ${errors.grade ? "border-[var(--color-accent-red)]" : "hover:border-zinc-300"}`}
               >
                 <option value="">Select Grade</option>
                 {gradeOptions.map((opt) => (
@@ -385,14 +364,14 @@ export default function AdmissionsForm({ type, onClose, onSubmitSuccess }: Admis
                 ))}
               </select>
               {/* Custom arrow icon for select */}
-              <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none text-zinc-400">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none text-zinc-400">
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                 </svg>
               </div>
             </div>
             {errors.grade && (
-              <span className="text-[11px] text-[var(--color-accent-red)] font-semibold mt-1">
+              <span className="text-[10px] text-[var(--color-accent-red)] font-semibold mt-0.5">
                 {errors.grade}
               </span>
             )}
@@ -401,19 +380,19 @@ export default function AdmissionsForm({ type, onClose, onSubmitSuccess }: Admis
       </div>
 
       {/* Form Submission Button & Cancellation */}
-      <div className="flex flex-col sm:flex-row items-center gap-3 mt-4">
+      <div className="flex flex-col sm:flex-row items-center gap-2 mt-2">
         <Button
           type="submit"
           variant={buttonVariant}
-          size="md"
+          size="sm"
           fullWidth
           disabled={isSubmitting}
-          className="h-12 shadow-md flex items-center justify-center font-bold tracking-wide"
+          className="h-10 shadow-md flex items-center justify-center font-bold tracking-wide"
         >
           {isSubmitting ? (
             <>
-              <Loader2 className="w-5 h-5 animate-spin mr-2" />
-              Submitting Request...
+              <Loader2 className="w-4 h-4 animate-spin mr-2" />
+              Submitting...
             </>
           ) : (
             isVisit ? "Schedule Visit" : "Submit Application"
@@ -423,7 +402,7 @@ export default function AdmissionsForm({ type, onClose, onSubmitSuccess }: Admis
           type="button"
           onClick={onClose}
           disabled={isSubmitting}
-          className="w-full sm:w-auto h-12 px-6 rounded-full border border-zinc-200 text-sm font-semibold text-zinc-500 hover:bg-zinc-50 transition-colors cursor-pointer"
+          className="w-full sm:w-auto h-10 px-5 rounded-lg border border-zinc-200 text-xs font-semibold text-zinc-500 hover:bg-zinc-50 transition-colors cursor-pointer"
         >
           Cancel
         </button>

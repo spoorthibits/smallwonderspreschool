@@ -55,7 +55,7 @@ export default function AdmissionsModal() {
 
       {/* Modal Dialog Card */}
       <div
-        className={`relative bg-white w-full max-w-2xl rounded-3xl shadow-[0_24px_64px_rgba(0,0,0,0.18)] overflow-hidden border border-zinc-100 z-10 transition-all duration-300 ${
+        className={`relative bg-white w-full max-w-[420px] rounded-2xl shadow-[0_24px_64px_rgba(0,0,0,0.18)] overflow-hidden border border-zinc-100 z-10 transition-all duration-300 ${
           animate ? "scale-100 translate-y-0 opacity-100" : "scale-95 translate-y-8 opacity-0"
         }`}
       >
@@ -71,48 +71,48 @@ export default function AdmissionsModal() {
           type="button"
           onClick={closeModal}
           aria-label="Close modal"
-          className="absolute top-5 right-5 w-8 h-8 rounded-full bg-zinc-100 text-zinc-500 hover:bg-zinc-200 hover:text-zinc-800 flex items-center justify-center transition-colors cursor-pointer z-20"
+          className="absolute top-4 right-4 w-7 h-7 rounded-full bg-zinc-100 text-zinc-500 hover:bg-zinc-200 hover:text-zinc-800 flex items-center justify-center transition-colors cursor-pointer z-20"
         >
-          <X className="w-4 h-4" />
+          <X className="w-3.5 h-3.5" />
         </button>
 
         {/* Modal Header */}
-        <div className="p-6 md:p-8 pb-4 text-left relative overflow-hidden">
+        <div className="p-5 pb-2 text-left relative overflow-hidden">
           {/* Subtle background glow depending on type */}
           <div 
-            className={`absolute top-0 left-0 w-48 h-48 rounded-full filter blur-3xl opacity-20 pointer-events-none -translate-x-12 -translate-y-12 transition-colors duration-300 ${
+            className={`absolute top-0 left-0 w-32 h-32 rounded-full filter blur-3xl opacity-20 pointer-events-none -translate-x-8 -translate-y-8 transition-colors duration-300 ${
               isVisit ? "bg-[var(--color-secondary)]" : "bg-[var(--color-primary)]"
             }`}
           />
 
           <div className="relative flex flex-col items-start">
             {/* Header Icon */}
-            <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-4 transition-colors duration-300 ${
+            <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-3 transition-colors duration-300 ${
               isVisit ? "bg-[var(--color-bg-purple)] text-[var(--color-secondary)]" : "bg-[var(--color-bg-yellow)] text-[var(--color-primary)]"
             }`}>
               {isVisit ? (
-                <School className="w-6 h-6" />
+                <School className="w-5 h-5" />
               ) : (
-                <Sparkles className="w-6 h-6" />
+                <Sparkles className="w-5 h-5" />
               )}
             </div>
 
             {/* Modal Title */}
-            <h2 id="modal-title" className="text-2xl md:text-3xl font-baloo font-extrabold text-[var(--color-dark)] leading-tight">
+            <h2 id="modal-title" className="text-xl md:text-2xl font-baloo font-extrabold text-[var(--color-dark)] leading-tight">
               {isVisit ? "Book a School Tour" : "Apply for Admission"}
             </h2>
             
             {/* Modal Subtitle */}
-            <p className="text-sm font-medium text-[var(--color-muted)] font-nunito mt-1.5 leading-relaxed max-w-lg">
+            <p className="text-xs font-medium text-[var(--color-muted)] font-nunito mt-1 leading-relaxed">
               {isVisit 
-                ? "Experience our classrooms first-hand, meet our caring educators, and explore our learning environments." 
-                : "Give your child the gift of a playful, nurturing education. Begin your admission request below."}
+                ? "Experience our classrooms first-hand and meet our educators." 
+                : "Give your child a playful education. Begin your request below."}
             </p>
           </div>
         </div>
 
         {/* Modal Scrollable Body */}
-        <div className="px-6 md:px-8 pb-8 pt-2 max-h-[calc(100vh-200px)] overflow-y-auto">
+        <div className="px-5 pb-5 pt-1 overflow-y-auto max-h-[85vh]">
           <AdmissionsForm
             type={modalType}
             onClose={closeModal}
