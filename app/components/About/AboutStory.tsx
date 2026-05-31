@@ -25,11 +25,11 @@ export default function AboutStory() {
     },
   ];
 
-  const handleTouchStart = (e) => {
+  const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.changedTouches[0].clientX;
   };
 
-  const handleTouchEnd = (e) => {
+  const handleTouchEnd = (e: React.TouchEvent) => {
     touchEndX.current = e.changedTouches[0].clientX;
     if (touchStartX.current === null || touchEndX.current === null) return;
     const diff = touchStartX.current - touchEndX.current;
@@ -106,10 +106,10 @@ export default function AboutStory() {
                   {leaders.map((leader, i) => (
                     <div
                       key={i}
-                      className="min-w-full px-8"
+                      className="min-w-full px-4"
                     >
-                      <div className="flex flex-col bg-white/80 backdrop-blur-sm shadow-md overflow-hidden mx-auto max-w-[300px]">
-                        <div className="aspect-[4/4] relative w-full overflow-hidden bg-zinc-100">
+                      <div className="flex flex-col bg-white/80 backdrop-blur-sm shadow-md overflow-hidden mx-auto max-w-[360px]">
+                        <div className="aspect-[4/5] relative w-full overflow-hidden bg-zinc-100">
                           <Image
                             src={leader.src}
                             alt={leader.alt}
