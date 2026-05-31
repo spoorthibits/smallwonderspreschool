@@ -16,7 +16,7 @@ export default function Home() {
       {/* Home Page Section 2: Banner Section (Hero Carousel & Stats Bar) */}
       <HomeBanner />
       {/* <HeroBanner /> */}
-
+      <WavyActivityTicker/>
       {/* Home Page Section 4: Welcome to Preschool Section */}
       <WelcomePreschool />
 

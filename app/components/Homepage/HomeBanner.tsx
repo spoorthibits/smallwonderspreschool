@@ -68,7 +68,7 @@ export default function HomeBanner() {
       </div>
 
       {/* Wave at bottom */}
-      <div className="absolute -bottom-6 left-0 w-full z-10">
+      <div className="absolute -bottom-9 left-0 w-full z-10">
         {/* Down Arrow centered above wave */}
         <div className="absolute top-17 left-80 -translate-x-1/2 z-20">
           <Image
@@ -82,8 +82,8 @@ export default function HomeBanner() {
         <Image
           src="/wavehome.png"
           alt="wave"
-          width={1900}
-          height={80}
+          width={1500}
+          height={50}
           className="w-full h-auto block"
         />
         </div>
