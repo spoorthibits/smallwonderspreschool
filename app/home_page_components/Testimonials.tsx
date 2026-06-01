@@ -31,7 +31,7 @@ export default function Testimonials() {
     (direction: "left" | "right") => {
       if (scrollRef.current) {
         const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-        const cardWidth = 320 + 24; // card width + gap
+        const cardWidth = 320 + 24;
         const atEnd = Math.ceil(scrollLeft + clientWidth) >= scrollWidth - 10;
 
         if (direction === "right" && atEnd) {
@@ -96,7 +96,7 @@ export default function Testimonials() {
         </div>
       </div>
 
-      <div className="container-custom relative z-10 w-full max-w-[1400px] mx-auto px-4 md:px-8">
+      <div className="container-custom relative z-10 w-full max-w-[1400px] mx-auto px-4 md:px-12 lg:px-16">
 
         {/* Section Header */}
         <div className="text-center mb-4 md:mb-5">
@@ -132,8 +132,8 @@ export default function Testimonials() {
             {reviewsData.map((review, idx) => (
               <div
                 key={idx}
-                className="bg-white rounded-[20px] p-4 md:p-5 flex-shrink-0 w-[270px] sm:w-[300px] md:w-[320px] shadow-[0_4px_20px_rgb(0,0,0,0.04)] border border-gray-50 flex flex-col snap-center hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-shadow duration-300"
-                style={{ minHeight: "200px", maxHeight: "290px" }}
+                className="bg-white rounded-[20px] p-4 md:p-5 flex-shrink-0 w-[270px] sm:w-[300px] md:w-[320px] shadow-[0_4px_20px_rgb(0,0,0,0.04)] border border-gray-50 flex flex-col snap-center hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] transition-shadow duration-300 overflow-hidden"
+                style={{ minHeight: "200px", height: "290px" }}
               >
                 {/* Stars & Quote Icon */}
                 <div className="flex justify-between items-start mb-2">
@@ -149,10 +149,10 @@ export default function Testimonials() {
 
                 {/* Review Text */}
                 <div className="flex-grow mb-3 pr-1">
-  <p className="font-nunito text-[12px] md:text-[13px] text-slate-600 leading-relaxed italic line-clamp-6 md:line-clamp-none">
-    {review.text}
-  </p>
-</div>
+                  <p className="font-nunito text-[12px] md:text-[13px] text-slate-600 leading-relaxed italic line-clamp-5">
+                    {review.text}
+                  </p>
+                </div>
 
                 <hr className="border-t border-gray-100 mb-2" />
 
@@ -167,7 +167,7 @@ export default function Testimonials() {
           <button
             onClick={() => { pauseAutoScroll(); scrollByAmount("left"); }}
             disabled={!canScrollLeft}
-            className={`absolute left-0 top-1/2 -translate-y-1/2 -ml-2 md:-ml-5 lg:-ml-8 w-9 h-9 bg-white rounded-full shadow-md border border-gray-100 hidden md:flex items-center justify-center text-[var(--color-secondary)] transition-all duration-300 z-10 ${
+            className={`absolute left-0 top-1/2 -translate-y-1/2 -ml-2 md:-ml-4 w-9 h-9 bg-white rounded-full shadow-md border border-gray-100 hidden md:flex items-center justify-center text-[var(--color-secondary)] transition-all duration-300 z-10 ${
               canScrollLeft ? "opacity-100 hover:bg-purple-50 hover:scale-105" : "opacity-0 pointer-events-none"
             }`}
             aria-label="Previous Reviews"
@@ -178,7 +178,7 @@ export default function Testimonials() {
           {/* Right Arrow */}
           <button
             onClick={() => { pauseAutoScroll(); scrollByAmount("right"); }}
-            className={`absolute right-0 top-1/2 -translate-y-1/2 -mr-2 md:-mr-5 lg:-mr-8 w-9 h-9 bg-white rounded-full shadow-md border border-gray-100 hidden md:flex items-center justify-center text-[var(--color-secondary)] transition-all duration-300 z-10 ${
+            className={`absolute right-0 top-1/2 -translate-y-1/2 -mr-2 md:-mr-4 w-9 h-9 bg-white rounded-full shadow-md border border-gray-100 hidden md:flex items-center justify-center text-[var(--color-secondary)] transition-all duration-300 z-10 ${
               canScrollRight ? "opacity-100 hover:bg-purple-50 hover:scale-105" : "opacity-0 pointer-events-none"
             }`}
             aria-label="Next Reviews"
@@ -211,9 +211,6 @@ export default function Testimonials() {
             ))}
           </div>
         )}
-
-        {/* View All Reviews */}
-        
 
       </div>
 

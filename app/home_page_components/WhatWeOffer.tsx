@@ -127,18 +127,18 @@ export default function WhatWeOffer() {
       <div className="absolute inset-0 bg-white/45 z-0 pointer-events-none" />
       <FunElements />
 
-      {/* Header — tighter on desktop only */}
+      {/* Header */}
       <div className="container-custom relative z-10 w-full mb-4 lg:mb-3 text-center px-4">
-        <h2 className="font-baloo text-[#E06820] text-4xl sm:text-6xl lg:text-[50px] leading-tight font-extrabold mb-2 lg:mb-2">
+        <h2 className="font-baloo text-[#E06820] text-4xl md:text-3xl lg:text-[50px] leading-tight font-extrabold mb-2">
           Our Programs
         </h2>
-        <p className="font-nunito text-[16px] sm:text-[18px] text-gray-700 italic max-w-xl mx-auto">
+        <p className="font-nunito text-[16px] md:text-[14px] lg:text-[18px] text-gray-700 italic max-w-xl mx-auto">
           Where learning feels like an adventure
         </p>
       </div>
 
-      {/* Desktop Layout */}
-      <div className="hidden lg:flex relative justify-between items-start container-custom w-full pb-4">
+      {/* Desktop & Tablet Layout */}
+      <div className="hidden md:flex relative justify-between items-start container-custom w-full pb-4">
 
         {/* Wavy Water Line */}
         <div className="absolute top-[35px] left-0 w-full h-[130px] z-0 pointer-events-none">
@@ -168,14 +168,14 @@ export default function WhatWeOffer() {
           </svg>
         </div>
 
-        {/* Programme Cards — desktop only spacing tightened */}
+        {/* Programme Cards */}
         {programmes.map((prog) => (
-          <div key={prog.id} className="relative z-10 flex flex-col items-center w-1/3 px-4">
+          <div key={prog.id} className="relative z-10 flex flex-col items-center w-1/3 px-2 md:px-2 lg:px-4">
 
-            {/* Circle image — smaller bottom margin on desktop */}
-            <div className="relative w-60 h-60 rounded-full border-[6px] border-white shadow-xl mb-5 bg-white flex items-center justify-center transition-transform duration-300 hover:scale-105">
+            {/* Circle image */}
+            <div className="relative w-44 h-44 md:w-44 md:h-44 lg:w-60 lg:h-60 rounded-full border-[6px] border-white shadow-xl mb-5 bg-white flex items-center justify-center transition-transform duration-300 hover:scale-105">
               <Image src={prog.image} fill className="object-cover rounded-full p-1.5" alt={prog.title} />
-              <div className={`absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap text-white text-[13px] font-extrabold py-1.5 px-5 rounded-full shadow-lg ${prog.badgeColor}`}>
+              <div className={`absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap text-white md:text-[10px] lg:text-[13px] font-extrabold md:py-1 md:px-3 lg:py-1.5 lg:px-5 rounded-full shadow-lg ${prog.badgeColor}`}>
                 {prog.badge}
               </div>
             </div>
@@ -185,7 +185,7 @@ export default function WhatWeOffer() {
                 className="mt-1 mb-1 flex flex-col items-center cursor-pointer group/nep"
                 onClick={() => setIsVideoOpen(true)}
               >
-                <h3 className="text-[26px] font-extrabold text-[var(--color-secondary)] font-baloo text-center leading-tight group-hover/nep:text-[var(--color-primary)] group-hover/nep:underline decoration-2 underline-offset-4 transition-all">
+                <h3 className="md:text-[16px] lg:text-[26px] font-extrabold text-[var(--color-secondary)] font-baloo text-center leading-tight group-hover/nep:text-[var(--color-primary)] group-hover/nep:underline decoration-2 underline-offset-4 transition-all">
                   {prog.title}
                 </h3>
                 <span className="text-xs text-[var(--color-primary)] font-bold font-nunito opacity-0 group-hover/nep:opacity-100 transition-opacity mt-0.5">
@@ -193,12 +193,12 @@ export default function WhatWeOffer() {
                 </span>
               </div>
             ) : (
-              <h3 className="text-[26px] font-extrabold text-[var(--color-secondary)] font-baloo mt-1 mb-1 text-center leading-tight">
+              <h3 className="md:text-[16px] lg:text-[26px] font-extrabold text-[var(--color-secondary)] font-baloo mt-1 mb-1 text-center leading-tight">
                 {prog.title}
               </h3>
             )}
 
-            <p className="text-[14px] text-gray-700 font-nunito text-center mb-2 leading-relaxed max-w-[260px] font-medium">
+            <p className="md:text-[11px] lg:text-[14px] text-gray-700 font-nunito text-center mb-2 leading-relaxed md:max-w-[180px] lg:max-w-[260px] font-medium">
               {prog.description}
             </p>
 
@@ -206,28 +206,28 @@ export default function WhatWeOffer() {
         ))}
       </div>
 
-      {/* Tablet & Mobile Layout — unchanged */}
-      <div className="lg:hidden flex flex-col gap-1 w-full max-w-4xl mx-auto px-3 relative z-10">
+      {/* Mobile Layout only */}
+      <div className="md:hidden flex flex-col gap-1 w-full max-w-4xl mx-auto px-3 relative z-10">
         {programmes.map((prog, idx) => {
           const isEven = idx % 2 === 0;
           const flexDirection = isEven ? 'md:flex-row-reverse' : 'md:flex-row';
           return (
-            <div key={prog.id} className={`flex flex-col md:flex-row items-center gap-6 md:gap-4 lg:gap-10 ${flexDirection}`}>
-              <div className="w-full md:w-1/2 flex justify-center">
-                <div className="relative w-72 h-72 md:w-80 md:h-80 rounded-full border-[8px] border-white shadow-xl bg-white transition-transform duration-300 hover:scale-105">
+            <div key={prog.id} className={`flex flex-col items-center gap-6 ${flexDirection}`}>
+              <div className="w-full flex justify-center">
+                <div className="relative w-72 h-72 rounded-full border-[8px] border-white shadow-xl bg-white transition-transform duration-300 hover:scale-105">
                   <Image src={prog.image} fill className="object-cover rounded-full p-1.5" alt={prog.title} />
-                  <div className={`absolute -bottom-4 md:-bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap text-white text-[13px] md:text-[17px] font-extrabold py-1.5 px-5 md:py-2 md:px-8 rounded-full shadow-lg ${prog.badgeColor}`}>
+                  <div className={`absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap text-white text-[13px] font-extrabold py-1.5 px-5 rounded-full shadow-lg ${prog.badgeColor}`}>
                     {prog.badge}
                   </div>
                 </div>
               </div>
-              <div className="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left pt-4 md:pt-0">
+              <div className="w-full flex flex-col items-center text-center pt-4">
                 {prog.title === "NEP Curriculum" ? (
                   <div
-                    className="mb-3 flex flex-col items-center md:items-start cursor-pointer group/nep"
+                    className="mb-3 flex flex-col items-center cursor-pointer group/nep"
                     onClick={() => setIsVideoOpen(true)}
                   >
-                    <h3 className="text-3xl md:text-[40px] font-extrabold text-[var(--color-secondary)] font-baloo leading-tight group-hover/nep:text-[var(--color-primary)] group-hover/nep:underline decoration-2 underline-offset-4 transition-all">
+                    <h3 className="text-3xl font-extrabold text-[var(--color-secondary)] font-baloo leading-tight group-hover/nep:text-[var(--color-primary)] group-hover/nep:underline decoration-2 underline-offset-4 transition-all">
                       {prog.title}
                     </h3>
                     <span className="text-sm text-[var(--color-primary)] font-bold font-nunito opacity-0 group-hover/nep:opacity-100 transition-opacity mt-1">
@@ -235,14 +235,13 @@ export default function WhatWeOffer() {
                     </span>
                   </div>
                 ) : (
-                  <h3 className="text-3xl md:text-[40px] font-extrabold text-[var(--color-secondary)] font-baloo mb-3 leading-tight">
+                  <h3 className="text-3xl font-extrabold text-[var(--color-secondary)] font-baloo mb-3 leading-tight">
                     {prog.title}
                   </h3>
                 )}
-                <p className="text-[16px] md:text-[17px] text-gray-700 font-nunito mb-8 leading-relaxed max-w-sm font-medium">
+                <p className="text-[16px] text-gray-700 font-nunito mb-8 leading-relaxed max-w-sm font-medium">
                   {prog.description}
                 </p>
-                
               </div>
             </div>
           );
