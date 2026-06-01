@@ -391,7 +391,7 @@ export default function AboutProgramsScroll() {
 
             {/* Left Column / Details Card */}
             <div className="flex-1 bg-[#f5f0ed]/60 backdrop-blur-sm border border-[var(--color-border)] rounded-[28px] p-6 md:p-7 shadow-sm flex flex-col justify-between">
-              
+
               <div key={active} className="flex flex-col">
                 <span
                   className="w-fit font-bold text-[10px] md:text-xs uppercase tracking-wider font-['Nunito'] px-3 py-1 rounded-full border mb-3 animate-fade-in-up"
@@ -438,9 +438,8 @@ export default function AboutProgramsScroll() {
                     <button
                       key={prog.id}
                       onClick={() => handleDotClick(idx)}
-                      className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                        idx === active ? "w-6" : "w-1.5"
-                      }`}
+                      className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${idx === active ? "w-6" : "w-1.5"
+                        }`}
                       style={{
                         backgroundColor: idx === active ? prog.themeColor : "#d4c8c2",
                       }}
@@ -505,10 +504,10 @@ export default function AboutProgramsScroll() {
 
         {/* ── MOBILE LAYOUT (width < 640px) ── */}
         <div className="block sm:hidden relative px-6 select-none overflow-visible">
-          
+
           {/* Card Slider Window */}
           <div className="overflow-hidden w-full rounded-[28px] shadow-lg border border-gray-100 bg-white">
-            
+
             {/* Slider Track */}
             <div
               className="flex transition-transform duration-500 ease-out"
@@ -516,7 +515,7 @@ export default function AboutProgramsScroll() {
             >
               {programs.map((prog, idx) => (
                 <div key={prog.id} className="w-full flex-shrink-0 flex flex-col bg-white">
-                  
+
                   {/* 1. Full-bleed Image */}
                   <div className="relative w-full aspect-[16/10] bg-zinc-50 border-b border-gray-100">
                     <Image
@@ -531,7 +530,7 @@ export default function AboutProgramsScroll() {
 
                   {/* 2. Card Details Body */}
                   <div className="p-5 flex flex-col flex-grow">
-                    
+
                     {/* Header row: Title on left, Age on right */}
                     <div className="flex items-baseline justify-between gap-2 border-b border-gray-100/60 pb-2">
                       <h3
@@ -573,9 +572,8 @@ export default function AboutProgramsScroll() {
                           <button
                             key={dotIdx}
                             onClick={() => handleManualNav(dotIdx)}
-                            className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                              dotIdx === active ? "w-5" : "w-1.5"
-                            }`}
+                            className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${dotIdx === active ? "w-5" : "w-1.5"
+                              }`}
                             style={{
                               backgroundColor: dotIdx === active ? prog.themeColor : "#d4c8c2",
                             }}

@@ -34,10 +34,10 @@ export default function AboutSpecial() {
       
 
       {/* Floating Emojis */}
-      <div className="absolute left-[3%] top-[30%] w-16 h-28 balloon-float z-10 opacity-80 pointer-events-none hidden md:block">
+      <div className="absolute left-[3%] top-[30%] w-16 h-28 balloon-float z-10 opacity-80 pointer-events-none hidden lg:block">
         <img src="/slider_shape03.png" alt="Heart Balloon" className="w-full h-full object-contain" />
       </div>
-      <div className="absolute right-[3%] top-[40%] w-12 h-12 star-float-png z-10 opacity-80 pointer-events-none hidden md:block">
+      <div className="absolute right-[3%] top-[40%] w-12 h-12 star-float-png z-10 opacity-80 pointer-events-none hidden lg:block">
         <img src="/slider_shape02.png" alt="Star" className="w-full h-full object-contain" />
       </div>
 
@@ -60,8 +60,8 @@ export default function AboutSpecial() {
           <div className="w-16 h-1 rounded-full" style={{ backgroundColor: "var(--color-primary)" }} />
         </div>
 
-        {/* ── MOBILE: Auto-scroll marquee in one row ── */}
-        <div className="block md:hidden overflow-hidden">
+        {/* ── MOBILE & TABLET: Auto-scroll marquee in one row ── */}
+        <div className="block lg:hidden overflow-hidden">
           <style>{`
             @keyframes marquee {
               0%   { transform: translateX(0); }
@@ -97,7 +97,7 @@ export default function AboutSpecial() {
         </div>
 
         {/* ── DESKTOP: Grid ── */}
-        <div className="hidden md:grid grid-cols-4 lg:grid-cols-7 gap-8 animate-fade-in-up">
+        <div className="hidden lg:grid lg:grid-cols-7 gap-8 animate-fade-in-up">
           {items.map((item) => (
             <div key={item.id} className="flex flex-col items-center text-center gap-4 group cursor-pointer">
               <div
