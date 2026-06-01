@@ -46,7 +46,7 @@ export default function StepsToJoin() {
         <div className="absolute bottom-[10%] right-[5%] text-yellow-300 opacity-50 animate-pulse hidden md:block">
           <Sparkles className="w-12 h-12" />
         </div>
-        <div className="absolute top-[40%] left-[45%] w-16 h-16 text-yellow-300 opacity-40 pointer-events-none hidden lg:block animate-[spin_10s_linear_infinite]">
+        <div className="absolute top-[40%] left-[45%] w-16 h-16 text-yellow-300 opacity-40 pointer-events-none hidden md:block animate-[spin_10s_linear_infinite]">
           <svg viewBox="0 0 100 100" fill="currentColor">
             <circle cx="50" cy="50" r="40" stroke="currentColor" strokeWidth="2" strokeDasharray="6,6" fill="none" />
           </svg>
@@ -54,14 +54,14 @@ export default function StepsToJoin() {
       </div>
 
       <div className="container-custom relative z-10 px-5 md:px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-4 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-center">
           
           {/* ── Left Column: Steps List ── */}
-          <div className="lg:col-span-6 flex flex-col items-start text-left">
+          <div className="md:col-span-6 flex flex-col items-start text-left">
             <span className="text-xs font-bold text-[var(--color-primary)] tracking-wider uppercase mb-2 font-nunito">
               — How to Join
             </span>
-            <h2 className="font-baloo text-[var(--color-primary)] text-3xl sm:text-4xl lg:text-[44px] leading-tight font-extrabold mb-6 md:mb-8">
+            <h2 className="font-baloo text-[var(--color-primary)] text-3xl sm:text-4xl md:text-[44px] leading-tight font-extrabold mb-6 md:mb-8">
               Three Simple Steps
             </h2>
 
@@ -106,7 +106,7 @@ export default function StepsToJoin() {
           </div>
 
           {/* ── Right Column: Image Asset ── */}
-          <div className="lg:col-span-6 relative flex justify-center py-4 md:py-6">
+          <div className="md:col-span-6 relative flex justify-center py-4 md:py-6">
             
             {/* Blob Image Container */}
             <motion.div 
@@ -120,7 +120,7 @@ export default function StepsToJoin() {
                 repeat: Infinity, 
                 ease: "easeInOut" 
               }}
-              className="relative w-full max-w-[280px] sm:max-w-[340px] lg:max-w-[420px] aspect-square group origin-center"
+              className="relative w-full max-w-[280px] sm:max-w-[340px] md:max-w-[420px] aspect-square group origin-center"
             >
               
               {/* Layer 1 (Bottom Light Colored Shadow) */}
