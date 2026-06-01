@@ -35,9 +35,15 @@ export default function HomeBanner() {
         }}
       />
 
-      {/* ── DESKTOP: wrapper that sets the height ── */}
+      {/* ── TABLET: reduced height (768–1023px only) ── */}
       <div
-        className="hidden md:block"
+        className="hidden md:block lg:hidden"
+        style={{ height: "60vh", minHeight: "420px" }}
+      />
+
+      {/* ── DESKTOP: original height (1024px+) — UNCHANGED ── */}
+      <div
+        className="hidden lg:block"
         style={{ height: "85vh", minHeight: "600px" }}
       />
 
@@ -46,30 +52,41 @@ export default function HomeBanner() {
         <div className="mx-auto px-10 md:px-6 w-full max-w-screen-xl">
           <div className="max-w-xl relative">
 
-            {/* Heading */}
+            {/* Heading — tablet gets smaller font, desktop unchanged */}
             <h2
               className="font-extrabold leading-tight mb-4 relative z-10"
               style={{
-                fontSize: "clamp(3rem, 3.0vw, 3.5rem)",
                 fontFamily: "Georgia, serif",
                 lineHeight: "1.2",
                 whiteSpace: "nowrap",
               }}
             >
-              <span style={{ color: "var(--color-primary)" }}>Nurturing Young Minds</span>
-              <br />
-              <span style={{ color: "var(--color-primary)" }}>Building </span>
-              <span style={{ color: "var(--color-secondary)" }}>Bright Futures</span>
+              {/* tablet font size */}
+              <span className="block lg:hidden" style={{ fontSize: "1.75rem" }}>
+                <span style={{ color: "var(--color-primary)" }}>Nurturing Young Minds</span>
+                <br />
+                <span style={{ color: "var(--color-primary)" }}>Building </span>
+                <span style={{ color: "var(--color-secondary)" }}>Bright Futures</span>
+              </span>
+              {/* desktop font size — UNCHANGED */}
+              <span className="hidden lg:block" style={{ fontSize: "clamp(3rem, 3.0vw, 3.5rem)" }}>
+                <span style={{ color: "var(--color-primary)" }}>Nurturing Young Minds</span>
+                <br />
+                <span style={{ color: "var(--color-primary)" }}>Building </span>
+                <span style={{ color: "var(--color-secondary)" }}>Bright Futures</span>
+              </span>
             </h2>
 
-            <p className="text-gray-700 text-base md:text-lg mb-8 leading-relaxed">
+            {/* Paragraph — tablet smaller, desktop unchanged */}
+            <p className="text-gray-700 leading-relaxed mb-8 text-sm lg:text-lg max-w-[260px] lg:max-w-none">
               A joyful learning environment where curiosity grows,
               creativity thrives, and every child shines.
             </p>
 
+            {/* Button — tablet smaller padding, desktop unchanged */}
             <button
               onClick={() => openModal("apply")}
-              className="inline-flex items-center gap-2 font-bold text-white uppercase tracking-wider md:tracking-widest px-6 py-3 md:px-10 md:py-4 text-sm md:text-base rounded-full transition-all duration-200 hover:opacity-90 hover:scale-105"
+              className="inline-flex items-center gap-2 font-bold text-white uppercase tracking-wider md:tracking-wide lg:tracking-widest px-5 py-2.5 lg:px-10 lg:py-4 text-xs lg:text-base rounded-full transition-all duration-200 hover:opacity-90 hover:scale-105"
               style={{ background: "var(--color-secondary)" }}
             >
               Enroll Your Child Today
@@ -86,7 +103,7 @@ export default function HomeBanner() {
       <div className="absolute -bottom-9 left-0 w-full z-10">
 
         {/* Down Arrow — desktop only */}
-        <div className="hidden md:block absolute top-17 left-80 -translate-x-1/2 z-20">
+        <div className="hidden md:block absolute lg:top-10 lg:left-80 md:-top-6 md:left-50 -translate-x-1/2 z-20">
           <Image
             src="/downarrow.png"
             alt="scroll down"
@@ -97,7 +114,7 @@ export default function HomeBanner() {
         </div>
 
         {/* Books image — desktop only */}
-        <div className="hidden md:block absolute bottom-2 left-4 md:left-30 z-20">
+        <div className="hidden md:block absolute bottom-2 left-4 lg:left-30 md:left-10 z-20">
           <Image
             src="/bookhome.png"
             alt="books"
@@ -109,7 +126,7 @@ export default function HomeBanner() {
 
         {/* Happy Children stats card — desktop only */}
         <div
-          className="hidden md:flex absolute bottom-10 right-6 md:right-36 z-20 items-center gap-3 bg-white rounded-2xl px-4 py-3 shadow-lg"
+          className="hidden md:flex absolute bottom-10 right-6 md:right-10 lg:right-36 z-20 items-center gap-3 bg-white rounded-2xl px-4 py-3 shadow-lg"
           style={{ minWidth: "220px" }}
         >
           <div className="flex flex-col leading-tight">
@@ -141,24 +158,23 @@ export default function HomeBanner() {
           </div>
         </div>
 
+        {/* Mobile wave */}
+        <Image
+          src="/wavemobile.png"
+          alt="wave"
+          width={1500}
+          height={50}
+          className="w-full h-auto block md:hidden relative bottom-8"
+        />
 
-       {/* Mobile wave */}
-<Image
-  src="/wavemobile.png"
-  alt="wave"
-  width={1500}
-  height={50}
-  className="w-full h-auto block md:hidden relative bottom-8"
-/>
-
-{/* Desktop/tablet wave */}
-<Image
-  src="/wavehome.png"
-  alt="wave"
-  width={1500}
-  height={50}
-  className="w-full h-auto hidden md:block"
-/>
+        {/* Desktop/tablet wave */}
+        <Image
+          src="/wavehome.png"
+          alt="wave"
+          width={1500}
+          height={50}
+          className="w-full h-auto hidden md:block relative md:bottom-6"
+        />
       </div>
     </section>
   );
