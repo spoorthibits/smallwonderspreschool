@@ -40,15 +40,16 @@ export default function WavyActivityTicker() {
 
   return (
     <div
+    className="h-[46px] md:h-[80px] pt-2 md:pt-[28px]"
       style={{
         backgroundColor: "#E06820",
-        height: `${HEIGHT}px`,
+        // height: `${HEIGHT}px`,
         overflow: "hidden",
         width: "100%",
         userSelect: "none",
         display: "flex",
         alignItems: "center",
-        paddingTop: `${VERTICAL_OFFSET}px`,
+        // paddingTop: `${VERTICAL_OFFSET}px`,
         boxSizing: "border-box",
       }}
     >

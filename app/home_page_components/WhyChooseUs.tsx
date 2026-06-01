@@ -77,34 +77,14 @@ export default function WhyChooseUs() {
       
       {/* Decorative preschool elements */}
       <div className="absolute inset-0 pointer-events-none select-none z-0">
-        <div className="absolute top-[10%] left-[5%] text-orange-200 animate-pulse hidden md:block">
-          <Sparkles className="w-10 h-10" />
-        </div>
-        <div className="absolute bottom-[15%] left-[8%] text-purple-200 animate-[bounce_3s_infinite] hidden md:block">
-          <Heart className="w-8 h-8" />
-        </div>
-        <div className="absolute top-[15%] right-[8%] text-pink-200 animate-[bounce_4s_infinite] hidden md:block">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M12 2L15 9L22 10L17 15L18 22L12 18L6 22L7 15L2 10L9 9L12 2Z" />
-          </svg>
-        </div>
-        <div className="absolute bottom-[10%] right-[5%] text-yellow-200 animate-pulse hidden md:block">
-          <Sparkles className="w-12 h-12" />
-        </div>
+       
+        
+        
         
         {/* New Fun Elements */}
-        <div className="absolute top-[30%] left-[10%] text-blue-300 opacity-60 animate-[bounce_5s_infinite] hidden md:block">
-          <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M2 20a10 10 0 0 1 20 0M6 20a6 6 0 0 1 12 0M10 20a2 2 0 0 1 4 0"/></svg>
-        </div>
-        <div className="absolute bottom-[40%] right-[10%] text-rose-300 opacity-70 animate-[bounce_4s_infinite] hidden md:block">
-          <div className="relative">
-            <Heart className="w-12 h-12 fill-current" />
-            <svg className="absolute top-[42px] left-1/2 -translate-x-1/2 w-4 h-12 text-rose-200" viewBox="0 0 10 30" fill="none" stroke="currentColor"><path d="M5 0 Q 0 10 5 20 T 5 30" strokeWidth="1.5"/></svg>
-          </div>
-        </div>
-        <div className="absolute top-[50%] left-[4%] text-green-300 opacity-50 pointer-events-none rotate-12 animate-pulse hidden md:block">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="6"/><circle cx="7" cy="7" r="3"/><circle cx="17" cy="7" r="3"/><circle cx="12" cy="13" r="2"/></svg>
-        </div>
+      
+       
+        
       </div>
 
       <div className="container-custom relative z-10">
@@ -159,7 +139,7 @@ export default function WhyChooseUs() {
                       </div>
 
                       {/* Image */}
-                      <div className="relative w-full h-[120px] sm:h-[140px] md:h-[160px] rounded-2xl overflow-hidden bg-white/40 shadow-inner">
+                      <div className="relative w-full h-[120px] sm:h-[140px] md:h-[180px] rounded-2xl overflow-hidden bg-white/40 shadow-inner">
                         <Image src={card.image} fill className="object-cover transition-transform duration-[800ms] ease-out group-hover:scale-[1.04]" alt={card.title} />
                       </div>
                    </div>

@@ -37,12 +37,10 @@ export default function WelcomePreschool() {
   const parallaxSlowY = useTransform(springY, v => v * 0.3);
   const parallaxFastX = useTransform(springX, v => v * -0.6);
   const parallaxFastY = useTransform(springY, v => v * -0.6);
-  const parallaxTilt = useTransform(springX, v => v * 0.15); // Slight tilt for splash
+  const parallaxTilt = useTransform(springX, v => v * 0.15);
 
-  // A more chaotic organic splat shape for the splash
   const splatClipPath = "M0.475,0.055 C0.605,0.102 0.825,0.005 0.885,0.125 C0.945,0.245 0.815,0.355 0.875,0.485 C0.935,0.615 0.985,0.825 0.855,0.915 C0.725,1.005 0.565,0.885 0.435,0.915 C0.305,0.945 0.125,1.025 0.045,0.895 C-0.035,0.765 0.145,0.605 0.105,0.475 C0.065,0.345 -0.055,0.165 0.045,0.055 C0.145,-0.055 0.345,0.008 0.475,0.055 Z";
 
-  // Badges matching the new image design (pastel blobs)
   const imageBadges = [
     {
       title: "Play",
@@ -81,57 +79,25 @@ export default function WelcomePreschool() {
   return (
     <section 
       onMouseMove={handleMouseMove}
-      className="relative py-8 md:py-8 lg:py-12 bg-white overflow-hidden"
-      style={{
-        backgroundImage: "url('/bgimg.webp')",
-        backgroundSize: "auto",
-        backgroundPosition: "center",
-        backgroundRepeat: "repeat",
-      }}
+      className="relative py-8 md:py-8 lg:py-3 bg-white overflow-hidden"
     >
-      
-      {/* ── Playful Decorative Doodles (Parallax) ── */}
-      
-      {/* Kite */}
-      <motion.div style={{ x: parallaxFastX, y: parallaxFastY }} className="absolute top-[10%] left-[8%] text-pink-400 opacity-60 pointer-events-none rotate-12">
-        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2l-5 8 5 8 5-8z"/><path d="M12 18v6"/><path d="M10 22h4"/></svg>
-      </motion.div>
-      
-      {/* Rainbow */}
-      {/* <motion.div style={{ x: parallaxSlowX, y: parallaxSlowY }} className="absolute top-[20%] right-[10%] text-orange-400 opacity-60 pointer-events-none -rotate-12">
-        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M2 20a10 10 0 0 1 20 0M6 20a6 6 0 0 1 12 0M10 20a2 2 0 0 1 4 0"/></svg>
-      </motion.div> */}
-
-      {/* Crayon/Pencil */}
-      <motion.div style={{ x: parallaxFastX, y: parallaxFastY }} className="absolute bottom-[20%] left-[5%] text-purple-400 opacity-50 pointer-events-none -rotate-45">
-        <Pencil className="w-12 h-12" />
-      </motion.div>
-
-      {/* Bird */}
-      {/* <motion.div style={{ x: parallaxFastX, y: parallaxFastY }} className="absolute top-[40%] left-[45%] text-blue-400 opacity-40 pointer-events-none">
-        <Bird className="w-10 h-10" />
-      </motion.div> */}
-
-      {/* Teddy Bear */}
-      <motion.div style={{ x: parallaxSlowX, y: parallaxSlowY }} className="absolute bottom-[10%] right-[30%] text-amber-600 opacity-40 pointer-events-none rotate-12">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="6"/><circle cx="7" cy="7" r="3"/><circle cx="17" cy="7" r="3"/><circle cx="12" cy="13" r="2"/></svg>
-      </motion.div>
-
-      {/* Tree */}
-      {/* <motion.div style={{ x: parallaxFastX, y: parallaxFastY }} className="absolute bottom-[25%] right-[5%] text-emerald-400 opacity-50 pointer-events-none">
-        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22V13"/><path d="M7 13c-2.8 0-5-2.2-5-5s2.2-5 5-5c1 0 1.9.3 2.7.8A5 5 0 0 1 19 8c0 2.8-2.2 5-5 5H7z"/></svg>
-      </motion.div> */}
-
-      {/* Toy Giraffe (Abstract) */}
-      <motion.div style={{ x: parallaxSlowX, y: parallaxSlowY }} className="absolute top-[15%] left-[40%] text-yellow-500 opacity-40 pointer-events-none -rotate-12">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 2h4v4l-4 8v8h-4v-8c0-3 3-8 3-8H8L6 14v8H2v-8C2 9 6 6 10 6h1L15 2z"/></svg>
-      </motion.div>
-
       <div className="container-custom relative z-10">
+
+        {/* ── MOBILE-ONLY HEADING (visible only below lg) ── */}
+        <div className="block lg:hidden mb-4 px-1">
+          <span className="text-[var(--color-secondary)] font-baloo text-xl font-bold block mb-2">
+            Welcome to
+          </span>
+          <h2 className="font-baloo text-[var(--color-primary)] text-4xl sm:text-5xl leading-[1.1] font-extrabold tracking-tight">
+            Small Wonders Play School
+          </h2>
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 lg:gap-16 items-center">
           
-          {/* ── Left Column: Slide-up Splash Animation ── */}
-          <div className="lg:col-span-6 relative flex justify-center items-center py-6 md:py-10 min-h-[300px]">
+          {/* ── Left Column: Image ── */}
+          {/* order-1 on mobile (shows second, after heading above), order-1 on lg */}
+          <div className="lg:col-span-6 relative flex justify-center items-center py-6 md:py-10 min-h-[300px] order-1 lg:order-1">
             
             {/* SVG Defs for Splat ClipPath */}
             <svg width="0" height="0" className="absolute">
@@ -151,7 +117,7 @@ export default function WelcomePreschool() {
               transition={{ type: "spring", bounce: 0.5, duration: 1.2 }}
               className="relative w-full max-w-[480px] aspect-square z-20 pointer-events-auto"
             >
-              {/* Background Pastel Splashes (Offset for 3D layered paint effect) */}
+              {/* Background Pastel Splashes */}
               <div 
                 className="absolute w-[105%] h-[105%] -top-[2%] -left-[2%] bg-gradient-to-tr from-purple-200 to-pink-200 opacity-80 -rotate-6"
                 style={{ clipPath: "url(#welcome-splat-clip)" }}
@@ -187,11 +153,13 @@ export default function WelcomePreschool() {
             </motion.div>
 
           </div>
+
           {/* ── Right Column: Content ── */}
-          <div className="lg:col-span-6 flex flex-col items-start lg:pl-8">
+          {/* order-2 on mobile (shows third, after image), order-2 on lg */}
+          <div className="lg:col-span-6 flex flex-col items-start lg:pl-8 order-2 lg:order-2">
             
-            {/* Heading Section */}
-            <div className="mb-4">
+            {/* Heading — hidden on mobile (shown above grid instead), visible on lg+ */}
+            <div className="mb-4 hidden lg:block">
               <span className="text-[var(--color-secondary)] font-baloo text-xl font-bold block mb-2">
                 Welcome to
               </span>
@@ -201,32 +169,14 @@ export default function WelcomePreschool() {
             </div>
 
             {/* Paragraph Content */}
-        <div className="font-nunito text-[16px] md:text-[17px] text-[var(--color-body)] leading-relaxed mb-6 max-w-lg">
-          <p>
-            A happy place where tiny hands <span className="font-bold text-[var(--color-secondary)]">create</span>, curious minds <span className="font-bold text-[var(--color-primary)]">explore</span>, and little hearts bloom. From exciting adventures to joyful learning moments, every day is designed to spark <span className="font-bold text-[var(--color-secondary)]">imagination</span> and build <span className="font-bold text-[var(--color-primary)]">confidence</span>. Our nurturing educators craft each experience with <span className="font-bold text-[var(--color-secondary)]">love</span> and <span className="font-bold text-[var(--color-primary)]">purpose</span>, ensuring every child feels seen, valued, and inspired. Through <span className="font-bold text-[var(--color-secondary)]">play-based learning</span>, art, music, and storytelling, we lay the foundation for a lifelong love of <span className="font-bold text-[var(--color-primary)]">learning</span>. We're truly delighted to be a part of your child's wonderful journey of growth, discovery, and joy.
-          </p>
-        </div>
-
-            {/* Pastel Abstract Badges */}
-            {/* <div className="w-full mb-8">
-              <div className="grid grid-cols-4 gap-3 sm:gap-6 w-full max-w-lg">
-                {imageBadges.map((badge, index) => (
-                  <div key={index} className="flex flex-col items-center gap-3 group text-center cursor-pointer">
-                    <div className={`w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:-translate-y-1 ${badge.bgColor} ${badge.iconColor} ${badge.shapeClass}`}>
-                      {badge.icon}
-                    </div>
-                    <div className="flex flex-col">
-                      <span className="font-baloo text-[15px] sm:text-[17px] font-extrabold text-slate-800 leading-none mb-1">
-                        {badge.title}
-                      </span>
-                      <span className={`font-nunito text-[12px] sm:text-[13px] font-bold ${badge.iconColor} opacity-80 leading-none`}>
-                        {badge.subtitle}
-                      </span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div> */}
+            <div className="font-nunito text-[16px] md:text-[17px] text-[var(--color-body)] leading-relaxed mb-6 max-w-lg">
+              <p className="mb-4">
+                A happy place where tiny hands create, curious minds explore, and little hearts bloom. From exciting adventures to joyful learning moments, every day is designed to spark <span className="font-bold text-[var(--color-primary)]">imagination</span> and build <span className="font-bold text-[var(--color-primary)]">confidence</span>.
+              </p>
+              <p>
+                Our nurturing educators craft each experience with love and purpose, ensuring every child feels seen, valued, and inspired. Through <span className="font-bold text-[var(--color-primary)]">play-based learning</span>, art, music, and storytelling, we lay the foundation for a lifelong love of learning. We're truly delighted to be a part of your child's wonderful journey of growth, discovery, and joy.
+              </p>
+            </div>
 
             {/* Button */}
             <Button
