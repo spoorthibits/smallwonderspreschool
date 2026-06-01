@@ -223,16 +223,15 @@ export default function WhatWeOffer() {
           </button>
 
           {/* Card */}
-          <div className="flex-1 max-w-[260px]">
+          <div className="flex-1 max-w-[300px]">
             {programmes.map((prog, idx) => (
               <div
                 key={prog.id}
-                className={`flex flex-col items-center bg-white rounded-2xl shadow-md px-4 pt-8 pb-5 transition-all duration-300 ${
-                  idx === mobileIdx ? "block" : "hidden"
-                }`}
+                className={`flex flex-col items-center bg-transparent rounded-none shadow-none px-4 pt-8 pb-5 transition-all duration-300 ${idx === mobileIdx ? "block" : "hidden"
+                  }`}
               >
                 {/* Circle Image */}
-                <div className="relative w-28 h-28 rounded-full border-[5px] border-white shadow-xl bg-white mb-8 flex-shrink-0">
+                <div className="relative w-40 h-40 rounded-full border-[5px] border-white shadow-xl bg-transparent mb-8 flex-shrink-0">
                   <Image
                     src={prog.image}
                     fill
@@ -265,6 +264,7 @@ export default function WhatWeOffer() {
                       {prog.title}
                     </h3>
                   )}
+
                   <p className="text-[12px] text-gray-700 font-nunito leading-relaxed font-medium mt-1">
                     {prog.description}
                   </p>
@@ -291,9 +291,8 @@ export default function WhatWeOffer() {
             <button
               key={i}
               onClick={() => setMobileIdx(i)}
-              className={`w-2 h-2 rounded-full transition-all duration-200 ${
-                i === mobileIdx ? "bg-[var(--color-primary)] w-5" : "bg-gray-300"
-              }`}
+              className={`w-2 h-2 rounded-full transition-all duration-200 ${i === mobileIdx ? "bg-[var(--color-primary)] w-5" : "bg-gray-300"
+                }`}
             />
           ))}
         </div>
