@@ -100,15 +100,183 @@ const galleryItems: GalleryItem[] = [
     icon: <PartyPopper size={22} color="#fff" />,
     filterIcon: <PartyPopper size={18} color="#f97316" />,
   },
+  {
+    id: 7,
+    category: "Play Time",
+    title: "Outdoor Fun",
+    description: "Enjoying the fresh air.",
+    image: "/galleryimg-9.jpeg",
+    themeColor: "#2563eb",
+    knobColor: "#2563eb",
+    iconBg: "rgba(255,255,255,0.25)",
+    icon: <Sparkles size={22} color="#fff" />,
+    filterIcon: <Sparkles size={18} color="#2563eb" />,
+  },
+  {
+    id: 8,
+    category: "Activities",
+    title: "Learning Together",
+    description: "Collaborative learning.",
+    image: "/galleryimg-10.jpeg",
+    themeColor: "#7c3aed",
+    knobColor: "#7c3aed",
+    iconBg: "rgba(255,255,255,0.25)",
+    icon: <Smile size={22} color="#fff" />,
+    filterIcon: <Smile size={18} color="#7c3aed" />,
+  },
+  {
+    id: 9,
+    category: "Play Time",
+    title: "Joyful Moments",
+    description: "Laughter and play.",
+    image: "/galleryimg-11.jpeg",
+    themeColor: "#2563eb",
+    knobColor: "#2563eb",
+    iconBg: "rgba(255,255,255,0.25)",
+    icon: <Sparkles size={22} color="#fff" />,
+    filterIcon: <Sparkles size={18} color="#2563eb" />,
+  },
+  {
+    id: 10,
+    category: "Activities",
+    title: "Creative Minds",
+    description: "Expressing through art.",
+    image: "/galleryimg-12.jpeg",
+    themeColor: "#7c3aed",
+    knobColor: "#7c3aed",
+    iconBg: "rgba(255,255,255,0.25)",
+    icon: <Smile size={22} color="#fff" />,
+    filterIcon: <Smile size={18} color="#7c3aed" />,
+  },
+  {
+    id: 11,
+    category: "Play Time",
+    title: "Festive Joy",
+    description: "Celebrating special days.",
+    image: "/galleryimg-13.jpeg",
+    themeColor: "#2563eb",
+    knobColor: "#2563eb",
+    iconBg: "rgba(255,255,255,0.25)",
+    icon: <Sparkles size={22} color="#fff" />,
+    filterIcon: <Sparkles size={18} color="#2563eb" />,
+  },
+  {
+    id: 12,
+    category: "Activities",
+    title: "Engaging Tasks",
+    description: "Learning by doing.",
+    image: "/galleryimg-14.jpeg",
+    themeColor: "#7c3aed",
+    knobColor: "#7c3aed",
+    iconBg: "rgba(255,255,255,0.25)",
+    icon: <Smile size={22} color="#fff" />,
+    filterIcon: <Smile size={18} color="#7c3aed" />,
+  },
+  {
+    id: 13,
+    category: "Activities",
+    title: "Focus and Study",
+    description: "Concentration in class.",
+    image: "/galleryimg-15.jpeg",
+    themeColor: "#7c3aed",
+    knobColor: "#7c3aed",
+    iconBg: "rgba(255,255,255,0.25)",
+    icon: <Smile size={22} color="#fff" />,
+    filterIcon: <Smile size={18} color="#7c3aed" />,
+  },
+  {
+    id: 14,
+    category: "Activities",
+    title: "Active Play",
+    description: "Energy and fun.",
+    image: "/galleryimg-16.jpeg",
+    themeColor: "#7c3aed",
+    knobColor: "#7c3aed",
+    iconBg: "rgba(255,255,255,0.25)",
+    icon: <Smile size={22} color="#fff" />,
+    filterIcon: <Smile size={18} color="#7c3aed" />,
+  },
+  {
+    id: 15,
+    category: "Activities",
+    title: "Colorful Creations",
+    description: "Painting and drawing.",
+    image: "/galleryimg-17.jpeg",
+    themeColor: "#7c3aed",
+    knobColor: "#7c3aed",
+    iconBg: "rgba(255,255,255,0.25)",
+    icon: <Smile size={22} color="#fff" />,
+    filterIcon: <Smile size={18} color="#7c3aed" />,
+  },
+  {
+    id: 16,
+    category: "Art & Craft",
+    title: "Happy Moments",
+    description: "Smiles and cheers.",
+    image: "/galleryimg-18.jpeg",
+    themeColor: "#ec4899",
+    knobColor: "#ec4899",
+    iconBg: "rgba(255,255,255,0.25)",
+    icon: <Palette size={22} color="#fff" />,
+    filterIcon: <Palette size={18} color="#ec4899" />,
+  },
+  {
+    id: 17,
+    category: "Classroom",
+    title: "Group Activities",
+    description: "Working as a team.",
+    image: "/galleryimg-19.jpeg",
+    themeColor: "#f5a623",
+    knobColor: "#f5a623",
+    iconBg: "rgba(255,255,255,0.25)",
+    icon: <BookOpen size={22} color="#fff" />,
+    filterIcon: <BookOpen size={18} color="#f5a623" />,
+  },
+  {
+    id: 18,
+    category: "Celebrations",
+    title: "Interactive Learning",
+    description: "Questions and answers.",
+    image: "/galleryimg-20.jpeg",
+    themeColor: "#f97316",
+    knobColor: "#f97316",
+    iconBg: "rgba(255,255,255,0.25)",
+    icon: <PartyPopper size={22} color="#fff" />,
+    filterIcon: <PartyPopper size={18} color="#f97316" />,
+  },
+  {
+    id: 19,
+    category: "Activities",
+    title: "Free Play",
+    description: "Exploring the world.",
+    image: "/galleryimg-21.jpeg",
+    themeColor: "#7c3aed",
+    knobColor: "#7c3aed",
+    iconBg: "rgba(255,255,255,0.25)",
+    icon: <Smile size={22} color="#fff" />,
+    filterIcon: <Smile size={18} color="#7c3aed" />,
+  },
+  {
+    id: 20,
+    category: "Classroom",
+    title: "Crafty Hands",
+    description: "Making things with hands.",
+    image: "/galleyimg-2.jpeg",
+    themeColor: "#f5a623",
+    knobColor: "#f5a623",
+    iconBg: "rgba(255,255,255,0.25)",
+    icon: <BookOpen size={22} color="#fff" />,
+    filterIcon: <BookOpen size={18} color="#f5a623" />,
+  },
 ];
 
 const filterTabs = [
-  { label: "All Photos",   value: "all",          color: "#4c1b85" },
-  { label: "Classroom",    value: "Classroom",    color: "#f5a623" },
-  { label: "Activities",   value: "Activities",   color: "#7c3aed" },
+  { label: "All Photos", value: "all", color: "#4c1b85" },
+  { label: "Classroom", value: "Classroom", color: "#f5a623" },
+  { label: "Activities", value: "Activities", color: "#7c3aed" },
   { label: "Celebrations", value: "Celebrations", color: "#f97316" },
-  { label: "Art & Craft",  value: "Art & Craft",  color: "#ec4899" },
-  { label: "Play Time",    value: "Play Time",    color: "#2563eb" },
+  { label: "Art & Craft", value: "Art & Craft", color: "#ec4899" },
+  { label: "Play Time", value: "Play Time", color: "#2563eb" },
 ];
 
 const VISIBLE_MOBILE = 3;
@@ -116,12 +284,15 @@ const VISIBLE_MOBILE = 3;
 export default function GalleryGrid() {
   const [activeFilter, setActiveFilter] = useState("all");
   const [expanded, setExpanded] = useState(false);
+  const [showAllPhotos, setShowAllPhotos] = useState(false);
   const galleryRef = useRef<HTMLDivElement>(null);
 
   const filtered =
     activeFilter === "all"
       ? galleryItems
       : galleryItems.filter((item) => item.category === activeFilter);
+
+  const displayedItems = showAllPhotos ? filtered : filtered.slice(0, 6);
 
   useEffect(() => {
     let FB: typeof FancyboxType;
@@ -224,7 +395,7 @@ export default function GalleryGrid() {
           ref={galleryRef}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[18px] mb-10"
         >
-          {filtered.map((item) => (
+          {displayedItems.map((item) => (
             <a
               key={item.id}
               href={item.image}
@@ -263,11 +434,16 @@ export default function GalleryGrid() {
         </div>
 
         {/* View More Button */}
-        <div className="flex justify-center mt-2 mb-6">
-          <button className="bg-[#E06820] hover:bg-[#5e3810] text-white px-10 py-3.5 rounded-full text-sm font-semibold tracking-widest transition-colors duration-200 font-['Nunito'] uppercase">
-            View More
-          </button>
-        </div>
+        {!showAllPhotos && filtered.length > 6 && (
+          <div className="flex justify-center mt-2 mb-6">
+            <button
+              onClick={() => setShowAllPhotos(true)}
+              className="bg-[#E06820] hover:bg-[#5e3810] text-white px-10 py-3.5 rounded-full text-sm font-semibold tracking-widest transition-colors duration-200 font-['Nunito'] uppercase"
+            >
+              View More
+            </button>
+          </div>
+        )}
 
       </div>
     </section>

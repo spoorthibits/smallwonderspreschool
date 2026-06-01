@@ -68,7 +68,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="pb-25 ">
+    <div>
       <ContactBanner />
       <div className="mt-10">
         <ContactSection

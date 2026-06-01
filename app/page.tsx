@@ -12,7 +12,7 @@ import HomeBanner from "./components/Homepage/HomeBanner";
 
 export default function Home() {
   return (
-    <main className="flex-1 bg-[var(--color-offwhite)] relative">
+    <main className="bg-transparent relative">
       {/* Home Page Section 2: Banner Section (Hero Carousel & Stats Bar) */}
       <HomeBanner />
       {/* <HeroBanner /> */}

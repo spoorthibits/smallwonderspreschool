@@ -11,7 +11,7 @@ export default function AdmissionsBanner() {
   const { openModal } = useModal();
 
   return (
-    <section className="relative w-full z-10 pt-[70px]">
+    <section className="relative w-full z-30 pt-[70px] md:pt-4 lg:pt-[70px]">
 
       {/* ══════════════════════════════════════
           MOBILE layout  (hidden on md+)
@@ -90,7 +90,7 @@ export default function AdmissionsBanner() {
               <div className="col-span-4 flex flex-row gap-3 items-center justify-end">
                 <button
                   onClick={() => openModal("apply")}
-                  className="group px-6 py-2.5 rounded-full bg-[var(--color-purple-deep)] hover:bg-[#381166] text-white font-baloo text-sm font-bold shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-1.5 whitespace-nowrap cursor-pointer"
+                  className="group px-6 py-2.5 rounded-full bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] text-white font-baloo text-sm font-bold shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-1.5 whitespace-nowrap cursor-pointer"
                 >
                   Enroll Now
                   <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" />
