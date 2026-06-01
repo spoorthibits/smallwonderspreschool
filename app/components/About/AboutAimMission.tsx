@@ -257,7 +257,7 @@ export default function AboutAimMission() {
           {missionPillars.map((item, idx) => (
             <div
               key={idx}
-              className="p-8 min-h-[380px] shadow-lg hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 border-t-4"
+              className="p-8 min-h-[300px] shadow-lg hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 border-t-4"
               style={{
                 backgroundColor: item.bg,
                 borderTopColor: item.border,
