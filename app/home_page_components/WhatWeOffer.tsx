@@ -206,40 +206,50 @@ export default function WhatWeOffer() {
         ))}
       </div>
 
-      {/* Mobile Layout only */}
-      <div className="md:hidden flex flex-col gap-1 w-full max-w-4xl mx-auto px-3 relative z-10">
+      {/* ── MOBILE LAYOUT ONLY: zigzag image left/right ── */}
+      <div className="md:hidden flex flex-col gap-8 w-full px-4 relative z-10">
         {programmes.map((prog, idx) => {
           const isEven = idx % 2 === 0;
-          const flexDirection = isEven ? 'md:flex-row-reverse' : 'md:flex-row';
           return (
-            <div key={prog.id} className={`flex flex-col items-center gap-6 ${flexDirection}`}>
-              <div className="w-full flex justify-center">
-                <div className="relative w-72 h-72 rounded-full border-[8px] border-white shadow-xl bg-white transition-transform duration-300 hover:scale-105">
-                  <Image src={prog.image} fill className="object-cover rounded-full p-1.5" alt={prog.title} />
-                  <div className={`absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap text-white text-[13px] font-extrabold py-1.5 px-5 rounded-full shadow-lg ${prog.badgeColor}`}>
-                    {prog.badge}
-                  </div>
+            <div
+              key={prog.id}
+              className={`flex items-center gap-4 ${isEven ? "flex-row" : "flex-row-reverse"}`}
+            >
+              {/* Circle Image */}
+              <div className="flex-shrink-0 relative w-36 h-36 rounded-full border-[5px] border-white shadow-xl bg-white">
+                <Image
+                  src={prog.image}
+                  fill
+                  className="object-cover rounded-full p-1"
+                  alt={prog.title}
+                />
+                <div
+                  className={`absolute -bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap text-white text-[9px] font-extrabold py-1 px-2 rounded-full shadow-lg ${prog.badgeColor}`}
+                >
+                  {prog.badge}
                 </div>
               </div>
-              <div className="w-full flex flex-col items-center text-center pt-4">
+
+              {/* Text Content */}
+              <div className={`flex-1 flex flex-col pt-2 ${isEven ? "items-start text-left" : "items-end text-right"}`}>
                 {prog.title === "NEP Curriculum" ? (
                   <div
-                    className="mb-3 flex flex-col items-center cursor-pointer group/nep"
+                    className="mb-1 flex flex-col cursor-pointer group/nep"
                     onClick={() => setIsVideoOpen(true)}
                   >
-                    <h3 className="text-3xl font-extrabold text-[var(--color-secondary)] font-baloo leading-tight group-hover/nep:text-[var(--color-primary)] group-hover/nep:underline decoration-2 underline-offset-4 transition-all">
+                    <h3 className="text-xl font-extrabold text-[var(--color-secondary)] font-baloo leading-tight group-hover/nep:text-[var(--color-primary)] group-hover/nep:underline decoration-2 underline-offset-4 transition-all">
                       {prog.title}
                     </h3>
-                    <span className="text-sm text-[var(--color-primary)] font-bold font-nunito opacity-0 group-hover/nep:opacity-100 transition-opacity mt-1">
+                    <span className="text-xs text-[var(--color-primary)] font-bold font-nunito opacity-0 group-hover/nep:opacity-100 transition-opacity mt-0.5">
                       Click to know more
                     </span>
                   </div>
                 ) : (
-                  <h3 className="text-3xl font-extrabold text-[var(--color-secondary)] font-baloo mb-3 leading-tight">
+                  <h3 className="text-xl font-extrabold text-[var(--color-secondary)] font-baloo mb-1 leading-tight">
                     {prog.title}
                   </h3>
                 )}
-                <p className="text-[16px] text-gray-700 font-nunito mb-8 leading-relaxed max-w-sm font-medium">
+                <p className="text-[13px] text-gray-700 font-nunito leading-relaxed font-medium">
                   {prog.description}
                 </p>
               </div>

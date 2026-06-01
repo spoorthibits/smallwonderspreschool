@@ -1,21 +1,15 @@
 "use client";
 
-import React, { useRef } from "react";
+import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import {
-  ArrowRight,
-  BookOpen,
-  Palette,
-  Heart,
-  Gamepad2,
-} from "lucide-react";
+import { ArrowRight, BookOpen, Palette, Heart, Gamepad2 } from "lucide-react";
 import Button from "../components/Button";
 
 export default function WelcomePreschool() {
   const router = useRouter();
-  
+
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -30,35 +24,39 @@ export default function WelcomePreschool() {
   const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
   const springY = useSpring(mouseY, { stiffness: 50, damping: 20 });
 
-  const parallaxSlowX = useTransform(springX, v => v * 0.3);
-  const parallaxSlowY = useTransform(springY, v => v * 0.3);
-  const parallaxTilt  = useTransform(springX, v => v * 0.15);
+  const parallaxSlowX = useTransform(springX, (v) => v * 0.3);
+  const parallaxSlowY = useTransform(springY, (v) => v * 0.3);
+  const parallaxTilt = useTransform(springX, (v) => v * 0.15);
 
-  const splatClipPath = "M0.475,0.055 C0.605,0.102 0.825,0.005 0.885,0.125 C0.945,0.245 0.815,0.355 0.875,0.485 C0.935,0.615 0.985,0.825 0.855,0.915 C0.725,1.005 0.565,0.885 0.435,0.915 C0.305,0.945 0.125,1.025 0.045,0.895 C-0.035,0.765 0.145,0.605 0.105,0.475 C0.065,0.345 -0.055,0.165 0.045,0.055 C0.145,-0.055 0.345,0.008 0.475,0.055 Z";
+  const splatClipPath =
+    "M0.475,0.055 C0.605,0.102 0.825,0.005 0.885,0.125 C0.945,0.245 0.815,0.355 0.875,0.485 C0.935,0.615 0.985,0.825 0.855,0.915 C0.725,1.005 0.565,0.885 0.435,0.915 C0.305,0.945 0.125,1.025 0.045,0.895 C-0.035,0.765 0.145,0.605 0.105,0.475 C0.065,0.345 -0.055,0.165 0.045,0.055 C0.145,-0.055 0.345,0.008 0.475,0.055 Z";
 
   return (
     <section
       onMouseMove={handleMouseMove}
-      className="relative py-8 sm:py-10 lg:py-3 bg-white overflow-hidden"
+      className="relative py-6 sm:py-8 md:py-10 lg:py-3 bg-white overflow-hidden"
     >
-      <div className="container-custom relative z-10">
+      {/* container-custom overridden on mobile to reduce side padding */}
+      <div className="container-custom px-4 sm:px-6 md:px-auto relative z-10">
 
-        {/* ── MOBILE-ONLY HEADING (below sm) ── */}
-        <div className="block sm:hidden mb-2 px-1">
+        {/* ── HEADING: visible below md only ── */}
+        <div className="block md:hidden mb-3">
+          <span className="text-[var(--color-secondary)] font-baloo text-lg sm:text-xl font-bold block mb-1">
+            Welcome to
+          </span>
           <h2
-            className="font-baloo leading-[1.1] font-extrabold tracking-tight"
-            style={{ fontSize: "clamp(1.2rem, 5.5vw, 1.8rem)" }}
+            className="font-baloo text-[var(--color-primary)] font-extrabold leading-[1.1] tracking-tight"
+            style={{ fontSize: "clamp(1.5rem, 5vw, 2.2rem)" }}
           >
-            <span className="text-[var(--color-secondary)]">Welcome to </span>
-            <span className="text-[var(--color-primary)]">Small Wonders Play School</span>
+            Small Wonders Play School
           </h2>
         </div>
 
-        {/* Grid: single col on mobile, two-col from sm+ */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-16 items-center">
+        {/* Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4 sm:gap-6 md:gap-8 lg:gap-16 items-center">
 
           {/* ── Left Column: Image ── */}
-          <div className="sm:col-span-1 lg:col-span-6 relative flex justify-center items-center py-6 sm:py-8 lg:py-10 min-h-[300px] order-1">
+          <div className="md:col-span-1 lg:col-span-6 relative flex justify-center items-center py-0 sm:py-2 md:py-8 lg:py-10 order-1">
 
             <svg width="0" height="0" className="absolute">
               <defs>
@@ -74,7 +72,7 @@ export default function WelcomePreschool() {
               whileInView={{ scale: 1, y: 0, opacity: 1 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ type: "spring", bounce: 0.5, duration: 1.2 }}
-              className="relative w-full max-w-[480px] sm:max-w-[340px] lg:max-w-[480px] aspect-square z-20 pointer-events-auto"
+              className="relative w-full max-w-[92vw] sm:max-w-[75vw] md:max-w-[340px] lg:max-w-[480px] aspect-square z-20 pointer-events-auto mx-auto"
             >
               <div
                 className="absolute w-[105%] h-[105%] -top-[2%] -left-[2%] bg-gradient-to-tr from-purple-200 to-pink-200 opacity-80 -rotate-6"
@@ -99,7 +97,7 @@ export default function WelcomePreschool() {
                     src="/galleryimg-5.jpeg"
                     alt="Children engaging in learning and play activities at Small Wonders Preschool"
                     fill
-                    sizes="(max-width: 640px) 100vw, 480px"
+                    sizes="(max-width: 768px) 92vw, 480px"
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
@@ -110,20 +108,20 @@ export default function WelcomePreschool() {
           </div>
 
           {/* ── Right Column: Content ── */}
-          <div className="sm:col-span-1 lg:col-span-6 flex flex-col items-start lg:pl-8 order-2">
+          <div className="md:col-span-1 lg:col-span-6 flex flex-col items-start w-full md:w-auto lg:pl-8 order-2">
 
-            {/* Heading — hidden on mobile only, visible from sm+ */}
-            <div className="mb-4 hidden sm:block">
+            {/* Heading — md+ only ── */}
+            <div className="mb-4 hidden md:block">
               <span className="text-[var(--color-secondary)] font-baloo text-xl font-bold block mb-2">
                 Welcome to
               </span>
-              <h2 className="font-baloo text-[var(--color-primary)] text-3xl sm:text-4xl lg:text-[40px] leading-[1.1] font-extrabold tracking-tight">
+              <h2 className="font-baloo text-[var(--color-primary)] text-3xl md:text-4xl lg:text-[40px] leading-[1.1] font-extrabold tracking-tight">
                 Small Wonders Play School
               </h2>
             </div>
 
             {/* Paragraph */}
-            <div className="font-nunito text-[15px] lg:text-[17px] text-[var(--color-body)] leading-relaxed mb-6 max-w-lg">
+            <div className="font-nunito text-[15px] lg:text-[17px] text-[var(--color-body)] leading-relaxed mb-6 w-full md:max-w-lg">
               <p className="mb-4">
                 A happy place where tiny hands create, curious minds explore, and little hearts bloom. From exciting adventures to joyful learning moments, every day is designed to spark{" "}
                 <span className="font-bold text-[var(--color-primary)]">imagination</span> and build{" "}
