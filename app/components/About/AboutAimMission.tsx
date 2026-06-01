@@ -64,7 +64,7 @@ export default function AboutAimMission() {
   };
 
   return (
-    <section
+      <section
       className="relative py-8 md:py-5 bg-[#FCFAEF] overflow-hidden flex flex-col items-center justify-center"
       style={{
         backgroundImage: "url('/bgimg.webp')",
@@ -73,7 +73,7 @@ export default function AboutAimMission() {
         backgroundRepeat: "repeat",
       }}
     >
-      <div className="absolute inset-0 bg-white/25 z-0 pointer-events-none" />
+      <div className="absolute inset-0 bg-white/40 z-0 pointer-events-none" />
       {/* Floating Emojis */}
       <div className="absolute left-[3%] top-[40%] w-16 h-16 sun-float z-10 opacity-80 pointer-events-none hidden md:block">
         <img src="/slider_shape01.png" alt="Sun" className="w-full h-full object-contain" />
@@ -197,34 +197,76 @@ export default function AboutAimMission() {
           </div>
         </div>
 
-        {/* ── TABLET & DESKTOP: Grid ── */}
-        <div className="hidden sm:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
-          {missionPillars.map((item, idx) => (
-            <div
-              key={idx}
-              className="flex flex-col p-7 shadow-md hover:-translate-y-2 hover:shadow-xl transition-all duration-300 cursor-default border-t-4"
-              style={{
-                backgroundColor: item.bg,
-                borderRadius: "32px",
-                minHeight: "380px",
-                borderTopColor: item.border,
-              }}
+        {/* ── TABLET: Horizontal scroll, 2 visible, scroll reveals next ── */}
+<div className="hidden sm:block lg:hidden">
+  <div className="relative">
+    {/* Left Arrow */}
+    <button
+      onClick={() => {
+        const el = document.getElementById("pillars-scroll");
+        if (el) el.scrollBy({ left: -el.offsetWidth / 2, behavior: "smooth" });
+      }}
+      aria-label="Scroll left"
+      className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center hover:scale-110 transition"
+    >
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="15 18 9 12 15 6" />
+      </svg>
+    </button>
+
+    {/* Scrollable track */}
+    <div
+      id="pillars-scroll"
+      className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 px-4"
+      style={{ scrollbarWidth: "none" }}
+    >
+      {missionPillars.map((item, idx) => (
+        <div
+          key={idx}
+          className="snap-start flex-shrink-0"
+          style={{ width: "calc(50% - 12px)" }}
+        >
+          <div
+            className="flex flex-col p-7 shadow-md hover:-translate-y-2 hover:shadow-xl transition-all duration-300 cursor-default border-t-4"
+            style={{
+              backgroundColor: item.bg,
+              borderRadius: "32px",
+              minHeight: "380px",
+              borderTopColor: item.border,
+            }}
+          >
+            <h4
+              className="font-black text-xl md:text-2xl font-['Baloo_2'] leading-snug mb-4 text-center"
+              style={{ color: item.titleColor }}
             >
-              <h4
-                className="font-black text-xl md:text-2xl font-['Baloo_2'] leading-snug mb-4 text-center"
-                style={{ color: item.titleColor }}
-              >
-                {item.title}
-              </h4>
-              <p
-                className="text-sm md:text-base font-['Nunito'] leading-relaxed text-center"
-                style={{ color: item.textColor }}
-              >
-                {item.description}
-              </p>
-            </div>
-          ))}
+              {item.title}
+            </h4>
+            <p
+              className="text-sm md:text-base font-['Nunito'] leading-relaxed text-center"
+              style={{ color: item.textColor }}
+            >
+              {item.description}
+            </p>
+          </div>
         </div>
+      ))}
+    </div>
+
+    {/* Right Arrow */}
+    <button
+      onClick={() => {
+        const el = document.getElementById("pillars-scroll");
+        if (el) el.scrollBy({ left: el.offsetWidth / 2, behavior: "smooth" });
+      }}
+      aria-label="Scroll right"
+      className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center hover:scale-110 transition"
+    >
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="9 18 15 12 9 6" />
+      </svg>
+    </button>
+  </div>
+</div>
 
       </div>
     </section>

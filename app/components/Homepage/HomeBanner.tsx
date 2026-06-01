@@ -14,7 +14,7 @@ export default function HomeBanner() {
       }}
     >
       {/* ── MOBILE BANNER IMAGE (visible only on mobile, hidden on md+) ── */}
-      <div className="block md:hidden w-full relative" style={{ aspectRatio: "4/4" }}>
+      <div className="block md:hidden w-full relative" style={{ aspectRatio: "3/4" }}>
         <Image
           src="/bannerimgmobile.png"
           alt="Banner"
