@@ -58,7 +58,7 @@ export default function AboutStory() {
      
       
       {/* Paper airplane arrow */}
-      <div className="absolute left-[1%] bottom-[-2%] w-36 h-86 z-10 pointer-events-none hidden md:block">
+      <div className="absolute left-[1%] bottom-[-2%] w-36 h-86 z-10 pointer-events-none hidden lg:block">
         <img
           src="/arrowig1.png"
           alt=""
@@ -68,10 +68,10 @@ export default function AboutStory() {
       </div>
 
       <div className="container-custom relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-10 items-center">
 
           {/* LEFT: Our Story Text */}
-          <div className="lg:col-span-6 text-left animate-fade-in-left">
+          <div className="md:col-span-7 lg:col-span-6 text-left animate-fade-in-left">
             <div className="w-16 h-1 bg-[#4CAF50] rounded-full mb-3" />
             <h2 className="text-[#1a237e] font-black text-3xl md:text-4xl font-['Baloo_2'] mb-4 leading-tight">
               Our Story
@@ -91,7 +91,7 @@ export default function AboutStory() {
           </div>
 
           {/* RIGHT: Leadership Cards */}
-          <div className="lg:col-span-6 animate-fade-in-right">
+          <div className="md:col-span-5 lg:col-span-6 animate-fade-in-right">
 
             {/* ── MOBILE: Carousel ── */}
             <div className="block lg:hidden">
