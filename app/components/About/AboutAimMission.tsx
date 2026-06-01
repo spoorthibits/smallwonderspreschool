@@ -64,8 +64,7 @@ export default function AboutAimMission() {
   };
 
   return (
-      <section
-      className="relative py-8 md:py-5 bg-[#FCFAEF] overflow-hidden flex flex-col items-center justify-center"
+      <section className="relative py-8 md:py-5 bg-[#FCFAEF]"
       style={{
         backgroundImage: "url('/bgimg.webp')",
         backgroundSize: "auto",
@@ -119,83 +118,110 @@ export default function AboutAimMission() {
         </div>
 
         {/* ── MOBILE: Carousel ── */}
-        <div className="block sm:hidden">
+      {/* ── MOBILE: One Card Carousel ── */}
+<div className="block sm:hidden w-full overflow-hidden">
+  <div
+    className="relative w-full"
+    onTouchStart={handleTouchStart}
+    onTouchEnd={handleTouchEnd}
+  >
+    <div
+      className="flex transition-transform duration-500 ease-in-out"
+      style={{
+        transform: `translateX(-${activeIndex * 100}%)`,
+      }}
+    >
+      {missionPillars.map((item, idx) => (
+        <div
+          key={idx}
+          className="w-full flex-shrink-0 px-5"
+        >
           <div
-            className="relative overflow-hidden"
-            onTouchStart={handleTouchStart}
-            onTouchEnd={handleTouchEnd}
+            className="flex flex-col p-6 shadow-md border-t-4"
+            style={{
+              backgroundColor: item.bg,
+              borderRadius: "32px",
+              minHeight: "320px",
+              borderTopColor: item.border,
+            }}
           >
-            {/* Sliding track */}
-            <div
-              className="flex transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+            <h4
+              className="font-black text-2xl font-['Baloo_2'] leading-snug mb-4 text-center"
+              style={{ color: item.titleColor }}
             >
-              {missionPillars.map((item, idx) => (
-                <div key={idx} className="min-w-full px-4">
-                  <div
-                    className="flex flex-col p-7 shadow-md border-t-4 mx-auto"
-                    style={{
-                      backgroundColor: item.bg,
-                      borderRadius: "32px",
-                      minHeight: "320px",
-                      borderTopColor: item.border,
-                    }}
-                  >
-                    <h4
-                      className="font-black text-2xl font-['Baloo_2'] leading-snug mb-4 text-center"
-                      style={{ color: item.titleColor }}
-                    >
-                      {item.title}
-                    </h4>
-                    <p
-                      className="text-lg font-['Nunito'] leading-relaxed text-center"
-                      style={{ color: item.textColor }}
-                    >
-                      {item.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
+              {item.title}
+            </h4>
 
-            {/* Prev / Next arrows */}
-            <button
-              onClick={() => setActiveIndex((prev) => Math.max(prev - 1, 0))}
-              disabled={activeIndex === 0}
-              aria-label="Previous"
-              className="absolute left-0 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 shadow flex items-center justify-center disabled:opacity-30 transition"
+            <p
+              className="text-base font-['Nunito'] leading-relaxed text-center"
+              style={{ color: item.textColor }}
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1a237e" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="15 18 9 12 15 6" />
-              </svg>
-            </button>
-            <button
-              onClick={() => setActiveIndex((prev) => Math.min(prev + 1, missionPillars.length - 1))}
-              disabled={activeIndex === missionPillars.length - 1}
-              aria-label="Next"
-              className="absolute right-0 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 shadow flex items-center justify-center disabled:opacity-30 transition"
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1a237e" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="9 18 15 12 9 6" />
-              </svg>
-            </button>
-          </div>
-
-          {/* Dot indicators */}
-          <div className="flex justify-center gap-2 mt-4">
-            {missionPillars.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setActiveIndex(i)}
-                aria-label={`Go to slide ${i + 1}`}
-                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                  activeIndex === i ? "scale-125" : "opacity-30"
-                }`}
-                style={{ backgroundColor: missionPillars[i].border }}
-              />
-            ))}
+              {item.description}
+            </p>
           </div>
         </div>
+      ))}
+    </div>
+
+    {/* Left Arrow */}
+    <button
+      onClick={() =>
+        setActiveIndex((prev) =>
+          prev === 0 ? missionPillars.length - 1 : prev - 1
+        )
+      }
+      className="absolute left-1 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white shadow-lg flex items-center justify-center"
+    >
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="var(--color-primary)"
+        strokeWidth="2.5"
+      >
+        <polyline points="15 18 9 12 15 6" />
+      </svg>
+    </button>
+
+    {/* Right Arrow */}
+    <button
+      onClick={() =>
+        setActiveIndex((prev) =>
+          prev === missionPillars.length - 1 ? 0 : prev + 1
+        )
+      }
+      className="absolute right-1 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white shadow-lg flex items-center justify-center"
+    >
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="var(--color-primary)"
+        strokeWidth="2.5"
+      >
+        <polyline points="9 18 15 12 9 6" />
+      </svg>
+    </button>
+  </div>
+
+  {/* Dots */}
+  <div className="flex justify-center gap-2 mt-4">
+    {missionPillars.map((_, i) => (
+      <button
+        key={i}
+        onClick={() => setActiveIndex(i)}
+        className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+          activeIndex === i ? "scale-125" : "opacity-30"
+        }`}
+        style={{
+          backgroundColor: missionPillars[i].border,
+        }}
+      />
+    ))}
+  </div>
+</div>
 
         {/* ── TABLET: Horizontal scroll, 2 visible, scroll reveals next ── */}
 <div className="hidden sm:block lg:hidden">
