@@ -20,7 +20,7 @@ export default function AboutStats() {
       <div className="container-custom relative z-10">
 
         {/* ── MOBILE ONLY: heading → image → content ── */}
-        <div className="block lg:hidden pt-4 pb-8">
+        <div className="block md:hidden pt-4 pb-8">
 
           {/* 1. Heading centred */}
           <div className="mb-5 text-left">
@@ -97,12 +97,12 @@ export default function AboutStats() {
           </div>
         </div>
 
-        {/* ── TABLET + DESKTOP: original layout (untouched) ── */}
-        <div className="hidden lg:grid grid-cols-12 gap-16 items-center">
+        {/* ── TABLET + DESKTOP: layout ── */}
+        <div className="hidden md:grid grid-cols-12 md:gap-8 lg:gap-16 items-center">
 
           {/* LEFT: Organic Blob Image */}
-          <div className="col-span-6 flex justify-start items-center py-10 animate-fade-in-left -translate-x-16">
-            <div className="relative w-full max-w-[530px] aspect-square flex justify-center items-center animate-float-main-image">
+          <div className="col-span-6 flex justify-start items-center py-10 animate-fade-in-left md:translate-x-0 lg:-translate-x-16">
+            <div className="relative w-full max-w-[340px] lg:max-w-[530px] aspect-square flex justify-center items-center animate-float-main-image">
 
               <div
                 className="absolute pointer-events-none z-0 animate-float-blob-1"
@@ -145,24 +145,24 @@ export default function AboutStats() {
             <span className="text-[var(--color-primary)] font-bold text-xs tracking-widest uppercase font-['Nunito'] mb-3 block">
               — ABOUT SMALL WONDERS
             </span>
-            <h2 className="text-[var(--color-secondary)] font-black text-3xl md:text-5xl leading-tight font-['Baloo_2'] mb-6">
+            <h2 className="text-[var(--color-secondary)] font-black text-3xl lg:text-5xl leading-tight font-['Baloo_2'] mb-4 lg:mb-6">
               A Joyful Start Since 2009
             </h2>
-            <p className="text-[#3d3d5c] text-base md:text-lg leading-relaxed font-['Nunito'] mb-5">
+            <p className="text-[#3d3d5c] text-[15px] lg:text-lg leading-relaxed font-['Nunito'] mb-4 lg:mb-5">
               Small Wonders opened its doors in 2009 with one simple belief — that every child deserves
               a childhood full of curiosity, kindness and play. What began as a tiny neighbourhood playgroup
               is today a much-loved preschool and daycare for families in our community.
             </p>
-            <p className="text-[#3d3d5c] text-base md:text-lg leading-relaxed font-['Nunito'] mb-8">
+            <p className="text-[#3d3d5c] text-[15px] lg:text-lg leading-relaxed font-['Nunito'] mb-6 lg:mb-8">
               Our bright classrooms, age-appropriate activities and warm caregivers create the perfect space
               for children aged 1.5 to 6 years to learn, grow and feel at home — all day, every day.
             </p>
 
             {/* Stats Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8 pt-1">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-8 pt-1">
               {stats.map((stat, idx) => (
                 <div key={idx} className="flex flex-col transform hover:scale-105 transition-transform duration-300 cursor-default group">
-                  <span className="text-[var(--color-primary)] font-extrabold text-2xl md:text-4xl font-['Baloo_2'] group-hover:text-[#e0531c] transition-colors duration-300">
+                  <span className="text-[var(--color-primary)] font-extrabold text-2xl lg:text-4xl font-['Baloo_2'] group-hover:text-[#e0531c] transition-colors duration-300">
                     {stat.value}
                   </span>
                   <span className="text-[#7a7a9d] text-xs font-semibold font-['Nunito'] mt-1 leading-snug">
