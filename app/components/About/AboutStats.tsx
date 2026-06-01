@@ -13,14 +13,9 @@ export default function AboutStats() {
   return (
     <section
       className="w-full py-16 md:py-2 relative overflow-hidden"
-      style={{
-        backgroundImage: "url('/bgimg.webp')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
+     
     >
-      <div className="absolute inset-0 bg-white/60 z-0 pointer-events-none" />
+      
 
       <div className="container-custom relative z-10">
 

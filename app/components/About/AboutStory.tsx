@@ -46,8 +46,7 @@ export default function AboutStory() {
 
   return (
     <section
-      id="our-story"
-      className="w-full py-10 relative overflow-hidden"
+      className="relative py-8 md:py-5 bg-[#FCFAEF] overflow-hidden flex flex-col items-center justify-center"
       style={{
         backgroundImage: "url('/bgimg.webp')",
         backgroundSize: "auto",
@@ -55,6 +54,9 @@ export default function AboutStory() {
         backgroundRepeat: "repeat",
       }}
     >
+      <div className="absolute inset-0 bg-white/40 z-0 pointer-events-none" />
+     
+      
       {/* Paper airplane arrow */}
       <div className="absolute left-[1%] bottom-[-2%] w-36 h-86 z-10 pointer-events-none hidden md:block">
         <img

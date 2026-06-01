@@ -65,7 +65,7 @@ export default function AboutAimMission() {
 
   return (
     <section
-      className="w-full py-16 relative overflow-hidden"
+      className="relative py-8 md:py-5 bg-[#FCFAEF] overflow-hidden flex flex-col items-center justify-center"
       style={{
         backgroundImage: "url('/bgimg.webp')",
         backgroundSize: "auto",
@@ -73,6 +73,7 @@ export default function AboutAimMission() {
         backgroundRepeat: "repeat",
       }}
     >
+      <div className="absolute inset-0 bg-white/25 z-0 pointer-events-none" />
       {/* Floating Emojis */}
       <div className="absolute left-[3%] top-[40%] w-16 h-16 sun-float z-10 opacity-80 pointer-events-none hidden md:block">
         <img src="/slider_shape01.png" alt="Sun" className="w-full h-full object-contain" />

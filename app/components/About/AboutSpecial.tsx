@@ -22,7 +22,7 @@ export default function AboutSpecial() {
 
   return (
     <section
-      className="w-full md:pt-10 md:pb-25 relative overflow-hidden"
+      className="relative py-8 md:py-5 bg-[#FCFAEF] overflow-hidden flex flex-col items-center justify-center"
       style={{
         backgroundImage: "url('/bgimg.webp')",
         backgroundSize: "auto",
@@ -30,6 +30,7 @@ export default function AboutSpecial() {
         backgroundRepeat: "repeat",
       }}
     >
+      <div className="absolute inset-0 bg-white/38 z-0 pointer-events-none" />
       
 
       {/* Floating Emojis */}

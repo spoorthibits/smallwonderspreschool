@@ -183,12 +183,6 @@ export default function AboutProgramsScroll() {
     <div
       ref={containerRef}
       className="w-full h-auto lg:h-[800px] pt-16 pb-12 md:pt-20 md:pb-16 relative overflow-hidden bg-white" // Sized exactly to content height, no vertical h-[300vh] or 1300px gaps!
-      style={{
-        backgroundImage: "url('/bgimg.webp')",
-        backgroundSize: "auto",
-        backgroundPosition: "center",
-        backgroundRepeat: "repeat",
-      }}
     >
       {/* Floating decoration shapes in background margins */}
       <div className="absolute left-[2%] top-[5%] w-10 h-10 star-float z-0 opacity-50 pointer-events-none hidden lg:block">
