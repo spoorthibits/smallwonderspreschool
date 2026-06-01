@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function GalleryBanner() {
   return (
-    <section className="w-full bg-[var(--offwhite-color)] py-0 md:py-12 relative overflow-visible">
+    <section className="w-full bg-[#fdf9f3] py-0 md:py-12 relative overflow-visible">
       <style jsx global>{`
         @keyframes drawPath {
           from { stroke-dashoffset: 350; }

@@ -312,7 +312,7 @@ export default function GalleryGrid() {
   const mobileTabs = expanded ? filterTabs : filterTabs.slice(0, VISIBLE_MOBILE);
 
   return (
-    <section className="py-11 md:py-10 bg-[var(--offwhite-bg)]">
+    <section className="py-11 md:py-5">
       <div className="container-custom">
 
         {/* ── MOBILE Filter: single scrollable row with +N ── */}

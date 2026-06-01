@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function ContactBanner() {
   return (
-    <section className="w-full bg-[var(--offwhite-color)] md:py-8 relative overflow-hidden">
+    <section className="w-full bg-[#fdf9f3] md:py-8 relative overflow-hidden">
       <style jsx global>{`
         @keyframes drawPath {
           from { stroke-dashoffset: 350; }
