@@ -92,7 +92,7 @@ export default function StepsToJoin() {
             </div>
 
             {/* Action Button */}
-            <div className="mt-7 md:mt-10">
+            <div className="mt-7 md:mt-10 w-full flex justify-center md:justify-start">
               <Button
                 label="Visit Us"
                 variant="secondary"
@@ -100,7 +100,7 @@ export default function StepsToJoin() {
                 icon={<ArrowRight className="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1" />}
                 iconPosition="right"
                 onClick={() => openModal("visit")}
-                className="group shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
+                className="text-center group shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
               />
             </div>
           </div>
@@ -120,7 +120,7 @@ export default function StepsToJoin() {
                 repeat: Infinity, 
                 ease: "easeInOut" 
               }}
-              className="relative w-full max-w-[280px] sm:max-w-[340px] md:max-w-[420px] aspect-square group origin-center"
+              className="hidden md:visible relative w-full max-w-[280px] sm:max-w-[340px] md:max-w-[420px] aspect-square group origin-center"
             >
               
               {/* Layer 1 (Bottom Light Colored Shadow) */}

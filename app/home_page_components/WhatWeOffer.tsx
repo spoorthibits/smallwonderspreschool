@@ -5,6 +5,7 @@ import Image from "next/image";
 import { gsap } from "gsap";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 import { motion } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useModal } from "../context/ModalContext";
 
 interface Programme {
@@ -55,6 +56,7 @@ export default function WhatWeOffer() {
   const fishRef = useRef<SVGGElement>(null);
   const waterPathRef = useRef<SVGPathElement>(null);
   const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const [mobileIdx, setMobileIdx] = useState(0);
 
   const programmes: Programme[] = [
     {
@@ -206,56 +208,95 @@ export default function WhatWeOffer() {
         ))}
       </div>
 
-      {/* ── MOBILE LAYOUT ONLY: zigzag image left/right ── */}
-      <div className="md:hidden flex flex-col gap-8 w-full px-4 relative z-10">
-        {programmes.map((prog, idx) => {
-          const isEven = idx % 2 === 0;
-          return (
-            <div
-              key={prog.id}
-              className={`flex items-center gap-4 ${isEven ? "flex-row" : "flex-row-reverse"}`}
-            >
-              {/* Circle Image */}
-              <div className="flex-shrink-0 relative w-36 h-36 rounded-full border-[5px] border-white shadow-xl bg-white">
-                <Image
-                  src={prog.image}
-                  fill
-                  className="object-cover rounded-full p-1"
-                  alt={prog.title}
-                />
-                <div
-                  className={`absolute -bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap text-white text-[9px] font-extrabold py-1 px-2 rounded-full shadow-lg ${prog.badgeColor}`}
-                >
-                  {prog.badge}
-                </div>
-              </div>
+      {/* ── MOBILE LAYOUT ONLY: centered carousel with arrows ── */}
+      <div className="md:hidden w-full relative z-10 px-4 pb-4">
+        <div className="flex items-center justify-center gap-3">
 
-              {/* Text Content */}
-              <div className={`flex-1 flex flex-col pt-2 ${isEven ? "items-start text-left" : "items-end text-right"}`}>
-                {prog.title === "NEP Curriculum" ? (
+          {/* Left Arrow */}
+          <button
+            onClick={() => setMobileIdx((i) => i - 1)}
+            disabled={mobileIdx === 0}
+            aria-label="Previous programme"
+            className="flex-shrink-0 w-9 h-9 rounded-full shadow-md flex items-center justify-center transition-colors duration-200 disabled:opacity-30 disabled:cursor-not-allowed bg-white text-[var(--color-primary)] hover:enabled:bg-[var(--color-primary)] hover:enabled:text-white"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+
+          {/* Card */}
+          <div className="flex-1 max-w-[260px]">
+            {programmes.map((prog, idx) => (
+              <div
+                key={prog.id}
+                className={`flex flex-col items-center bg-white rounded-2xl shadow-md px-4 pt-8 pb-5 transition-all duration-300 ${
+                  idx === mobileIdx ? "block" : "hidden"
+                }`}
+              >
+                {/* Circle Image */}
+                <div className="relative w-28 h-28 rounded-full border-[5px] border-white shadow-xl bg-white mb-8 flex-shrink-0">
+                  <Image
+                    src={prog.image}
+                    fill
+                    className="object-cover rounded-full p-1"
+                    alt={prog.title}
+                  />
                   <div
-                    className="mb-1 flex flex-col cursor-pointer group/nep"
-                    onClick={() => setIsVideoOpen(true)}
+                    className={`absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap text-white text-[9px] font-extrabold py-1 px-3 rounded-full shadow-lg ${prog.badgeColor}`}
                   >
-                    <h3 className="text-xl font-extrabold text-[var(--color-secondary)] font-baloo leading-tight group-hover/nep:text-[var(--color-primary)] group-hover/nep:underline decoration-2 underline-offset-4 transition-all">
+                    {prog.badge}
+                  </div>
+                </div>
+
+                {/* Text */}
+                <div className="flex flex-col items-center text-center">
+                  {prog.title === "NEP Curriculum" ? (
+                    <div
+                      className="mb-1 flex flex-col items-center cursor-pointer group/nep"
+                      onClick={() => setIsVideoOpen(true)}
+                    >
+                      <h3 className="text-lg font-extrabold text-[var(--color-secondary)] font-baloo leading-tight group-hover/nep:text-[var(--color-primary)] transition-colors">
+                        {prog.title}
+                      </h3>
+                      <span className="text-xs text-[var(--color-primary)] font-bold font-nunito mt-0.5">
+                        Tap to know more
+                      </span>
+                    </div>
+                  ) : (
+                    <h3 className="text-lg font-extrabold text-[var(--color-secondary)] font-baloo mb-1 leading-tight">
                       {prog.title}
                     </h3>
-                    <span className="text-xs text-[var(--color-primary)] font-bold font-nunito opacity-0 group-hover/nep:opacity-100 transition-opacity mt-0.5">
-                      Click to know more
-                    </span>
-                  </div>
-                ) : (
-                  <h3 className="text-xl font-extrabold text-[var(--color-secondary)] font-baloo mb-1 leading-tight">
-                    {prog.title}
-                  </h3>
-                )}
-                <p className="text-[13px] text-gray-700 font-nunito leading-relaxed font-medium">
-                  {prog.description}
-                </p>
+                  )}
+                  <p className="text-[12px] text-gray-700 font-nunito leading-relaxed font-medium mt-1">
+                    {prog.description}
+                  </p>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            ))}
+          </div>
+
+          {/* Right Arrow */}
+          <button
+            onClick={() => setMobileIdx((i) => i + 1)}
+            disabled={mobileIdx === programmes.length - 1}
+            aria-label="Next programme"
+            className="flex-shrink-0 w-9 h-9 rounded-full shadow-md flex items-center justify-center transition-colors duration-200 disabled:opacity-30 disabled:cursor-not-allowed bg-white text-[var(--color-primary)] hover:enabled:bg-[var(--color-primary)] hover:enabled:text-white"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+
+        </div>
+
+        {/* Dot indicators */}
+        <div className="flex justify-center gap-2 mt-4">
+          {programmes.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setMobileIdx(i)}
+              className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                i === mobileIdx ? "bg-[var(--color-primary)] w-5" : "bg-gray-300"
+              }`}
+            />
+          ))}
+        </div>
       </div>
 
       {/* Video Dialog for NEP */}

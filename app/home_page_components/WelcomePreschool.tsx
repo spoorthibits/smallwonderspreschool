@@ -28,8 +28,7 @@ export default function WelcomePreschool() {
   const parallaxSlowY = useTransform(springY, (v) => v * 0.3);
   const parallaxTilt = useTransform(springX, (v) => v * 0.15);
 
-  const splatClipPath =
-    "M0.475,0.055 C0.605,0.102 0.825,0.005 0.885,0.125 C0.945,0.245 0.815,0.355 0.875,0.485 C0.935,0.615 0.985,0.825 0.855,0.915 C0.725,1.005 0.565,0.885 0.435,0.915 C0.305,0.945 0.125,1.025 0.045,0.895 C-0.035,0.765 0.145,0.605 0.105,0.475 C0.065,0.345 -0.055,0.165 0.045,0.055 C0.145,-0.055 0.345,0.008 0.475,0.055 Z";
+
 
   return (
     <section
@@ -58,36 +57,19 @@ export default function WelcomePreschool() {
           {/* ── Left Column: Image ── */}
           <div className="md:col-span-1 lg:col-span-6 relative flex justify-center items-center py-0 sm:py-2 md:py-8 lg:py-10 order-1">
 
-            <svg width="0" height="0" className="absolute">
-              <defs>
-                <clipPath id="welcome-splat-clip" clipPathUnits="objectBoundingBox">
-                  <path d={splatClipPath} />
-                </clipPath>
-              </defs>
-            </svg>
-
             <motion.div
               style={{ x: parallaxSlowX, y: parallaxSlowY, rotate: parallaxTilt }}
-              initial={{ scale: 0.8, y: 100, opacity: 0 }}
+              initial={{ scale: 0.8, y: 60, opacity: 0 }}
               whileInView={{ scale: 1, y: 0, opacity: 1 }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ type: "spring", bounce: 0.5, duration: 1.2 }}
-              className="relative w-full max-w-[92vw] sm:max-w-[75vw] md:max-w-[340px] lg:max-w-[480px] aspect-square z-20 pointer-events-auto mx-auto"
+              transition={{ type: "spring", bounce: 0.4, duration: 1.2 }}
+              className="relative w-full max-w-[92vw] sm:max-w-[75vw] md:max-w-[340px] lg:max-w-[480px] z-20 pointer-events-auto mx-auto"
             >
-              <div
-                className="absolute w-[105%] h-[105%] -top-[2%] -left-[2%] bg-gradient-to-tr from-purple-200 to-pink-200 opacity-80 -rotate-6"
-                style={{ clipPath: "url(#welcome-splat-clip)" }}
-              />
-              <div
-                className="absolute w-[95%] h-[95%] top-[5%] left-[5%] bg-gradient-to-br from-orange-100 to-yellow-100 opacity-90 rotate-12"
-                style={{ clipPath: "url(#welcome-splat-clip)" }}
-              />
-              <div
-                className="w-full h-full relative overflow-hidden shadow-2xl bg-purple-50"
-                style={{ clipPath: "url(#welcome-splat-clip)" }}
-              >
+
+              {/* Image card */}
+              <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl z-10">
                 <motion.div
-                  initial={{ opacity: 0, scale: 1.2 }}
+                  initial={{ opacity: 0, scale: 1.08 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ delay: 0.2, duration: 0.8 }}

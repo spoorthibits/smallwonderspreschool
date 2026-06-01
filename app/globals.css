@@ -55,7 +55,7 @@
   body {
     font-family: "Nunito", sans-serif;
     color: var(--color-body);
-    background-color:#fdf9f3;
+    background-color: var(--color-offwhite);
   }
 
   /* ================= DESKTOP TYPOGRAPHY ================= */
@@ -761,7 +761,7 @@
 }
 
 .footer-col-logo {
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
   min-width: 250px;
@@ -778,7 +778,6 @@
 
 @media (min-width: 1024px) {
   .footer-col-logo {
-    display: flex;
     flex-basis: auto;
     width: auto;
     justify-content: flex-start;
@@ -1208,3 +1207,11 @@
   animation: wavy-float 2.5s ease-in-out infinite;
 }
 
+/* Hide scrollbar but keep scroll functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
