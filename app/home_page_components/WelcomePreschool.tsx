@@ -81,7 +81,7 @@ export default function WelcomePreschool() {
   return (
     <section 
       onMouseMove={handleMouseMove}
-      className="relative py-8 md:py-8 lg:py-12 bg-white overflow-hidden"
+      className="relative py-8 md:py-8 lg:py-0 bg-white overflow-hidden"
       style={{
         backgroundImage: "url('/bgimg.webp')",
         backgroundSize: "auto",
@@ -93,9 +93,9 @@ export default function WelcomePreschool() {
       {/* ── Playful Decorative Doodles (Parallax) ── */}
       
       {/* Kite */}
-      <motion.div style={{ x: parallaxFastX, y: parallaxFastY }} className="absolute top-[10%] left-[8%] text-pink-400 opacity-60 pointer-events-none rotate-12">
+      {/* <motion.div style={{ x: parallaxFastX, y: parallaxFastY }} className="absolute top-[10%] left-[8%] text-pink-400 opacity-60 pointer-events-none rotate-12">
         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2l-5 8 5 8 5-8z"/><path d="M12 18v6"/><path d="M10 22h4"/></svg>
-      </motion.div>
+      </motion.div> */}
       
       {/* Rainbow */}
       {/* <motion.div style={{ x: parallaxSlowX, y: parallaxSlowY }} className="absolute top-[20%] right-[10%] text-orange-400 opacity-60 pointer-events-none -rotate-12">
@@ -103,9 +103,9 @@ export default function WelcomePreschool() {
       </motion.div> */}
 
       {/* Crayon/Pencil */}
-      <motion.div style={{ x: parallaxFastX, y: parallaxFastY }} className="absolute bottom-[20%] left-[5%] text-purple-400 opacity-50 pointer-events-none -rotate-45">
+      {/* <motion.div style={{ x: parallaxFastX, y: parallaxFastY }} className="absolute bottom-[20%] left-[5%] text-purple-400 opacity-50 pointer-events-none -rotate-45">
         <Pencil className="w-12 h-12" />
-      </motion.div>
+      </motion.div> */}
 
       {/* Bird */}
       {/* <motion.div style={{ x: parallaxFastX, y: parallaxFastY }} className="absolute top-[40%] left-[45%] text-blue-400 opacity-40 pointer-events-none">
@@ -113,9 +113,9 @@ export default function WelcomePreschool() {
       </motion.div> */}
 
       {/* Teddy Bear */}
-      <motion.div style={{ x: parallaxSlowX, y: parallaxSlowY }} className="absolute bottom-[10%] right-[30%] text-amber-600 opacity-40 pointer-events-none rotate-12">
+      {/* <motion.div style={{ x: parallaxSlowX, y: parallaxSlowY }} className="absolute bottom-[10%] right-[30%] text-amber-600 opacity-40 pointer-events-none rotate-12">
         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="6"/><circle cx="7" cy="7" r="3"/><circle cx="17" cy="7" r="3"/><circle cx="12" cy="13" r="2"/></svg>
-      </motion.div>
+      </motion.div> */}
 
       {/* Tree */}
       {/* <motion.div style={{ x: parallaxFastX, y: parallaxFastY }} className="absolute bottom-[25%] right-[5%] text-emerald-400 opacity-50 pointer-events-none">
@@ -123,9 +123,9 @@ export default function WelcomePreschool() {
       </motion.div> */}
 
       {/* Toy Giraffe (Abstract) */}
-      <motion.div style={{ x: parallaxSlowX, y: parallaxSlowY }} className="absolute top-[15%] left-[40%] text-yellow-500 opacity-40 pointer-events-none -rotate-12">
+      {/* <motion.div style={{ x: parallaxSlowX, y: parallaxSlowY }} className="absolute top-[15%] left-[40%] text-yellow-500 opacity-40 pointer-events-none -rotate-12">
         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 2h4v4l-4 8v8h-4v-8c0-3 3-8 3-8H8L6 14v8H2v-8C2 9 6 6 10 6h1L15 2z"/></svg>
-      </motion.div>
+      </motion.div> */}
 
       <div className="container-custom relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 lg:gap-16 items-center">
