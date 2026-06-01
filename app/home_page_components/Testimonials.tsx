@@ -148,14 +148,11 @@ export default function Testimonials() {
                 </div>
 
                 {/* Review Text */}
-                <div
-                  className="flex-grow overflow-y-auto mb-3 pr-1"
-                  style={{ scrollbarWidth: "none" }}
-                >
-                  <p className="font-nunito text-[12px] md:text-[13px] text-slate-600 leading-relaxed italic">
-                    {review.text}
-                  </p>
-                </div>
+                <div className="flex-grow mb-3 pr-1">
+  <p className="font-nunito text-[12px] md:text-[13px] text-slate-600 leading-relaxed italic line-clamp-6 md:line-clamp-none">
+    {review.text}
+  </p>
+</div>
 
                 <hr className="border-t border-gray-100 mb-2" />
 
@@ -216,17 +213,7 @@ export default function Testimonials() {
         )}
 
         {/* View All Reviews */}
-        <div className="flex justify-center mt-4 md:mt-5">
-          <a
-            href="https://www.justdial.com/Hyderabad/Small-Wonders-International-Play-School-Beside-SAI-Baba-Temple-HiTension-Wire-Road-Sainikpuri/040PXX40-XX40-120424145234-N5N2_BZDET/reviews"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 border-2 border-[var(--color-secondary)] text-[var(--color-secondary)] px-5 py-2 rounded-full font-baloo font-bold text-[13px] md:text-[14px] hover:bg-[var(--color-secondary)] hover:text-white transition-all duration-300 shadow-sm"
-          >
-            View All Reviews
-            <ExternalLink className="w-3.5 h-3.5" />
-          </a>
-        </div>
+        
 
       </div>
 

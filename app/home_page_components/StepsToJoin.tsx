@@ -38,12 +38,6 @@ export default function StepsToJoin() {
       
       {/* Decorative preschool elements */}
       <div className="absolute inset-0 pointer-events-none select-none z-0 overflow-hidden">
-        <div className="absolute top-[10%] left-[5%] text-[var(--color-primary)] opacity-30 animate-pulse hidden md:block">
-          <Sparkles className="w-10 h-10" />
-        </div>
-        <div className="absolute bottom-[15%] left-[8%] text-[var(--color-secondary)] opacity-20 animate-[bounce_3s_infinite] hidden md:block">
-          <Heart className="w-8 h-8 fill-current" />
-        </div>
         <div className="absolute top-[15%] right-[8%] text-pink-300 opacity-40 animate-[bounce_4s_infinite] hidden md:block">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M12 2L15 9L22 10L17 15L18 22L12 18L6 22L7 15L2 10L9 9L12 2Z" />
@@ -59,7 +53,7 @@ export default function StepsToJoin() {
         </div>
       </div>
 
-      <div className="container-custom relative z-10">
+      <div className="container-custom relative z-10 px-5 md:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-4 lg:gap-16 items-center">
           
           {/* ── Left Column: Steps List ── */}
@@ -71,12 +65,12 @@ export default function StepsToJoin() {
               Three Simple Steps
             </h2>
 
-            <div className="space-y-4 md:space-y-6 w-full relative">
+            <div className="space-y-5 md:space-y-6 w-full relative">
               {/* Connecting dashed line behind the numbers */}
-              <div className="absolute left-6 top-8 bottom-8 w-px border-l-2 border-dashed border-[var(--color-primary)] opacity-30 z-0 hidden sm:block"></div>
+              <div className="absolute left-6 top-8 bottom-8 w-px border-l-2 border-dashed border-[var(--color-primary)] opacity-30 z-0"></div>
               
               {steps.map((step, index) => (
-                <div key={index} className="flex gap-5 items-start group relative z-10">
+                <div key={index} className="flex gap-4 items-start group relative z-10">
                   
                   {/* Step Number Circle */}
                   <div className="w-12 h-12 rounded-full flex-shrink-0 flex items-center justify-center bg-[var(--color-primary)] text-white font-baloo text-lg font-bold shadow-md shadow-orange-100 group-hover:scale-110 transition-transform duration-300">
@@ -84,11 +78,11 @@ export default function StepsToJoin() {
                   </div>
                   
                   {/* Step Text Content */}
-                  <div className="flex-1 min-w-0">
-                    <h3 className="font-baloo text-lg sm:text-xl font-extrabold text-[var(--color-secondary)] leading-snug mb-1.5 group-hover:text-[var(--color-primary)] transition-colors duration-200">
+                  <div className="flex-1 min-w-0 pt-1">
+                    <h3 className="font-baloo text-base sm:text-xl font-extrabold text-[var(--color-secondary)] leading-snug mb-1 group-hover:text-[var(--color-primary)] transition-colors duration-200">
                       {step.title}
                     </h3>
-                    <p className="font-nunito text-sm sm:text-base text-[var(--color-body)] leading-relaxed font-medium">
+                    <p className="font-nunito text-sm text-[var(--color-body)] leading-relaxed font-medium">
                       {step.description}
                     </p>
                   </div>
@@ -98,7 +92,7 @@ export default function StepsToJoin() {
             </div>
 
             {/* Action Button */}
-            <div className="mt-8 md:mt-10">
+            <div className="mt-7 md:mt-10">
               <Button
                 label="Visit Us"
                 variant="secondary"
@@ -112,9 +106,9 @@ export default function StepsToJoin() {
           </div>
 
           {/* ── Right Column: Image Asset ── */}
-          <div className="lg:col-span-6 relative flex justify-center py-6">
+          <div className="lg:col-span-6 relative flex justify-center py-4 md:py-6">
             
-            {/* Blob Image Container with 2 colored shadow layers */}
+            {/* Blob Image Container */}
             <motion.div 
               animate={{ 
                 y: [-6, 6, -6], 
@@ -126,7 +120,7 @@ export default function StepsToJoin() {
                 repeat: Infinity, 
                 ease: "easeInOut" 
               }}
-              className="relative w-full max-w-[420px] aspect-square group origin-center"
+              className="relative w-full max-w-[280px] sm:max-w-[340px] lg:max-w-[420px] aspect-square group origin-center"
             >
               
               {/* Layer 1 (Bottom Light Colored Shadow) */}

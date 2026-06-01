@@ -129,11 +129,11 @@ export default function WhatWeOffer() {
 
       {/* Header — tighter on desktop only */}
       <div className="container-custom relative z-10 w-full mb-4 lg:mb-3 text-center px-4">
-        <h2 className="font-baloo text-[#E06820] text-4xl sm:text-5xl lg:text-[54px] leading-tight font-extrabold mb-4 lg:mb-2">
+        <h2 className="font-baloo text-[#E06820] text-4xl sm:text-6xl lg:text-[50px] leading-tight font-extrabold mb-2 lg:mb-2">
           Our Programs
         </h2>
         <p className="font-nunito text-[16px] sm:text-[18px] text-gray-700 italic max-w-xl mx-auto">
-          Where learning feels like an adventure...
+          Where learning feels like an adventure
         </p>
       </div>
 
@@ -207,7 +207,7 @@ export default function WhatWeOffer() {
       </div>
 
       {/* Tablet & Mobile Layout — unchanged */}
-      <div className="lg:hidden flex flex-col gap-12 w-full max-w-4xl mx-auto px-6 relative z-10">
+      <div className="lg:hidden flex flex-col gap-1 w-full max-w-4xl mx-auto px-3 relative z-10">
         {programmes.map((prog, idx) => {
           const isEven = idx % 2 === 0;
           const flexDirection = isEven ? 'md:flex-row-reverse' : 'md:flex-row';
@@ -242,12 +242,7 @@ export default function WhatWeOffer() {
                 <p className="text-[16px] md:text-[17px] text-gray-700 font-nunito mb-8 leading-relaxed max-w-sm font-medium">
                   {prog.description}
                 </p>
-                <button
-                  onClick={() => openModal("apply")}
-                  className={`text-white text-[14px] md:text-[17px] font-extrabold py-2.5 px-6 md:py-3.5 md:px-10 rounded-full flex items-center gap-2 hover:opacity-90 transition-transform hover:-translate-y-1 shadow-lg ${prog.buttonColor}`}
-                >
-                  JOIN THE FUN &rarr;
-                </button>
+                
               </div>
             </div>
           );

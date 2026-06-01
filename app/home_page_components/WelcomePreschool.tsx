@@ -84,12 +84,10 @@ export default function WelcomePreschool() {
       <div className="container-custom relative z-10">
 
         {/* ── MOBILE-ONLY HEADING (visible only below lg) ── */}
-        <div className="block lg:hidden mb-4 px-1">
-          <span className="text-[var(--color-secondary)] font-baloo text-xl font-bold block mb-2">
-            Welcome to
-          </span>
-          <h2 className="font-baloo text-[var(--color-primary)] text-4xl sm:text-5xl leading-[1.1] font-extrabold tracking-tight">
-            Small Wonders Play School
+        <div className="block lg:hidden mb-2 px-1">
+          <h2 className="font-baloo leading-[1.1] font-extrabold tracking-tight" style={{ fontSize: "clamp(1.2rem, 5.5vw, 1.8rem)" }}>
+            <span className="text-[var(--color-secondary)]">Welcome to </span>
+            <span className="text-[var(--color-primary)]">Small Wonders</span>
           </h2>
         </div>
 

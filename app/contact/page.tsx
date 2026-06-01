@@ -70,7 +70,7 @@ export default function ContactPage() {
   return (
     <div>
       <ContactBanner />
-      <div className="mt-10">
+      <div className="mt-1">
         <ContactSection
           isSuccess={isSuccess}
           isSubmitting={isSubmitting}

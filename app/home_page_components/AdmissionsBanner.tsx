@@ -11,7 +11,7 @@ export default function AdmissionsBanner() {
   const { openModal } = useModal();
 
   return (
-    <section className="relative w-full z-30 pt-[70px] md:pt-4 lg:pt-[70px]">
+    <section className="relative w-full z-30 pt-[10px] md:pt-4 lg:pt-[20px]">
 
       {/* ══════════════════════════════════════
           MOBILE layout  (hidden on md+)

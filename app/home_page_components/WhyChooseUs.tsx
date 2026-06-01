@@ -90,26 +90,18 @@ export default function WhyChooseUs() {
       <div className="container-custom relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-2 md:mb-4 px-4">
+        <div className="text-center max-w-4xl mx-auto mb-2 md:mb-5 md:pb-4 px-4">
 
           <motion.h2 
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="font-baloo text-[var(--color-primary)] text-[22px] sm:text-3xl md:text-4xl lg:text-[40px] leading-tight font-extrabold mb-2"
+            className="font-baloo text-[#E06820] text-4xl sm:text-5xl lg:text-[50px] leading-tight font-extrabold mb-4 lg:mb-2"
           >
             Why Parents Love Small Wonders
           </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="font-nunito text-sm sm:text-base text-[var(--color-muted)] font-medium max-w-xl mx-auto leading-relaxed"
-          >
-            A warm, safe, and forward-thinking preschool environment where children build confidence through care, creativity, and modern early learning.
-          </motion.p>
+         
         </div>
 
         {/* Puzzle Layout */}
@@ -118,13 +110,17 @@ export default function WhyChooseUs() {
             
             {cards.map((card) => (
               <motion.div 
-                key={card.id}
-                initial={{ opacity: 0, x: card.initialPosition.x, y: card.initialPosition.y }}
-                whileInView={{ opacity: 1, x: 0, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 1.5, ease: "easeOut", delay: 0.1 * card.id }}
-                className="z-10 w-full h-full"
-              >
+  key={card.id}
+  initial={{ 
+    opacity: typeof window !== "undefined" && window.innerWidth < 768 ? 1 : 0, 
+    x: typeof window !== "undefined" && window.innerWidth < 768 ? 0 : card.initialPosition.x, 
+    y: typeof window !== "undefined" && window.innerWidth < 768 ? 0 : card.initialPosition.y 
+  }}
+  whileInView={{ opacity: 1, x: 0, y: 0 }}
+  viewport={{ once: true, amount: 0.2 }}
+  transition={{ duration: 1.5, ease: "easeOut", delay: 0.1 * card.id }}
+  className="z-10 w-full h-full"
+>
                 <div className={`relative m-0 transition-all duration-300 hover:-translate-y-1.5 hover:z-30 ${card.corners} group h-full`}>
                    {/* 1. Inner Content Box */}
                    <div className={`relative w-full h-full z-0 ${card.color} ${card.corners} p-3 md:p-5 flex flex-col justify-between shadow-sm transition-shadow duration-500 ${card.glowColor}`}>
@@ -178,10 +174,7 @@ export default function WhyChooseUs() {
             transition={{ duration: 0.6, delay: 0.8 }}
             className="mt-4 flex justify-center"
           >
-             <div className="inline-flex items-center gap-2 bg-[#FFF8F0] px-6 py-3 rounded-full border border-orange-100 shadow-sm">
-               <Heart className="w-5 h-5 text-orange-500 fill-orange-500" />
-               <span className="font-nunito text-[15px] font-bold text-[var(--color-dark)]">Every piece matters in your child's <span className="text-orange-600">growth journey.</span></span>
-             </div>
+             
           </motion.div>
         </div>
 
