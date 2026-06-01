@@ -35,7 +35,7 @@ export default function StepsToJoin() {
 
   return (
     <section className="relative py-6 md:py-10 bg-white overflow-hidden">
-      
+
       {/* Decorative preschool elements */}
       <div className="absolute inset-0 pointer-events-none select-none z-0 overflow-hidden">
         <div className="absolute top-[15%] right-[8%] text-pink-300 opacity-40 animate-[bounce_4s_infinite] hidden md:block">
@@ -55,7 +55,7 @@ export default function StepsToJoin() {
 
       <div className="container-custom relative z-10 px-5 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-center">
-          
+
           {/* ── Left Column: Steps List ── */}
           <div className="md:col-span-6 flex flex-col items-start text-left">
             <span className="text-xs font-bold text-[var(--color-primary)] tracking-wider uppercase mb-2 font-nunito">
@@ -68,15 +68,15 @@ export default function StepsToJoin() {
             <div className="space-y-5 md:space-y-6 w-full relative">
               {/* Connecting dashed line behind the numbers */}
               <div className="absolute left-6 top-8 bottom-8 w-px border-l-2 border-dashed border-[var(--color-primary)] opacity-30 z-0"></div>
-              
+
               {steps.map((step, index) => (
                 <div key={index} className="flex gap-4 items-start group relative z-10">
-                  
+
                   {/* Step Number Circle */}
                   <div className="w-12 h-12 rounded-full flex-shrink-0 flex items-center justify-center bg-[var(--color-primary)] text-white font-baloo text-lg font-bold shadow-md shadow-orange-100 group-hover:scale-110 transition-transform duration-300">
                     {step.number}
                   </div>
-                  
+
                   {/* Step Text Content */}
                   <div className="flex-1 min-w-0 pt-1">
                     <h3 className="font-baloo text-base sm:text-xl font-extrabold text-[var(--color-secondary)] leading-snug mb-1 group-hover:text-[var(--color-primary)] transition-colors duration-200">
@@ -106,29 +106,27 @@ export default function StepsToJoin() {
           </div>
 
           {/* ── Right Column: Image Asset ── */}
+          {/* ── Right Column: Image Asset ── */}
           <div className="md:col-span-6 relative flex justify-center py-4 md:py-6">
-            
-            {/* Blob Image Container */}
-            <motion.div 
-              animate={{ 
-                y: [-6, 6, -6], 
-                x: [-4, 4, -4], 
-                rotate: [-1.5, 1.5, -1.5] 
-              }} 
-              transition={{ 
-                duration: 8, 
-                repeat: Infinity, 
-                ease: "easeInOut" 
+            <motion.div
+              animate={{
+                y: [-6, 6, -6],
+                x: [-4, 4, -4],
+                rotate: [-1.5, 1.5, -1.5],
               }}
-              className="hidden md:visible relative w-full max-w-[280px] sm:max-w-[340px] md:max-w-[420px] aspect-square group origin-center"
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              className="hidden md:block relative w-full max-w-[280px] sm:max-w-[340px] md:max-w-[420px] aspect-square group origin-center"
             >
-              
               {/* Layer 1 (Bottom Light Colored Shadow) */}
               <div className="absolute -inset-4 md:-inset-6 bg-orange-200/80 [border-radius:64%_36%_40%_60%/48%_55%_45%_52%] transition-transform duration-500 group-hover:scale-105 z-0"></div>
-              
+
               {/* Layer 2 (Middle Light Colored Shadow) */}
               <div className="absolute -inset-2 md:-inset-3 bg-[var(--color-bg-purple)] [border-radius:50%_50%_60%_40%/40%_60%_50%_50%] transition-transform duration-500 group-hover:scale-105 group-hover:-rotate-3 z-10"></div>
-              
+
               {/* Main Image Layer */}
               <div className="absolute inset-0 overflow-hidden bg-white border-[6px] border-white [border-radius:56%_44%_47%_53%/53%_48%_52%_47%] shadow-md z-20 transition-transform duration-500">
                 <Image
@@ -139,11 +137,12 @@ export default function StepsToJoin() {
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
               </div>
-              
             </motion.div>
-            
+
             {/* Soft shadow vector */}
-            <div className="absolute -bottom-2 right-4 md:right-10 w-12 h-12 text-yellow-400 opacity-70 hidden md:block">★</div>
+            <div className="absolute -bottom-2 right-4 md:right-10 w-12 h-12 text-yellow-400 opacity-70 hidden md:block">
+              ★
+            </div>
           </div>
 
         </div>
