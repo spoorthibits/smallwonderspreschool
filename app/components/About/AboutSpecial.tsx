@@ -22,7 +22,7 @@ export default function AboutSpecial() {
 
   return (
     <section
-      className="relative pt-8 pb-16 md:pt-10 md:pb-20 lg:pt-12 lg:pb-28 bg-[#FCFAEF] overflow-hidden flex flex-col items-center justify-center"
+      className="w-full md:pt-10 md:pb-25 bg-[#FCFAEF] relative overflow-hidden"
       style={{
         backgroundImage: "url('/bgimg.webp')",
         backgroundSize: "auto",
@@ -30,14 +30,23 @@ export default function AboutSpecial() {
         backgroundRepeat: "repeat",
       }}
     >
-      <div className="absolute inset-0 bg-white/38 z-0 pointer-events-none" />
-
+        {/* <section
+      className="relative py-8 md:py-5 bg-[#FCFAEF] overflow-hidden flex flex-col items-center justify-center"
+      style={{
+        backgroundImage: "url('/bgimg.webp')",
+        backgroundSize: "auto",
+        backgroundPosition: "center",
+        backgroundRepeat: "repeat",
+      }}
+    > */}
+      <div className="absolute inset-0 bg-white/40 z-0 pointer-events-none" />
+      
 
       {/* Floating Emojis */}
-      <div className="absolute left-[3%] top-[30%] w-16 h-28 balloon-float z-10 opacity-80 pointer-events-none hidden lg:block">
+      <div className="absolute left-[3%] top-[30%] w-16 h-28 balloon-float z-10 opacity-80 pointer-events-none hidden md:block">
         <img src="/slider_shape03.png" alt="Heart Balloon" className="w-full h-full object-contain" />
       </div>
-      <div className="absolute right-[3%] top-[40%] w-12 h-12 star-float-png z-10 opacity-80 pointer-events-none hidden lg:block">
+      <div className="absolute right-[3%] top-[40%] w-12 h-12 star-float-png z-10 opacity-80 pointer-events-none hidden md:block">
         <img src="/slider_shape02.png" alt="Star" className="w-full h-full object-contain" />
       </div>
 
@@ -60,8 +69,8 @@ export default function AboutSpecial() {
           <div className="w-16 h-1 rounded-full" style={{ backgroundColor: "var(--color-primary)" }} />
         </div>
 
-        {/* ── MOBILE & TABLET: Auto-scroll marquee in one row ── */}
-        <div className="block lg:hidden overflow-hidden">
+        {/* ── MOBILE: Auto-scroll marquee in one row ── */}
+        <div className="block md:hidden overflow-hidden">
           <style>{`
             @keyframes marquee {
               0%   { transform: translateX(0); }
@@ -97,24 +106,61 @@ export default function AboutSpecial() {
         </div>
 
         {/* ── DESKTOP: Grid ── */}
-        <div className="hidden lg:grid lg:grid-cols-7 gap-8 animate-fade-in-up">
-          {items.map((item) => (
-            <div key={item.id} className="flex flex-col items-center text-center gap-4 group cursor-pointer">
-              <div
-                className="w-28 h-28 rounded-full flex items-center justify-center text-white shadow-lg transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-2xl group-hover:scale-105"
-                style={{ backgroundColor: item.bg }}
-              >
-                {item.icon}
-              </div>
-              <h3
-                className="font-extrabold text-sm md:text-[15px] leading-snug font-['Baloo_2'] max-w-[130px] transition-colors duration-300 group-hover:text-[var(--color-primary)]"
-                style={{ color: "var(--color-dark)" }}
-              >
-                {item.title}
-              </h3>
-            </div>
-          ))}
+       {/* ── TABLET: Auto-scroll marquee ── */}
+<div className="hidden md:block lg:hidden overflow-hidden">
+  <style>{`
+    @keyframes marquee-tablet {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .marquee-track-tablet {
+      display: flex;
+      width: max-content;
+      animation: marquee-tablet 22s linear infinite;
+    }
+    .marquee-track-tablet:hover {
+      animation-play-state: paused;
+    }
+  `}</style>
+  <div className="marquee-track-tablet">
+    {[...items, ...items].map((item, idx) => (
+      <div key={idx} className="flex flex-col items-center text-center gap-3 px-8" style={{ minWidth: "150px" }}>
+        <div
+          className="w-24 h-24 rounded-full flex items-center justify-center text-white shadow-lg"
+          style={{ backgroundColor: item.bg }}
+        >
+          {item.icon}
         </div>
+        <h3
+          className="font-extrabold text-sm leading-snug font-['Baloo_2'] max-w-[130px]"
+          style={{ color: "var(--color-dark)" }}
+        >
+          {item.title}
+        </h3>
+      </div>
+    ))}
+  </div>
+</div>
+
+{/* ── DESKTOP: Grid ── */}
+<div className="hidden lg:grid grid-cols-7 gap-8 animate-fade-in-up">
+  {items.map((item) => (
+    <div key={item.id} className="flex flex-col items-center text-center gap-4 group cursor-pointer">
+      <div
+        className="w-28 h-28 rounded-full flex items-center justify-center text-white shadow-lg transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-2xl group-hover:scale-105"
+        style={{ backgroundColor: item.bg }}
+      >
+        {item.icon}
+      </div>
+      <h3
+        className="font-extrabold text-sm md:text-[15px] leading-snug font-['Baloo_2'] max-w-[130px] transition-colors duration-300 group-hover:text-[var(--color-primary)]"
+        style={{ color: "var(--color-dark)" }}
+      >
+        {item.title}
+      </h3>
+    </div>
+  ))}
+</div>
 
       </div>
     </section>
