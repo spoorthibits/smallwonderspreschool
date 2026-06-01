@@ -30,7 +30,7 @@ export default function AboutSpecial() {
         backgroundRepeat: "repeat",
       }}
     >
-      <div className="absolute inset-0 bg-white/45 z-0 pointer-events-none" />
+      
 
       {/* Floating Emojis */}
       <div className="absolute left-[3%] top-[30%] w-16 h-28 balloon-float z-10 opacity-80 pointer-events-none hidden md:block">
