@@ -22,7 +22,7 @@ export default function AboutSpecial() {
 
   return (
     <section
-      className="relative py-8 md:py-5 bg-[#FCFAEF] overflow-hidden flex flex-col items-center justify-center"
+      className="relative pt-8 pb-16 md:pt-10 md:pb-20 lg:pt-12 lg:pb-28 bg-[#FCFAEF] overflow-hidden flex flex-col items-center justify-center"
       style={{
         backgroundImage: "url('/bgimg.webp')",
         backgroundSize: "auto",
