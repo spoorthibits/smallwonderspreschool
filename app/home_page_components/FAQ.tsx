@@ -78,7 +78,7 @@ export default function FAQ() {
             Got Questions?
           </span>
           <h2 className="font-baloo text-[var(--color-primary)] text-[22px] sm:text-3xl md:text-4xl lg:text-[40px] leading-tight font-extrabold px-3">
-            Frequently Asked Question's (FAQ's)
+            Frequently Asked Question's
           </h2>
         </div>
 
