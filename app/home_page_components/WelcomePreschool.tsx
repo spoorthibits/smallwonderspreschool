@@ -76,7 +76,7 @@ export default function WelcomePreschool() {
                   className="w-full h-full relative"
                 >
                   <Image
-                    src="/galleryimg-5.jpeg"
+                    src="/real_school/galleryimg-5-cropped.jpeg"
                     alt="Children engaging in learning and play activities at Small Wonders Preschool"
                     fill
                     sizes="(max-width: 768px) 92vw, 480px"

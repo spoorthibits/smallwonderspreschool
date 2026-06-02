@@ -42,7 +42,7 @@ export default function ContactMap() {
             {/* Right Column: Maps Image with Floating Card */}
             <div className="flex-1 relative w-full min-h-[300px] lg:min-h-[300px]">
               <Image
-                src="/maps_image.png"
+                src="/graphics_and_icons/maps_image.png"
                 alt="Map Location"
                 fill
                 className="object-cover"
@@ -52,7 +52,7 @@ export default function ContactMap() {
               <div className="absolute bottom-6 right-6 md:bottom-8 md:right-8 bg-white/95 backdrop-blur-sm p-4 rounded-[28px] shadow-2xl flex flex-col items-center w-[180px] md:w-[210px] border border-white">
                 <div className="relative w-full aspect-[4/3] rounded-[20px] overflow-hidden mb-3 shadow-inner border-[4px] border-white">
                   <Image
-                    src="/galleryimg-1.jpeg"
+                    src="/real_school/galleryimg-1.jpeg"
                     alt="School Building"
                     fill
                     className="object-cover"

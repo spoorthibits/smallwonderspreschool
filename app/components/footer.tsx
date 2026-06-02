@@ -43,7 +43,7 @@ export default function Footer({ className }: FooterProps) {
           <div className="footer-col-logo">
             <Link href="/" className="footer-logo-card">
               <Image
-                src="/logo.png"
+                src="/graphics_and_icons/logo.png"
                 alt="Small Wonders Play School Logo"
                 width={240}
                 height={90}

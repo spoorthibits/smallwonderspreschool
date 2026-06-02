@@ -24,7 +24,7 @@ export default function AboutSpecial() {
     <section
       className="w-full md:pt-10 md:pb-25 bg-[#FCFAEF] relative overflow-hidden"
       style={{
-        backgroundImage: "url('/bgimg.webp')",
+        backgroundImage: "url('/graphics_and_icons/bgimg.webp')",
         backgroundSize: "auto",
         backgroundPosition: "center",
         backgroundRepeat: "repeat",
@@ -33,7 +33,7 @@ export default function AboutSpecial() {
         {/* <section
       className="relative py-8 md:py-5 bg-[#FCFAEF] overflow-hidden flex flex-col items-center justify-center"
       style={{
-        backgroundImage: "url('/bgimg.webp')",
+        backgroundImage: "url('/graphics_and_icons/bgimg.webp')",
         backgroundSize: "auto",
         backgroundPosition: "center",
         backgroundRepeat: "repeat",
@@ -44,10 +44,10 @@ export default function AboutSpecial() {
 
       {/* Floating Emojis */}
       <div className="absolute left-[3%] top-[30%] w-16 h-28 balloon-float z-10 opacity-80 pointer-events-none hidden md:block">
-        <img src="/slider_shape03.png" alt="Heart Balloon" className="w-full h-full object-contain" />
+        <img src="/graphics_and_icons/slider_shape03.png" alt="Heart Balloon" className="w-full h-full object-contain" />
       </div>
       <div className="absolute right-[3%] top-[40%] w-12 h-12 star-float-png z-10 opacity-80 pointer-events-none hidden md:block">
-        <img src="/slider_shape02.png" alt="Star" className="w-full h-full object-contain" />
+        <img src="/graphics_and_icons/slider_shape02.png" alt="Star" className="w-full h-full object-contain" />
       </div>
 
       <div className="container-custom relative z-10">

@@ -43,7 +43,7 @@ export default function AboutBanner() {
       {/* ── MOBILE ONLY: full-width banner image ── */}
       <div className="block lg:hidden w-full">
         <Image
-          src="/aboutmobile.png"
+          src="/graphics_and_icons/aboutmobile.png"
           alt="About us banner"
           width={800}
           height={500}
@@ -58,7 +58,7 @@ export default function AboutBanner() {
         {/* Absolute full-bleed image on the right half */}
         <div className="absolute top-0 right-0 w-1/2 h-full">
           <Image
-            src="/aboutbanner.jpeg"
+            src="/real_school/kids-music-activity.png"
             alt="About Banner"
             fill
             priority

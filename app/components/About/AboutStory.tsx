@@ -10,14 +10,14 @@ export default function AboutStory() {
 
   const leaders = [
     {
-      src: "/Director.jpeg",
+      src: "/teachers/Director.jpeg",
       alt: "Gayatri Singh - Director",
       name: "Gayatri Singh",
       role: "Director",
       bgColor: "var(--color-primary)",
     },
     {
-      src: "/Jagdev-sir.png",
+      src: "/teachers/Jagdev-sir.png",
       alt: "Jagdev Singh Chauhan - Founder & Chairman",
       name: "Jagdev Singh Chauhan",
       role: "Founder & Chairman",
@@ -48,7 +48,7 @@ export default function AboutStory() {
     <section
       className="relative py-8 md:py-5 bg-[#FCFAEF] overflow-hidden flex flex-col items-center justify-center"
       style={{
-        backgroundImage: "url('/bgimg.webp')",
+        backgroundImage: "url('/graphics_and_icons/bgimg.webp')",
         backgroundSize: "auto",
         backgroundPosition: "center",
         backgroundRepeat: "repeat",
@@ -60,7 +60,7 @@ export default function AboutStory() {
       {/* Paper airplane arrow */}
       <div className="absolute left-[1%] bottom-[-2%] w-36 h-86 z-10 pointer-events-none hidden lg:block">
         <img
-          src="/arrowig1.png"
+          src="/graphics_and_icons/arrowig1.png"
           alt=""
           aria-hidden="true"
           className="w-full h-full object-contain"

@@ -130,7 +130,7 @@ export default function StepsToJoin() {
               {/* Main Image Layer */}
               <div className="absolute inset-0 overflow-hidden bg-white border-[6px] border-white [border-radius:56%_44%_47%_53%/53%_48%_52%_47%] shadow-md z-20 transition-transform duration-500">
                 <Image
-                  src="/galleryimg-16.jpeg"
+                  src="/real_school/galleryimg-16.jpeg"
                   alt="Children happily playing and learning in the classroom at Small Wonders"
                   fill
                   sizes="(max-width: 768px) 100vw, 500px"

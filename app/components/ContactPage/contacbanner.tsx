@@ -43,7 +43,7 @@ export default function ContactBanner() {
       {/* ── MOBILE ONLY ── */}
       <div className="block md:hidden w-full m-0 p-0 max-h-[300px] overflow-hidden">
         <Image
-          src="/contactmobile-1.png"
+          src="/graphics_and_icons/contactmobile-1.png"
           alt="Contact Banner Mobile"
           width={800}
           height={600}
@@ -162,7 +162,7 @@ export default function ContactBanner() {
             {/* RIGHT IMAGE — contactbannertab.png on tablet, contact.png on desktop */}
             <div className="flex justify-end mt-4 md:mt-0">
               <Image
-                src="/contact.png"
+                src="/ai_generated_images/contact.png"
                 alt="Gallery Banner"
                 width={1200}
                 height={800}
@@ -170,7 +170,7 @@ export default function ContactBanner() {
                 className="hidden lg:block w-full max-w-[1000px] h-auto object-contain"
               />
               <Image  
-                src="/contact.png"
+                src="/ai_generated_images/contact.png"
                 alt="Gallery Banner Tablet"
                 width={1200}
                 height={800}

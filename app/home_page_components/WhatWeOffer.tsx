@@ -63,7 +63,7 @@ export default function WhatWeOffer() {
       id: 0,
       title: "Preschool",
       description: "Our preschool programme builds a strong foundation through play, exploration, and joyful learning experiences designed just for little learners.",
-      image: "/galleryimg-10.jpeg",
+      image: "/individual_kids/galleryimg-10.jpeg",
       badge: "Age group : 2.5 - 4 years",
       buttonColor: "bg-[var(--color-primary)]",
       badgeColor: "bg-[var(--color-primary)]",
@@ -72,7 +72,7 @@ export default function WhatWeOffer() {
       id: 1,
       title: "Daycare",
       description: "Safe, loving daycare with nutritious meals, nap time and supervised play — perfect for working parents who want peace of mind.",
-      image: "/galleryimg-18.jpeg",
+      image: "/classrooms/galleryimg-18.jpeg",
       badge: "Age group : 2 - 8 years",
       buttonColor: "bg-[var(--color-accent-teal)]",
       badgeColor: "bg-[var(--color-accent-teal)]",
@@ -81,7 +81,7 @@ export default function WhatWeOffer() {
       id: 2,
       title: "NEP Curriculum",
       description: "A modern, forward-thinking curriculum aligned with National Education Policy 2020 guidelines for holistic early development.",
-      image: "/galleryimg-7.jpeg",
+      image: "/classrooms/galleryimg-7.jpeg",
       badge: "Age group : 4 - 6 years",
       buttonColor: "bg-[var(--color-accent-green)]",
       badgeColor: "bg-[var(--color-accent-green)]",
@@ -120,7 +120,7 @@ export default function WhatWeOffer() {
     <section
       className="relative py-8 md:py-5 bg-[#FCFAEF] overflow-hidden flex flex-col items-center justify-center"
       style={{
-        backgroundImage: "url('/bgimg.webp')",
+        backgroundImage: "url('/graphics_and_icons/bgimg.webp')",
         backgroundSize: "auto",
         backgroundPosition: "center",
         backgroundRepeat: "repeat",

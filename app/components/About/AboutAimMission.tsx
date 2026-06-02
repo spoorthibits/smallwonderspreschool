@@ -83,7 +83,7 @@ export default function AboutAimMission() {
     <section
       className="relative py-10 md:py-16 bg-[#FCFAEF] overflow-hidden"
       style={{
-        backgroundImage: "url('/bgimg.webp')",
+        backgroundImage: "url('/graphics_and_icons/bgimg.webp')",
         backgroundRepeat: "repeat",
         backgroundPosition: "center",
       }}
@@ -93,7 +93,7 @@ export default function AboutAimMission() {
       {/* Floating Decorations */}
       <div className="absolute left-[3%] top-[35%] w-16 h-16 hidden lg:block z-10">
         <img
-          src="/slider_shape01.png"
+          src="/graphics_and_icons/slider_shape01.png"
           alt="Sun"
           className="w-full h-full object-contain"
         />
@@ -101,7 +101,7 @@ export default function AboutAimMission() {
 
       <div className="absolute right-[3%] bottom-[20%] w-16 h-28 hidden lg:block z-10">
         <img
-          src="/slider_shape03.png"
+          src="/graphics_and_icons/slider_shape03.png"
           alt="Balloon"
           className="w-full h-full object-contain"
         />

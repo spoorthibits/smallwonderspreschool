@@ -51,7 +51,7 @@ export default function ProgramsDaySchedule() {
     <section
       className="w-full pt-16 pb-8 md:py-16 relative overflow-hidden"
       style={{
-        backgroundImage: "url('/bgimg.webp')",
+        backgroundImage: "url('/graphics_and_icons/bgimg.webp')",
         backgroundSize: "auto",
         backgroundPosition: "center",
         backgroundRepeat: "repeat",
@@ -82,10 +82,10 @@ export default function ProgramsDaySchedule() {
 
       {/* Floating shapes */}
       <div className="absolute left-[3%] top-[20%] w-16 h-16 z-10 opacity-80 pointer-events-none hidden md:block">
-        <img src="/slider_shape01.png" alt="" className="w-full h-full object-contain" />
+        <img src="/graphics_and_icons/slider_shape01.png" alt="" className="w-full h-full object-contain" />
       </div>
       <div className="absolute right-[3%] bottom-[20%] w-16 h-28 z-10 opacity-80 pointer-events-none hidden md:block">
-        <img src="/slider_shape03.png" alt="" className="w-full h-full object-contain" />
+        <img src="/graphics_and_icons/slider_shape03.png" alt="" className="w-full h-full object-contain" />
       </div>
 
       {/* Video Popup */}

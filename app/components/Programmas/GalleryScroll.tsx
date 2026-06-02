@@ -4,16 +4,16 @@ import Image from "next/image";
 import { useRef, useEffect } from "react";
 
 const images = [
-  { src: "/galleryimg-9.jpeg", alt: "Children playing" },
-  { src: "/galleryimg-17.jpeg", alt: "Art activity" },
-  { src: "/galleryimg-6.jpeg", alt: "Story time" },
-  { src: "/galleryimg-4.jpeg", alt: "Outdoor play" },
-  { src: "/galleryimg-5.jpeg", alt: "Music class" },
-  { src: "/galleryimg-6.jpeg", alt: "Science activity" },
-  { src: "/galleryimg-7.jpeg", alt: "Dance class" },
-  { src: "/galleryimg-8.jpeg", alt: "Group activity" },
-  { src: "/galleryimg-9.jpeg", alt: "Lunch time" },
-  { src: "/galleryimg-10.jpeg", alt: "Celebration" },
+  { src: "/individual_kids/galleryimg-9.jpeg", alt: "Children playing" },
+  { src: "/classrooms/galleryimg-17.jpeg", alt: "Art activity" },
+  { src: "/classrooms/galleryimg-6.jpeg", alt: "Story time" },
+  { src: "/classrooms/galleryimg-4.jpeg", alt: "Outdoor play" },
+  { src: "/real_school/galleryimg-5.jpeg", alt: "Music class" },
+  { src: "/classrooms/galleryimg-6.jpeg", alt: "Science activity" },
+  { src: "/classrooms/galleryimg-7.jpeg", alt: "Dance class" },
+  { src: "/individual_kids/galleryimg-8.jpeg", alt: "Group activity" },
+  { src: "/individual_kids/galleryimg-9.jpeg", alt: "Lunch time" },
+  { src: "/individual_kids/galleryimg-10.jpeg", alt: "Celebration" },
 ];
 
 export default function GalleryScroll() {

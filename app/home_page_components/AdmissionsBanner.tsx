@@ -27,7 +27,7 @@ export default function AdmissionsBanner() {
             style={{ width: 210, height: 780, bottom: -9, left: -22 }}
           >
             <Image
-              src="/girl_painted_hands_new.png"
+              src="/ai_generated_images/girl_painted_hands_new.png"
               alt="Smiling little girl showing colorful painted hands"
               fill
               sizes="140px"
@@ -140,7 +140,7 @@ export default function AdmissionsBanner() {
           className="absolute lg:bottom-0 lg:left-30 md:bottom-0 md:-left-5 pointer-events-none select-none z-20"
           style={{ width: 250, height: 300 }}>
           <Image
-            src="/girl_painted_hands_new.png"
+            src="/ai_generated_images/girl_painted_hands_new.png"
             alt="Smiling little girl showing colorful painted hands"
             fill
             sizes="300px"

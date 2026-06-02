@@ -16,7 +16,7 @@ export default function HomeBanner() {
       {/* ── MOBILE BANNER IMAGE (visible only on mobile, hidden on md+) ── */}
       <div className="block md:hidden w-full relative" style={{ aspectRatio: "3/4" }}>
         <Image
-          src="/bannerimgmobile.png"
+          src="/graphics_and_icons/bannerimgmobile.png"
           alt="Banner"
           fill
           className="object-cover object-center"
@@ -28,7 +28,7 @@ export default function HomeBanner() {
       <div
         className="hidden md:block absolute inset-0"
         style={{
-          backgroundImage: "url('/bannerimg.png')",
+          backgroundImage: "url('/ai_generated_images/bannerimg.png')",
           backgroundSize: "cover",
           backgroundPosition: "center center",
           backgroundRepeat: "no-repeat",
@@ -105,7 +105,7 @@ export default function HomeBanner() {
         {/* Down Arrow — desktop only */}
         <div className="hidden md:block absolute lg:top-10 lg:left-80 md:-top-6 md:left-50 -translate-x-1/2 z-20">
           <Image
-            src="/downarrow.png"
+            src="/graphics_and_icons/downarrow.png"
             alt="scroll down"
             width={160}
             height={120}
@@ -116,7 +116,7 @@ export default function HomeBanner() {
         {/* Books image — desktop only */}
         <div className="hidden md:block absolute bottom-2 left-4 lg:left-30 md:left-10 z-20">
           <Image
-            src="/bookhome.png"
+            src="/graphics_and_icons/bookhome.png"
             alt="books"
             width={160}
             height={160}
@@ -140,7 +140,7 @@ export default function HomeBanner() {
           </div>
 
           <div className="flex items-center -space-x-2 ml-auto">
-            {["/galleryimg-8.jpeg", "/galleryimg-12.jpeg"].map((src, i) => (
+            {["/individual_kids/galleryimg-8.jpeg", "/classrooms/galleryimg-12.jpeg"].map((src, i) => (
               <div
                 key={i}
                 className="w-9 h-9 rounded-full border-2 border-white overflow-hidden"
@@ -160,7 +160,7 @@ export default function HomeBanner() {
 
         {/* Mobile wave */}
         <Image
-          src="/wavemobile.png"
+          src="/graphics_and_icons/wavemobile.png"
           alt="wave"
           width={1500}
           height={50}
@@ -169,7 +169,7 @@ export default function HomeBanner() {
 
         {/* Desktop/tablet wave */}
         <Image
-          src="/wavehome.png"
+          src="/graphics_and_icons/wavehome.png"
           alt="wave"
           width={1500}
           height={50}

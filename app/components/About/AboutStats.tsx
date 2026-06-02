@@ -59,7 +59,7 @@ export default function AboutStats() {
                 style={{ borderRadius: "62% 38% 46% 54% / 60% 44% 56% 40%", border: "7px solid #ffffff" }}
               >
                 <Image
-                  src="/kids-clapping.jpg"
+                  src="/real_school/kids-clapping.jpg"
                   alt="Happy clapping children at Small Wonders"
                   fill
                   priority
@@ -130,7 +130,7 @@ export default function AboutStats() {
                 style={{ borderRadius: "62% 38% 46% 54% / 60% 44% 56% 40%", border: "7px solid #ffffff" }}
               >
                 <Image
-                  src="/kids-clapping.jpg"
+                  src="/real_school/kids-clapping.jpg"
                   alt="Happy clapping children at Small Wonders"
                   fill
                   priority

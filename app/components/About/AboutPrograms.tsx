@@ -20,7 +20,7 @@ export default function AboutPrograms() {
       title: "Play Group",
       age: "1.5 to 2 Years",
       description: "A joyful start where little ones explore, play, and build foundational social skills.",
-      image: "/kids-slide.png",
+      image: "/individual_kids/kids-slide.png",
       themeColor: "#4CAF50",
       icon: <Smile size={18} className="text-white" />,
     },
@@ -29,7 +29,7 @@ export default function AboutPrograms() {
       title: "Nursery",
       age: "2 to 3 Years",
       description: "Building curiosity and creative expression through sensory play and guided activities.",
-      image: "/kids-tunnel.png",
+      image: "/individual_kids/kids-tunnel.png",
       themeColor: "#ff7043",
       icon: <Sparkles size={18} className="text-white" />,
     },
@@ -38,7 +38,7 @@ export default function AboutPrograms() {
       title: "LKG (IK1)",
       age: "3 to 4 Years",
       description: "Developing critical thinking, communication, and foundational skills for independence.",
-      image: "/kids-toy.png",
+      image: "/individual_kids/kids-toy.png",
       themeColor: "#6b3fa0",
       icon: <BookOpen size={18} className="text-white" />,
     },
@@ -47,7 +47,7 @@ export default function AboutPrograms() {
       title: "UKG (IK2)",
       age: "4 to 5 Years",
       description: "Preparing young learners for formal primary schooling, academic confidence, and success.",
-      image: "/kids-puzzle-table.jpg",
+      image: "/classrooms/kids-puzzle-table.jpg",
       themeColor: "#00bcd4",
       icon: <Star size={18} className="text-white" />,
     },
@@ -57,10 +57,10 @@ export default function AboutPrograms() {
     <section className="w-full bg-white py-20 relative overflow-hidden">
       {/* Floating Emojis in far margins */}
       <div className="absolute left-[3%] top-[30%] w-12 h-12 star-float-png z-10 opacity-80 pointer-events-none hidden md:block">
-        <img src="/slider_shape02.png" alt="Star" className="w-full h-full object-contain" />
+        <img src="/graphics_and_icons/slider_shape02.png" alt="Star" className="w-full h-full object-contain" />
       </div>
       <div className="absolute right-[3%] top-[40%] w-16 h-16 sun-float z-10 opacity-80 pointer-events-none hidden md:block">
-        <img src="/slider_shape01.png" alt="Sun" className="w-full h-full object-contain" />
+        <img src="/graphics_and_icons/slider_shape01.png" alt="Sun" className="w-full h-full object-contain" />
       </div>
 
       <div className="container-custom">
