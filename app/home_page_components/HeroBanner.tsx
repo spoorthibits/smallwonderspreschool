@@ -10,7 +10,7 @@ import { useModal } from "../context/ModalContext";
 const slides = [
   { src: "/real_school/galleryimg-1.jpeg", alt: "Preschool children engaging in fun hands-on painting and creative arts" },
   { src: "/classrooms/galleryimg-4.jpeg", alt: "Preschool students playing educational group learning games" },
-  { src: "/real_school/galleryimg-5.jpeg", alt: "Toddlers building shapes with colorful primary blocks" },
+  { src: "/real_school/galleryimg-5-cropped.jpeg", alt: "Toddlers building shapes with colorful primary blocks" },
   { src: "/classrooms/galleryimg-6.jpeg", alt: "Kids exploring sensory play activities in a clean bright classroom" },
   { src: "/classrooms/galleryimg-7.jpeg", alt: "Children sharing smiles and working together on craft workshops" },
 ];

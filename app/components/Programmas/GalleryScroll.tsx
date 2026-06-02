@@ -8,7 +8,7 @@ const images = [
   { src: "/classrooms/galleryimg-17.jpeg", alt: "Art activity" },
   { src: "/classrooms/galleryimg-6.jpeg", alt: "Story time" },
   { src: "/classrooms/galleryimg-4.jpeg", alt: "Outdoor play" },
-  { src: "/real_school/galleryimg-5.jpeg", alt: "Music class" },
+  { src: "/real_school/galleryimg-5-cropped.jpeg", alt: "Music class" },
   { src: "/classrooms/galleryimg-6.jpeg", alt: "Science activity" },
   { src: "/classrooms/galleryimg-7.jpeg", alt: "Dance class" },
   { src: "/individual_kids/galleryimg-8.jpeg", alt: "Group activity" },
