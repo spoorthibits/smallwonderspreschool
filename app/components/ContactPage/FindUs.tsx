@@ -7,7 +7,7 @@ import Button from "../Button";
 export default function ContactMap() {
   const handleGetDirections = () => {
     window.open(
-      "https://maps.google.com/?q=Small+Wonders+Play+School,+40,+Classic+Enclave,+Madhavapuri+Colony,+Sainikpuri,+Secunderabad",
+      "https://maps.google.com/?q=Plot+No+160/140,+O+U+Teacher’s+Colony,+Hi-Tension+Road,+Sainikpuri,+Secunderabad,+Telangana+500094",
       "_blank"
     );
   };
@@ -23,10 +23,11 @@ export default function ContactMap() {
               <h3 className="font-baloo text-[36px] font-bold text-[var(--color-primary)] mb-4">
                 Find Us Here
               </h3>
-              <p className="font-nunito text-lg text-slate-700 font-bold leading-relaxed mb-8">
-                40, Classic Enclave, <br />
-                Madhavapuri Colony, <br />
-                Sainikpuri, Secunderabad.
+              <p className="font-nunito text-base text-slate-700 font-bold leading-relaxed mb-8">
+                Plot No 160/140, <br />
+                O U Teacher’s Colony, <br />
+                Hi-Tension Road, Sainikpuri, <br />
+                Secunderabad, Telangana. 500094.
               </p>
               <Button
                 onClick={handleGetDirections}

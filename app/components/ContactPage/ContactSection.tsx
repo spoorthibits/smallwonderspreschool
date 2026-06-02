@@ -61,14 +61,14 @@ export default function ContactSection({
                   iconBg="bg-blue-100"
                   iconColor="text-blue-700"
                   label="Phone"
-                  content={<>96428 05126 &nbsp;/&nbsp; 80994 22344</>}
+                  content={<>98498 05126 &nbsp;/&nbsp; 81210 05126</>}
                 />
                 <ContactCard
                   icon={<MessageCircle size={15} />}
                   iconBg="bg-green-100"
                   iconColor="text-green-700"
                   label="WhatsApp"
-                  content="96428 05126"
+                  content="98498 05126"
                 />
                 <ContactCard
                   icon={<Mail size={15} />}
@@ -86,7 +86,7 @@ export default function ContactSection({
                   iconBg="bg-purple-100"
                   iconColor="text-purple-700"
                   label="Our School"
-                  content="Classic Enclave, Sainikpuri, Secunderabad"
+                  content="Plot No 160/140, O U Teacher’s Colony, Hi-Tension Road, Sainikpuri, Secunderabad, Telangana. 500094."
                 />
               </div>
 

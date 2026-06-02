@@ -46,7 +46,7 @@ const programs = [
       "PP2 prepares children for primary school with advanced literacy, numeracy, and critical thinking — a solid bridge between early childhood education and formal schooling.",
   },
   {
-    id: 6,
+    id: 5,
     title: "Summer Camp",
     age: "5 to 6 Years",
     color: "#22A45D",

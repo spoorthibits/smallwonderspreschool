@@ -77,12 +77,12 @@ export default function Footer({ className }: FooterProps) {
               <li className="footer-contact-item">
                 <MapPin size={15} className="footer-contact-icon" />
                 <span>
-                  @ 40, Classic Enclave, Madhavapuri Colony, Sainikpuri, Secunderabad.
+                  Plot No 160/140, O U Teacher’s Colony, Hi-Tension Road, Sainikpuri, Secunderabad, Telangana. 500094.
                 </span>
               </li>
               <li className="footer-contact-item">
                 <Phone size={15} className="footer-contact-icon" />
-                <span>96428 05126, 80994 22344</span>
+                <span>9849805126, 8121005126</span>
               </li>
               <li className="footer-contact-item">
                 <Mail size={15} className="footer-contact-icon" />
@@ -92,8 +92,8 @@ export default function Footer({ className }: FooterProps) {
               </li>
               <li className="footer-contact-item">
                 <Globe size={15} className="footer-contact-icon" />
-                <a href="http://www.smallwondersplayschool.com" target="_blank" rel="noopener noreferrer" className="footer-link">
-                  www.smallwondersplayschool.com
+                <a href="https://www.smallwonderspreschool.co.in/" target="_blank" rel="noopener noreferrer" className="footer-link">
+                  www.smallwonderspreschool.co.in
                 </a>
               </li>
             </ul>
@@ -108,9 +108,11 @@ export default function Footer({ className }: FooterProps) {
             <div className="footer-social-icons">
               {/* Facebook Icon */}
               <a
-                href="#"
+                href="https://www.facebook.com/SmallWondersInternationalPlaySchool"
                 aria-label="Facebook"
                 className="footer-social-btn facebook"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                   <path d="M9 8H7v3h2v9h4v-9h3.6l.4-3H13V6c0-.5.5-1 1-1h2V1h-3c-3 0-5 2-5 5v2z" />
@@ -119,7 +121,7 @@ export default function Footer({ className }: FooterProps) {
 
               {/* Instagram Icon */}
               <a
-                href="https://www.instagram.com/smallwonders_sainikpuri"
+                href="https://www.instagram.com/smallwonders_sainikpuri?utm_source=qr"
                 aria-label="Instagram"
                 className="footer-social-btn instagram"
                 target="_blank"
@@ -134,9 +136,11 @@ export default function Footer({ className }: FooterProps) {
 
               {/* WhatsApp Icon */}
               <a
-                href="#"
+                href="https://wa.me/919849805126"
                 aria-label="WhatsApp"
                 className="footer-social-btn whatsapp"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <svg className="w-4.5 h-4.5 fill-current" viewBox="0 0 24 24">
                   <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.503-5.714-1.458L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.725 1.45 5.556 0 10.077-4.513 10.08-10.068.001-2.69-1.044-5.22-2.943-7.123C16.51 1.51 13.984.465 11.3.465c-5.56 0-10.077 4.513-10.08 10.068-.001 2.055.539 4.062 1.564 5.845L1.8 22.183l5.847-1.53c-1.636.885-2.735 1.501-1.002 1.501z" />
