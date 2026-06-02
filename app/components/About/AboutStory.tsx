@@ -10,18 +10,18 @@ export default function AboutStory() {
 
   const leaders = [
     {
-      src: "/teachers/Director.jpeg",
-      alt: "Gayatri Singh - Director",
-      name: "Gayatri Singh",
-      role: "Director",
-      bgColor: "var(--color-primary)",
-    },
-    {
       src: "/teachers/Jagdev-sir.png",
       alt: "Jagdev Singh Chauhan - Founder & Chairman",
       name: "Jagdev Singh Chauhan",
       role: "Founder & Chairman",
       bgColor: "var(--color-secondary)",
+    },
+    {
+      src: "/teachers/Director.jpeg",
+      alt: "Gayatri Singh - Director",
+      name: "Gayatri Singh",
+      role: "Director",
+      bgColor: "var(--color-primary)",
     },
   ];
 
