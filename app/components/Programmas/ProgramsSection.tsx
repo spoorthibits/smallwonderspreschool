@@ -47,16 +47,6 @@ const programs = [
   },
   {
     id: 5,
-    title: "Upper KG",
-    age: "5 to 6 Years",
-    color: "#E06820",
-    borderColor: "#E06820",
-    image: "/real_school/galleryimg-5.jpeg",
-    description:
-      "Upper KG marks the final step in early childhood education, strengthening reading, writing, and math skills while encouraging critical thinking before the transition to primary school.",
-  },
-  {
-    id: 6,
     title: "Summer Camp",
     age: "5 to 6 Years",
     color: "#22A45D",
@@ -66,7 +56,7 @@ const programs = [
       "Engaging summer and winter camps that go beyond preschool to enhance analytical, cognitive, social, and language skills through storytelling, creative writing, and puzzle-solving.",
   },
   {
-    id: 7,
+    id: 6,
     title: "Day Care",
     age: "8:30 AM – 7:00 PM",
     color: "#E06820",
@@ -171,7 +161,7 @@ export default function ProgramsSection() {
         </div>
         <p className="text-[#3d3d5c] text-[16px] md:text-[18px] font-['Nunito'] max-w-[800px] mx-auto leading-relaxed">
           Smallwonders preschool programs are designed for your child&apos;s
-          holistic development. From Playgroup to Upper KG, we nurture essential
+          holistic development. From Playgroup to PP2, we nurture essential
           skills in a fun, engaging environment.
         </p>
       </div>
