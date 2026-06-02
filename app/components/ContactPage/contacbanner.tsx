@@ -155,7 +155,7 @@ export default function ContactBanner() {
               </div>
 
               <p className="text-black text-[13px] md:text-[14px] lg:text-[18px] leading-[1.8] font-['Nunito'] max-w-[560px]">
-                A glimpse of joyful moments, exciting activities and beautiful memories created every single day — where little ones learn, laugh, and grow together. Because every little moment is a memory worth keeping forever.
+                Have questions about admissions, our curriculum, or everyday life at Small Wonders? Reach out to us — we are always here to help you and your little one take their first step towards a bright future.
               </p>
             </div>
 

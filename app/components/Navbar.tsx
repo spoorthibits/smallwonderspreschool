@@ -61,7 +61,7 @@ export default function Navbar() {
       <div className="navbar-container">
         {/* Logo */}
         <Link href="/" className="navbar-logo-link" onClick={closeMenu}>
-          <div className="navbar-logo-container">
+          <div className="navbar-logo-container scale-140 origin-left transform">
             <Image
               src="/graphics_and_icons/logo.png"
               alt="Small Wonders Preschool Logo"

@@ -119,9 +119,11 @@ export default function Footer({ className }: FooterProps) {
 
               {/* Instagram Icon */}
               <a
-                href="#"
+                href="https://www.instagram.com/smallwonders_sainikpuri"
                 aria-label="Instagram"
                 className="footer-social-btn instagram"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <svg className="w-4 h-4 fill-none stroke-current" strokeWidth="2.5" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />

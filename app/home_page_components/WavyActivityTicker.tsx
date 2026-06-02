@@ -26,9 +26,6 @@ const activities = [
   { name: "Recitation",   icon: <Mic style={{ width: 24, height: 24 }} /> },
   { name: "Creative Art", icon: <Sparkles style={{ width: 24, height: 24 }} /> },
   { name: "Sports",       icon: <Trophy style={{ width: 24, height: 24 }} /> },
-  { name: "Cricket",      icon: <Activity style={{ width: 24, height: 24 }} /> },
-  { name: "Yoga",         icon: <Heart style={{ width: 24, height: 24 }} /> },
-  { name: "Martial Arts", icon: <Shield style={{ width: 24, height: 24 }} /> },
   { name: "Basketball",   icon: <BasketballIcon /> },
 ];
 

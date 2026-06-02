@@ -64,16 +64,16 @@ export default function WhatWeOffer() {
       title: "Preschool",
       description: "Our preschool programme builds a strong foundation through play, exploration, and joyful learning experiences designed just for little learners.",
       image: "/individual_kids/galleryimg-10.jpeg",
-      badge: "Age group : 2.5 - 4 years",
+      badge: "Age group : 2 - 6 years",
       buttonColor: "bg-[var(--color-primary)]",
       badgeColor: "bg-[var(--color-primary)]",
     },
     {
       id: 1,
       title: "Daycare",
-      description: "Safe, loving daycare with nutritious meals, nap time and supervised play — perfect for working parents who want peace of mind.",
+      description: "Safe, loving daycare with CCTV surveillance, nap time and supervised play — perfect for working parents who want peace of mind.",
       image: "/classrooms/galleryimg-18.jpeg",
-      badge: "Age group : 2 - 8 years",
+      badge: "Age group : 1.5 - 9 years",
       buttonColor: "bg-[var(--color-accent-teal)]",
       badgeColor: "bg-[var(--color-accent-teal)]",
     },
@@ -81,7 +81,7 @@ export default function WhatWeOffer() {
       id: 2,
       title: "NEP Curriculum",
       description: "A modern, forward-thinking curriculum aligned with National Education Policy 2020 guidelines for holistic early development.",
-      image: "/classrooms/galleryimg-7.jpeg",
+      image: "/NEP.webp",
       badge: "Age group : 4 - 6 years",
       buttonColor: "bg-[var(--color-accent-green)]",
       badgeColor: "bg-[var(--color-accent-green)]",
@@ -176,7 +176,7 @@ export default function WhatWeOffer() {
 
             {/* Circle image */}
             <div className="relative w-44 h-44 md:w-44 md:h-44 lg:w-60 lg:h-60 rounded-full border-[6px] border-white shadow-xl mb-5 bg-white flex items-center justify-center transition-transform duration-300 hover:scale-105">
-              <Image src={prog.image} fill className="object-cover rounded-full p-1.5" alt={prog.title} />
+              <Image src={prog.image} fill className={`rounded-full p-1.5 ${prog.title === 'NEP Curriculum' ? 'object-contain' : 'object-cover'}`} alt={prog.title} />
               <div className={`absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap text-white md:text-[10px] lg:text-[13px] font-extrabold md:py-1 md:px-3 lg:py-1.5 lg:px-5 rounded-full shadow-lg ${prog.badgeColor}`}>
                 {prog.badge}
               </div>
@@ -235,7 +235,7 @@ export default function WhatWeOffer() {
                   <Image
                     src={prog.image}
                     fill
-                    className="object-cover rounded-full p-1"
+                    className={`rounded-full p-1 ${prog.title === 'NEP Curriculum' ? 'object-contain' : 'object-cover'}`}
                     alt={prog.title}
                   />
                   <div

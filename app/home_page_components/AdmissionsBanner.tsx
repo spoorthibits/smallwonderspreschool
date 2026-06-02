@@ -42,7 +42,7 @@ export default function AdmissionsBanner() {
           {/* Text + buttons */}
           <div className="flex flex-col justify-center flex-1 min-w-0">
             <h2 className="font-baloo text-[var(--color-purple-deep)] text-base leading-tight font-extrabold mb-1">
-              Admissions Open for 2025-26
+              Admissions Open for 2026-27
             </h2>
           </div>
         </div>
@@ -70,7 +70,7 @@ export default function AdmissionsBanner() {
               {/* Heading & subtext */}
               <div className="col-span-5 flex flex-col items-start">
                 <h2 className="font-baloo text-[var(--color-purple-deep)] text-3xl lg:text-[32px] leading-tight font-extrabold mb-1">
-                  Admissions Open for 2025-26
+                  Admissions Open for 2026-27
                 </h2>
                 <p className="font-nunito text-base text-[var(--color-purple-deep)] font-bold max-w-xl leading-relaxed opacity-95">
                   Give your child the best start in a nurturing and joyful learning environment.
@@ -105,7 +105,7 @@ export default function AdmissionsBanner() {
               {/* Text block */}
               <div className="flex flex-col justify-center flex-1 min-w-0">
                 <h2 className="font-baloo text-[var(--color-purple-deep)] text-xl leading-tight font-extrabold mb-0.5">
-                  Admissions Open for 2025-26
+                  Admissions Open for 2026-27
                 </h2>
                 <p className="font-nunito text-sm text-[var(--color-purple-deep)] font-bold leading-snug opacity-95 line-clamp-2">
                   Give your child the best start in a nurturing and joyful learning environment.

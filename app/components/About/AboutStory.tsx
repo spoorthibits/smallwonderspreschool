@@ -11,9 +11,9 @@ export default function AboutStory() {
   const leaders = [
     {
       src: "/teachers/Jagdev-sir.png",
-      alt: "Jagdev Singh Chauhan - Founder & Chairman",
+      alt: "Jagdev Singh Chauhan - Founder",
       name: "Jagdev Singh Chauhan",
-      role: "Founder & Chairman",
+      role: "Founder",
       bgColor: "var(--color-secondary)",
     },
     {
@@ -79,12 +79,12 @@ export default function AboutStory() {
             <div className="space-y-4 text-[#3d3d5c] text-sm md:text-base leading-relaxed font-['Nunito']">
               <p>
                 Small Wonders International Play School was established with a dream to create a nurturing space
-                where children can learn, play and grow happily. Our Founder & Chairman, Jagdev Singh Chauhan,
+                where children can learn, play and grow happily. Our Founder, Jagdev Singh Chauhan,
                 envisioned a school that blends strong values with modern teaching to prepare children for life.
               </p>
               <p>
                 Today, under the guidance of our Director, Gayatri Singh, we continue this journey with
-                passion and commitment. We are dedicated to providing a safe, warm, and rich learning environment
+                passion and commitment. We are dedicated to provide a safe, warm, and rich learning environment
                 where every child&apos;s unique talents are recognized and celebrated.
               </p>
             </div>

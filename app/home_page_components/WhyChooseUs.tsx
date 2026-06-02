@@ -11,7 +11,7 @@ export default function WhyChooseUs() {
       id: 1,
       title: "Safe Infrastructure",
       description: "Secure premises and clean, bright environments for complete peace of mind.",
-      image: "/classrooms/galleryimg-6.jpeg",
+      image: "/classrooms/galleryimg-21.jpeg",
       icon: <ShieldCheck className="w-6 h-6 text-orange-600" />,
       color: "bg-[#FFE8D6]", // Brighter, vibrant pastel orange
       glowColor: "hover:shadow-[0_12px_40px_rgba(251,146,60,0.35)]",
@@ -26,7 +26,7 @@ export default function WhyChooseUs() {
       id: 2,
       title: "Trained Teachers",
       description: "Experienced, certified and loving educators nurturing your child's growth.",
-      image: "/classrooms/galleryimg-4.jpeg",
+      image: "/classrooms/classroom_learning_1.JPG",
       icon: <GraduationCap className="w-6 h-6 text-purple-600" />,
       color: "bg-[#EBE0FF]", // Brighter, vibrant pastel purple
       glowColor: "hover:shadow-[0_12px_40px_rgba(192,132,252,0.35)]",
@@ -41,7 +41,7 @@ export default function WhyChooseUs() {
       id: 3,
       title: "Caring Environment",
       description: "A warm, nurturing second home where every child feels loved and safe.",
-      image: "/real_school/galleryimg-20.jpeg",
+      image: "/annual_day/annual_day_teacher_kid.JPG",
       icon: <Heart className="w-6 h-6 text-pink-600" />,
       color: "bg-[#FFDDF0]", // Brighter, vibrant pastel pink
       glowColor: "hover:shadow-[0_12px_40px_rgba(244,114,182,0.35)]",
@@ -56,7 +56,7 @@ export default function WhyChooseUs() {
       id: 4,
       title: "Fun Learning",
       description: "Joyful play-based techniques, hands-on activities, and creative discovery.",
-      image: "/real_school/galleryimg-1.jpeg",
+      image: "/classrooms/galleryimg-17.jpeg",
       icon: <Sparkles className="w-6 h-6 text-yellow-600" />,
       color: "bg-[#FFF2BA]", // Brighter, vibrant pastel yellow
       glowColor: "hover:shadow-[0_12px_40px_rgba(250,204,21,0.35)]",
@@ -136,7 +136,7 @@ export default function WhyChooseUs() {
 
                       {/* Image */}
                       <div className="relative w-full h-[120px] sm:h-[140px] md:h-[180px] rounded-2xl overflow-hidden bg-white/40 shadow-inner">
-                        <Image src={card.image} fill className="object-cover transition-transform duration-[800ms] ease-out group-hover:scale-[1.04]" alt={card.title} />
+                        <Image src={card.image} fill className={`object-cover ${card.title === 'Caring Environment' ? 'object-top' : ''} transition-transform duration-[800ms] ease-out group-hover:scale-[1.04]`} alt={card.title} />
                       </div>
                    </div>
 

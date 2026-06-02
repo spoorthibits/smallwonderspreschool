@@ -4,15 +4,15 @@ import { useState, useEffect, useRef } from "react";
 import { X, Play, Sun, BookOpen, Utensils, Palette, Music, TreePine, Monitor, Star, Moon } from "lucide-react";
 
 const schedule = [
-  { time: "7:30 AM", activity: "Arrival & Morning Welcome", desc: "Children arrive, greet teachers and settle in with free play.", icon: <Sun size={26} />, iconSm: <Sun size={14} />, color: "#f5a623" },
-  { time: "8:00 AM", activity: "Circle Time", desc: "Songs, rhymes, calendar, weather and sharing circle.", icon: <Star size={26} />, iconSm: <Star size={14} />, color: "#e05c5c" },
-  { time: "8:30 AM", activity: "Snack & Nutrition Break", desc: "Healthy snacks, hygiene habits and social dining skills.", icon: <Utensils size={26} />, iconSm: <Utensils size={14} />, color: "#5cb85c" },
-  { time: "9:30 AM", activity: "Structured Learning", desc: "Age-appropriate lessons in language, numbers and concepts.", icon: <BookOpen size={26} />, iconSm: <BookOpen size={14} />, color: "#00acc1" },
-  { time: "10:00 AM", activity: "Art & Creative Play", desc: "Drawing, painting, craft and imaginative free expression.", icon: <Palette size={26} />, iconSm: <Palette size={14} />, color: "#7e57c2" },
-  { time: "10:45 AM", activity: "Music & Movement", desc: "Dance, rhythm, action songs and musical instruments.", icon: <Music size={26} />, iconSm: <Music size={14} />, color: "#f5a623" },
-  { time: "11:15 AM", activity: "Outdoor & Nature Play", desc: "Physical activity, garden exploration and sensory play.", icon: <TreePine size={26} />, iconSm: <TreePine size={14} />, color: "#5cb85c" },
-  { time: "12:00 PM", activity: "Computer & STEM", desc: "Age-appropriate digital learning and problem solving.", icon: <Monitor size={26} />, iconSm: <Monitor size={14} />, color: "#00acc1" },
-  { time: "12:30 PM", activity: "Rest & Story Time", desc: "Relaxation, guided imagery and bedtime story reading.", icon: <Moon size={26} />, iconSm: <Moon size={14} />, color: "#7b5ea7" },
+  { time: "9:00 AM", activity: "Arrival & Morning Welcome", desc: "Children arrive, greet teachers and settle in with free play.", icon: <Sun size={26} />, iconSm: <Sun size={14} />, color: "#f5a623" },
+  { time: "9:30 AM", activity: "Circle Time", desc: "Songs, rhymes, calendar, weather and sharing circle.", icon: <Star size={26} />, iconSm: <Star size={14} />, color: "#e05c5c" },
+  { time: "10:00 AM", activity: "Snack & Nutrition Break", desc: "Healthy snacks, hygiene habits and social dining skills.", icon: <Utensils size={26} />, iconSm: <Utensils size={14} />, color: "#5cb85c" },
+  { time: "10:30 AM", activity: "Structured Learning", desc: "Age-appropriate lessons in language, numbers and concepts.", icon: <BookOpen size={26} />, iconSm: <BookOpen size={14} />, color: "#00acc1" },
+  { time: "11:00 AM", activity: "Art & Creative Play", desc: "Drawing, painting, craft and imaginative free expression.", icon: <Palette size={26} />, iconSm: <Palette size={14} />, color: "#7e57c2" },
+  { time: "11:30 AM", activity: "Music & Movement", desc: "Dance, rhythm, action songs and musical instruments.", icon: <Music size={26} />, iconSm: <Music size={14} />, color: "#f5a623" },
+  { time: "11:50 AM", activity: "Outdoor & Nature Play", desc: "Physical activity, garden exploration and sensory play.", icon: <TreePine size={26} />, iconSm: <TreePine size={14} />, color: "#5cb85c" },
+  { time: "12:20 PM", activity: "Computer & STEM", desc: "Age-appropriate digital learning and problem solving.", icon: <Monitor size={26} />, iconSm: <Monitor size={14} />, color: "#00acc1" },
+  { time: "12:40 PM", activity: "Rest & Story Time", desc: "Relaxation, guided imagery and bedtime story reading.", icon: <Moon size={26} />, iconSm: <Moon size={14} />, color: "#7b5ea7" },
 ];
 
 export default function ProgramsDaySchedule() {
