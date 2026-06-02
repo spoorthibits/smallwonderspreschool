@@ -136,7 +136,7 @@ export default function WhyChooseUs() {
 
                       {/* Image */}
                       <div className="relative w-full h-[120px] sm:h-[140px] md:h-[180px] rounded-2xl overflow-hidden bg-white/40 shadow-inner">
-                        <Image src={card.image} fill className={`object-cover ${card.title === 'Caring Environment' ? 'object-top' : ''} transition-transform duration-[800ms] ease-out group-hover:scale-[1.04]`} alt={card.title} />
+                        <Image src={card.image} fill className={`object-cover object-top ${card.title === 'Caring Environment' ? 'object-top' : ''} transition-transform duration-[800ms] ease-out group-hover:scale-[1.04]`} alt={card.title} />
                       </div>
                    </div>
 

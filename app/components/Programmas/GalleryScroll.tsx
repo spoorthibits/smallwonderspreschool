@@ -5,15 +5,15 @@ import { useRef, useEffect } from "react";
 
 const images = [
   { src: "/individual_kids/galleryimg-9.jpeg", alt: "Children playing" },
-  { src: "/classrooms/galleryimg-17.jpeg", alt: "Art activity" },
-  { src: "/classrooms/galleryimg-6.jpeg", alt: "Story time" },
-  { src: "/classrooms/galleryimg-4.jpeg", alt: "Outdoor play" },
-  { src: "/real_school/galleryimg-5-cropped.jpeg", alt: "Music class" },
-  { src: "/classrooms/galleryimg-6.jpeg", alt: "Science activity" },
-  { src: "/classrooms/galleryimg-7.jpeg", alt: "Dance class" },
-  { src: "/individual_kids/galleryimg-8.jpeg", alt: "Group activity" },
+  { src: "/annual_day/DSC08805.JPG", alt: "Art activity" },
+  { src: "/annual_day/annual_day_dance_wide.JPG", alt: "Story time" },
+  { src: "/annual_day/annual_day_audience.JPG", alt: "Outdoor play" },
+  { src: "/annual_day/annual_day_blue_dress_dance.JPG", alt: "Music class" },
+  { src: "/annual_day/annual_day_group_dance.JPG", alt: "Science activity" },
+  { src: "/annual_day/annual_day_solo_dance.JPG", alt: "Dance class" },
+  { src: "/annual_day/annual_day_event_1.JPG", alt: "Group activity" },
   { src: "/individual_kids/galleryimg-9.jpeg", alt: "Lunch time" },
-  { src: "/individual_kids/galleryimg-10.jpeg", alt: "Celebration" },
+  { src: "/annual_day/DSC08682.JPG", alt: "Celebration" },
 ];
 
 export default function GalleryScroll() {
@@ -82,7 +82,7 @@ export default function GalleryScroll() {
                 src={img.src}
                 alt={img.alt}
                 fill
-                className="object-cover hover:scale-105 transition-transform duration-500"
+                className="object-cover object-top hover:scale-105 transition-transform duration-500"
               />
             </div>
           ))}

@@ -11,7 +11,7 @@ const programs = [
     age: "2 to 3 Years",
     color: "#22A45D",
     borderColor: "#22A45D",
-    image: "/real_school/galleryimg-1.jpeg",
+    image: "/real_school/kids-praying.jpg",
     description:
       "A Playgroup program designed for toddlers aged 2–3 years. Children explore and learn through play, sensory activities, and social interaction, building motor skills and early communication.",
   },
@@ -21,7 +21,7 @@ const programs = [
     age: "3 to 4 Years",
     color: "#6B3FA0",
     borderColor: "#6B3FA0",
-    image: "/classrooms/galleryimg-12.jpeg",
+    image: "/individual_kids/kids-slide.png",
     description:
       "The Nursery program serves as children's first formal step into structured learning. It emphasizes early literacy and numeracy, fostering creativity and a love for books and storytelling.",
   },
@@ -31,7 +31,7 @@ const programs = [
     age: "4 to 5 Years",
     color: "#E06820",
     borderColor: "#E06820",
-    image: "/classrooms/galleryimg-13.jpeg",
+    image: "/annual_day/annual_day_dance_wide.JPG",
     description:
       "PP1 builds on nursery foundations, introducing structured reading, writing, and arithmetic in an engaging, supportive classroom environment that sparks curiosity and confidence.",
   },
@@ -41,7 +41,7 @@ const programs = [
     age: "5 to 6 Years",
     color: "#1A8FD1",
     borderColor: "#1A8FD1",
-    image: "/classrooms/galleryimg-4.jpeg",
+    image: "/annual_day/annual_day_event_1.JPG",
     description:
       "PP2 prepares children for primary school with advanced literacy, numeracy, and critical thinking — a solid bridge between early childhood education and formal schooling.",
   },
@@ -51,7 +51,7 @@ const programs = [
     age: "5 to 6 Years",
     color: "#22A45D",
     borderColor: "#22A45D",
-    image: "/real_school/galleryimg-1.jpeg",
+    image: "/real_school/galleryimg-15.jpeg",
     description:
       "Engaging summer and winter camps that go beyond preschool to enhance analytical, cognitive, social, and language skills through storytelling, creative writing, and puzzle-solving.",
   },
@@ -62,7 +62,7 @@ const programs = [
     color: "#E06820",
     borderColor: "#E06820",
     badge: "Proeve",
-    image: "/real_school/galleryimg-5-cropped.jpeg",
+    image: "/real_school/galleryimg-19.jpeg",
     description:
       "Our Day Care provides a safe, nurturing environment throughout the day with structured activities, supervised play, and rest time — giving parents peace of mind.",
   },
@@ -255,7 +255,7 @@ function ProgramCard({ program }: { program: (typeof programs)[0] }) {
           src={program.image}
           alt={program.title}
           fill
-          className="object-cover"
+          className="object-cover object-top"
         />
       </div>
 

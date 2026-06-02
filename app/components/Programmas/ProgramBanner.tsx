@@ -48,7 +48,7 @@ export default function GalleryBanner() {
           width={800}
           height={500}
           priority
-          className="w-full h-auto object-cover"
+          className="w-full h-auto object-cover object-top"
         />
       </div>
 
@@ -172,7 +172,7 @@ export default function GalleryBanner() {
             alt="Children learning together"
             fill
             priority
-            className="object-cover"
+            className="object-cover object-top"
             style={{ objectPosition: "50% center" }}
           />
         </div>

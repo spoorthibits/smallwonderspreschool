@@ -176,7 +176,7 @@ export default function WhatWeOffer() {
 
             {/* Circle image */}
             <div className="relative w-44 h-44 md:w-44 md:h-44 lg:w-60 lg:h-60 rounded-full border-[6px] border-white shadow-xl mb-5 bg-white flex items-center justify-center transition-transform duration-300 hover:scale-105">
-              <Image src={prog.image} fill className={`rounded-full p-1.5 ${prog.title === 'NEP Curriculum' ? 'object-contain' : 'object-cover'}`} alt={prog.title} />
+              <Image src={prog.image} fill className={`rounded-full p-1.5 ${prog.title === 'NEP Curriculum' ? 'object-contain' : 'object-cover object-top'}`} alt={prog.title} />
               <div className={`absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap text-white md:text-[10px] lg:text-[13px] font-extrabold md:py-1 md:px-3 lg:py-1.5 lg:px-5 rounded-full shadow-lg ${prog.badgeColor}`}>
                 {prog.badge}
               </div>
@@ -235,7 +235,7 @@ export default function WhatWeOffer() {
                   <Image
                     src={prog.image}
                     fill
-                    className={`rounded-full p-1 ${prog.title === 'NEP Curriculum' ? 'object-contain' : 'object-cover'}`}
+                    className={`rounded-full p-1 ${prog.title === 'NEP Curriculum' ? 'object-contain' : 'object-cover object-top'}`}
                     alt={prog.title}
                   />
                   <div

@@ -104,7 +104,7 @@ export default function ProgramsDaySchedule() {
             >
               <X size={20} />
             </button>
-            <video src="/school-day.mp4" controls autoPlay className="w-full aspect-video object-cover" />
+            <video src="/school-day.mp4" controls autoPlay className="w-full aspect-video object-cover object-top" />
           </div>
         </div>
       )}
@@ -139,7 +139,7 @@ export default function ProgramsDaySchedule() {
                 className="relative overflow-hidden shadow-2xl w-full max-w-[460px] aspect-[4/3]"
                 style={{ borderRadius: "62% 38% 46% 54% / 60% 44% 56% 40%", border: "6px solid white" }}
               >
-                <video src="/school-day.mp4" className="w-full h-full object-cover" muted playsInline />
+                <video src="/school-day.mp4" className="w-full h-full object-cover object-top" muted playsInline />
                 <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors duration-300" />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div

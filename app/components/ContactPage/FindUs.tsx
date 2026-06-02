@@ -46,17 +46,17 @@ export default function ContactMap() {
                 src="/graphics_and_icons/maps_image.png"
                 alt="Map Location"
                 fill
-                className="object-cover"
+                className="object-cover object-top"
               />
 
               {/* Floating Card */}
               <div className="absolute bottom-6 right-6 md:bottom-8 md:right-8 bg-white/95 backdrop-blur-sm p-4 rounded-[28px] shadow-2xl flex flex-col items-center w-[180px] md:w-[210px] border border-white">
                 <div className="relative w-full aspect-[4/3] rounded-[20px] overflow-hidden mb-3 shadow-inner border-[4px] border-white">
                   <Image
-                    src="/real_school/galleryimg-1.jpeg"
+                    src="/real_school/galleryimg-20.jpeg"
                     alt="School Building"
                     fill
-                    className="object-cover"
+                    className="object-cover object-top"
                   />
                 </div>
                 <p className="font-baloo text-lg font-bold text-[var(--color-primary)] text-center leading-tight pb-1">

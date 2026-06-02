@@ -160,7 +160,7 @@ export default function HeroBanner() {
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 420px"
                       priority={index === 0}
-                      className="object-cover"
+                      className="object-cover object-top"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/15 to-transparent pointer-events-none"></div>
                   </div>

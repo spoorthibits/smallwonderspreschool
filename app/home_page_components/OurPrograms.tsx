@@ -201,7 +201,7 @@ export default function OurPrograms() {
                         alt={prog.title}
                         fill
                         sizes="144px"
-                        className="object-cover"
+                        className="object-cover object-top"
                       />
                     </div>
 
