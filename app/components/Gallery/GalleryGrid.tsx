@@ -656,18 +656,6 @@ const galleryItems: GalleryItem[] = [
     filterIcon: <PartyPopper size={18} color="#10b981" />,
   },
   {
-    id: 57,
-    category: "Annual Day",
-    title: "Event Felicitation",
-    description: "Award Ceremony.",
-    image: "/annual_day/DSC08802.JPG",
-    themeColor: "#10b981",
-    knobColor: "#10b981",
-    iconBg: "rgba(255,255,255,0.25)",
-    icon: <PartyPopper size={22} color="#fff" />,
-    filterIcon: <PartyPopper size={18} color="#10b981" />,
-  },
-  {
     id: 58,
     category: "Annual Day",
     title: "Recognition",
