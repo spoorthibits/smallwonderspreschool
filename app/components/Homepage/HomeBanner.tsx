@@ -19,7 +19,7 @@ export default function HomeBanner() {
           src="/graphics_and_icons/bannerimgmobile.png"
           alt="Banner"
           fill
-          className="object-cover object-center"
+          className="object-cover object-top"
           priority
         />
       </div>
@@ -146,7 +146,7 @@ export default function HomeBanner() {
                 className="w-9 h-9 rounded-full border-2 border-white overflow-hidden"
                 style={{ zIndex: 10 - i }}
               >
-                <Image src={src} alt={`child ${i + 1}`} width={36} height={36} className="object-cover w-full h-full" />
+                <Image src={src} alt={`child ${i + 1}`} width={36} height={36} className="object-cover object-top w-full h-full" />
               </div>
             ))}
             <div

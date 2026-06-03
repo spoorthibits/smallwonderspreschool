@@ -134,7 +134,7 @@ export default function StepsToJoin() {
                   alt="Children happily playing and learning in the classroom at Small Wonders"
                   fill
                   sizes="(max-width: 768px) 100vw, 500px"
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="object-cover object-top transition-transform duration-700 group-hover:scale-110"
                 />
               </div>
             </motion.div>

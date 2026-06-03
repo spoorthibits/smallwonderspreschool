@@ -80,7 +80,7 @@ export default function WelcomePreschool() {
                     alt="Children engaging in learning and play activities at Small Wonders Preschool"
                     fill
                     sizes="(max-width: 768px) 92vw, 480px"
-                    className="object-cover"
+                    className="object-cover object-top"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
                 </motion.div>

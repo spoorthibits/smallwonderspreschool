@@ -21,6 +21,7 @@ export default function WhyChooseUs() {
       holeBottom: true,
       initialPosition: { x: -80, y: -80 },
       corners: "rounded-[24px] md:rounded-none md:rounded-tl-[40px]",
+      imageClassName: "object-[center_30%]",
     },
     {
       id: 2,
@@ -36,6 +37,7 @@ export default function WhyChooseUs() {
       holeBottom: true,
       initialPosition: { x: 80, y: -80 },
       corners: "rounded-[24px] md:rounded-none md:rounded-tr-[40px]",
+      imageClassName: "object-[center_65%]",
     },
     {
       id: 3,
@@ -51,6 +53,7 @@ export default function WhyChooseUs() {
       holeRight: true,
       initialPosition: { x: -80, y: 80 },
       corners: "rounded-[24px] md:rounded-none md:rounded-bl-[40px]",
+      imageClassName: "object-top",
     },
     {
       id: 4,
@@ -66,6 +69,7 @@ export default function WhyChooseUs() {
       holeLeft: false,
       initialPosition: { x: 80, y: 80 },
       corners: "rounded-[24px] md:rounded-none md:rounded-br-[40px]",
+      imageClassName: "object-center",
     },
   ];
 
@@ -136,7 +140,7 @@ export default function WhyChooseUs() {
 
                       {/* Image */}
                       <div className="relative w-full h-[120px] sm:h-[140px] md:h-[180px] rounded-2xl overflow-hidden bg-white/40 shadow-inner">
-                        <Image src={card.image} fill className={`object-cover ${card.title === 'Caring Environment' ? 'object-top' : ''} transition-transform duration-[800ms] ease-out group-hover:scale-[1.04]`} alt={card.title} />
+                        <Image src={card.image} fill className={`object-cover ${card.imageClassName || ''} transition-transform duration-[800ms] ease-out group-hover:scale-[1.04]`} alt={card.title} />
                       </div>
                    </div>
 
