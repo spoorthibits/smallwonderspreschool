@@ -61,10 +61,11 @@ export default function WhatWeOffer() {
   const programmes: Programme[] = [
     {
       id: 0,
-      title: "Preschool",
+      title: "Pre-School",
       description: "Our preschool programme builds a strong foundation through play, exploration, and joyful learning experiences designed just for little learners.",
       image: "/individual_kids/galleryimg-10.jpeg",
       badge: "Age group : 2 - 6 years",
+
       buttonColor: "bg-[var(--color-primary)]",
       badgeColor: "bg-[var(--color-primary)]",
     },
