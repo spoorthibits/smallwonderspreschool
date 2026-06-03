@@ -62,7 +62,7 @@ const programs = [
     color: "#E06820",
     borderColor: "#E06820",
     badge: "Proeve",
-    image: "/real_school/galleryimg-19.jpeg",
+    image: "/fitted/20251210-DSC09820.JPG",
     description:
       "Our Day Care provides a safe, nurturing environment throughout the day with structured activities, supervised play, and rest time — giving parents peace of mind.",
   },
