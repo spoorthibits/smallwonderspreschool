@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import Button from "../Button";
 import { useEffect, useRef, useState, useCallback } from "react";
 
@@ -237,7 +238,9 @@ export default function ProgramsSection() {
 
       {/* CTA */}
       <div className="flex justify-center mt-10">
-        <Button label="Admissions Enquiry" variant="primary" size="lg" />
+        <Link href="/contact">
+          <Button label="Admissions Enquiry" variant="primary" size="lg" />
+        </Link>
       </div>
     </section>
   );
@@ -272,12 +275,24 @@ function ProgramCard({ program }: { program: (typeof programs)[0] }) {
           >
             {program.title}
             {program.badge && (
-              <span
-                className="ml-2 text-[12px] font-bold px-2 py-0.5 rounded-full border normal-case tracking-normal align-middle"
-                style={{ color: program.color, borderColor: program.color }}
-              >
-                {program.badge}
-              </span>
+              program.badge === "Proeve" ? (
+                <a
+                  href="https://share.google/qt7hT6VeWdeVgQjPa"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block ml-2 text-[12px] font-extrabold font-['Nunito'] uppercase tracking-wide px-3 py-0.5 rounded-full border-2 align-middle cursor-pointer hover:bg-black/5 hover:-translate-y-0.5 hover:shadow-md transition-all duration-300 active:scale-95"
+                  style={{ color: program.color, borderColor: program.color }}
+                >
+                  {program.badge}
+                </a>
+              ) : (
+                <span
+                  className="ml-2 text-[12px] font-bold px-2 py-0.5 rounded-full border normal-case tracking-normal align-middle"
+                  style={{ color: program.color, borderColor: program.color }}
+                >
+                  {program.badge}
+                </span>
+              )
             )}
           </p>
           <span className="text-[#7a7a9d] text-[13px] font-['Nunito'] font-semibold whitespace-nowrap flex-shrink-0">

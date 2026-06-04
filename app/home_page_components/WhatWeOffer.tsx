@@ -196,9 +196,21 @@ export default function WhatWeOffer() {
                 </span>
               </div>
             ) : (
-              <h3 className="md:text-[16px] lg:text-[26px] font-extrabold text-[var(--color-secondary)] font-baloo mt-1 mb-1 text-center leading-tight">
-                {prog.title}
-              </h3>
+              <div className="flex items-center justify-center gap-2 mt-1 mb-1">
+                <h3 className="md:text-[16px] lg:text-[26px] font-extrabold text-[var(--color-secondary)] font-baloo leading-tight">
+                  {prog.title}
+                </h3>
+                {prog.title === "Daycare" && (
+                  <a
+                    href="https://share.google/qt7hT6VeWdeVgQjPa"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[10px] md:text-[11px] lg:text-[13px] font-extrabold font-baloo px-3 py-0.5 rounded-full border-2 text-[#E06820] border-[#E06820] hover:bg-[#E06820] hover:text-white hover:-translate-y-0.5 hover:shadow-md transition-all duration-300 active:scale-95 cursor-pointer"
+                  >
+                    Proeve
+                  </a>
+                )}
+              </div>
             )}
 
             <p className="md:text-[11px] lg:text-[14px] text-gray-700 font-nunito text-center mb-2 leading-relaxed md:max-w-[180px] lg:max-w-[260px] font-medium">
@@ -261,9 +273,21 @@ export default function WhatWeOffer() {
                       </span>
                     </div>
                   ) : (
-                    <h3 className="text-lg font-extrabold text-[var(--color-secondary)] font-baloo mb-1 leading-tight">
-                      {prog.title}
-                    </h3>
+                    <div className="flex items-center justify-center gap-2 mb-1">
+                      <h3 className="text-lg font-extrabold text-[var(--color-secondary)] font-baloo leading-tight">
+                        {prog.title}
+                      </h3>
+                      {prog.title === "Daycare" && (
+                        <a
+                          href="https://share.google/qt7hT6VeWdeVgQjPa"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[11px] font-extrabold font-baloo px-3 py-0.5 rounded-full border-2 text-[#E06820] border-[#E06820] hover:bg-[#E06820] hover:text-white hover:-translate-y-0.5 hover:shadow-md transition-all duration-300 active:scale-95 cursor-pointer"
+                        >
+                          Proeve
+                        </a>
+                      )}
+                    </div>
                   )}
 
                   <p className="text-[12px] text-gray-700 font-nunito leading-relaxed font-medium mt-1">
