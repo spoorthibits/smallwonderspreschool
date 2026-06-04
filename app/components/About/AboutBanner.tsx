@@ -41,14 +41,26 @@ export default function AboutBanner() {
       `}</style>
 
       {/* ── MOBILE ONLY: full-width banner image ── */}
-      <div className="block lg:hidden w-full">
+      <div className="block md:hidden w-full">
         <Image
-          src="/graphics_and_icons/aboutmobile.png"
-          alt="About us banner"
+          src="/real_school/kids-music-activity.png"
+          alt="About us banner mobile"
           width={800}
           height={500}
           priority
           className="w-full h-auto object-cover"
+        />
+      </div>
+
+      {/* ── TABLET ONLY: full-width banner image using desktop image ── */}
+      <div className="hidden md:block lg:hidden w-full">
+        <Image
+          src="/real_school/kids-music-activity.png"
+          alt="About us banner tablet"
+          width={800}
+          height={500}
+          priority
+          className="w-full h-auto object-cover max-h-[400px] object-top"
         />
       </div>
 

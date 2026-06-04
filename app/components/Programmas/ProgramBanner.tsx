@@ -43,7 +43,7 @@ export default function GalleryBanner() {
       {/* ── MOBILE ONLY: full-width banner image ── */}
       <div className="block lg:hidden w-full">
         <Image
-          src="/graphics_and_icons/programsmobile.png"
+          src="/graphics_and_icons/programsmobile_logo.png"
           alt="Programmes banner"
           width={800}
           height={500}
@@ -168,7 +168,7 @@ export default function GalleryBanner() {
           </div>
 
           <Image
-            src="/graphics_and_icons/bannerprogram-2.png"
+            src="/graphics_and_icons/bannerprogram-2_logo.png"
             alt="Children learning together"
             fill
             priority

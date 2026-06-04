@@ -43,12 +43,12 @@ export default function GalleryBanner() {
       {/* ── MOBILE ONLY: image replaces all content ── */}
       <div className="block md:hidden w-full m-0 p-0 max-h-[300px] overflow-hidden">
         <Image
-          src="/graphics_and_icons/gallerymobile-1.png"
+          src="/graphics_and_icons/gallerymobile_logo.png"
           alt="Gallery Banner Mobile"
           width={800}
           height={600}
           priority
-          className="w-full h-[300px] object-cover object-top block"
+          className="w-full h-[calc(300px+0.5cm)] -mt-[0.5cm] object-cover object-top block"
         />
       </div>
 
@@ -173,7 +173,7 @@ export default function GalleryBanner() {
             {/* RIGHT IMAGE */}
             <div className="flex justify-center lg:justify-end lg:pr-6 mt-2 md:mt-0">
               <Image
-                src="/graphics_and_icons/gallerybannerimg.png"
+                src="/graphics_and_icons/gallerybannerimg_logo.png"
                 alt="Gallery Banner"
                 width={760}
                 height={420}

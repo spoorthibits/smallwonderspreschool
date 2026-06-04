@@ -48,7 +48,7 @@ export default function ContactBanner() {
           width={800}
           height={600}
           priority
-          className="w-full h-[300px] object-cover object-top block"
+          className="w-full h-[calc(300px+2cm)] -mt-[2cm] object-cover object-top block"
         />
       </div>
 
@@ -162,7 +162,7 @@ export default function ContactBanner() {
             {/* RIGHT IMAGE — contactbannertab.png on tablet, contact.png on desktop */}
             <div className="flex justify-end mt-4 md:mt-0">
               <Image
-                src="/ai_generated_images/contact.png"
+                src="/ai_generated_images/contact_logo.png"
                 alt="Gallery Banner"
                 width={1200}
                 height={800}
@@ -170,7 +170,7 @@ export default function ContactBanner() {
                 className="hidden lg:block w-full max-w-[1000px] h-auto object-contain"
               />
               <Image  
-                src="/ai_generated_images/contact.png"
+                src="/ai_generated_images/contact_logo.png"
                 alt="Gallery Banner Tablet"
                 width={1200}
                 height={800}
