@@ -9,7 +9,8 @@ export default function ContactPage() {
     parentName: "",
     phone: "",
     email: "",
-    childAge: "",
+    childName: "",
+    subject: "",
     message: "",
   });
 
@@ -43,8 +44,8 @@ export default function ContactPage() {
     } else if (!/\S+@\S+\.\S+/.test(formData.email.trim())) {
       newErrors.email = "Please enter a valid email address";
     }
-    if (!formData.childAge.trim()) {
-      newErrors.childAge = "Child's name is required";
+    if (!formData.childName.trim()) {
+      newErrors.childName = "Child's name is required";
     }
     if (!formData.message.trim()) newErrors.message = "Message is required";
 
@@ -57,14 +58,44 @@ export default function ContactPage() {
     if (!validate()) return;
 
     setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setIsSuccess(true);
 
-    setTimeout(() => {
-      setIsSuccess(false);
-      setFormData({ parentName: "", phone: "", email: "", childAge: "", message: "" });
-    }, 5000);
+    try {
+      const scriptUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEETS_SCRIPT_URL;
+      if (!scriptUrl) {
+        console.error("Google Sheets script URL is not defined.");
+        throw new Error("Configuration error");
+      }
+
+      const payload = {
+        ...formData,
+        formType: "contact"
+      };
+
+      const response = await fetch(scriptUrl, {
+        method: "POST",
+        body: JSON.stringify(payload),
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+      });
+
+      const result = await response.json();
+      if (result.result !== "success") {
+        throw new Error(result.error || "Failed to submit form");
+      }
+
+      setIsSubmitting(false);
+      setIsSuccess(true);
+
+      setTimeout(() => {
+        setIsSuccess(false);
+        setFormData({ parentName: "", phone: "", email: "", childName: "", subject: "", message: "" });
+      }, 5000);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setIsSubmitting(false);
+      alert("There was an error sending your message. Please try again later.");
+    }
   };
 
   return (

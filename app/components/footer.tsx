@@ -86,8 +86,8 @@ export default function Footer({ className }: FooterProps) {
               </li>
               <li className="footer-contact-item">
                 <Mail size={15} className="footer-contact-icon" />
-                <a href="mailto:info@smallwondersplayschool.com" className="footer-link">
-                  info@smallwondersplayschool.com
+                <a href="mailto:info@smallwonderspreschool.co.in" className="footer-link">
+                  info@smallwonderspreschool.co.in
                 </a>
               </li>
               <li className="footer-contact-item">

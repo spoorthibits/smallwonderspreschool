@@ -20,7 +20,8 @@ interface ContactSectionProps {
     parentName: string;
     email: string;
     phone: string;
-    childAge: string;
+    childName: string;
+    subject: string;
     message: string;
   };
   errors: Record<string, string>;
@@ -76,8 +77,8 @@ export default function ContactSection({
                   iconColor="text-orange-700"
                   label="Email"
                   content={
-                    <a href="mailto:info@smallwondersplayschool.com" className="hover:underline">
-                      info@smallwondersplayschool.com
+                    <a href="mailto:info@smallwonderspreschool.co.in" className="hover:underline">
+                      info@smallwonderspreschool.co.in
                     </a>
                   }
                 />
@@ -161,12 +162,12 @@ export default function ContactSection({
                         className={inputClass(!!errors.parentName)}
                       />
                     </FormField>
-                    <FormField id="childAge" label="Child's Name" required error={errors.childName}>
+                    <FormField id="childName" label="Child's Name" required error={errors.childName}>
                       <input
                         type="text"
-                        id="childAge"
-                        name="childAge"
-                        value={formData.childAge}
+                        id="childName"
+                        name="childName"
+                        value={formData.childName}
                         onChange={handleChange}
                         placeholder="Child's name"
                         className={inputClass(!!errors.childName)}
@@ -206,6 +207,8 @@ export default function ContactSection({
                       type="text"
                       id="subject"
                       name="subject"
+                      value={formData.subject}
+                      onChange={handleChange}
                       placeholder="e.g. Admissions enquiry"
                       className={inputClass(false)}
                     />

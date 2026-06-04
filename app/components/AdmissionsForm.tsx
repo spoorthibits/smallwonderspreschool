@@ -113,14 +113,42 @@ export default function AdmissionsForm({ type, onClose, onSubmitSuccess }: Admis
 
     setIsSubmitting(true);
 
-    // Simulate API request delay
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      const scriptUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEETS_SCRIPT_URL;
+      if (!scriptUrl) {
+        console.error("Google Sheets script URL is not defined.");
+        throw new Error("Configuration error");
+      }
 
-    setIsSubmitting(false);
-    setIsSuccess(true);
-    
-    if (onSubmitSuccess) {
-      onSubmitSuccess(formData);
+      const payload = {
+        ...formData,
+        formType: isVisit ? "visit" : "apply"
+      };
+
+      const response = await fetch(scriptUrl, {
+        method: "POST",
+        body: JSON.stringify(payload),
+        headers: {
+          // Using text/plain to avoid CORS preflight issues with Google Apps Script
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+      });
+
+      const result = await response.json();
+      if (result.result !== "success") {
+        throw new Error(result.error || "Failed to submit form");
+      }
+
+      setIsSubmitting(false);
+      setIsSuccess(true);
+      
+      if (onSubmitSuccess) {
+        onSubmitSuccess(formData);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setIsSubmitting(false);
+      alert("There was an error submitting your request. Please try again later.");
     }
   };
 
